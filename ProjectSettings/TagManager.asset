@@ -19,6 +19,7 @@ TagManager:
   - AudioSpectrum
   - Boat
   - Music
+  - Pearl
   layers:
   - Default
   - TransparentFX
@@ -33,7 +34,7 @@ TagManager:
   - Props
   - Player
   - Rocks
-  - 
+  - Currents
   - 
   - 
   - 

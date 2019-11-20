@@ -23,7 +23,7 @@ public class Essenz : MonoBehaviour {
         myAudio = GetComponent<AudioSource>();
 
         orbitScript = GetComponent<Orbit>();
-        orbitScript.swimming = false;
+        orbitScript.orbiting = false;
         orbitScript.orbitalSpeed = vortexSpeed;
         orbitScript.planetToOrbit = player.transform;
 	}
@@ -41,7 +41,7 @@ public class Essenz : MonoBehaviour {
             if (Vector3.Distance(transform.position, mouthCenter) < minDist)
             {
                 vortexing = false;
-                orbitScript.swimming = true;
+                orbitScript.orbiting = true;
             }
         }
 
@@ -60,7 +60,7 @@ public class Essenz : MonoBehaviour {
     //called on donation decider
     public void DonateEssenz(Transform donationDest)
     {
-        orbitScript.swimming = false;
+        orbitScript.orbiting = false;
 
         donationFinal = donationDest.position;
 
@@ -75,7 +75,7 @@ public class Essenz : MonoBehaviour {
         if(other.gameObject.tag == "Player" && !vortexing)
         {
             //vortex towards player
-            orbitScript.swimming = false;
+            orbitScript.orbiting = false;
             vortexing = true;
 
             tpc.myEssenz.Add(this);

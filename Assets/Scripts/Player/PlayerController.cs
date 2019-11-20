@@ -19,6 +19,7 @@ public class PlayerController : AudioHandler
     //general movement
     float horizontalMovement;
     float verticalMovement;
+    Vector3 force;
     public float currentSpeed;
     public float driftSpeed;
     public float swimSpeed;
@@ -41,7 +42,7 @@ public class PlayerController : AudioHandler
     float jumpTimer;
     public float jumpMin, jumpMax, forceMultiplier;
     public float jumpGroundMinDistance = 20f;
-    public LayerMask groundedMask, planetMask, spriteFadeMask;
+    public LayerMask groundedMask, planetMask;
 
     //all my body parts....
     Transform cameraT;
@@ -57,7 +58,8 @@ public class PlayerController : AudioHandler
 
     [Header("Audio & Vis FX")]
     public AudioClip[] swimmingSounds;
-        public AudioClip[] eatingSounds, outOfBreathSounds;
+    public AudioClip[] swimJumpSounds, outOfBreathSounds;
+    public float swimStepTimer, swimStepFrequency = 1f;
     public GameObject bubbleParticles;
     
     public override void Awake()
@@ -69,7 +71,7 @@ public class PlayerController : AudioHandler
         playerRigidbody = GetComponent<Rigidbody>();
         gravityBody = GetComponent<GravityBody>();
         capCollider = GetComponent<CapsuleCollider>();
-        playerSpriteObj = transform.GetChild(1).gameObject;
+        playerSpriteObj = transform.GetChild(0).gameObject;
         animator = playerSpriteObj.GetComponent<PlayerAnimations>();
        
         Cursor.visible = false;
@@ -125,7 +127,7 @@ public class PlayerController : AudioHandler
     void SwimInputs()
     {
         //create empty force vector for this frame 
-        Vector3 force = Vector3.zero;
+        force = Vector3.zero;
 
         // 2 axes 
         horizontalMovement = Input.GetAxis("Horizontal");
@@ -153,6 +155,21 @@ public class PlayerController : AudioHandler
         {
             //add neg x force 
             force += transform.right * horizontalMovement;
+        }
+
+        //Sound checks
+        if(Mathf.Abs(horizontalMovement) > 0 || Mathf.Abs(verticalMovement) > 0)
+        {
+            swimStepTimer -= Time.deltaTime;
+            if(swimStepTimer < 0)
+            {
+                PlayRandomSoundRandomPitch(swimmingSounds, 0.5f);
+                swimStepTimer = swimStepFrequency;
+            }
+        }
+        else
+        {
+            swimStepTimer = 0;
         }
 
         //Animator checks 
@@ -299,7 +316,7 @@ public class PlayerController : AudioHandler
         //just pressed, so normal jump
         if (jumpTimer <= jumpMin)
         {
-            playerRigidbody.AddForce(transform.forward * jumpForce);
+            playerRigidbody.AddForce(force * jumpForce);
         }
 
         //held, so we add to the force
@@ -316,7 +333,7 @@ public class PlayerController : AudioHandler
 
         //animate and play sound, reset jump timer
         animator.characterAnimator.SetTrigger("jump");
-        PlaySoundMultipleAudioSources(swimmingSounds);
+        PlaySoundMultipleAudioSources(swimJumpSounds);
         jumpTimer = 0;
     }
 

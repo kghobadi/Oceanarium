@@ -151,7 +151,7 @@ public class EdibleCreature : MonoBehaviour {
                 currentState = States.SWIMMING;
                 //randomize orbit axis again and turn it back on
                 myOrbiter.RandomizeOrbitAxis();
-                myOrbiter.swimming = true;
+                myOrbiter.orbiting = true;
             }
         }
 
@@ -225,7 +225,7 @@ public class EdibleCreature : MonoBehaviour {
     {
         originalPos = transform.position;
 
-        myOrbiter.swimming = false;
+        myOrbiter.orbiting = false;
 
         fleePossibilities.Clear();
 

@@ -52,7 +52,7 @@ public class GravityBody : MonoBehaviour {
 		rb.AddForce(futureUp * -10f);
 
 		// up = Vector3.SmoothDamp(up, futureUp, ref smoothUp, smoothTime);
-    up = Vector3.Slerp(up, futureUp, Time.deltaTime * smoothMultiplier);
+        up = Vector3.Slerp(up, futureUp, Time.deltaTime * smoothMultiplier);
 
 		// Orient
 		if (lockRotation) {

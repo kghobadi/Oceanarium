@@ -56,7 +56,7 @@ public class Trigger : MonoBehaviour {
                 //dialogue trigger
                 if (hasDialogue)
                 {
-                    Debug.Log("dialogue time!");
+                    //Debug.Log("dialogue time!");
                     //if greater than 1
                     if (myDialogues.Length > 1)
                     {
