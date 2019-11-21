@@ -12,6 +12,7 @@ public class HomingPearl : AudioHandler {
     MeshRenderer pearlMesh;
     GravityBody grav;
     public Material silentMat, activeMat;
+    ParticleSystem fog, popLights;
 
     [Header("Sounds")]
     public AudioClip activationSound;
@@ -27,6 +28,8 @@ public class HomingPearl : AudioHandler {
         pearlMesh = GetComponent<MeshRenderer>();
         pearlMesh.material = silentMat;
         grav = GetComponent<GravityBody>();
+        fog = transform.GetChild(0).GetComponent<ParticleSystem>();
+        popLights = transform.GetChild(1).GetComponent<ParticleSystem>();
     }
 
     void Update()
@@ -60,6 +63,11 @@ public class HomingPearl : AudioHandler {
             {
                 PlaySound(orbitingSound, 1f);
             }
+            //turn off pop lights once current activated 
+            if(currentScript.currentActivated && popLights.isPlaying)
+            {
+                popLights.Stop();
+            }
         }
     }
 
@@ -73,6 +81,9 @@ public class HomingPearl : AudioHandler {
                 activated = true;
                 PlaySound(activationSound, 1f);
                 pearlMesh.material = activeMat;
+                fog.Stop();
+                fog.Clear();
+                popLights.Play();
             }
         }
     }

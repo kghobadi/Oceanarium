@@ -7,7 +7,7 @@ public class CameraFacingBillboard : MonoBehaviour
     Vector3 lastViewPos;
     float checkXtimer;
     public bool movingCreature, playerCreature, noAnim;
-    ThirdPersonController tpc;
+    PlayerController pc;
     EdibleCreature edibleCreature;
 
 	private GravityBody playerBody;
@@ -15,14 +15,15 @@ public class CameraFacingBillboard : MonoBehaviour
     public bool fadingBack;
 
     Camera playerCam;
+    CameraController camControl;
     Animator creatureAnimator;
 	
 	void Awake(){
         //player refs
 		playerBody = GameObject.FindGameObjectWithTag("Player").GetComponent<GravityBody>();
-        tpc = playerBody.GetComponent<ThirdPersonController>();
+        pc = playerBody.GetComponent<PlayerController>();
         playerCam = Camera.main;
-
+        camControl = playerCam.GetComponent<CameraController>();
         //set my vars
         mySR = GetComponent<SpriteRenderer>();
         checkXtimer = 0.1f;
@@ -66,7 +67,7 @@ public class CameraFacingBillboard : MonoBehaviour
         if (!noAnim)
         {
             //if i am visible to the camera AND i am a moving creature
-            if (mySR.isVisible && movingCreature && !tpc.isMovingCam)
+            if (mySR.isVisible && movingCreature && !camControl.isMovingCam)
             {
                 checkXtimer -= Time.deltaTime;
 

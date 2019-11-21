@@ -21,7 +21,7 @@ public class FadeUI : MonoBehaviour {
     //controls the speed of the fade
     public float fadeInWait, fadeOutWait, fadeInSpeed = 0.75f, fadeOutSpeed = 1f;
 
-    public Transform nextParent;
+    public bool shownAtStart;
 
 	void Start () {
         //checks privately whether this object has image or text component
@@ -46,10 +46,22 @@ public class FadeUI : MonoBehaviour {
         }
 
         //automatically fadeIn at start if object has this script
-        StartCoroutine(WaitToFadeIn());
+        if(shownAtStart)
+            StartCoroutine(WaitToFadeIn());
 	}
-	
-	void Update () {
+
+    public void FadeIn()
+    {
+        fadingIn = true;
+        fadingOut = false;
+    }
+    public void FadeOut()
+    {
+        fadingIn = false;
+        fadingOut = true;
+    }
+
+    void Update () {
         //when fadingIn, this is called every frame
         if (fadingIn)
         {
@@ -90,7 +102,6 @@ public class FadeUI : MonoBehaviour {
                 if (!keepActive)
                 {
                     gameObject.SetActive(false);
-                    transform.SetParent(nextParent);
                 }
             }
         }

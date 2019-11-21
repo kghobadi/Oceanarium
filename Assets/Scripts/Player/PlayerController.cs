@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : AudioHandler
 {
+    public FadeUI titleCard;
+
     //Current Planet
     [Header("Active Planet")]
     public PlanetManager activePlanet;
@@ -166,6 +168,10 @@ public class PlayerController : AudioHandler
                 PlayRandomSoundRandomPitch(swimmingSounds, 0.5f);
                 swimStepTimer = swimStepFrequency;
             }
+
+            //fade out title card when player moves
+            if(titleCard.gameObject.activeSelf)
+                titleCard.FadeOut();
         }
         else
         {
