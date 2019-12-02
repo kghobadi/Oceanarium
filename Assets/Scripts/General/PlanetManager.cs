@@ -6,19 +6,23 @@ public class PlanetManager : MonoBehaviour {
 
     GameObject player;
     PlayerController pc;
+    GameObject guardian;
+    Guardian gBehavior;
 
     public string planetName;
     public bool playerHere, startingPlanet;
     CreatureSpawner creatureSpawner;
     public List<GameObject> spriteCreatures = new List<GameObject>();
     public List<GameObject> props = new List<GameObject>();
-
+    public Transform[] guardianLocations;
     public AudioClip musicTrack;
 
     void Awake () {
         player = GameObject.FindGameObjectWithTag("Player");
         pc = player.GetComponent<PlayerController>();
         creatureSpawner = GetComponent<CreatureSpawner>();
+        guardian = GameObject.FindGameObjectWithTag("Guardian");
+        gBehavior = guardian.GetComponent<Guardian>();
 	}
 
     void Start()
@@ -39,6 +43,8 @@ public class PlanetManager : MonoBehaviour {
         playerHere = true;
         pc.activePlanet = this;
         pc.activePlanetName = planetName;
+        gBehavior.currentPoint = 0;
+        gBehavior.guardianLocations = guardianLocations;
 
         for(int i = 0; i < spriteCreatures.Count; i++)
         {

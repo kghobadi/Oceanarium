@@ -77,7 +77,7 @@ public class HomingPearl : AudioHandler {
         {
             if (!activated)
             {
-                movement.MoveTo(currentStream.position);
+                movement.MoveTo(currentStream.position, movement.moveSpeed);
                 activated = true;
                 PlaySound(activationSound, 1f);
                 pearlMesh.material = activeMat;

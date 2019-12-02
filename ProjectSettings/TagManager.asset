@@ -20,6 +20,7 @@ TagManager:
   - Boat
   - Music
   - Pearl
+  - Guardian
   layers:
   - Default
   - TransparentFX
