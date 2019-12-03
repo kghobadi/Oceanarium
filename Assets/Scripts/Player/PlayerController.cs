@@ -19,8 +19,8 @@ public class PlayerController : AudioHandler
 
     [Header("Movement Speeds & Vars")]
     //general movement
-    float horizontalMovement;
-    float verticalMovement;
+    [HideInInspector] public float horizontalMovement;
+    [HideInInspector] public float verticalMovement;
     Vector3 force;
     public float currentSpeed;
     public float driftSpeed;
@@ -273,14 +273,14 @@ public class PlayerController : AudioHandler
         }
 
         //mouse wheel for elevation
-        if (Input.GetAxis("Mouse ScrollWheel") > 0)
-        {
-            playerRigidbody.AddForce(transform.up * elevateSpeed * Mathf.Abs(Input.GetAxis("Mouse ScrollWheel")) * 20);
-        }
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0)
-        {
-            playerRigidbody.AddForce(-transform.up * elevateSpeed * Mathf.Abs(Input.GetAxis("Mouse ScrollWheel")) * 20);
-        }
+        //if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        //{
+        //    playerRigidbody.AddForce(transform.up * elevateSpeed * Mathf.Abs(Input.GetAxis("Mouse ScrollWheel")) * 20);
+        //}
+        //else if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        //{
+        //    playerRigidbody.AddForce(-transform.up * elevateSpeed * Mathf.Abs(Input.GetAxis("Mouse ScrollWheel")) * 20);
+        //}
     }
 
     void TakeJumpInput()
