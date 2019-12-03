@@ -113,7 +113,7 @@ public class Currents : MonoBehaviour {
                 //reset velocity
                 pc.playerRigidbody.velocity = Vector3.zero;
                 pc.canMove = false;
-                pc.animator.SetAnimator("idle");
+                pc.animator.SetAnimator("inCurrent");
                 //deactivate p cam & activate currentCam
                 currentCamera.SetActive(true);
                 camControl.canMoveCam = false;
@@ -141,6 +141,7 @@ public class Currents : MonoBehaviour {
         camControl.canMoveCam = true;
         camControl.LerpFOV(camControl.originalFOV);
         pc.canMove = true;
+        pc.animator.SetAnimator("idle");
     }
 
     //called to play sounds 
