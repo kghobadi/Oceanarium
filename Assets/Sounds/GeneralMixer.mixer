@@ -10,6 +10,7 @@ AudioMixerController:
   m_MasterGroup: {fileID: 24300002}
   m_Snapshots:
   - {fileID: 24500006}
+  - {fileID: 245889458632442960}
   m_StartSnapshot: {fileID: 24500006}
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
@@ -27,7 +28,7 @@ AudioMixerController:
     - 4ce01eb5fcb86434987fa6122d4a019d
     name: View
   m_CurrentViewIndex: 0
-  m_TargetSnapshot: {fileID: 24500006}
+  m_TargetSnapshot: {fileID: 245889458632442960}
 --- !u!243 &24300002
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -70,7 +71,7 @@ AudioMixerSnapshotController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Snapshot
+  m_Name: Overworld
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 7fca498792285f14fa55045529a38fb7
   m_FloatValues:
@@ -360,3 +361,25 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!245 &245889458632442960
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Tripping
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 224e2ce98a236494aac4dd94133965b3
+  m_FloatValues:
+    0b94f48088090a1429099661944310a6: -17.938717
+    e65878a061917e745aca5862dd53c28d: -14.816608
+    871088d03e00173499be16f9bba88553: -20.610773
+    db7c0186bebe0ef4fb4754846ead8daf: 2552
+    492b44789892ddd4492d1b501966c5ab: -15.2
+    7c85c3c8e31bf9e4a8cca343a21cec7b: 0.75
+    2e6918da196f3684da743bd4036d521e: -13.205425
+    3521b10c8626c59409de84ddba7ef94a: 20
+    c941931cc82fb26448aa6dae67ca35ec: 1.31
+    a57199ddd98fef24bb2623d2fc63cff6: -11.944499
+    0cb4f08e0e4bc57499757aff15c074a5: -13.0627575
+    99f7811fa09b076479f1cdd9609b540d: 0.8772599
+  m_TransitionOverrides: {}
