@@ -13181,24 +13181,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1918913513762578
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4088050039937140}
-  - component: {fileID: 212086153610442886}
-  - component: {fileID: 95343614832239556}
-  - component: {fileID: 114397825622657260}
-  m_Layer: 10
-  m_Name: angel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1919641686784848
 GameObject:
   m_ObjectHideFlags: 1
@@ -15208,19 +15190,6 @@ Transform:
   m_Father: {fileID: 4880698683376338}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4088050039937140
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1918913513762578}
-  m_LocalRotation: {x: -0, y: -0, z: 0.019691993, w: 0.9998061}
-  m_LocalPosition: {x: -0.5353017, y: 0.4671593, z: 0.9575016}
-  m_LocalScale: {x: 0.06258514, y: 0.06258514, z: 0.062585145}
-  m_Children: []
-  m_Father: {fileID: 4611658942139980}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4089307266290930
 Transform:
   m_ObjectHideFlags: 1
@@ -15822,7 +15791,7 @@ Transform:
   - {fileID: 4500390436292974}
   - {fileID: 4376610077668986}
   m_Father: {fileID: 4611658942139980}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4113185909535880
 Transform:
@@ -22221,7 +22190,6 @@ Transform:
   m_Children:
   - {fileID: 4623538290143288}
   - {fileID: 4511514922916886}
-  - {fileID: 4088050039937140}
   - {fileID: 4656812402815114}
   - {fileID: 4978876610365546}
   - {fileID: 4111080692636750}
@@ -22736,7 +22704,7 @@ Transform:
   - {fileID: 4470206288668940}
   - {fileID: 4160001982765550}
   m_Father: {fileID: 4611658942139980}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4657251132308892
 Transform:
@@ -26135,7 +26103,7 @@ Transform:
   - {fileID: 4654377313863484}
   - {fileID: 4708826911455960}
   m_Father: {fileID: 4611658942139980}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -52.730003, y: 30, z: 35}
 --- !u!4 &4979601058696662
 Transform:
@@ -29441,24 +29409,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!95 &95343614832239556
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1918913513762578}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d87dce936fe20074a971100c1fda60ba, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!95 &95364271392317608
 Animator:
   serializedVersion: 3
@@ -31340,8 +31290,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114009971153774560
 MonoBehaviour:
@@ -31355,8 +31303,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114012455134352182
 MonoBehaviour:
@@ -31385,8 +31331,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114016080704269826
 MonoBehaviour:
@@ -31400,8 +31344,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114016833380074532
 MonoBehaviour:
@@ -31415,8 +31357,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114019957599596006
 MonoBehaviour:
@@ -31632,8 +31572,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114027247593501234
 MonoBehaviour:
@@ -31662,8 +31600,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114040626829436680
 MonoBehaviour:
@@ -31677,8 +31613,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114047682934480324
 MonoBehaviour:
@@ -31692,8 +31626,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114048761396102452
 MonoBehaviour:
@@ -31707,8 +31639,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114049517198168738
 MonoBehaviour:
@@ -31722,8 +31652,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114053141983845246
 MonoBehaviour:
@@ -31752,8 +31680,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114065899630598206
 MonoBehaviour:
@@ -31767,8 +31693,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114067974779192276
 MonoBehaviour:
@@ -31811,8 +31735,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114082751350860142
 MonoBehaviour:
@@ -31826,8 +31748,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114083308767107792
 MonoBehaviour:
@@ -31841,8 +31761,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114088625942815344
 MonoBehaviour:
@@ -31856,8 +31774,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114096890152210262
 MonoBehaviour:
@@ -31886,8 +31802,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114101428740372774
 MonoBehaviour:
@@ -32127,8 +32041,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114127194477801380
 MonoBehaviour:
@@ -32191,8 +32103,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114134942503667264
 MonoBehaviour:
@@ -32206,8 +32116,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114136677923883838
 MonoBehaviour:
@@ -32221,8 +32129,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114136776013192790
 MonoBehaviour:
@@ -32236,8 +32142,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114138510410558774
 MonoBehaviour:
@@ -32441,8 +32345,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114155065052659924
 MonoBehaviour:
@@ -32456,8 +32358,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114155997616975054
 MonoBehaviour:
@@ -32641,8 +32541,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114166296978345082
 MonoBehaviour:
@@ -32656,8 +32554,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114170284576559786
 MonoBehaviour:
@@ -32671,8 +32567,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114174071003217772
 MonoBehaviour:
@@ -32686,8 +32580,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114178865582598164
 MonoBehaviour:
@@ -32717,8 +32609,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114183600424670820
 MonoBehaviour:
@@ -32732,8 +32622,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114183932942326168
 MonoBehaviour:
@@ -32791,8 +32679,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114188945330564708
 MonoBehaviour:
@@ -32806,8 +32692,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114191514296698186
 MonoBehaviour:
@@ -32821,8 +32705,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114196850806094724
 MonoBehaviour:
@@ -32866,8 +32748,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114210954853439116
 MonoBehaviour:
@@ -32896,8 +32776,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114214263481098358
 MonoBehaviour:
@@ -32911,8 +32789,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114215821986779514
 MonoBehaviour:
@@ -32926,8 +32802,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114220602502568572
 MonoBehaviour:
@@ -32941,8 +32815,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114223366439356402
 MonoBehaviour:
@@ -33158,8 +33030,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114228368874568598
 MonoBehaviour:
@@ -33173,8 +33043,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114229003868069774
 MonoBehaviour:
@@ -33188,8 +33056,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114235001327720858
 MonoBehaviour:
@@ -33203,8 +33069,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114240176109580756
 MonoBehaviour:
@@ -33277,8 +33141,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114248529021721896
 MonoBehaviour:
@@ -33495,8 +33357,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114256764893628596
 MonoBehaviour:
@@ -33510,8 +33370,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114262140734336010
 MonoBehaviour:
@@ -33540,8 +33398,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114265551816604594
 MonoBehaviour:
@@ -33555,8 +33411,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114266302734577658
 MonoBehaviour:
@@ -33585,8 +33439,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114275533426796476
 MonoBehaviour:
@@ -33600,8 +33452,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114276406774114948
 MonoBehaviour:
@@ -33615,8 +33465,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114277187424004404
 MonoBehaviour:
@@ -33819,8 +33667,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114309734812888772
 MonoBehaviour:
@@ -33865,8 +33711,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114314009695077736
 MonoBehaviour:
@@ -33880,8 +33724,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114315675300942818
 MonoBehaviour:
@@ -33895,8 +33737,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114318852354904090
 MonoBehaviour:
@@ -33910,8 +33750,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114321643594468284
 MonoBehaviour:
@@ -34149,8 +33987,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114335040227185402
 MonoBehaviour:
@@ -34164,8 +34000,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114340463280543648
 MonoBehaviour:
@@ -34209,8 +34043,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114352654379248000
 MonoBehaviour:
@@ -34224,8 +34056,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114355439784087780
 MonoBehaviour:
@@ -34239,8 +34069,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114356347234182616
 MonoBehaviour:
@@ -34254,8 +34082,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114358084077546856
 MonoBehaviour:
@@ -34269,8 +34095,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114366176215214946
 MonoBehaviour:
@@ -34299,8 +34123,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114370176525787850
 MonoBehaviour:
@@ -34314,8 +34136,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114372209434803924
 MonoBehaviour:
@@ -34329,8 +34149,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114372636791882496
 MonoBehaviour:
@@ -34561,8 +34379,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114384885454699844
 MonoBehaviour:
@@ -34576,8 +34392,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114387842774892452
 MonoBehaviour:
@@ -34642,8 +34456,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114397723955294092
 MonoBehaviour:
@@ -34660,21 +34472,6 @@ MonoBehaviour:
   - {fileID: 0}
   animatorComponent: {fileID: 95792240208912704}
   parameterName: Distance
---- !u!114 &114397825622657260
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1918913513762578}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ee61183c5013464ab17c81babd9c0f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
-  fadingBack: 0
 --- !u!114 &114398625337914836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -34687,8 +34484,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114401195191233490
 MonoBehaviour:
@@ -34702,8 +34497,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114407387016328138
 MonoBehaviour:
@@ -34717,8 +34510,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114412489236487462
 MonoBehaviour:
@@ -34762,8 +34553,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114433631249301658
 MonoBehaviour:
@@ -34837,8 +34626,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114457101760256122
 MonoBehaviour:
@@ -35108,8 +34895,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114475171957037842
 MonoBehaviour:
@@ -35123,8 +34908,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114475192182377320
 MonoBehaviour:
@@ -35153,8 +34936,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114479704771850314
 MonoBehaviour:
@@ -35168,8 +34949,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114480300882030796
 MonoBehaviour:
@@ -35218,8 +34997,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114486759077418692
 MonoBehaviour:
@@ -35233,8 +35010,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114487442747602582
 MonoBehaviour:
@@ -35248,8 +35023,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114487507091616652
 MonoBehaviour:
@@ -35263,8 +35036,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114493603576581082
 MonoBehaviour:
@@ -35293,8 +35064,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114495304524940528
 MonoBehaviour:
@@ -35308,8 +35077,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114500068638086202
 MonoBehaviour:
@@ -35338,8 +35105,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114503292903663922
 MonoBehaviour:
@@ -35368,8 +35133,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114506013908780138
 MonoBehaviour:
@@ -35413,8 +35176,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114515452015430488
 MonoBehaviour:
@@ -35556,8 +35317,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114540005430294234
 MonoBehaviour:
@@ -35571,8 +35330,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114548500296116330
 MonoBehaviour:
@@ -35586,8 +35343,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114549114944785342
 MonoBehaviour:
@@ -35601,8 +35356,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114556168744833448
 MonoBehaviour:
@@ -35616,8 +35369,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114557277558110314
 MonoBehaviour:
@@ -35631,8 +35382,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114565177262953948
 MonoBehaviour:
@@ -35646,8 +35395,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114566622049190022
 MonoBehaviour:
@@ -35676,8 +35423,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114570069405340106
 MonoBehaviour:
@@ -35691,8 +35436,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114572729712236464
 MonoBehaviour:
@@ -35706,8 +35449,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114575766315122170
 MonoBehaviour:
@@ -35721,8 +35462,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114576062022832768
 MonoBehaviour:
@@ -35924,8 +35663,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114584650246217772
 MonoBehaviour:
@@ -35939,8 +35676,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114585951570164662
 MonoBehaviour:
@@ -36124,8 +35859,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114591021600228044
 MonoBehaviour:
@@ -36139,8 +35872,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114597892372611314
 MonoBehaviour:
@@ -36154,8 +35885,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114601330754555664
 MonoBehaviour:
@@ -36357,8 +36086,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114607001558748702
 MonoBehaviour:
@@ -36421,8 +36148,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114616681217041528
 MonoBehaviour:
@@ -36452,8 +36177,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114620087118114508
 MonoBehaviour:
@@ -36498,8 +36221,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114628951117133644
 MonoBehaviour:
@@ -36543,8 +36264,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114643490818120918
 MonoBehaviour:
@@ -36806,8 +36525,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114653518360949232
 MonoBehaviour:
@@ -36851,8 +36568,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114660299905875214
 MonoBehaviour:
@@ -36911,8 +36626,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114682176397297066
 MonoBehaviour:
@@ -36958,8 +36671,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114693656683885568
 MonoBehaviour:
@@ -36988,8 +36699,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114697994869406310
 MonoBehaviour:
@@ -37003,8 +36712,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114699152481623108
 MonoBehaviour:
@@ -37018,8 +36725,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114700842466998594
 MonoBehaviour:
@@ -37033,8 +36738,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114702168514396044
 MonoBehaviour:
@@ -37063,8 +36766,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114703040165287584
 MonoBehaviour:
@@ -37078,8 +36779,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114710963142301114
 MonoBehaviour:
@@ -37123,8 +36822,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114714375074978380
 MonoBehaviour:
@@ -37158,8 +36855,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114719125797385642
 MonoBehaviour:
@@ -37363,8 +37058,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114737762057493220
 MonoBehaviour:
@@ -37378,8 +37071,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114739094335592916
 MonoBehaviour:
@@ -37393,8 +37084,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114739936358317908
 MonoBehaviour:
@@ -37438,8 +37127,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114758329114859920
 MonoBehaviour:
@@ -37533,8 +37220,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114769932692432500
 MonoBehaviour:
@@ -37563,8 +37248,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114774670016174206
 MonoBehaviour:
@@ -37578,8 +37261,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114775044878462204
 MonoBehaviour:
@@ -37635,8 +37316,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114780454604214306
 MonoBehaviour:
@@ -37650,8 +37329,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114783043633898588
 MonoBehaviour:
@@ -37701,8 +37378,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114794467998183662
 MonoBehaviour:
@@ -37731,8 +37406,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114798664951786096
 MonoBehaviour:
@@ -37761,8 +37434,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114807565753760056
 MonoBehaviour:
@@ -37776,8 +37447,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114814485086164022
 MonoBehaviour:
@@ -37791,8 +37460,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114815856827169964
 MonoBehaviour:
@@ -37821,8 +37488,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114817964543659418
 MonoBehaviour:
@@ -37883,8 +37548,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114821572674310024
 MonoBehaviour:
@@ -37913,8 +37576,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114827063264779924
 MonoBehaviour:
@@ -38088,8 +37749,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114832808812445484
 MonoBehaviour:
@@ -38302,8 +37961,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114842811145808018
 MonoBehaviour:
@@ -38317,8 +37974,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114843444661403000
 MonoBehaviour:
@@ -38368,8 +38023,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114848465518617948
 MonoBehaviour:
@@ -38398,8 +38051,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114857674414427254
 MonoBehaviour:
@@ -38413,8 +38064,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114867729227880042
 MonoBehaviour:
@@ -38428,8 +38077,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114870327542967386
 MonoBehaviour:
@@ -38672,8 +38319,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114884025006790102
 MonoBehaviour:
@@ -38778,8 +38423,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114891753724560784
 MonoBehaviour:
@@ -38846,8 +38489,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114911591146498740
 MonoBehaviour:
@@ -38861,8 +38502,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114913265884199344
 MonoBehaviour:
@@ -38876,8 +38515,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114913620853495804
 MonoBehaviour:
@@ -38891,8 +38528,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114916759679386024
 MonoBehaviour:
@@ -38921,8 +38556,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114921141766443478
 MonoBehaviour:
@@ -38983,8 +38616,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114926519341076760
 MonoBehaviour:
@@ -38998,8 +38629,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114930832465168796
 MonoBehaviour:
@@ -39044,8 +38673,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114937554566066592
 MonoBehaviour:
@@ -39059,8 +38686,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114938483540403618
 MonoBehaviour:
@@ -39074,8 +38699,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114940258750524714
 MonoBehaviour:
@@ -39089,8 +38712,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114942211815241622
 MonoBehaviour:
@@ -39104,8 +38725,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114944967819140118
 MonoBehaviour:
@@ -39532,8 +39151,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114962884755638452
 MonoBehaviour:
@@ -39577,8 +39194,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114970935077241282
 MonoBehaviour:
@@ -39641,8 +39256,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114983946762055800
 MonoBehaviour:
@@ -39656,8 +39269,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114986950550634698
 MonoBehaviour:
@@ -39671,8 +39282,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114988822105374778
 MonoBehaviour:
@@ -39686,8 +39295,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114990697500976476
 MonoBehaviour:
@@ -39701,8 +39308,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114992424507426126
 MonoBehaviour:
@@ -39716,8 +39321,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!135 &135061366629156756
 SphereCollider:
@@ -47608,52 +47211,6 @@ SpriteRenderer:
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 20.48, y: 20.48}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!212 &212086153610442886
-SpriteRenderer:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1918913513762578}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cb5733c998209784a8af0582ef064ca6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 9.86, y: 8.04}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

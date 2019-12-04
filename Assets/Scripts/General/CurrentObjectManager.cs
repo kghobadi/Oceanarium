@@ -23,13 +23,12 @@ public class CurrentObjectManager : MonoBehaviour {
 
     [Header("Changes Music")]
     public bool newTrack;
-    AudioSource musicSource;
-    bool fadingVolOut, fadingVolIn;
+    MusicFader mFader;
     
 	void Awake () {
         player = GameObject.FindGameObjectWithTag("Player");
         pc = player.GetComponent<PlayerController>();
-        musicSource = GameObject.FindGameObjectWithTag("Music").GetComponent<AudioSource>();
+        mFader = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicFader>();
         timeToReactivate = 1;
 	}
 	
@@ -51,31 +50,6 @@ public class CurrentObjectManager : MonoBehaviour {
             if(Vector3.Distance(player.transform.localScale, desiredScale) < 0.1f)
             {
                 lerping = false;
-            }
-        }
-
-        if (fadingVolOut)
-        {
-            musicSource.volume -= Time.deltaTime;
-
-            if(musicSource.volume <= 0)
-            {
-                musicSource.Stop();
-                musicSource.clip = nextPlanet.musicTrack;
-                musicSource.Play();
-
-                fadingVolOut = false;
-                fadingVolIn = true;
-            }
-        }
-
-        if (fadingVolIn)
-        {
-            musicSource.volume += Time.deltaTime;
-
-            if(musicSource.volume >= 1)
-            {
-                fadingVolIn = false;
             }
         }
 	}
@@ -100,7 +74,7 @@ public class CurrentObjectManager : MonoBehaviour {
 
             if (newTrack)
             {
-                fadingVolOut = true;
+                mFader.FadeTo(nextPlanet.musicTrack);
             }
         }
     }

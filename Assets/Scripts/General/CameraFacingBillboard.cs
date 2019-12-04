@@ -5,19 +5,17 @@ public class CameraFacingBillboard : MonoBehaviour
 {
     SpriteRenderer mySR;
     Vector3 lastViewPos;
-    float checkXtimer;
-    public bool movingCreature, playerCreature, noAnim;
     PlayerController pc;
-    EdibleCreature edibleCreature;
-
-	private GravityBody playerBody;
-
-    public bool fadingBack;
-
+    private GravityBody playerBody;
     Camera playerCam;
     CameraController camControl;
+    EdibleCreature edibleCreature;
     Animator creatureAnimator;
-	
+
+    float checkXtimer;
+    public bool movingCreature;
+    public bool fadingBack;
+
 	void Awake(){
         //player refs
 		playerBody = GameObject.FindGameObjectWithTag("Player").GetComponent<GravityBody>();
@@ -27,54 +25,28 @@ public class CameraFacingBillboard : MonoBehaviour
         //set my vars
         mySR = GetComponent<SpriteRenderer>();
         checkXtimer = 0.1f;
-        if (movingCreature || playerCreature)
+
+        if (movingCreature )
         {
             edibleCreature = GetComponent<EdibleCreature>();
             creatureAnimator = GetComponent<Animator>();
             creatureAnimator.enabled = false;
             
             StartCoroutine(StartAnimator());
-            if (playerCreature)
-            {
-                float randomFlip = Random.Range(0, 100);
-                if(randomFlip < 50)
-                {
-                    mySR.flipX = false;
-                }
-                else
-                {
-                    mySR.flipX = true;
-                }
-            }
-        }
-        else if(movingCreature && !playerCreature && !noAnim)
-        {
-            creatureAnimator = GetComponent<Animator>();
-            creatureAnimator.enabled = false;
         }
 	}
 
 	void Update(){
-        //if (lockToYAxis) {
-        //    Vector3 oldEulerAngles = transform.eulerAngles;
-        //    transform.LookAt(playerCam.transform.position);
-        //    transform.eulerAngles = new Vector3(oldEulerAngles.x, transform.eulerAngles.y, oldEulerAngles.z);
-        //    return;
-        //}
-
         transform.LookAt(playerCam.transform.position, playerBody.GetUp());
-        
-        if (!noAnim)
-        {
-            //if i am visible to the camera AND i am a moving creature
-            if (mySR.isVisible && movingCreature && !camControl.isMovingCam)
-            {
-                checkXtimer -= Time.deltaTime;
 
-                if (checkXtimer < 0)
-                {
-                    CheckXDirection();
-                }
+        //if i am visible to the camera AND i am a moving creature
+        if (mySR.isVisible && movingCreature && !camControl.isMovingCam)
+        {
+            checkXtimer -= Time.deltaTime;
+
+            if (checkXtimer < 0)
+            {
+                CheckXDirection();
             }
         }
 
@@ -96,12 +68,10 @@ public class CameraFacingBillboard : MonoBehaviour
     //called when the Renderer comp becomes visible to any camera
     void OnBecameVisible()
     {
-        
         CheckXDirection();
         //make animation wait a sec before starting 
         if (creatureAnimator)
             StartCoroutine(StartAnimator());
-        //creatureAnimator.enabled = true;
     }
 
 
@@ -122,15 +92,11 @@ public class CameraFacingBillboard : MonoBehaviour
         if (viewPos.x > lastViewPos.x)
         {
             mySR.flipX = false;
-            //edibleCreature.swimEmphNormal.SetActive(true);
-            //edibleCreature.swimEmphFlipped.SetActive(false);
         }
         //we are moving to the left on the view plane
         else if (viewPos.x < lastViewPos.x)
         {
             mySR.flipX = true;
-            //edibleCreature.swimEmphNormal.SetActive(false);
-            //edibleCreature.swimEmphFlipped.SetActive(true);
         }
 
         //reset lastViewPos and timer
