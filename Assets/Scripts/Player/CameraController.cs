@@ -23,12 +23,12 @@ public class CameraController : MonoBehaviour {
     public float maxVerticalLookAngle = 85f;
     public float minVerticalLookAngle = -15f;
     public float yLookPosAdjust = 5f;
-    public float camLookSpeed;
+    public float smoothMove = 0.5f;
+    public float smoothLook = 0.5f;
+    [Header("Zoom Vars")]
     public float heightFromPlayer = 20f;
     public float heightMin, heightMax;
     public float zoomSpeed = 500f;
-    public float smoothMove = 0.5f;
-    public float smoothLook = 0.5f;
 
     //privately stored temp variables 
     float zoomInput;

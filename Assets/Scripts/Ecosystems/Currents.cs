@@ -72,7 +72,7 @@ public class Currents : MonoBehaviour {
             {
                 pc.transform.position = Vector3.MoveTowards(pc.transform.position, endPoint.position, currentSpeed * Time.deltaTime);
 
-                if (Vector3.Distance(pc.transform.position, endPoint.position) < 1)
+                if (Vector3.Distance(pc.transform.position, endPoint.position) < 5f)
                 {
                     hasEntered = false;
                     StartCoroutine(WaitToStopCurrent(player));
@@ -98,42 +98,56 @@ public class Currents : MonoBehaviour {
         {
             if (other.gameObject.tag == "Player")
             {
-                //we are entering the current near the entrance 
-                if (Vector3.Distance(player.transform.position, entrance.position) < 25)
-                {
-                    //reset player pos to entrance 
-                    entering = true;
-                }
-                //we have entered elsewhere
-                else
-                {
-                    hasEntered = true;
-                }
-
-                //reset velocity
-                pc.playerRigidbody.velocity = Vector3.zero;
-                pc.canMove = false;
-                pc.animator.SetAnimator("inCurrent");
-                //deactivate p cam & activate currentCam
-                currentCamera.SetActive(true);
-                camControl.canMoveCam = false;
+                EnterCurrent();
             }
         }
     }
 
     public void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (currentActivated)
         {
-            if (!ambientSource.isPlaying)
-                PlaySound(currentAmbience);
+            if (other.gameObject.tag == "Player")
+            {
+                if (!ambientSource.isPlaying)
+                    PlaySound(currentAmbience);
+
+                if (!hasEntered)
+                {
+                    EnterCurrent();
+                }
+            }
         }
+      
+    }
+
+    void EnterCurrent()
+    {
+        //we are entering the current near the entrance 
+        if (Vector3.Distance(player.transform.position, entrance.position) < 25)
+        {
+            //reset player pos to entrance 
+            entering = true;
+        }
+        //we have entered elsewhere
+        else
+        {
+            hasEntered = true;
+        }
+
+        //reset velocity
+        pc.playerRigidbody.velocity = Vector3.zero;
+        pc.canMove = false;
+        pc.animator.SetAnimator("inCurrent");
+        //deactivate p cam & activate currentCam
+        currentCamera.SetActive(true);
+        camControl.canMoveCam = false;
     }
 
     //need a delay before stopping current
     IEnumerator WaitToStopCurrent(GameObject other)
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.25f);
 
         ambientSource.Stop();
         //activate p cam & deactivate currentCam
