@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public class PlayerController : AudioHandler
 {
@@ -22,6 +23,7 @@ public class PlayerController : AudioHandler
     [HideInInspector] public float horizontalMovement;
     [HideInInspector] public float verticalMovement;
     Vector3 force;
+    float camDist;
     public float currentSpeed;
     public float driftSpeed;
     public float swimSpeed;
@@ -51,6 +53,8 @@ public class PlayerController : AudioHandler
     GravityBody gravityBody;
     CapsuleCollider capCollider;
     GameObject playerSpriteObj;
+    
+    public CinemachineFreeLook diverFreeLook;
     [HideInInspector]
     public CameraController camControls; //other things may need access to camera 
     [HideInInspector]
@@ -134,33 +138,35 @@ public class PlayerController : AudioHandler
         // 2 axes 
         horizontalMovement = Input.GetAxis("Horizontal");
         verticalMovement = Input.GetAxis("Vertical");
+        //dist from camera
+        camDist = Vector3.Distance(playerSpriteObj.transform.position, cameraT.position);
 
         //VERTICAL force checks
-        if(verticalMovement > 0)
+        if (verticalMovement > 0)
         {
             //add forward force 
             force += transform.forward * verticalMovement;
         }
-        if(verticalMovement < 0)
+        if (verticalMovement < 0)
         {
             //add backward force
             force += transform.forward * verticalMovement;
         }
 
         //HORIZONTAL force checks
-        if(horizontalMovement > 0)
+        if (horizontalMovement > 0)
         {
             //add neg x force 
             force += transform.right * horizontalMovement;
         }
-        if(horizontalMovement < 0)
+        if (horizontalMovement < 0)
         {
             //add neg x force 
             force += transform.right * horizontalMovement;
         }
 
         //Sound checks
-        if(Mathf.Abs(horizontalMovement) > 0 || Mathf.Abs(verticalMovement) > 0)
+        if (Mathf.Abs(horizontalMovement) > 0 || Mathf.Abs(verticalMovement) > 0)
         {
             swimStepTimer -= Time.deltaTime;
             if(swimStepTimer < 0)
@@ -201,16 +207,16 @@ public class PlayerController : AudioHandler
             animator.SetAnimator("down");
         }
         //RIGHT
-        if (verticalMovement == 0 && horizontalMovement > 0)
+        if ( horizontalMovement > 0 && verticalMovement == 0)
         {
             moveState = MoveStates.RIGHT;
             //diver look right
             animator.SetAnimator("right");
         }
         //LEFT
-        if (verticalMovement == 0 && horizontalMovement < 0)
+        if ( horizontalMovement < 0 && verticalMovement == 0)
         {
-            moveState = MoveStates.DOWN;
+            moveState = MoveStates.LEFT;
             //diver look left
             animator.SetAnimator("left");
         }
@@ -242,7 +248,7 @@ public class PlayerController : AudioHandler
             //diver look left
             animator.SetAnimator("downLeft");
         }
-        
+
         //apply force 
         {
             //add twice the force when you are slow
@@ -379,6 +385,39 @@ public class PlayerController : AudioHandler
         {
             float proportionalHeightSquared = Mathf.Pow((repulsionDistance - hit.distance) / repulsionDistance, 2);
             playerRigidbody.AddForce(-playerRigidbody.velocity * proportionalHeightSquared * repulsionForce);
+        }
+    }
+
+
+
+    void CinemachineMovement()
+    {
+        //VERTICAL force checks
+        if (verticalMovement > 0)
+        {
+            //add forward force 
+            //on that close up bottom rig
+            if (camDist < 8)
+            {
+                force += (-playerSpriteObj.transform.up * 2 + -playerSpriteObj.transform.forward) * verticalMovement;
+            }
+            //on the top rigs
+            else
+            {
+                force += (playerSpriteObj.transform.up / 3 + -playerSpriteObj.transform.forward) * verticalMovement;
+            }
+        }
+
+        //HORIZONTAL force checks
+        if (horizontalMovement > 0)
+        {
+            //add neg x force 
+            force += -playerSpriteObj.transform.right * horizontalMovement;
+        }
+        if (horizontalMovement < 0)
+        {
+            //add neg x force 
+            force += -playerSpriteObj.transform.right * horizontalMovement;
         }
     }
 }

@@ -57,7 +57,7 @@ public class Guardian : AudioHandler {
                 PlaySoundRandomPitch(waitingSound, 1f);
 
             //player close now
-            if(distFromPlayer < necDist)
+            if(distFromPlayer < necDist || pc.animator.Animator.GetBool("inCurrent"))
             {
                 SetMove();
             }
