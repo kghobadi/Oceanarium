@@ -153,7 +153,7 @@ public class Currents : MonoBehaviour {
         //activate p cam & deactivate currentCam
         currentCamera.SetActive(false);
         camControl.canMoveCam = true;
-        camControl.LerpFOV(camControl.originalFOV);
+        camControl.LerpFOV(camControl.originalFOV, 2f);
         pc.canMove = true;
         pc.animator.SetAnimator("idle");
     }
