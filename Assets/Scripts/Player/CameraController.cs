@@ -23,12 +23,12 @@ public class CameraController : MonoBehaviour {
     public float maxVerticalLookAngle = 85f;
     public float minVerticalLookAngle = -15f;
     public float yLookPosAdjust = 5f;
-    public float camLookSpeed;
+    public float smoothMove = 0.5f;
+    public float smoothLook = 0.5f;
+    [Header("Zoom Vars")]
     public float heightFromPlayer = 20f;
     public float heightMin, heightMax;
     public float zoomSpeed = 500f;
-    public float smoothMove = 0.5f;
-    public float smoothLook = 0.5f;
 
     //privately stored temp variables 
     float zoomInput;
@@ -47,6 +47,7 @@ public class CameraController : MonoBehaviour {
     public float originalFOV;
     float nextFOV;
     float startTime;
+    float lerpTime = 1f;
 
     void Awake () {
         cameraT = Camera.main.transform;
@@ -98,9 +99,9 @@ public class CameraController : MonoBehaviour {
         //smoothly changing FOV
         if (lerpingFOV)
         {
-            mainCam.fieldOfView = Mathf.Lerp(mainCam.fieldOfView, nextFOV, Time.time - startTime);
+            mainCam.fieldOfView = Mathf.Lerp(mainCam.fieldOfView, nextFOV, Time.time - (startTime * 1 / lerpTime));
             //stop once t value = 1
-            if (Time.time - startTime >= 1)
+            if (Time.time - startTime >= lerpTime)
             {
                 lerpingFOV = false;
             }
@@ -229,10 +230,11 @@ public class CameraController : MonoBehaviour {
     }
 
     //called to lerp cam fov after transitions 
-    public void LerpFOV(float desiredFOV)
+    public void LerpFOV(float desiredFOV, float lerpLength)
     {
         startTime = Time.time;
         nextFOV = desiredFOV;
         lerpingFOV = true;
+        lerpTime = lerpLength;
     }
 }

@@ -7,6 +7,7 @@ public class TripActivation : MonoBehaviour {
     GameObject player;
     PlayerController pc;
     GameObject mainCam;
+    CameraController camControl;
 
     public FadeUI tripFader;
     public FadeUI pressToTrip;
@@ -30,6 +31,7 @@ public class TripActivation : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player");
         pc = player.GetComponent<PlayerController>();
         mainCam = Camera.main.transform.gameObject;
+        camControl = mainCam.GetComponent<CameraController>();
         //my refs
         mFader = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicFader>();
         tripperParticles = transform.GetChild(0).GetComponent<ParticleSystem>();
@@ -88,6 +90,7 @@ public class TripActivation : MonoBehaviour {
         planetMusic = mFader.musicTrack;
         mFader.FadeTo(tripMusic);
         trippingSnap.TransitionTo(2f);
+        camControl.LerpFOV(10f, 2f);
         tripFader.FadeIn();
         StartCoroutine(ActivateTrip());
     }
@@ -118,6 +121,7 @@ public class TripActivation : MonoBehaviour {
     {
         tripFader.FadeIn();
         mFader.FadeTo(planetMusic);
+        
         overWorld.TransitionTo(2f);
         StartCoroutine(DeactivateTrip());
     }
@@ -131,6 +135,7 @@ public class TripActivation : MonoBehaviour {
         pc.canMove = true;
         pc.canJump = true;
         mainCam.SetActive(true);
+        camControl.LerpFOV(camControl.originalFOV, 2f);
 
         //deactivate trip stuff 
         tripCamera.SetActive(false);

@@ -6,10 +6,13 @@ public class Guardian : AudioHandler {
     //player vars 
     GameObject player;
     PlayerController pc;
-    float distFromPlayer;
+    float distFromPlayer, lastDist;
     public float necDist = 10f;
+    Vector3 lastPos, currentPos;
 
-    //my behaviors
+    //my behaviors  
+    SpriteRenderer gRenderer;
+    GuardianAnimation gAnimation;
     MoveTowards movement;
     Orbit orbital;
     GravityBody grav;
@@ -35,6 +38,8 @@ public class Guardian : AudioHandler {
         pc = player.GetComponent<PlayerController>();
 
         //ai component refs 
+        gRenderer = GetComponent<SpriteRenderer>();
+        gAnimation = GetComponent<GuardianAnimation>();
         movement = GetComponent<MoveTowards>();
         orbital = GetComponent<Orbit>();
         grav = GetComponent<GravityBody>();
@@ -47,13 +52,18 @@ public class Guardian : AudioHandler {
 
 	void Update () {
         //dist calc
+        currentPos = transform.position;
         distFromPlayer = Vector3.Distance(transform.position, player.transform.position);
 
         //WAITING
 		if(guardianState == GuardianStates.WAITING)
         {
+            //look towards player
+            if(gAnimation.Animator.GetBool("swimAway"))
+                gAnimation.Animator.SetBool("swimAway", false);
+
             //do nothing, play waiting sound 
-            if(!myAudioSource.isPlaying)
+            if (!myAudioSource.isPlaying)
                 PlaySoundRandomPitch(waitingSound, 1f);
 
             //player close now
@@ -65,7 +75,11 @@ public class Guardian : AudioHandler {
 
         //MOVING
         if(guardianState == GuardianStates.MOVING)
-        {  
+        {
+            //swim away 
+            if (!gAnimation.Animator.GetBool("swimAway"))
+                gAnimation.Animator.SetBool("swimAway", true);
+
             // play swimming sound 
             if (!myAudioSource.isPlaying)
                 PlaySoundRandomPitch(swimmingSound, 1f);
@@ -79,8 +93,11 @@ public class Guardian : AudioHandler {
         //CHANGING PLANETS
         if(guardianState == GuardianStates.CHANGINGPLANETS)
         {
+            //swim away 
+            if (!gAnimation.Animator.GetBool("swimAway"))
+                gAnimation.Animator.SetBool("swimAway", true);
             //current has ended
-            if(currentPoint == 0 && pc.canMove == true)
+            if (currentPoint == 0 && pc.canMove == true)
             {
                 transform.SetParent(null);
                 grav.planets = player.GetComponent<GravityBody>().planets;
@@ -89,6 +106,10 @@ public class Guardian : AudioHandler {
                 guardianState = GuardianStates.MOVING;
             }
         }
+
+        //store last dist& pos
+        lastPos = transform.position;
+        lastDist = distFromPlayer;
 	}
 
     //sets move to next point in guardian locations 
