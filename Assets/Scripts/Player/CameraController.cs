@@ -19,6 +19,7 @@ public class CameraController : MonoBehaviour {
     [Header("Camera Movement Vars")]
     public float mouseSensitivityX = 20;
     public float mouseSensitivityY = 20;
+    public bool invertX, invertY;
     public float maxVerticalLookAngle = 85f;
     public float minVerticalLookAngle = -15f;
     public float yLookPosAdjust = 5f;
@@ -26,6 +27,7 @@ public class CameraController : MonoBehaviour {
     public float heightFromPlayer = 20f;
     public float heightMin, heightMax;
     public float zoomSpeed = 500f;
+    public float smoothMove = 0.5f;
     public float smoothLook = 0.5f;
 
     //privately stored temp variables 
@@ -57,7 +59,7 @@ public class CameraController : MonoBehaviour {
 
     void Start()
     {
-        //can move at start 
+        //can move at start
         canMoveCam = true;
         //set start height to middle val 
         heightFromPlayer = heightMin + ((heightMax - heightMin) / 2);
@@ -98,7 +100,7 @@ public class CameraController : MonoBehaviour {
         {
             mainCam.fieldOfView = Mathf.Lerp(mainCam.fieldOfView, nextFOV, Time.time - startTime);
             //stop once t value = 1
-            if(Time.time - startTime >= 1)
+            if (Time.time - startTime >= 1)
             {
                 lerpingFOV = false;
             }
@@ -107,8 +109,10 @@ public class CameraController : MonoBehaviour {
 
     void HorizontalRotation()
     {
-        // Rotate player around Y axis
+        // Rotate player around Y axis        
         hRot = Input.GetAxis("Mouse X") * mouseSensitivityX;
+        if (invertX)
+            hRot *= -1;
         //set old cam pos
         oldCameraPosition = cameraT.position;
 
@@ -122,15 +126,17 @@ public class CameraController : MonoBehaviour {
     {
         // Rotate camera around X axis
         // Position player
-        vRot += -1 * Input.GetAxis("Mouse Y") * mouseSensitivityY;
+        vRot += Input.GetAxis("Mouse Y") * mouseSensitivityY;
+        if (invertY)
+            vRot *= -1;
         vRot = Mathf.Clamp(vRot, minVerticalLookAngle, maxVerticalLookAngle);
         Vector3 toCamera = Quaternion.AngleAxis(vRot, Vector3.right) * -Vector3.forward;
         Vector3 futureCameraPosition = player.transform.TransformPoint(toCamera * heightFromPlayer);
         //set new cam pos 
-        cameraT.position = Vector3.SmoothDamp(cameraT.position, futureCameraPosition, ref smoothCameraVelocity, .5f);
+        cameraT.position = Vector3.SmoothDamp(cameraT.position, futureCameraPosition, ref smoothCameraVelocity, smoothMove);
         
         //get the look rotation
-        targetLook = Quaternion.LookRotation((player.transform.position + new Vector3(yLookPosAdjust, 0, 0))
+        targetLook = Quaternion.LookRotation((player.transform.position + (player.transform.up * yLookPosAdjust))
             - transform.position, gravityBody.GetUp());
         //lerp towards new look rotation 
         transform.rotation = Quaternion.Lerp(transform.rotation, targetLook, smoothLook * Time.deltaTime);
