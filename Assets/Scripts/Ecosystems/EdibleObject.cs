@@ -8,8 +8,7 @@ using UnityEngine;
 public class EdibleObject : MonoBehaviour {
     //ref to player and spawner on this planet
     GameObject player;
-    Transform playerMouth;
-    ThirdPersonController tpc;
+    PlayerController pc;
 
     public bool edible, beingConsumed;
     public float consumptionSpeed = 30;
@@ -41,8 +40,7 @@ public class EdibleObject : MonoBehaviour {
 
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
-        playerMouth = GameObject.FindGameObjectWithTag("PlayerMouth").transform;
-        tpc = player.GetComponent<ThirdPersonController>();
+        pc = player.GetComponent<PlayerController>();
         //setting this for now
         predatorType = ThirdPersonController.CreatureType.SMALLFISH;
         myOrbiter = GetComponent<Orbit>();
@@ -56,51 +54,51 @@ public class EdibleObject : MonoBehaviour {
     void Update()
     {
         //vortex towards player mouth
-        if(beingConsumed)
-        {
-            Vector3 mouthPos = playerMouth.position;
+        //if(beingConsumed)
+        //{
+        //    Vector3 mouthPos = playerMouth.position;
 
-            transform.position = Vector3.MoveTowards(transform.position, mouthPos, consumptionSpeed * Time.deltaTime);
+        //    transform.position = Vector3.MoveTowards(transform.position, mouthPos, consumptionSpeed * Time.deltaTime);
 
-            if(Vector3.Distance(transform.position, mouthPos) < 1f)
-            {
-                if (!tpc.eating)
-                {
-                    PlayerEatsMe();
-                }
-                else
-                {
-                    Debug.Log("I'm already eating!");
-                }
-            }
-        }
+        //    if(Vector3.Distance(transform.position, mouthPos) < 1f)
+        //    {
+        //        if (!tpc.eating)
+        //        {
+        //            PlayerEatsMe();
+        //        }
+        //        else
+        //        {
+        //            Debug.Log("I'm already eating!");
+        //        }
+        //    }
+        //}
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "PlayerMouth" && edible && !tpc.clampingHorizontal)
+        if(other.gameObject.tag == "PlayerMouth" && edible)
         {
             //get eaten when player is cuddle
-            if (tpc.currentCreature == ThirdPersonController.CreatureType.SMALLFISH)
-            {
-                beingConsumed = true;
-                edible = false;
-                //myOrbiter.swimming = false;
-            }
+            //if (currentCreature == ThirdPersonController.CreatureType.SMALLFISH)
+            //{
+            //    beingConsumed = true;
+            //    edible = false;
+            //    //myOrbiter.swimming = false;
+            //}
         }
     }
 
     //call when player is eating
     //This should only happen if player  is NOT currently eating
-    void PlayerEatsMe()
+    void PredatorEatsMe()
     {
         //play eating animation for this one, eating sound
         beingConsumed = false;
-        tpc.animator.SetTrigger("eat");
-        tpc.PlaySound(tpc.eatingSounds);
+        //pc.animator.SetTrigger("eat");
+        //pc.PlaySound(tpc.eatingSounds);
 
         //spawn eating chunks
-        Instantiate(eatingChunks, playerMouth.position, Quaternion.identity);
+        //Instantiate(eatingChunks, playerMouth.position, Quaternion.identity);
 
         //spawn essenz
         for (int i = 0; i < essenzCount; i++)

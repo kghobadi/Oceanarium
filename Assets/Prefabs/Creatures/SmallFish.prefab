@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 54381949888712066}
   - component: {fileID: 135781300251701758}
   - component: {fileID: 82146746610877476}
+  - component: {fileID: 114810985897902170}
   m_Layer: 0
   m_Name: SmallFish
   m_TagString: Creature
@@ -285,13 +286,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52ff4c8d2fdcb2f41a8535a3f3b43c3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myAudioSource: {fileID: 0}
+  pitchRange: {x: 0.9, y: 1.1}
+  voiceCounter: 0
+  voices: []
   mySpawner: {fileID: 0}
-  player: {fileID: 0}
-  playerMouth: {fileID: 0}
   fleeDistance: 30
   fleeSpeed: 10
   myType: 0
-  predatorType: 0
   currentState: 0
   swimSounds:
   - {fileID: 8300000, guid: 1a61618f7fa39564ea70d1140d8921d0, type: 3}
@@ -303,12 +305,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3140075f42cdfbe45bd50e108ce14743, type: 3}
   soundFreq: 6
   fleeFreq: 2
-  swimEmphNormal: {fileID: 1834021418676980}
-  swimEmphFlipped: {fileID: 1886007479688230}
   eatingChunks: {fileID: 1494102597522260, guid: 958ec66d695b07b45b0fba17eadfcffa,
-    type: 2}
-  essenzCount: 1
-  essenzPrefab: {fileID: 1873508357760618, guid: 85fb34e6ef671d2448048f9137ae114e,
     type: 2}
 --- !u!114 &114267709930435740
 MonoBehaviour:
@@ -322,10 +319,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planetToOrbit: {fileID: 0}
-  xyOrzAxis: 0
+  orbiting: 0
+  orbitAtStart: 0
   orbitalSpeed: 3
+  xyOrzAxis: 0
   randomAxis: 0
-  swimming: 0
+  localOrWorld: 0
 --- !u!114 &114549262298498814
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -338,11 +337,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 1
-  playerCreature: 0
-  noAnim: 0
-  onAnotherPlanet: 0
-  lockToYAxis: 0
   fadingBack: 0
+--- !u!114 &114810985897902170
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1842248683191792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba80bcfb3a4ffbe49bd550db1e86efa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterAnimator: {fileID: 0}
+  animationBools:
+  - swimming
+  - fleeing
 --- !u!135 &135781300251701758
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -6,6 +6,7 @@ using UnityEngine.Audio;
 public class TripActivation : MonoBehaviour {
     GameObject player;
     PlayerController pc;
+    GravityBody gravBod;
     GameObject mainCam;
     CameraController camControl;
 
@@ -30,6 +31,7 @@ public class TripActivation : MonoBehaviour {
         //player refs
         player = GameObject.FindGameObjectWithTag("Player");
         pc = player.GetComponent<PlayerController>();
+        gravBod = player.GetComponent<GravityBody>();
         mainCam = Camera.main.transform.gameObject;
         camControl = mainCam.GetComponent<CameraController>();
         //my refs
@@ -87,11 +89,17 @@ public class TripActivation : MonoBehaviour {
     //fade in black back and begin trip sequence 
     public void StartTrip()
     {
+        //sound
         planetMusic = mFader.musicTrack;
         mFader.FadeTo(tripMusic);
         trippingSnap.TransitionTo(2f);
-        camControl.LerpFOV(10f, 2f);
+        //camera
+        camControl.canMoveCam = false;
+        camControl.transform.LookAt(transform, gravBod.GetUp());
+        camControl.LerpFOV(15f, 0.2f);
+        //set fade
         tripFader.FadeIn();
+        //activate
         StartCoroutine(ActivateTrip());
     }
 
@@ -119,10 +127,12 @@ public class TripActivation : MonoBehaviour {
     //ends trip while tripping 
     public void EndTrip()
     {
+        //fade
         tripFader.FadeIn();
+        //sound
         mFader.FadeTo(planetMusic);
-        
         overWorld.TransitionTo(2f);
+        //deactivate
         StartCoroutine(DeactivateTrip());
     }
 
@@ -135,7 +145,7 @@ public class TripActivation : MonoBehaviour {
         pc.canMove = true;
         pc.canJump = true;
         mainCam.SetActive(true);
-        camControl.LerpFOV(camControl.originalFOV, 2f);
+        camControl.LerpFOV(camControl.originalFOV, 0.05f);
 
         //deactivate trip stuff 
         tripCamera.SetActive(false);
@@ -143,8 +153,11 @@ public class TripActivation : MonoBehaviour {
         
         //fade out black 
         tripFader.FadeOut();
+
+        yield return new WaitUntil(() => tripFader.fadingOut == false);
         //no longer tripping once fade out is finished 
         tripping = false;
+        camControl.canMoveCam = true;
 
         Debug.Log("Ended trip");
     }
