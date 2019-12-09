@@ -6,6 +6,7 @@ public class Currents : MonoBehaviour {
     //player ref
     GameObject player;
     PlayerController pc;
+    GravityBody gravBody;
     Transform mainCam;
     CameraController camControl;
     ParticleSystem currentParticles;
@@ -35,6 +36,7 @@ public class Currents : MonoBehaviour {
         ambientSource = GameObject.FindGameObjectWithTag("AmbientAudio").GetComponent<AudioSource>();
         player = GameObject.FindGameObjectWithTag("Player");
         pc = player.GetComponent<PlayerController>();
+        gravBody = player.GetComponent<GravityBody>();
         mainCam = Camera.main.transform;
         camControl = mainCam.GetComponent<CameraController>();
         currentParticles = transform.GetChild(0).GetComponent<ParticleSystem>();
@@ -137,6 +139,7 @@ public class Currents : MonoBehaviour {
 
         //reset velocity
         pc.playerRigidbody.velocity = Vector3.zero;
+        gravBody.enabled = false;
         pc.canMove = false;
         pc.animator.SetAnimator("inCurrent");
         //deactivate p cam & activate currentCam
@@ -155,6 +158,7 @@ public class Currents : MonoBehaviour {
         camControl.canMoveCam = true;
         camControl.LerpFOV(camControl.originalFOV, 2f);
         pc.canMove = true;
+        gravBody.enabled = true;
         pc.animator.SetAnimator("idle");
     }
 

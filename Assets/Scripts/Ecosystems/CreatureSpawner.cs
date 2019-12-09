@@ -11,7 +11,8 @@ public class CreatureSpawner : MonoBehaviour {
     //list to monitor ecosystem activity
     public List<GameObject> activeCreatures = new List<GameObject>();
     public Transform[] spawnPoints, fleePositions;
-   
+    public Transform generatedCreaturesParent;
+
     void Awake()
     {
         planetMan = GetComponent<PlanetManager>();
@@ -44,7 +45,7 @@ public class CreatureSpawner : MonoBehaviour {
         Vector3 spawnPos = spawnPoints[randomSpawnPoint].position + Random.insideUnitSphere * 5;
 
         //spawn and add to activeCreatures list, 
-        GameObject creatureClone = Instantiate(creaturesToSpawn[randomCreature], spawnPos, Quaternion.identity);
+        GameObject creatureClone = Instantiate(creaturesToSpawn[randomCreature], spawnPos, Quaternion.identity, generatedCreaturesParent);
         activeCreatures.Add(creatureClone);
         planetMan.spriteCreatures.Add(creatureClone);
 

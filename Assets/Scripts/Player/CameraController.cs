@@ -46,8 +46,8 @@ public class CameraController : MonoBehaviour {
     public bool lerpingFOV;
     public float originalFOV;
     float nextFOV;
-    float startTime;
-    float lerpTime = 1f;
+    float t;
+    float lerpSpeed = 0.5f;
 
     void Awake () {
         cameraT = Camera.main.transform;
@@ -99,9 +99,12 @@ public class CameraController : MonoBehaviour {
         //smoothly changing FOV
         if (lerpingFOV)
         {
-            mainCam.fieldOfView = Mathf.Lerp(mainCam.fieldOfView, nextFOV, Time.time - (startTime * 1 / lerpTime));
+            //actual lerp 
+            mainCam.fieldOfView = Mathf.Lerp(mainCam.fieldOfView, nextFOV, t);
+            //interpolate!
+            t += Time.deltaTime * lerpSpeed;
             //stop once t value = 1
-            if (Time.time - startTime >= lerpTime)
+            if (t > 1.0f)
             {
                 lerpingFOV = false;
             }
@@ -127,9 +130,14 @@ public class CameraController : MonoBehaviour {
     {
         // Rotate camera around X axis
         // Position player
-        vRot += Input.GetAxis("Mouse Y") * mouseSensitivityY;
         if (invertY)
-            vRot *= -1;
+        {
+            vRot += Input.GetAxis("Mouse Y") * mouseSensitivityY * -1f;
+        }
+        else
+        {
+            vRot += Input.GetAxis("Mouse Y") * mouseSensitivityY;
+        }
         vRot = Mathf.Clamp(vRot, minVerticalLookAngle, maxVerticalLookAngle);
         Vector3 toCamera = Quaternion.AngleAxis(vRot, Vector3.right) * -Vector3.forward;
         Vector3 futureCameraPosition = player.transform.TransformPoint(toCamera * heightFromPlayer);
@@ -232,9 +240,10 @@ public class CameraController : MonoBehaviour {
     //called to lerp cam fov after transitions 
     public void LerpFOV(float desiredFOV, float lerpLength)
     {
-        startTime = Time.time;
         nextFOV = desiredFOV;
+        t = 0;
+        lerpSpeed = lerpLength;
         lerpingFOV = true;
-        lerpTime = lerpLength;
+       
     }
 }
