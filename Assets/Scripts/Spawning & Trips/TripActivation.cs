@@ -26,6 +26,9 @@ public class TripActivation : MonoBehaviour {
     public AudioMixerSnapshot trippingSnap;
     public AudioMixerSnapshot overWorld;
     ParticleSystem tripperParticles;
+    [Header("Camera Transition")]
+    public float fovIn = 15f;
+    public float lerpTimeIn = 0.2f, lerpTimeOut = 0.05f;
 
     void Awake () {
         //player refs
@@ -96,7 +99,7 @@ public class TripActivation : MonoBehaviour {
         //camera
         camControl.canMoveCam = false;
         camControl.transform.LookAt(transform, gravBod.GetUp());
-        camControl.LerpFOV(15f, 0.2f);
+        camControl.LerpFOV(fovIn, lerpTimeIn);
         //set fade
         tripFader.FadeIn();
         //activate
@@ -145,7 +148,7 @@ public class TripActivation : MonoBehaviour {
         pc.canMove = true;
         pc.canJump = true;
         mainCam.SetActive(true);
-        camControl.LerpFOV(camControl.originalFOV, 0.05f);
+        camControl.LerpFOV(camControl.originalFOV, lerpTimeOut );
 
         //deactivate trip stuff 
         tripCamera.SetActive(false);
