@@ -18,6 +18,7 @@ public class TripActivation : MonoBehaviour {
 
     public GameObject tripCamera;
     public GameObject trip;
+    public bool canTrip = true;
     public bool tripping;
 
     MusicFader mFader;
@@ -53,7 +54,7 @@ public class TripActivation : MonoBehaviour {
         if (distFromPlayer < necessaryDistance)
         {
             //press space && not tripping // converting to trip 
-            if (Input.GetKeyDown(KeyCode.Space) && !tripping && !tripFader.fadingIn && !tripFader.fadingOut)
+            if (Input.GetKeyDown(KeyCode.Space) && canTrip && !tripping && !tripFader.fadingIn && !tripFader.fadingOut)
             {
                 StartTrip();
             }
@@ -124,6 +125,7 @@ public class TripActivation : MonoBehaviour {
         tripFader.FadeOut();
 
         tripping = true;
+        canTrip = false;
         Debug.Log("Started trip");
     }
 
@@ -162,6 +164,15 @@ public class TripActivation : MonoBehaviour {
         tripping = false;
         camControl.canMoveCam = true;
 
+        StartCoroutine(WaitToResetTrip(10f));
+
         Debug.Log("Ended trip");
+    }
+
+    IEnumerator WaitToResetTrip(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        canTrip = true;
     }
 }

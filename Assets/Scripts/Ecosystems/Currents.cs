@@ -21,6 +21,9 @@ public class Currents : MonoBehaviour {
 
     [Header("Pearl Activation")]
     public bool currentActivated;
+    [Tooltip("Check if player can activate directly")]
+    public bool playerActivates;
+    ParticleSystem ribbons;
     public int pearlsNecessary;
     public List<GameObject> activePearls = new List<GameObject>();
     public MeshRenderer currentBubble;
@@ -42,12 +45,20 @@ public class Currents : MonoBehaviour {
         currentParticles = transform.GetChild(0).GetComponent<ParticleSystem>();
         currentParticles.Stop();
         currentBubble.material = silentMat;
+        if (playerActivates)
+        {
+            ribbons = transform.GetChild(3).GetComponent<ParticleSystem>();
+        }
     }
 
     void Start()
     {
         entrance = transform.GetChild(0);
         endPoint = transform.GetChild(1);
+        if (playerActivates)
+        {
+            ribbons.Play();
+        }
     }
 
     void Update()
@@ -86,9 +97,7 @@ public class Currents : MonoBehaviour {
         {
             if(activePearls.Count >= pearlsNecessary)
             {
-                currentParticles.Play();
-                currentBubble.material = activeMat;
-                currentActivated = true;
+                ActivateCurrent();
             }
         }
         
@@ -101,6 +110,16 @@ public class Currents : MonoBehaviour {
             if (other.gameObject.tag == "Player")
             {
                 EnterCurrent();
+            }
+        }
+        else
+        {
+            if (playerActivates)
+            {
+                if (other.gameObject.tag == "Player")
+                {
+                    ActivateCurrent();
+                }
             }
         }
     }
@@ -121,6 +140,15 @@ public class Currents : MonoBehaviour {
             }
         }
       
+    }
+
+    void ActivateCurrent()
+    {
+        currentParticles.Play();
+        currentBubble.material = activeMat;
+        currentActivated = true;
+        if(playerActivates)
+            ribbons.Stop();
     }
 
     void EnterCurrent()

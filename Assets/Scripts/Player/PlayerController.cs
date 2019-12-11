@@ -36,7 +36,7 @@ public class PlayerController : AudioHandler
     public MoveStates moveState;
     public enum MoveStates
     {
-        UP, DOWN, LEFT, RIGHT, UPLEFT, UPRIGHT, DOWNLEFT, DOWNRIGHT, IDLE,
+        SWIMMING, IDLE,
     }
 
     //for swim jumps 
@@ -184,69 +184,24 @@ public class PlayerController : AudioHandler
             swimStepTimer = 0;
         }
 
+
+        //set animator floats for blend tree
+        animator.characterAnimator.SetFloat("Move X", horizontalMovement);
+        animator.characterAnimator.SetFloat("Move Z", verticalMovement);
+
         //Animator checks 
         //IDLE
-        if(verticalMovement == 0 && horizontalMovement == 0)
+        if (verticalMovement == 0 && horizontalMovement == 0)
         {
             moveState = MoveStates.IDLE;
             //diver look forward right
             animator.SetAnimator("idle");
         }
-        //FORWARD
-        if (verticalMovement > 0 && horizontalMovement == 0)
+        //swimming
+        else
         {
-            moveState = MoveStates.UP;
-            //diver look forward
-            animator.SetAnimator("forward");
-        }
-        //BACKWARD
-        if (verticalMovement < 0 && horizontalMovement == 0)
-        {
-            moveState = MoveStates.DOWN;
-            //diver look down
-            animator.SetAnimator("down");
-        }
-        //RIGHT
-        if ( horizontalMovement > 0 && verticalMovement == 0)
-        {
-            moveState = MoveStates.RIGHT;
-            //diver look right
-            animator.SetAnimator("right");
-        }
-        //LEFT
-        if ( horizontalMovement < 0 && verticalMovement == 0)
-        {
-            moveState = MoveStates.LEFT;
-            //diver look left
-            animator.SetAnimator("left");
-        }
-        //FORWARD RIGHT
-        if (verticalMovement > 0 && horizontalMovement > 0)
-        {
-            moveState = MoveStates.UPRIGHT;
-            //diver look forward right
-            animator.SetAnimator("forwardRight");
-        }
-        //FORWARD LEFT
-        if (verticalMovement > 0 && horizontalMovement < 0)
-        {
-            moveState = MoveStates.UPLEFT;
-            //diver look left
-            animator.SetAnimator("forwardLeft");
-        }
-        //DOWN RIGHT
-        if (verticalMovement < 0 && horizontalMovement > 0)
-        {
-            moveState = MoveStates.DOWNRIGHT;
-            //diver look right
-            animator.SetAnimator("downRight");
-        }
-        //DOWN LEFT
-        if (verticalMovement < 0 && horizontalMovement < 0)
-        {
-            moveState = MoveStates.DOWNLEFT;
-            //diver look left
-            animator.SetAnimator("downLeft");
+            moveState = MoveStates.SWIMMING;
+            animator.SetAnimator("swimming");
         }
 
         //apply force 
@@ -277,16 +232,6 @@ public class PlayerController : AudioHandler
         {
             playerRigidbody.AddForce(-transform.up * elevateSpeed);
         }
-
-        //mouse wheel for elevation
-        //if (Input.GetAxis("Mouse ScrollWheel") > 0)
-        //{
-        //    playerRigidbody.AddForce(transform.up * elevateSpeed * Mathf.Abs(Input.GetAxis("Mouse ScrollWheel")) * 20);
-        //}
-        //else if (Input.GetAxis("Mouse ScrollWheel") < 0)
-        //{
-        //    playerRigidbody.AddForce(-transform.up * elevateSpeed * Mathf.Abs(Input.GetAxis("Mouse ScrollWheel")) * 20);
-        //}
     }
 
     void TakeJumpInput()
