@@ -6,16 +6,18 @@ using UnityEngine;
 public class CurrentObjectManager : MonoBehaviour {
     GameObject player;
     PlayerController pc;
+    LerpScale playerScaler;
 
     //activation check
     [Header("Planet Activation")]
     public bool hasActivated;
     float timeToReactivate;
     public PlanetManager prevPlanet, nextPlanet;
-    
+
     [Header("Changes Player Scale")]
-    public bool lerpPlayerScale, lerping;
+    public bool lerpPlayerScale;
     public Vector3 desiredScale;
+    public float scaleSpeed;
 
     [Header("Changes Jump Force")]
     public bool setJumpForce;
@@ -28,6 +30,7 @@ public class CurrentObjectManager : MonoBehaviour {
 	void Awake () {
         player = GameObject.FindGameObjectWithTag("Player");
         pc = player.GetComponent<PlayerController>();
+        playerScaler = player.GetComponent<LerpScale>();
         mFader = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicFader>();
         timeToReactivate = 1;
 	}
@@ -42,16 +45,6 @@ public class CurrentObjectManager : MonoBehaviour {
                 timeToReactivate = 1;
             }
         }
-
-        if (lerping)
-        {
-            player.transform.localScale = Vector3.Lerp(player.transform.localScale, desiredScale, Time.deltaTime);
-
-            if(Vector3.Distance(player.transform.localScale, desiredScale) < 0.1f)
-            {
-                lerping = false;
-            }
-        }
 	}
 
     public void OnTriggerEnter(Collider other)
@@ -64,7 +57,7 @@ public class CurrentObjectManager : MonoBehaviour {
 
             if (lerpPlayerScale)
             {
-                lerping = true;
+                playerScaler.SetScaler(scaleSpeed, desiredScale);
             }
 
             if (setJumpForce)
