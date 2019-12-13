@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LerpScale : MonoBehaviour {
     [Header("Lerp scale")]
+    [Tooltip("These 3 variables get set when the Set Scaler function is called, do not set them")]
     public bool lerping;
     public float lerpSpeed;
     public Vector3 desiredScale;
@@ -11,6 +12,7 @@ public class LerpScale : MonoBehaviour {
     public Vector3 origScale;
     [Header("Scale at start")]
     public bool setScaleAtStart;
+    [Tooltip("This will scale the object by this factor, i.e. scale x 0.1f")]
     public float startMultiplier;
 
     void Start()

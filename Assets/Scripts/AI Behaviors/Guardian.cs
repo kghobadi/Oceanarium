@@ -96,15 +96,6 @@ public class Guardian : AudioHandler {
             //swim away 
             if (!gAnimation.Animator.GetBool("swimAway"))
                 gAnimation.Animator.SetBool("swimAway", true);
-            //current has ended
-            if (currentPoint == 0 && pc.canMove == true)
-            {
-                transform.SetParent(null);
-                grav.planets = player.GetComponent<GravityBody>().planets;
-                grav.enabled = true;
-                movement.MoveTo(guardianLocations[currentPoint].position, movement.moveSpeed);
-                guardianState = GuardianStates.MOVING;
-            }
         }
 
         //store last dist& pos
@@ -127,6 +118,24 @@ public class Guardian : AudioHandler {
         {
             ChangePlanets();
         }
+    }
+
+    //called from planet manager when a planet is activated 
+    public void ResetGuardianLocation(Vector3 startingPoint, Transform[] locations, Collider[] planets)
+    {
+        currentPoint = 0;
+        transform.SetParent(null);
+
+        if(guardianState != GuardianStates.CHANGINGPLANETS)
+        {
+            transform.position = startingPoint;
+        }
+
+        guardianLocations = locations;
+        grav.planets = planets;
+        grav.enabled = true;
+        movement.MoveTo(guardianLocations[currentPoint].position, movement.moveSpeed * 2);
+        guardianState = GuardianStates.MOVING;
     }
 
     //attaches guardian to player movement for Current transition 
