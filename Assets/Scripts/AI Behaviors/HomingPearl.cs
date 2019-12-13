@@ -11,6 +11,7 @@ public class HomingPearl : AudioHandler {
     MeshRenderer pearlMesh;
     GravityBody grav;
     ParticleSystem fog, popLights;
+    GrowthSphere growthSphere;
 
     [Header("Pearl Activation")]
     public bool activated;
@@ -40,6 +41,7 @@ public class HomingPearl : AudioHandler {
         grav = GetComponent<GravityBody>();
         fog = transform.GetChild(0).GetComponent<ParticleSystem>();
         popLights = transform.GetChild(1).GetComponent<ParticleSystem>();
+        growthSphere = transform.GetComponentInChildren<GrowthSphere>();
         if (currentStream != null)
         {
             currentScript = currentStream.GetComponentInParent<Currents>();
@@ -132,25 +134,24 @@ public class HomingPearl : AudioHandler {
                 //I must bring my environment to LIFE!
                 if(objectsToGrow.Length > 0)
                 {
-                    GrowObjects();
+                    EnableGrowObjects();
                 }
-              
             }
         }
     }
 
-    void GrowObjects()
+    void EnableGrowObjects()
     {
         for(int i = 0; i < objectsToGrow.Length; i++)
         {
             //activate 
             objectsToGrow[i].SetActive(true);
-            //scale up obj for growth
-            LerpScale scaler = objectsToGrow[i].GetComponent<LerpScale>();
-            scaler.SetScaler(growthSpeed, scaler.origScale);
             //add to planet man 
             if(!myPlanet.props.Contains(objectsToGrow[i]))
                 myPlanet.props.Add(objectsToGrow[i]);
         }
+
+        growthSphere.GrowObjects(growthSpeed);
     }
+    
 }
