@@ -37,14 +37,16 @@ public class PlanetManager : MonoBehaviour {
         }
     }
 
-    public void ActivatePlanet()
+    public void ActivatePlanet(Vector3 guardianPos)
     {
         //set player current planet 
         playerHere = true;
         pc.activePlanet = this;
         pc.activePlanetName = planetName;
-        gBehavior.currentPoint = 0;
-        gBehavior.guardianLocations = guardianLocations;
+
+        //reset guardian AI for this planet 
+        Collider[] planet = GetComponents<Collider>();
+        gBehavior.ResetGuardianLocation(guardianPos, guardianLocations, planet);
 
         for(int i = 0; i < spriteCreatures.Count; i++)
         {

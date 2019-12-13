@@ -95,9 +95,12 @@ public class Currents : MonoBehaviour {
         //checks for pearls to activate current 
         else
         {
-            if(activePearls.Count >= pearlsNecessary)
+            if (!playerActivates)
             {
-                ActivateCurrent();
+                if (activePearls.Count >= pearlsNecessary)
+                {
+                    ActivateCurrent();
+                }
             }
         }
         

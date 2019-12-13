@@ -7,6 +7,7 @@ public class CurrentObjectManager : MonoBehaviour {
     GameObject player;
     PlayerController pc;
     LerpScale playerScaler;
+    Currents currentParent;
 
     //activation check
     [Header("Planet Activation")]
@@ -31,6 +32,7 @@ public class CurrentObjectManager : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player");
         pc = player.GetComponent<PlayerController>();
         playerScaler = player.GetComponent<LerpScale>();
+        currentParent = GetComponentInParent<Currents>();
         mFader = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicFader>();
         timeToReactivate = 1;
 	}
@@ -53,7 +55,7 @@ public class CurrentObjectManager : MonoBehaviour {
         {
             //turn off old planet, activate new one 
             prevPlanet.DeactivatePlanet();
-            nextPlanet.ActivatePlanet();
+            nextPlanet.ActivatePlanet(currentParent.endPoint.position);
 
             if (lerpPlayerScale)
             {

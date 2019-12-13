@@ -3,19 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HomingPearl : AudioHandler {
-    [Header("Pearl Activation")]
-    public bool activated;
-    public Transform currentStream;
-    public PlanetManager myPlanet;
+   
+    //all my private components
     MoveTowards movement;
     Orbit orbital;
     Currents currentScript;
     MeshRenderer pearlMesh;
     GravityBody grav;
-    public Material silentMat, activeMat;
     ParticleSystem fog, popLights;
 
+    [Header("Pearl Activation")]
+    public bool activated;
+    [Tooltip("Put the current transform here if you'd like the pearl to travel to a current when activated")]
+    public Transform currentStream;
+    [Tooltip("Put the planet manager of the orb's planet")]
+    public PlanetManager myPlanet;
+    [Tooltip("Silent = Inactive, Active once player touches")]
+    public Material silentMat, activeMat;
+    [Tooltip("Every object in this array should have a LerpScale script, with Scale at start checked")]
     public GameObject[] objectsToGrow;
+    [Tooltip("Speed at which objects will grow")]
+    public float growthSpeed = 0.25f;
 
     [Header("Sounds")]
     public AudioClip activationSound;
@@ -139,7 +147,7 @@ public class HomingPearl : AudioHandler {
             objectsToGrow[i].SetActive(true);
             //scale up obj for growth
             LerpScale scaler = objectsToGrow[i].GetComponent<LerpScale>();
-            scaler.SetScaler(0.25f, scaler.origScale);
+            scaler.SetScaler(growthSpeed, scaler.origScale);
             //add to planet man 
             if(!myPlanet.props.Contains(objectsToGrow[i]))
                 myPlanet.props.Add(objectsToGrow[i]);
