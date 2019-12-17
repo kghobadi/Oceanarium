@@ -30,7 +30,16 @@ public class TimelinePlaybackManager : MonoBehaviour {
 	public bool displayUI;
 	public GameObject interactDisplay;
 
-	[Header("Player Settings")]
+    [Header("Guardian Settings")]
+    public bool resetGuardianBehavior;
+    [Tooltip("Planet with next Guardian points")]
+    public PlanetManager planetPoints;
+    [Tooltip("First place guardian will travel to")]
+    public Transform nextSpot;
+    GameObject guardian;
+    Guardian gBehavior;
+
+    [Header("Player Settings")]
 	public string playerTag = "Player";
 	private GameObject playerObject;
 	private PlayerCutsceneSpeedController playerCutsceneSpeedController;
@@ -39,14 +48,20 @@ public class TimelinePlaybackManager : MonoBehaviour {
 	private bool timelinePlaying = false;
 	private float timelineDuration;
 
-	void Start(){
+	void Awake(){
 		playerObject = GameObject.FindWithTag (playerTag);
 		inputController = playerObject.GetComponent<PlayerController> ();
 		playerCutsceneSpeedController = playerObject.GetComponent<PlayerCutsceneSpeedController> ();
-		ToggleInteractUI (false);
+        guardian = GameObject.FindGameObjectWithTag("Guardian");
+        gBehavior = guardian.GetComponent<Guardian>();
 	}
 
-	public void PlayerEnteredZone(){
+    void Start()
+    {
+        ToggleInteractUI(false);
+    }
+
+    public void PlayerEnteredZone(){
 		playerInZone = true;
 		ToggleInteractUI (playerInZone);
 	}
@@ -89,6 +104,12 @@ public class TimelinePlaybackManager : MonoBehaviour {
 			playableDirector.Play ();
 
 		}
+
+        //reset guardian AI for this cinematic
+        if (resetGuardianBehavior)
+        {
+            gBehavior.ResetGuardianLocation(nextSpot.position, planetPoints.guardianLocations, planetPoints.planetColliders);
+        }
 			
 
 		timelinePlaying = true;

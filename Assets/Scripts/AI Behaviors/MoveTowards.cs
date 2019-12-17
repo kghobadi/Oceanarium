@@ -31,6 +31,7 @@ public class MoveTowards : MonoBehaviour {
     public void MoveTo(Vector3 dest, float speed)
     {
         destination = dest;
+        moveSpeed = speed;
         moving = true;
     }
 }

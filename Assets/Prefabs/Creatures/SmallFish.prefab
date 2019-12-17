@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 135781300251701758}
   - component: {fileID: 82146746610877476}
   - component: {fileID: 114810985897902170}
+  - component: {fileID: 114321151312164000}
   m_Layer: 0
   m_Name: SmallFish
   m_TagString: Creature
@@ -325,6 +326,17 @@ MonoBehaviour:
   xyOrzAxis: 0
   randomAxis: 0
   localOrWorld: 0
+--- !u!114 &114321151312164000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1842248683191792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f641af52507be2941b3c173e04a55f28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114549262298498814
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -336,8 +348,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ee61183c5013464ab17c81babd9c0f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingCreature: 1
-  fadingBack: 0
 --- !u!114 &114810985897902170
 MonoBehaviour:
   m_ObjectHideFlags: 1

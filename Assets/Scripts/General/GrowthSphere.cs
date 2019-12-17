@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Controls the growth sphere effect which emerges from Homing Pearls when they are activated 
 public class GrowthSphere : MonoBehaviour {
     MeshRenderer sRenderer;
     LerpScale scaler;
@@ -32,6 +33,7 @@ public class GrowthSphere : MonoBehaviour {
         }
     }
 
+    //grows sphere outward and on impact will grow other objects for the Homing Pearl parent 
     public void GrowObjects(float speedToScaleOthers)
     {
         objScaleSpeed = speedToScaleOthers;
@@ -40,6 +42,7 @@ public class GrowthSphere : MonoBehaviour {
         growing = true;
     }
 
+    //resets growth sphere to original size
     void ResetSphere()
     {
         transform.localScale = scaler.origScale;
@@ -48,16 +51,28 @@ public class GrowthSphere : MonoBehaviour {
     }
     
     void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.GetComponent<LerpScale>())
+    { 
+        //if object is a prop 
+        if (other.gameObject.tag == "Prop")
         {
-            LerpScale scalerObj = other.gameObject.GetComponent<LerpScale>();
-            if (scalerObj.setScaleAtStart)
+            //if prop has a Lerp scale component for growing 
+            if (other.gameObject.GetComponent<LerpScale>())
             {
-                scalerObj.SetScaler(objScaleSpeed, scalerObj.origScale);
-                scalerObj.setScaleAtStart = false;
+                LerpScale scalerObj = other.gameObject.GetComponent<LerpScale>();
+                if (scalerObj.setScaleAtStart)
+                {
+                    scalerObj.SetScaler(objScaleSpeed, scalerObj.origScale);
+                    scalerObj.setScaleAtStart = false;
+                }
+            }
+            //trigger grow anim
+            if (other.gameObject.GetComponent<Animator>())
+            {
+                other.gameObject.GetComponent<Animator>().SetTrigger("grow");
             }
         }
+
+
     }
 
 }

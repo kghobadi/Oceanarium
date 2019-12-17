@@ -50,7 +50,7 @@ public class HomingPearl : AudioHandler {
 
     void Start()
     {
-        StartCoroutine(WaitToDeactivate(0.1f));
+        //StartCoroutine(WaitToDeactivate(0.1f));
     }
 
     IEnumerator WaitToDeactivate(float time)
