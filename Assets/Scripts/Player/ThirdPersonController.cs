@@ -277,7 +277,7 @@ public class ThirdPersonController : MonoBehaviour
             //Debug.DrawLine(transform.position, camHit.point, Color.white, 2.5f);
             //Debug.Log("Hit " + camHit.transform.gameObject.name);
 
-            camHit.transform.GetComponent<CameraFacingBillboard>().Fade();
+            camHit.transform.GetComponent<FadeForCamera>().Fade();
         }
     }
 

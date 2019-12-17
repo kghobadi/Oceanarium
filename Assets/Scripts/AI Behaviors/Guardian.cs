@@ -67,7 +67,7 @@ public class Guardian : AudioHandler {
                 PlaySoundRandomPitch(waitingSound, 1f);
 
             //player close now
-            if(distFromPlayer < necDist || pc.animator.Animator.GetBool("inCurrent"))
+            if(distFromPlayer < necDist)
             {
                 SetMove();
             }
@@ -86,6 +86,10 @@ public class Guardian : AudioHandler {
             //movement running
             if (movement.moving == false)
             {
+                if(grav.enabled == false)
+                {
+                    grav.enabled = true;
+                }
                 guardianState = GuardianStates.WAITING;
             }
         }
@@ -123,18 +127,13 @@ public class Guardian : AudioHandler {
     //called from planet manager when a planet is activated 
     public void ResetGuardianLocation(Vector3 startingPoint, Transform[] locations, Collider[] planets)
     {
-        currentPoint = 0;
+        currentPoint = -1;
         transform.SetParent(null);
 
-        if(guardianState != GuardianStates.CHANGINGPLANETS)
-        {
-            transform.position = startingPoint;
-        }
-
         guardianLocations = locations;
+        grav.enabled = false;
         grav.planets = planets;
-        grav.enabled = true;
-        movement.MoveTo(guardianLocations[currentPoint].position, movement.moveSpeed * 2);
+        movement.MoveTo(startingPoint, movement.origSpeed * 3);
         guardianState = GuardianStates.MOVING;
     }
 

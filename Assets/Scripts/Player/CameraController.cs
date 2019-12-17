@@ -228,12 +228,16 @@ public class CameraController : MonoBehaviour {
     //shoots rays towards players and fades opacities of sprite s
     void FadeCamObstructions()
     {
-        Ray camRay = new Ray(cameraT.position, cameraT.TransformDirection(Vector3.forward));
-        RaycastHit camHit;
-
-        if (Physics.Raycast(camRay, out camHit, 100f, spriteFadeMask))
+        RaycastHit hit = new RaycastHit();
+        Vector3 dir = player.transform.position - transform.position;
+        float dist = Vector3.Distance(transform.position, player.transform.position);
+        //send raycast
+        if (Physics.Raycast(transform.position, dir, out hit, dist, spriteFadeMask))
         {
-            camHit.transform.GetComponent<CameraFacingBillboard>().Fade();
+            if(hit.transform.GetComponent<FadeForCamera>())
+            {
+                hit.transform.GetComponent<FadeForCamera>().Fade();
+            }
         }
     }
 

@@ -11,9 +11,13 @@ public class PlanetManager : MonoBehaviour {
 
     public string planetName;
     public bool playerHere, startingPlanet;
+    public Collider[] planetColliders;
     CreatureSpawner creatureSpawner;
+    [Tooltip("Any sort of creature that moves with code")]
     public List<GameObject> spriteCreatures = new List<GameObject>();
+    [Tooltip("Any stagnant, animated object on the planet")]
     public List<GameObject> props = new List<GameObject>();
+    [Tooltip("Movement points for the Guardian AI")]
     public Transform[] guardianLocations;
     public AudioClip musicTrack;
 
