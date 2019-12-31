@@ -129,19 +129,19 @@ public class Currents : MonoBehaviour {
 
     public void OnTriggerStay(Collider other)
     {
-        if (currentActivated)
-        {
-            if (other.gameObject.tag == "Player")
-            {
-                if (!ambientSource.isPlaying)
-                    PlaySound(currentAmbience);
+        //if (currentActivated)
+        //{
+        //    if (other.gameObject.tag == "Player")
+        //    {
+        //        if (!ambientSource.isPlaying)
+        //            PlaySound(currentAmbience);
 
-                if (!hasEntered)
-                {
-                    EnterCurrent();
-                }
-            }
-        }
+        //        if (!hasEntered)
+        //        {
+        //            EnterCurrent();
+        //        }
+        //    }
+        //}
       
     }
 
