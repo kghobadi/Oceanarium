@@ -204,7 +204,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1182291691226958}
   m_LocalRotation: {x: -0.79970014, y: 0.5702772, z: -0.13892743, w: 0.12634432}
-  m_LocalPosition: {x: -25.67, y: -8.2, z: -10.45}
+  m_LocalPosition: {x: -144.16608, y: 209.76659, z: 17.637098}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4418431922169438}
@@ -732,8 +732,13 @@ MonoBehaviour:
   - {fileID: 82350753654729620}
   - {fileID: 82360686405992226}
   - {fileID: 82634745980122810}
+  titleCard: {fileID: 0}
+  activePlanet: {fileID: 0}
+  activePlanetName: 
   canMove: 1
   canJump: 1
+  horizontalMovement: 0
+  verticalMovement: 0
   currentSpeed: 0
   driftSpeed: 5
   swimSpeed: 10
@@ -756,20 +761,20 @@ MonoBehaviour:
   planetMask:
     serializedVersion: 2
     m_Bits: 0
-  spriteFadeMask:
-    serializedVersion: 2
-    m_Bits: 1024
+  diverFreeLook: {fileID: 0}
   camControls: {fileID: 0}
   playerRigidbody: {fileID: 0}
   animator: {fileID: 0}
   swimmingSounds:
   - {fileID: 8300000, guid: 94c05a679aafb83408f50d13bb6e8a52, type: 3}
-  eatingSounds: []
+  swimJumpSounds: []
   outOfBreathSounds:
   - {fileID: 8300000, guid: 684f2826668780c4683c5233621fea53, type: 3}
   - {fileID: 8300000, guid: 47c6ee5a2812c3842811e1167b770078, type: 3}
   - {fileID: 8300000, guid: 94118f3b3fbd91c4f8b4050955a3599f, type: 3}
   - {fileID: 8300000, guid: 98a4558844bef1d45b2730dd1862e5d6, type: 3}
+  swimStepTimer: 0
+  swimStepFrequency: 1
   bubbleParticles: {fileID: 1961293337431550, guid: c8450d5d532c05c4bb6fd81897a9bbe3,
     type: 2}
 --- !u!114 &114240198540885226
@@ -799,8 +804,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
   fadingBack: 0
 --- !u!114 &114589987591378302
 MonoBehaviour:
@@ -829,11 +832,25 @@ MonoBehaviour:
   isMovingCam: 0
   mouseSensitivityX: 2
   mouseSensitivityY: 2
+  invertX: 0
+  invertY: 0
   maxVerticalLookAngle: 85
   minVerticalLookAngle: -15
+  yLookPosAdjust: 5
+  smoothMove: 0.5
+  smoothLook: 0.5
+  heightFromPlayer: 20
+  heightMin: 0
+  heightMax: 0
+  zoomSpeed: 500
   spriteFadeMask:
     serializedVersion: 2
     m_Bits: 0
+  obstructionMask:
+    serializedVersion: 2
+    m_Bits: 0
+  lerpingFOV: 0
+  originalFOV: 0
 --- !u!136 &136713790091005132
 CapsuleCollider:
   m_ObjectHideFlags: 1
