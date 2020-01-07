@@ -25,6 +25,8 @@ public class HomingPearl : AudioHandler {
     public GameObject[] objectsToGrow;
     [Tooltip("Speed at which objects will grow")]
     public float growthSpeed = 0.25f;
+    [Tooltip("Pillar to light up")]
+    public GameObject pillar;
 
     [Header("Sounds")]
     public AudioClip activationSound;
@@ -50,7 +52,7 @@ public class HomingPearl : AudioHandler {
 
     void Start()
     {
-        //StartCoroutine(WaitToDeactivate(0.1f));
+        StartCoroutine(WaitToDeactivate(0.1f));
     }
 
     IEnumerator WaitToDeactivate(float time)
@@ -126,6 +128,11 @@ public class HomingPearl : AudioHandler {
                 fog.Clear();
                 popLights.Play();
 
+                //pillar to light up
+                if(pillar != null)
+                {
+                    pillar.GetComponent<MeshRenderer>().material = activeMat;
+                }                
                 //i must go to the current!
                 if(currentStream != null)
                 {
