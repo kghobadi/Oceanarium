@@ -71,8 +71,6 @@ public class GrowthSphere : MonoBehaviour {
                 other.gameObject.GetComponent<Animator>().SetTrigger("grow");
             }
         }
-
-
     }
 
 }
