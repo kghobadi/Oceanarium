@@ -27,6 +27,8 @@ public class HomingPearl : AudioHandler {
     public float growthSpeed = 0.25f;
     [Tooltip("Pillar to light up")]
     public GameObject pillar;
+    [Tooltip("Planter to activate")]
+    public Planter planter;
 
     [Header("Sounds")]
     public AudioClip activationSound;
@@ -128,6 +130,11 @@ public class HomingPearl : AudioHandler {
                 fog.Clear();
                 popLights.Play();
 
+                //send planter to pillar
+                if(planter != null)
+                {
+                    planter.ActivatePlanter();
+                }
                 //pillar to light up
                 if(pillar != null)
                 {
