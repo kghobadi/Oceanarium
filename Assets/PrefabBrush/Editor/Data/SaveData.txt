@@ -60,7 +60,7 @@ Depth: 2
 
 Game Object: Assets/Prefabs/Props/Pincushion.prefab
 Layer: Default
-Toggle: True
+Toggle: False
 Slider: 1
 Lock Orientation Toggle: False
 Random Rotation Toggle: False
@@ -94,7 +94,23 @@ Fixed Rotation Y: 0
 Fixed Rotation Z: 0
 Depth: 5
 
+Game Object: Assets/Prefabs/Ruins/ruins test.prefab
+Layer: Default
+Toggle: True
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: False
+Random Scale Min: 0.1
+Random Scale Max: 1
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 0
+
 Group Names:
 Plants
-Capsule Objs
-SpherePlants
