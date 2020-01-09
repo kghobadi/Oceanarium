@@ -27,6 +27,7 @@ public class HomingPearl : AudioHandler {
     public float growthSpeed = 0.25f;
     [Tooltip("Pillar to light up")]
     public GameObject pillar;
+    public Ruins ruin;
     [Tooltip("Planter to activate")]
     public Planter planter;
 
@@ -138,7 +139,7 @@ public class HomingPearl : AudioHandler {
                 //pillar to light up
                 if(pillar != null)
                 {
-                    pillar.GetComponent<MeshRenderer>().material = activeMat;
+                    ruin.ActivatePillar(pillar);
                 }                
                 //i must go to the current!
                 if(currentStream != null)

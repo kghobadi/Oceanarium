@@ -25,6 +25,7 @@ public class Guardian : AudioHandler {
     //guardian locations for the current planet 
     public Transform[] guardianLocations;
     public int currentPoint = 0;
+    public bool newGalaxy;
     
     [Header("Sounds")]
     public AudioClip waitingSound;
@@ -69,7 +70,16 @@ public class Guardian : AudioHandler {
             //player close now
             if(distFromPlayer < necDist)
             {
-                SetMove();
+                //go to new galaxy
+                if (newGalaxy)
+                {
+                    //player rides me 
+                }
+                //go to next point
+                else
+                {
+                    SetMove();
+                }
             }
         }
 
@@ -122,6 +132,13 @@ public class Guardian : AudioHandler {
         {
             ChangePlanets();
         }
+    }
+
+    //called to immediately move to a spot 
+    public void MoveToLocationAndWait(Transform location)
+    {
+        movement.MoveTo(location.position, movement.moveSpeed);
+        guardianState = GuardianStates.MOVING;
     }
 
     //called from planet manager when a planet is activated 

@@ -145,7 +145,7 @@ public class Currents : MonoBehaviour {
       
     }
 
-    void ActivateCurrent()
+    public void ActivateCurrent()
     {
         currentParticles.Play();
         currentBubble.material = activeMat;

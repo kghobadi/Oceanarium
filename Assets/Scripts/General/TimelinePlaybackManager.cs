@@ -39,6 +39,9 @@ public class TimelinePlaybackManager : MonoBehaviour {
     GameObject guardian;
     Guardian gBehavior;
 
+    [Header("Current Settings")]
+    public Currents currentToActivate;
+
     [Header("Player Settings")]
 	public string playerTag = "Player";
 	private GameObject playerObject;
@@ -111,6 +114,12 @@ public class TimelinePlaybackManager : MonoBehaviour {
             gBehavior.ResetGuardianLocation(nextSpot.position, planetPoints.guardianLocations, planetPoints.planetColliders);
         }
 			
+        //has current to activate
+        if(currentToActivate != null)
+        {
+            if (!currentToActivate.currentActivated)
+                currentToActivate.ActivateCurrent();
+        }
 
 		timelinePlaying = true;
 			
