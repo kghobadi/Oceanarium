@@ -20,6 +20,7 @@ public class Planter : AudioHandler {
     public bool activated;
     [Tooltip("Dest I will travel to before stopping.")]
     public Transform pillarDest;
+    public Ruins ruin;
     [Tooltip("Plant/prop to spawn")]
     public GameObject spawnObj;
     [Tooltip("Transform to parent spawned objects to ")]
@@ -90,7 +91,7 @@ public class Planter : AudioHandler {
     //called when it reaches dest
     void DeactivatePlanter()
     {
-        pillarDest.GetComponent<MeshRenderer>().material = pearlSender.activeMat;
+        ruin.ActivatePillar(pillarDest.gameObject);
         myMR.enabled = false;
         activated = false;
     }
