@@ -107,7 +107,7 @@ public class Planter : AudioHandler {
         {
             if (hit.transform.gameObject.tag == "Planet")
             {
-                Debug.Log("spawning " + hit.point);
+                //Debug.Log("spawning " + hit.point);
                 SpawnPlant(hit.point);
             }
         }

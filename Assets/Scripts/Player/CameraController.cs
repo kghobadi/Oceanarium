@@ -88,6 +88,8 @@ public class CameraController : MonoBehaviour {
             ZoomInputs();
 
             CheckMoving();
+
+            CastToPlayer();
         }
 
         //fade objs when player can move 
@@ -173,12 +175,14 @@ public class CameraController : MonoBehaviour {
     {
         float newHeight = heightFromPlayer + (zoomSpeed * Time.deltaTime * zoom);
         heightFromPlayer = Mathf.Lerp(heightFromPlayer, newHeight, zoomSpeed * Time.deltaTime);
+        heightFromPlayer = Mathf.Clamp(heightFromPlayer, heightMin, heightMax);
     }
 
     void ZoomOut(float zoom)
     {
         float newHeight = heightFromPlayer + (zoomSpeed * Time.deltaTime * zoom);
         heightFromPlayer = Mathf.Lerp(heightFromPlayer, newHeight, zoomSpeed * Time.deltaTime);
+        heightFromPlayer = Mathf.Clamp(heightFromPlayer, heightMin, heightMax);
     }
 
     //detects whether cam is seeing ground in front of player somehw
@@ -188,20 +192,12 @@ public class CameraController : MonoBehaviour {
         Vector3 dir = player.transform.position - transform.position;
         float dist = Vector3.Distance(transform.position, player.transform.position);
         //send raycast
-        if (Physics.Raycast(transform.position, dir, out hit, dist, obstructionMask))
+        if (Physics.SphereCast(transform.position, 1f, dir, out hit, dist , obstructionMask))
         {
+            Debug.Log("hit ground, zoomng in");
             //anytime we hit the planet ground, zoome out 
-            if (hit.transform.gameObject.layer == 9)
-            {
-                if (heightFromPlayer < heightMax)
-                    ZoomOut(0.05f);
-            }
-            //if it hits a tree, zoom in 
-            if (hit.transform.gameObject.tag == "")
-            {
-                if (heightFromPlayer > heightMin)
-                    ZoomIn(-0.025f);
-            }
+            if (heightFromPlayer > heightMin)
+                ZoomIn(-0.35f);
         }
     }
 

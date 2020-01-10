@@ -41,7 +41,7 @@ public class Ruins : AudioHandler {
     public void AllActivated()
     {
         guardianScript.transform.position = guardianPos.position;
-        guardianScript.MoveToLocationAndWait(guardianPos);
+        guardianScript.MoveToLocationAndWaitForTrip(guardianPos);
         portalParticles.Play();
         cinematicManager.PlayTimeline();
         PlaySound(activationSound, 1f);
