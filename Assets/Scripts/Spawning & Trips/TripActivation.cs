@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class TripActivation : MonoBehaviour {
     GameObject player;
@@ -20,13 +21,15 @@ public class TripActivation : MonoBehaviour {
     public GameObject trip;
     public bool canTrip = true;
     public bool tripping;
+    public bool loadsNewScene;
+    public int sceneIndex;
 
     MusicFader mFader;
     public AudioClip tripMusic;
     AudioClip planetMusic;
     public AudioMixerSnapshot trippingSnap;
     public AudioMixerSnapshot overWorld;
-    ParticleSystem tripperParticles;
+    public ParticleSystem tripperParticles;
     [Header("Camera Transition")]
     public float fovIn = 15f;
     public float lerpTimeIn = 0.2f, lerpTimeOut = 0.05f;
@@ -40,7 +43,8 @@ public class TripActivation : MonoBehaviour {
         camControl = mainCam.GetComponent<CameraController>();
         //my refs
         mFader = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicFader>();
-        tripperParticles = transform.GetChild(0).GetComponent<ParticleSystem>();
+        if(tripperParticles == null)
+            tripperParticles = transform.GetChild(0).GetComponent<ParticleSystem>();
 
         if (tripCamera == null)
             tripCamera = GameObject.FindGameObjectWithTag("TripCam");
@@ -64,10 +68,14 @@ public class TripActivation : MonoBehaviour {
                 pressToTrip.FadeIn();
 
             //play trip particles
-            if(tripperParticles.isPlaying == false)
+            if(tripperParticles != null)
             {
-                tripperParticles.Play();
+                if (tripperParticles.isPlaying == false)
+                {
+                    tripperParticles.Play();
+                }
             }
+            
         }
         //too far
         else if(distFromPlayer > necessaryDistance + 3f)
@@ -77,16 +85,25 @@ public class TripActivation : MonoBehaviour {
                 pressToTrip.FadeOut();
 
             //stop trip particles
-            if (tripperParticles.isPlaying)
+            if(tripperParticles != null)
             {
-                tripperParticles.Stop();
+                if (tripperParticles.isPlaying)
+                {
+                    tripperParticles.Stop();
+                }
             }
+            
         }
 
         //press space && not tripping // converting 
         if (Input.GetKeyDown(KeyCode.Space) && tripping && !tripFader.fadingIn && !tripFader.fadingOut)
         {
-            EndTrip();
+            if (loadsNewScene)
+            {
+                SceneManager.LoadScene(sceneIndex);
+            }
+            else
+                EndTrip();
         }
     }
 

@@ -16,6 +16,7 @@ public class Guardian : AudioHandler {
     MoveTowards movement;
     Orbit orbital;
     GravityBody grav;
+    TripActivation tripper;
     [Header("Guardian Behavior")]
     public GuardianStates guardianState;
     public enum GuardianStates
@@ -44,6 +45,7 @@ public class Guardian : AudioHandler {
         movement = GetComponent<MoveTowards>();
         orbital = GetComponent<Orbit>();
         grav = GetComponent<GravityBody>();
+        tripper = GetComponent<TripActivation>();
     }
 
     void Start () {
@@ -135,10 +137,12 @@ public class Guardian : AudioHandler {
     }
 
     //called to immediately move to a spot 
-    public void MoveToLocationAndWait(Transform location)
+    public void MoveToLocationAndWaitForTrip(Transform location)
     {
         movement.MoveTo(location.position, movement.moveSpeed);
         guardianState = GuardianStates.MOVING;
+        tripper.canTrip = true;
+        newGalaxy = true;
     }
 
     //called from planet manager when a planet is activated 

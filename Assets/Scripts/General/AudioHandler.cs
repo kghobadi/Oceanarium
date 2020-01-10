@@ -64,16 +64,33 @@ public abstract class AudioHandler : MonoBehaviour
     {
         int randomSound = Random.Range(0, soundArray.Length);
 
-        if (voiceCounter < voices.Length - 1)
+        voiceCounter = CountUpArray(voiceCounter, voices.Length - 1);
+
+        voices[voiceCounter].PlayOneShot(soundArray[randomSound]);
+    }
+
+    public int currentSound = 0;
+    //counts up through sound array, in order 
+    public void PlaySoundUp(AudioClip[] soundArray)
+    {
+        currentSound = CountUpArray(currentSound, soundArray.Length - 1);
+
+        voices[voiceCounter].PlayOneShot(soundArray[currentSound]);
+    }
+
+    //for counting up arrays
+    public int CountUpArray(int counter, int total)
+    {
+        if (counter < total)
         {
-            voiceCounter++;
+            counter++;
         }
         else
         {
-            voiceCounter = 0;
+            counter = 0;
         }
 
-        voices[voiceCounter].PlayOneShot(soundArray[randomSound]);
+        return counter;
     }
 }
 
