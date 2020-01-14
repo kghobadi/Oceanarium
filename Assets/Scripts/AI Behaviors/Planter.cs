@@ -118,13 +118,14 @@ public class Planter : AudioHandler {
     {
         //spawn and set parent
         GameObject plantClone = Instantiate(spawnObj, pos, Quaternion.identity);
-        plantClone.transform.SetParent(plantParent);
         //set scale
         plantClone.transform.localScale = new Vector3(1, 1, 1);
         //randomize scale
         float sizeMult = Random.Range(minSizeMult, maxSizeMult);
         plantClone.transform.localScale *= sizeMult;
 
+        plantClone.transform.SetParent(plantParent);
+      
         //if it has scaler use that to lerp it up!!
         if(plantClone.GetComponent<LerpScale>())
         {

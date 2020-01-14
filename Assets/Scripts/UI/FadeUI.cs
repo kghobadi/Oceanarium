@@ -16,7 +16,7 @@ public class FadeUI : MonoBehaviour {
     Color alphaValue;
 
     //these will be on during the fades
-    public bool fadingIn, fadingOut, keepActive, fadeOutImmediately;
+    public bool fadingIn, fadingOut, keepActive = true, fadeOutImmediately;
     public float fadeInAmount = 1f;
     public float fadeOutAmount = 0f;
     //controls the speed of the fade

@@ -13,7 +13,16 @@ public class HomingPearl : AudioHandler {
     ParticleSystem fog, popLights;
     GrowthSphere growthSphere;
 
+    
+
+   
+    //signifies which kind of behavior it has on activation
+    public enum PearlType
+    {
+        GROWTHSPHERE, PLANTER, MOVETOCURRENT,
+    }
     [Header("Pearl Activation")]
+    public PearlType pearlType;
     public bool activated;
     [Tooltip("Put the current transform here if you'd like the pearl to travel to a current when activated")]
     public Transform currentStream;
@@ -135,6 +144,7 @@ public class HomingPearl : AudioHandler {
                 if(planter != null)
                 {
                     planter.ActivatePlanter();
+                    gameObject.SetActive(false);
                 }
                 //pillar to light up
                 if(pillar != null)
@@ -151,6 +161,7 @@ public class HomingPearl : AudioHandler {
                 {
                     EnableGrowObjects();
                 }
+                
             }
         }
     }
