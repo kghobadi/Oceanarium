@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.SceneManagement;
 
 public class TripActivation : MonoBehaviour {
     GameObject player;
@@ -10,6 +9,7 @@ public class TripActivation : MonoBehaviour {
     GravityBody gravBod;
     GameObject mainCam;
     CameraController camControl;
+    LoadSceneAsync sceneLoader;
 
     public FadeUI tripFader;
     public FadeUI pressToTrip;
@@ -22,7 +22,6 @@ public class TripActivation : MonoBehaviour {
     public bool canTrip = true;
     public bool tripping;
     public bool loadsNewScene;
-    public int sceneIndex;
 
     MusicFader mFader;
     public AudioClip tripMusic;
@@ -41,6 +40,7 @@ public class TripActivation : MonoBehaviour {
         gravBod = player.GetComponent<GravityBody>();
         mainCam = Camera.main.transform.gameObject;
         camControl = mainCam.GetComponent<CameraController>();
+        sceneLoader = GetComponent<LoadSceneAsync>();
         //my refs
         mFader = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicFader>();
         if(tripperParticles == null)
@@ -100,7 +100,7 @@ public class TripActivation : MonoBehaviour {
         {
             if (loadsNewScene)
             {
-                SceneManager.LoadScene(sceneIndex);
+                //everything happens in LoadSceneAsync now...
             }
             else
                 EndTrip();
@@ -132,6 +132,14 @@ public class TripActivation : MonoBehaviour {
         //activate trip stuff 
         tripCamera.SetActive(true);
         trip.SetActive(true);
+
+        //start load 
+        if (loadsNewScene)
+        {
+            //check to see if already preparing
+            if(sceneLoader.loadPreparesOnStart == false)
+                sceneLoader.Load();
+        }
 
         //deactivate player stuff
         pc.canMove = false;

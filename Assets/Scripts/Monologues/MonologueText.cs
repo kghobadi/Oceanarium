@@ -9,6 +9,7 @@ public class MonologueText : MonoBehaviour
 {
     //player refs
     GameObject player;
+    PlayerController pc;
     [Tooltip("Character or creature who speaks this monologue")]
     public GameObject hostObj;
     [Tooltip("UI panel which holds this monologue")]
@@ -23,7 +24,9 @@ public class MonologueText : MonoBehaviour
     SpeakerAnimations speakerAnimator;
 
     //text component and string array of its lines
-    TMP_Text theText;
+    Text theText;
+    TMP_Text the_Text;
+    bool usesTMP;
     [Header("Text lines")]
     [Tooltip("No need to fill this in, that will happen automatically")]
     public string[] textLines;
@@ -47,6 +50,7 @@ public class MonologueText : MonoBehaviour
     [Tooltip("Check this and fill in array below so that each line of text can be assigned a different wait")]
     public bool conversational;
     public float[] waitTimes;
+    bool waiting;
 
     [Header("Monologues To Enable")]
     public MonologueText[] monologuesToEnable;
@@ -55,7 +59,13 @@ public class MonologueText : MonoBehaviour
     {
         //grab refs
         player = GameObject.FindGameObjectWithTag("Player");
-        theText = GetComponent<TMP_Text>();
+        pc = player.GetComponent<PlayerController>();
+        theText = GetComponent<Text>();
+        if(theText == null)
+        {
+            usesTMP = true;
+            the_Text = GetComponent<TMP_Text>();
+        }
         speakerAnimator = hostObj.GetComponentInChildren<SpeakerAnimations>();
         speakerAudio = hostObj.GetComponent<SpeakerSound>();
     }
@@ -66,7 +76,10 @@ public class MonologueText : MonoBehaviour
        
         if (!enableAtStart)
         {
-            theText.enabled = false;
+            if (usesTMP)
+                the_Text.enabled = false;
+            else
+                theText.enabled = false;
         }
         else
         {
@@ -77,9 +90,17 @@ public class MonologueText : MonoBehaviour
     //reset trigger if you swim away during Monologue
     void Update()
     {
+        //speaker is typing out message
         if (isTyping)
         {
-            if(player != null)
+            //player skips line of text to completion
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                CompleteTextLine(textLines[currentLine]);
+            }
+
+            //check for player
+            if (player != null)
             {
                 //reeset if too far from Monologue
                 if (Vector3.Distance(transform.position, player.transform.position) > resetDistance)
@@ -89,15 +110,21 @@ public class MonologueText : MonoBehaviour
             }
            
         }
-        else
+        //player is waiting for next message
+        if (waiting)
         {
-
+            //player skips line of text to completion
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                ProgressLine();
+            }
         }
     }
 
     void ProgressLine()
     {
         currentLine += 1;
+        waiting = false;
 
         if (currentLine >= endAtLine)
         {
@@ -115,22 +142,41 @@ public class MonologueText : MonoBehaviour
     //Coroutine that types out each letter individually
     private IEnumerator TextScroll(string lineOfText) 
     {
+        if (lockPlayer)
+        {
+            pc.canMove = false;
+            pc.canJump = false;
+        }
+
         int letter = 0;
-        theText.text = "";
+        if (usesTMP)
+            the_Text.text = "";
+        else
+            theText.text = "";
+
         isTyping = true;
         speakerAnimator.RandomTalkingAnim();
+
         while (isTyping && (letter < lineOfText.Length - 1))
         {
             //add this letter to our text
-            theText.text += lineOfText[letter];
+            if (usesTMP)
+                the_Text.text += lineOfText[letter];
+            else
+                theText.text += lineOfText[letter];
+            
             //check what audio to play 
             speakerAudio.AudioCheck(lineOfText, letter);
             //next letter
             letter += 1;
             yield return new WaitForSeconds(timeBetweenLetters);
         }
-        theText.text = lineOfText;
-        isTyping = false;
+
+        //player waited to read full line
+        if(isTyping)
+            CompleteTextLine(lineOfText);
+
+        waiting = true;
 
         //if conversational, use the array of wait Timers set publicly
         if (conversational)
@@ -141,15 +187,29 @@ public class MonologueText : MonoBehaviour
         {
             yield return new WaitForSeconds(waitTime);
         }
+        
 
         ProgressLine();
 
     }
 
+    //completes current line of text
+    void CompleteTextLine(string lineOfText)
+    {
+        if (usesTMP)
+            the_Text.text = lineOfText;
+        else
+            theText.text = lineOfText;
+        isTyping = false;
+    }
+
     public void ResetStringText()
     {
-        textLines = (theText.text.Split('\n'));
-
+        if (usesTMP)
+            textLines = (the_Text.text.Split('\n'));
+        else
+            textLines = (theText.text.Split('\n'));
+        
         endAtLine = textLines.Length;
     }
 
@@ -157,13 +217,20 @@ public class MonologueText : MonoBehaviour
     {
         if (waitToStart)
         {
-            theText.enabled = false;
+            if (usesTMP)
+                the_Text.enabled = false;
+            else
+                theText.enabled = false;
+
             StartCoroutine(WaitToStart());
         }
 
         else
         {
-            theText.enabled = true;
+            if (usesTMP)
+                the_Text.enabled = true;
+            else
+                theText.enabled = true;
             textPanel.FadeIn();
             StartCoroutine(TextScroll(textLines[currentLine]));
         }
@@ -173,7 +240,10 @@ public class MonologueText : MonoBehaviour
     {
         yield return new WaitForSeconds(timeUntilStart);
 
-        theText.enabled = true;
+        if (usesTMP)
+            the_Text.enabled = true;
+        else
+            theText.enabled = true;
 
         StartCoroutine(TextScroll(textLines[currentLine]));
         
@@ -189,13 +259,23 @@ public class MonologueText : MonoBehaviour
 
     public void DisableMonologue()
     {
-        theText.enabled = false;
+        if (usesTMP)
+            the_Text.enabled = false;
+        else
+            theText.enabled = false;
+
         textPanel.FadeOut();
         speakerAnimator.SetAnimator("idle");
         //start new monologues 
         for(int i = 0; i < monologuesToEnable.Length; i++)
         {
             monologuesToEnable[i].EnableMonologue();
+        }
+
+        if (lockPlayer)
+        {
+            pc.canMove = true;
+            pc.canJump = true;
         }
     }
 }
