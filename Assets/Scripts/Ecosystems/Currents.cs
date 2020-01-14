@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Currents : MonoBehaviour {
+public class Currents : AudioHandler {
     //player ref
     GameObject player;
     PlayerController pc;
@@ -10,32 +10,38 @@ public class Currents : MonoBehaviour {
     Transform mainCam;
     CameraController camControl;
     ParticleSystem currentParticles;
-    public GameObject currentCamera;
-
+    
     //current vars
     [Header("Current Vars")]
+    public GameObject currentCamera;
     public float currentSpeed;
     [HideInInspector]
     public Transform entrance, endPoint;
     public bool entering, hasEntered;
 
-    [Header("Pearl Activation")]
+    [Header("Current Activation")]
     public bool currentActivated;
     [Tooltip("Check if player can activate directly")]
     public bool playerActivates;
+    [Tooltip("Check if ruins activation turns on this Current")]
+    public bool ruinActivates;
     ParticleSystem ribbons;
     public int pearlsNecessary;
     public List<GameObject> activePearls = new List<GameObject>();
     public MeshRenderer currentBubble;
     public Material silentMat, activeMat;
+    [Tooltip("Only needs this if current activated by MoveToCurrent Pearls")]
+    public TimelinePlaybackManager cinematicManager;
 
     [HideInInspector]
     public AudioSource ambientSource;
     [Header("Sounds")]
     public AudioClip[] currentAmbience;
+    public AudioClip activationSound;
 
-    void Awake()
+    public override void Awake()
     {
+        base.Awake();
         ambientSource = GameObject.FindGameObjectWithTag("AmbientAudio").GetComponent<AudioSource>();
         player = GameObject.FindGameObjectWithTag("Player");
         pc = player.GetComponent<PlayerController>();
@@ -150,8 +156,26 @@ public class Currents : MonoBehaviour {
         currentParticles.Play();
         currentBubble.material = activeMat;
         currentActivated = true;
-        if(playerActivates)
-            ribbons.Stop();
+        //turn off the ribbons
+        if (ribbons)
+        {
+            if (ribbons.isPlaying)
+                ribbons.Stop();
+        }
+      
+
+        //activated by MoveToCurrentPearls 
+        if(!playerActivates && !ruinActivates)
+        {
+            //play sound + cinematic
+            cinematicManager.PlayTimeline();
+            PlaySound(activationSound, 1f);
+
+            for(int i = 0; i < activePearls.Count; i++)
+            {
+                activePearls[i].SetActive(false);
+            }
+        }
     }
 
     void EnterCurrent()

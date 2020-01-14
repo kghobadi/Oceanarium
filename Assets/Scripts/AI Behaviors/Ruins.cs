@@ -10,7 +10,9 @@ public class Ruins : AudioHandler {
     public Guardian guardianScript;
     public Transform guardianPos;
     public ParticleSystem portalParticles;
-
+    [Tooltip("True if this Ruin activates a current inside, false if it is used for Guardian to take you to next Galaxy")]
+    public bool activatesCurrent;
+    public Currents currentToActivate;
     public Material silentMat, activeMat;
     public TimelinePlaybackManager cinematicManager;
 
@@ -40,9 +42,20 @@ public class Ruins : AudioHandler {
     //move guardian & play cinematic 
     public void AllActivated()
     {
-        guardianScript.transform.position = guardianPos.position;
-        guardianScript.MoveToLocationAndWaitForTrip(guardianPos);
-        portalParticles.Play();
+        //activates current
+        if (activatesCurrent)
+        {
+            currentToActivate.ActivateCurrent();
+        }
+        //brings guardian here 
+        else
+        {
+            guardianScript.transform.position = guardianPos.position;
+            guardianScript.MoveToLocationAndWaitForTrip(guardianPos);
+            portalParticles.Play();
+        }
+
+        //play sound + cinematic
         cinematicManager.PlayTimeline();
         PlaySound(activationSound, 1f);
     }
