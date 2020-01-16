@@ -8,10 +8,8 @@ public class Planter : AudioHandler {
     MoveTowards movement;
     Orbit orbital;
     GravityBody grav;
+    ParticleSystem fog;
     ParticleSystem popLights;
-
-    [Tooltip("Pearl which activates me")]
-    public HomingPearl pearlSender;
 
     [Header("Plant spawning")]
     [Tooltip("Planet to add plants to")]
@@ -28,6 +26,8 @@ public class Planter : AudioHandler {
     public float spawnTimer, spawnFrequency = 0.5f;
     [Tooltip("Size multipliers for spawned objs")]
     public float minSizeMult, maxSizeMult;
+    [Tooltip("Materials before & after activation")]
+    public Material silentMat, activeMat;
 
     [Tooltip("Only raycasts at Planet layer")]
     public LayerMask planetMask;
@@ -35,6 +35,7 @@ public class Planter : AudioHandler {
     [Header("Sounds")]
     public AudioClip travelingSound;
     public AudioClip orbitingSound;
+    public AudioClip activationSound;
 
     public override void Awake ()
     {
@@ -42,12 +43,14 @@ public class Planter : AudioHandler {
 
         //get all refs
         myMR = GetComponent<MeshRenderer>();
-        myMR.enabled = false;
+        myMR.material = silentMat;
         capColl = GetComponent<CapsuleCollider>();
         movement = GetComponent<MoveTowards>();
         orbital = GetComponent<Orbit>();
         grav = GetComponent<GravityBody>();
+        
         popLights = transform.GetChild(0).GetComponent<ParticleSystem>();
+        fog = transform.GetChild(1).GetComponent<ParticleSystem>();
     }
 	
 	void Update ()
@@ -75,6 +78,25 @@ public class Planter : AudioHandler {
             }
         }
 	}
+
+    //trigger to activate!
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            if (!activated)
+            {
+                activated = true;
+                PlaySound(activationSound, 1f);
+                myMR.material = activeMat;
+                fog.Stop();
+                fog.Clear();
+                popLights.Play();
+
+                ActivatePlanter();
+            }
+        }
+    }
 
     //called by Pearl activation
     public void ActivatePlanter()

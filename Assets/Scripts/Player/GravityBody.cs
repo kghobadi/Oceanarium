@@ -14,6 +14,7 @@ public class GravityBody : MonoBehaviour {
 	Rigidbody rb;
 
 	public float smoothMultiplier = 1;
+    public float overlapSphereRadius = 20f;
 
 	void Awake() {
 		rb = GetComponent<Rigidbody>();
@@ -39,7 +40,7 @@ public class GravityBody : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		Collider[] newPlanets = Physics.OverlapSphere(transform.position, 20, planetMask);
+		Collider[] newPlanets = Physics.OverlapSphere(transform.position, overlapSphereRadius, planetMask);
 		if (newPlanets.Length > 0) {
 			planets = newPlanets;
 		}

@@ -13,9 +13,6 @@ public class HomingPearl : AudioHandler {
     ParticleSystem fog, popLights;
     GrowthSphere growthSphere;
 
-    
-
-   
     //signifies which kind of behavior it has on activation
     public enum PearlType
     {
@@ -37,8 +34,6 @@ public class HomingPearl : AudioHandler {
     [Tooltip("Pillar to light up")]
     public GameObject pillar;
     public Ruins ruin;
-    [Tooltip("Planter to activate")]
-    public Planter planter;
 
     [Header("Sounds")]
     public AudioClip activationSound;
@@ -140,12 +135,6 @@ public class HomingPearl : AudioHandler {
                 fog.Clear();
                 popLights.Play();
 
-                //send planter to pillar
-                if(planter != null)
-                {
-                    planter.ActivatePlanter();
-                    gameObject.SetActive(false);
-                }
                 //pillar to light up
                 if(pillar != null)
                 {

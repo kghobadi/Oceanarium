@@ -41,6 +41,7 @@ public class TimelinePlaybackManager : MonoBehaviour {
 
     [Header("Current Settings")]
     public Currents currentToActivate;
+    public bool pullsPlayerIntoCurrent;
 
     [Header("Player Settings")]
 	public string playerTag = "Player";
@@ -119,6 +120,12 @@ public class TimelinePlaybackManager : MonoBehaviour {
         {
             if (!currentToActivate.currentActivated)
                 currentToActivate.ActivateCurrent();
+
+            //player enters current 
+            if (pullsPlayerIntoCurrent)
+            {
+                currentToActivate.EnterCurrent();
+            }
         }
 
 		timelinePlaying = true;

@@ -197,7 +197,7 @@ public class CameraController : MonoBehaviour {
             Debug.Log("hit ground, zoomng in");
             //anytime we hit the planet ground, zoome out 
             if (heightFromPlayer > heightMin)
-                ZoomIn(-0.35f);
+                ZoomIn(-0.15f);
         }
     }
 
