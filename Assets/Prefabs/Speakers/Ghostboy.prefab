@@ -244,8 +244,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1574277908100222}
   m_LocalRotation: {x: -0, y: -0, z: 0.019691993, w: 0.9998061}
-  m_LocalPosition: {x: -1094.8857, y: 111.39564, z: -826.934}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.04371582, y: 0.021912688, z: 0.54131955}
+  m_LocalScale: {x: 0.019999998, y: 0.019999998, z: 0.02}
   m_Children:
   - {fileID: 224972289893322870}
   - {fileID: 4030789508436498}
@@ -741,11 +741,11 @@ MonoBehaviour:
   currentLine: 0
   endAtLine: 0
   hasFinished: 0
-  timeBetweenLetters: 0.005
+  timeBetweenLetters: 0.05
   resetDistance: 25
   waitToStart: 0
   timeUntilStart: 0
-  waitTime: 0
+  waitTime: 3
   conversational: 0
   waitTimes: []
   monologuesToEnable: []
@@ -781,12 +781,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "I was once abducted \r\nI was once caught\r\nOne minute I was a cute lil
-    thot\r\nThe next I was not\r\nA thin line pulled me upwards\r\nTo be with my abductors\r\nI
+  m_Text: "I was once abducted \r\nI was once caught\r\nOne minute I was here\nThe
+    next I was nowhere near\nA thin line pulled me upwards\r\nTo be with my abductors\r\nI
     laid there frozen in fear\r\nExposed to atmosphere \r\nThey seemed pale\r\nAnd
     frail\r\nAnd didn\u2019t have a tail\r\nI wanted to groove\r\nBut I couldn't move\r\nThey
     opened my head\r\nI pled\r\n\u201CStop!\u201D\r\nBut they went ahead\r\nOn a metal
-    bed\r\nSurrounded by ice\r\nMy price\r\nWas ten dollars a slice \r"
+    bed\r\nSurrounded by ice\r\nMy price\r\nWas ten dollars a slice \r\nAnd now I
+    say to thee\nFind the monsters who did this to me!"
 --- !u!114 &114527084108556060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -861,8 +862,10 @@ MonoBehaviour:
   isImage: 0
   fadingIn: 0
   fadingOut: 0
-  keepActive: 0
+  keepActive: 1
   fadeOutImmediately: 0
+  fadeInAmount: 0.65
+  fadeOutAmount: 0
   fadeInWait: 0
   fadeOutWait: 0
   fadeInSpeed: 1
@@ -882,7 +885,11 @@ MonoBehaviour:
   myAudioSource: {fileID: 0}
   pitchRange: {x: 0.9, y: 1.1}
   voiceCounter: 0
-  voices: []
+  voices:
+  - {fileID: 82987152272592428}
+  - {fileID: 82901176796474310}
+  - {fileID: 82819338961242180}
+  - {fileID: 82333842774360136}
   currentSound: 0
   hasVoiceAudio: 1
   usesAllLetters: 0
@@ -997,7 +1004,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1037884953516058}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -103.27831}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.4401822, y: 3.6366026, z: 3.6366034}
   m_Children: []
   m_Father: {fileID: 224424744508721820}
@@ -1005,8 +1012,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000111315865, y: -146.19133}
-  m_SizeDelta: {x: 500, y: 300}
+  m_AnchoredPosition: {x: 0.001780073, y: 29.092968}
+  m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224424744508721820
 RectTransform:
@@ -1024,7 +1031,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -8}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224972289893322870

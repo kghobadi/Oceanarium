@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212772366585119370}
   - component: {fileID: 95002572018267576}
   - component: {fileID: 114344431403451284}
-  - component: {fileID: 65557097767343252}
+  - component: {fileID: 65286943255449814}
   m_Layer: 10
   m_Name: CoralSpawn
   m_TagString: Prop
@@ -74,7 +74,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &65557097767343252
+--- !u!65 &65286943255449814
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -84,8 +84,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6.3400025, y: 5.870002, z: 0.20000216}
-  m_Center: {x: -0.0000076293945, y: -0.000015258789, z: 0.0000019073486}
+  m_Size: {x: 6.34, y: 5.8699994, z: 0.20000032}
+  m_Center: {x: 0.0000014305115, y: 0, z: 0}
 --- !u!95 &95002572018267576
 Animator:
   serializedVersion: 3

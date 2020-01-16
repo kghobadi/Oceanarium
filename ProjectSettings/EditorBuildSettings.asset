@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/PlanetTest.unity
-    guid: f5043501225ff444ea68c40d1d6e0f08
+    path: Assets/Scenes/Intro Galaxy.unity
+    guid: 8af3374d685dbc44089e863d27343986
   - enabled: 1
     path: Assets/Scenes/DiverTest.unity
     guid: 9b7e8a407e063a947a9384fdb33fc08e

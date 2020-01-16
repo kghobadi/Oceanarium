@@ -10,7 +10,11 @@ public class CameraFacingBillboard : MonoBehaviour
     CameraController camControl;
     //fades sprite when in front of pcam
     FadeForCamera cameraFader;
-  
+
+    [Tooltip("Has gravity body set up")]
+    public bool hasGravityBody;
+    GravityBody gravBody;
+
 	void Awake(){
         //player refs
 		playerBody = GameObject.FindGameObjectWithTag("Player").GetComponent<GravityBody>();
@@ -23,10 +27,25 @@ public class CameraFacingBillboard : MonoBehaviour
         {
             cameraFader = gameObject.AddComponent<FadeForCamera>();
         }
+        //gets and uses own grav body 
+        if (hasGravityBody)
+        {
+            gravBody = GetComponent<GravityBody>();
+        }
 	}
 
 	void Update(){
-        transform.LookAt(playerCam.transform.position, playerBody.GetUp());
+      
+        //uses own gravity for up axis
+        if (hasGravityBody)
+        {
+            transform.LookAt(playerCam.transform.position, gravBody.GetUp());
+        }
+        //normal, uses player gravity body for Look at function 
+        else
+        {
+            transform.LookAt(playerCam.transform.position, playerBody.GetUp());
+        }
 	}
 
   

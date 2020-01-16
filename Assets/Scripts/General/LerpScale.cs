@@ -30,7 +30,7 @@ public class LerpScale : MonoBehaviour {
         {
             transform.localScale = Vector3.Lerp(transform.localScale, desiredScale, Time.deltaTime * lerpSpeed);
 
-            if (Vector3.Distance(transform.localScale, desiredScale) < 0.1f)
+            if (Vector3.Distance(transform.localScale, desiredScale) < 0.01f)
             {
                 lerping = false;
                 transform.localScale = desiredScale;

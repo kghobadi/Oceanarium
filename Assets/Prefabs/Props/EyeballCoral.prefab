@@ -21,10 +21,15 @@ GameObject:
   - component: {fileID: 4467691589745944}
   - component: {fileID: 212896385004799124}
   - component: {fileID: 95689064164336426}
-  - component: {fileID: 114470613484192246}
+  - component: {fileID: 54399017576041922}
+  - component: {fileID: 65013458350750646}
+  - component: {fileID: 136895595016647222}
+  - component: {fileID: 114426630878797168}
+  - component: {fileID: 114340255752406580}
+  - component: {fileID: 114943019162630860}
   m_Layer: 0
   m_Name: EyeballCoral
-  m_TagString: Untagged
+  m_TagString: Prop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,13 +40,40 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1350337349215272}
-  m_LocalRotation: {x: -0.35926288, y: 0, z: 0.3573582, w: 0.8621052}
-  m_LocalPosition: {x: -118.577644, y: -236.98402, z: -3344.6687}
-  m_LocalScale: {x: 1.5065635, y: 1.5065635, z: 1.5065635}
+  m_LocalRotation: {x: 0.5117057, y: 0.48801365, z: -0.48801365, w: 0.5117057}
+  m_LocalPosition: {x: 0.63410646, y: -0.060999755, z: 0.07591915}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &54399017576041922
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1350337349215272}
+  serializedVersion: 2
+  m_Mass: 100
+  m_Drag: 5
+  m_AngularDrag: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &65013458350750646
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1350337349215272}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.41, y: 8.120002, z: 0.20000005}
+  m_Center: {x: 0, y: -0.000061035156, z: 0}
 --- !u!95 &95689064164336426
 Animator:
   serializedVersion: 3
@@ -60,7 +92,39 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114470613484192246
+--- !u!114 &114340255752406580
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1350337349215272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42947f603ad7eba40a501609da034343, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockRotation: 0
+  planets: []
+  smoothMultiplier: 1
+  overlapSphereRadius: 5
+--- !u!114 &114426630878797168
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1350337349215272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b3438be25cd83843a8d241f362b71fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lerping: 0
+  lerpSpeed: 0
+  desiredScale: {x: 0, y: 0, z: 0}
+  origScale: {x: 0, y: 0, z: 0}
+  setScaleAtStart: 1
+  startMultiplier: 0.01
+--- !u!114 &114943019162630860
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71,11 +135,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ee61183c5013464ab17c81babd9c0f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingCreature: 0
-  playerCreature: 0
-  onAnotherPlanet: 0
-  lockToYAxis: 0
-  fadingBack: 0
+  hasGravityBody: 1
+--- !u!136 &136895595016647222
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1350337349215272}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 3.2050028
+  m_Height: 8.120005
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.000061035156, z: 0}
 --- !u!212 &212896385004799124
 SpriteRenderer:
   m_ObjectHideFlags: 1

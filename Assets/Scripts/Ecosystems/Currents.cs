@@ -51,10 +51,7 @@ public class Currents : AudioHandler {
         currentParticles = transform.GetChild(0).GetComponent<ParticleSystem>();
         currentParticles.Stop();
         currentBubble.material = silentMat;
-        if (playerActivates)
-        {
-            ribbons = transform.GetChild(3).GetComponent<ParticleSystem>();
-        }
+        ribbons = transform.GetChild(3).GetComponent<ParticleSystem>();
     }
 
     void Start()
@@ -101,7 +98,7 @@ public class Currents : AudioHandler {
         //checks for pearls to activate current 
         else
         {
-            if (!playerActivates)
+            if (!playerActivates && !ruinActivates)
             {
                 if (activePearls.Count >= pearlsNecessary)
                 {
@@ -178,7 +175,7 @@ public class Currents : AudioHandler {
         }
     }
 
-    void EnterCurrent()
+    public void EnterCurrent()
     {
         //we are entering the current near the entrance 
         if (Vector3.Distance(player.transform.position, entrance.position) < 25)
