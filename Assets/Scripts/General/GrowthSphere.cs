@@ -5,6 +5,8 @@ using UnityEngine;
 //Controls the growth sphere effect which emerges from Homing Pearls when they are activated 
 public class GrowthSphere : MonoBehaviour {
     MeshRenderer sRenderer;
+    MeshRenderer invertedSRenderer;
+    LerpMaterial inSphereLerper;
     LerpScale scaler;
     public bool growing;
     public float scaleSpeed = 0.5f;
@@ -14,18 +16,31 @@ public class GrowthSphere : MonoBehaviour {
     void Awake()
     {
         sRenderer = GetComponent<MeshRenderer>();
+        invertedSRenderer = transform.GetChild(0).GetComponent<MeshRenderer>();
+        inSphereLerper = invertedSRenderer.GetComponent<LerpMaterial>();
         scaler = GetComponent<LerpScale>();
     }
 
     void Start ()
     {
         sRenderer.enabled = false;
-	}
+        invertedSRenderer.enabled = false;
+    }
     
     void Update()
     {
         if (growing)
         {
+            //when scaler distance closing
+            if(scaler.distLeft < 3)
+            {
+                //start fading inverted sphere
+                if(inSphereLerper.lerpingMat == false && invertedSRenderer.enabled)
+                {
+                    inSphereLerper.Lerp(inSphereLerper.endValue, inSphereLerper.lerpSpeed);
+                }
+            }
+
             if(scaler.lerping == false)
             {
                 ResetSphere();
@@ -38,6 +53,7 @@ public class GrowthSphere : MonoBehaviour {
     {
         objScaleSpeed = speedToScaleOthers;
         sRenderer.enabled = true;
+        invertedSRenderer.enabled = true;
         scaler.SetScaler(scaleSpeed, transform.localScale * radiusMultiplier);
         growing = true;
     }
@@ -47,6 +63,7 @@ public class GrowthSphere : MonoBehaviour {
     {
         transform.localScale = scaler.origScale;
         sRenderer.enabled = false;
+        invertedSRenderer.enabled = false;
         growing = false;
     }
     

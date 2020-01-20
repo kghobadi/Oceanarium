@@ -39,7 +39,11 @@ public class CameraFacingBillboard : MonoBehaviour
         //uses own gravity for up axis
         if (hasGravityBody)
         {
-            transform.LookAt(playerCam.transform.position, gravBody.GetUp());
+            //Quaternion origRot = transform.rotation;
+            //transform.LookAt(playerCam.transform.position, gravBody.GetUp());
+            //Quaternion newRot = transform.rotation;
+            //manually set x rot value to t look at z value
+            //transform.rotation = new Quaternion(newRot.z, newRot.y, origRot.z, newRot.w);
         }
         //normal, uses player gravity body for Look at function 
         else
