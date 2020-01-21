@@ -539,7 +539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   growing: 0
-  scaleSpeed: 0.2
+  scaleSpeed: 0.4
   radiusMultiplier: 120
 --- !u!114 &114467938202356336
 MonoBehaviour:
