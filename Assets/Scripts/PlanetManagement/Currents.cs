@@ -26,7 +26,9 @@ public class Currents : AudioHandler {
     [Tooltip("Check if ruins activation turns on this Current")]
     public bool ruinActivates;
     ParticleSystem ribbons;
+    public ParticleSystem explosion;
     public int pearlsNecessary;
+    public GameObject[] currentPillars;
     public List<GameObject> activePearls = new List<GameObject>();
     public MeshRenderer currentBubble;
     public Material silentMat, activeMat;
@@ -58,6 +60,10 @@ public class Currents : AudioHandler {
     {
         entrance = transform.GetChild(0);
         endPoint = transform.GetChild(1);
+        for (int i = 0; i < currentPillars.Length; i++)
+        {
+            currentPillars[i].GetComponent<MeshRenderer>().material = silentMat;
+        }
         if (playerActivates)
         {
             ribbons.Play();
@@ -107,6 +113,13 @@ public class Currents : AudioHandler {
             }
         }
         
+    }
+
+    //called by MoveToCurrentPearl
+    public void ActivatePillar(GameObject pillar, GameObject pearl)
+    {
+        pillar.GetComponent<MeshRenderer>().material = activeMat;
+        activePearls.Add(pearl);
     }
 
     public void OnTriggerEnter(Collider other)
@@ -159,7 +172,11 @@ public class Currents : AudioHandler {
             if (ribbons.isPlaying)
                 ribbons.Stop();
         }
-      
+        //play explosion
+        if (explosion)
+        {
+            explosion.Play();
+        }
 
         //activated by MoveToCurrentPearls 
         if(!playerActivates && !ruinActivates)
@@ -167,11 +184,11 @@ public class Currents : AudioHandler {
             //play sound + cinematic
             cinematicManager.PlayTimeline();
             PlaySound(activationSound, 1f);
-
-            for(int i = 0; i < activePearls.Count; i++)
-            {
-                activePearls[i].SetActive(false);
-            }
+        }
+        //also play this sound 
+        if (playerActivates)
+        {
+            PlaySound(activationSound, 1f);
         }
     }
 

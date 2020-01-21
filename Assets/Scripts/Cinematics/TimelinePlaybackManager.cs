@@ -17,6 +17,7 @@ public class TimelinePlaybackManager : MonoBehaviour {
 	[Header("Player Input Settings")]
 	public KeyCode interactKey;
 	public bool disablePlayerInput = false;
+    public bool zerosPlayerVelocity;
 	private PlayerController inputController;
 
 	[Header("Player Timeline Position")]
@@ -108,6 +109,12 @@ public class TimelinePlaybackManager : MonoBehaviour {
 			playableDirector.Play ();
 
 		}
+
+        //zero player vel
+        if (zerosPlayerVelocity)
+        {
+            inputController.playerRigidbody.velocity = Vector3.zero;
+        }
 
         //reset guardian AI for this cinematic
         if (resetGuardianBehavior)

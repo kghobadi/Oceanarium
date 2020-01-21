@@ -34,6 +34,7 @@ public class HomingPearl : AudioHandler {
     [Tooltip("Pillar to light up")]
     public GameObject pillar;
     public Ruins ruin;
+    public bool resting;
 
     [Header("Sounds")]
     public AudioClip activationSound;
@@ -97,18 +98,18 @@ public class HomingPearl : AudioHandler {
         //activated, but has arrived at currentStream   
         if (activated && movement.moving == false)
         {
-            if (orbital.orbiting == false)
+            //moves pearl to top of current Pillar 
+            if (resting == false)
             {
-                //grav.enabled = false;
-                orbital.planetToOrbit = currentStream;
-                orbital.orbiting = true;
-                currentScript.activePearls.Add(gameObject);
-                RandomizePitch(pitchRange.x, pitchRange.y);
+                currentScript.ActivatePillar(pillar, gameObject);
+                transform.position = pillar.transform.GetChild(0).position;
+                grav.enabled = false;
+                resting = true;
             }
         }
 
         //while orbiting play orbital sound
-        if (orbital.orbiting)
+        if (resting)
         {
             if (myAudioSource.isPlaying == false)
             {
@@ -136,14 +137,14 @@ public class HomingPearl : AudioHandler {
                 popLights.Play();
 
                 //pillar to light up
-                if(pillar != null)
+                if(pearlType == PearlType.GROWTHSPHERE && pillar != null)
                 {
                     ruin.ActivatePillar(pillar);
                 }                
                 //i must go to the current!
-                if(currentStream != null)
+                if(pearlType == PearlType.MOVETOCURRENT)
                 {
-                    movement.MoveTo(currentStream.position, movement.moveSpeed);
+                    movement.MoveTo(pillar.transform.position, movement.moveSpeed);
                 }
                 //I must bring my environment to LIFE!
                 if(objectsToGrow.Length > 0)
