@@ -41,6 +41,7 @@ public class CameraController : MonoBehaviour {
     [Header("Masks")]
     public LayerMask spriteFadeMask;
     public LayerMask obstructionMask;
+    public List<int> obstructionLayers = new List<int>();  
 
     [Header("FOV")]
     public bool lerpingFOV;
@@ -197,7 +198,16 @@ public class CameraController : MonoBehaviour {
             Debug.Log("hit ground, zoomng in");
             //anytime we hit the planet ground, zoome out 
             if (heightFromPlayer > heightMin)
-                ZoomIn(-0.15f);
+                ZoomIn(-0.05f);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        //zoom in if camera is collding with stuff we dont like
+        if (obstructionLayers.Contains(other.gameObject.layer))
+        {
+            ZoomIn(-0.05f);
         }
     }
 
@@ -236,6 +246,8 @@ public class CameraController : MonoBehaviour {
             }
         }
     }
+
+ 
 
     //called to lerp cam fov after transitions 
     public void LerpFOV(float desiredFOV, float lerpLength)

@@ -21,6 +21,7 @@ public class PlayerController : AudioHandler
     [Header("Movement Speeds & Vars")]
     //general movement
     [HideInInspector] public float horizontalMovement;
+    [HideInInspector] public float forwardMovement;
     [HideInInspector] public float verticalMovement;
     Vector3 force;
     float camDist;
@@ -88,9 +89,6 @@ public class PlayerController : AudioHandler
     {
         if (canMove)
         {
-            //for moving up and down
-            ChangeElevation();
-
             //check for sprinting input
             SwimInputs();
 
@@ -135,22 +133,23 @@ public class PlayerController : AudioHandler
         //create empty force vector for this frame 
         force = Vector3.zero;
 
-        // 2 axes 
+        // 3 axes 
         horizontalMovement = Input.GetAxis("Horizontal");
-        verticalMovement = Input.GetAxis("Vertical");
+        forwardMovement = Input.GetAxis("Vertical");
+        verticalMovement = Input.GetAxis("Elevation");
         //dist from camera
         camDist = Vector3.Distance(playerSpriteObj.transform.position, cameraT.position);
 
         //VERTICAL force checks
-        if (verticalMovement > 0)
+        if (forwardMovement > 0)
         {
             //add forward force 
-            force += transform.forward * verticalMovement;
+            force += transform.forward * forwardMovement;
         }
-        if (verticalMovement < 0)
+        if (forwardMovement < 0)
         {
             //add backward force
-            force += transform.forward * verticalMovement;
+            force += transform.forward * forwardMovement;
         }
 
         //HORIZONTAL force checks
@@ -165,8 +164,9 @@ public class PlayerController : AudioHandler
             force += transform.right * horizontalMovement;
         }
 
+
         //Sound checks
-        if (Mathf.Abs(horizontalMovement) > 0 || Mathf.Abs(verticalMovement) > 0)
+        if (Mathf.Abs(horizontalMovement) > 0 || Mathf.Abs(forwardMovement) > 0 || Mathf.Abs(verticalMovement) > 0)
         {
             swimStepTimer -= Time.deltaTime;
             if(swimStepTimer < 0)
@@ -187,18 +187,25 @@ public class PlayerController : AudioHandler
 
         //set animator floats for blend tree
         animator.characterAnimator.SetFloat("Move X", horizontalMovement);
-        animator.characterAnimator.SetFloat("Move Z", verticalMovement);
+        animator.characterAnimator.SetFloat("Move Z", forwardMovement);
+        animator.characterAnimator.SetFloat("Move Y", verticalMovement);
 
         //Animator checks 
         //IDLE
-        if (verticalMovement == 0 && horizontalMovement == 0)
+        if (forwardMovement == 0 && horizontalMovement == 0 && verticalMovement == 0)
         {
             moveState = MoveStates.IDLE;
             //diver look forward right
             animator.SetAnimator("idle");
         }
-        //swimming
-        else
+        //elevating
+        else if (verticalMovement != 0)
+        {
+            moveState = MoveStates.SWIMMING;
+            animator.SetAnimator("elevating");
+        }
+        //swimming 
+        else if(verticalMovement == 0 && (forwardMovement != 0 || horizontalMovement != 0))
         {
             moveState = MoveStates.SWIMMING;
             animator.SetAnimator("swimming");
@@ -207,32 +214,17 @@ public class PlayerController : AudioHandler
         //apply force 
         {
             //add twice the force when you are slow
-            if (playerRigidbody.velocity.magnitude < (maxSpeed / 2))
-            {
-                playerRigidbody.AddForce(force * swimSpeed * 2);
-            }
-            //only add force if velocity is less than max move speed 
-            if (playerRigidbody.velocity.magnitude > (maxSpeed / 2) && playerRigidbody.velocity.magnitude < maxSpeed)
+            if (playerRigidbody.velocity.magnitude < maxSpeed)
             {
                 playerRigidbody.AddForce(force * swimSpeed);
             }
+
+            //ELEVATION force 
+            playerRigidbody.AddForce(transform.up * verticalMovement * elevateSpeed);
         }
 
     }
-
-    void ChangeElevation()
-    {
-        //left click to move up
-        if (Input.GetMouseButton(0))
-        {
-            playerRigidbody.AddForce(transform.up * elevateSpeed);
-        }
-        //right click to move down
-        if (Input.GetMouseButton(1))
-        {
-            playerRigidbody.AddForce(-transform.up * elevateSpeed);
-        }
-    }
+    
 
     void TakeJumpInput()
     {
@@ -338,18 +330,18 @@ public class PlayerController : AudioHandler
     void CinemachineMovement()
     {
         //VERTICAL force checks
-        if (verticalMovement > 0)
+        if (forwardMovement > 0)
         {
             //add forward force 
             //on that close up bottom rig
             if (camDist < 8)
             {
-                force += (-playerSpriteObj.transform.up * 2 + -playerSpriteObj.transform.forward) * verticalMovement;
+                force += (-playerSpriteObj.transform.up * 2 + -playerSpriteObj.transform.forward) * forwardMovement;
             }
             //on the top rigs
             else
             {
-                force += (playerSpriteObj.transform.up / 3 + -playerSpriteObj.transform.forward) * verticalMovement;
+                force += (playerSpriteObj.transform.up / 3 + -playerSpriteObj.transform.forward) * forwardMovement;
             }
         }
 

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LerpScale : MonoBehaviour {
     [Header("Lerp scale")]
+    [Tooltip("Check this to use linear movetowards instead of Lerp")]
+    public bool moveTowardsOrLerp;
     [Tooltip("These 3 variables get set when the Set Scaler function is called, do not set them")]
     public bool lerping;
     public float lerpSpeed;
@@ -33,8 +35,18 @@ public class LerpScale : MonoBehaviour {
     {
         if (lerping)
         {
-            //actually lerping scale 
-            transform.localScale = Vector3.Lerp(transform.localScale, desiredScale, Time.deltaTime * lerpSpeed);
+            //move towards
+            if (moveTowardsOrLerp)
+            {
+                //actually moving towards scale 
+                transform.localScale = Vector3.MoveTowards(transform.localScale, desiredScale, Time.deltaTime * lerpSpeed);
+            }
+            //lerp
+            else
+            {
+                //actually lerping scale 
+                transform.localScale = Vector3.Lerp(transform.localScale, desiredScale, Time.deltaTime * lerpSpeed);
+            }
 
             //makes this visible to other scripts 
             distLeft = Vector3.Distance(transform.localScale, desiredScale);

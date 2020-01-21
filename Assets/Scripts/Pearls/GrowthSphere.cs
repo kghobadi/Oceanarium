@@ -12,6 +12,7 @@ public class GrowthSphere : MonoBehaviour {
     public float scaleSpeed = 0.5f;
     float objScaleSpeed;
     public float radiusMultiplier = 10f;
+    public float distToStartFadingSphere = 3f;
 
     void Awake()
     {
@@ -32,11 +33,12 @@ public class GrowthSphere : MonoBehaviour {
         if (growing)
         {
             //when scaler distance closing
-            if(scaler.distLeft < 3)
+            if(scaler.distLeft < distToStartFadingSphere)
             {
                 //start fading inverted sphere
                 if(inSphereLerper.lerpingMat == false && invertedSRenderer.enabled)
                 {
+                    //start fading effect
                     inSphereLerper.Lerp(inSphereLerper.endValue, inSphereLerper.lerpSpeed);
                 }
             }
@@ -63,8 +65,14 @@ public class GrowthSphere : MonoBehaviour {
     {
         transform.localScale = scaler.origScale;
         sRenderer.enabled = false;
-        invertedSRenderer.enabled = false;
         growing = false;
+
+        //check if inSphere still lerping
+        //if (inSphereLerper.lerpingMat)
+        //{
+        //    //set parent null so it can finish it's fading effect
+        //    inSphereLerper.transform.SetParent(null);
+        //}
     }
     
     void OnTriggerEnter(Collider other)
