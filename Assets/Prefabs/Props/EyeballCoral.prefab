@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114426630878797168}
   - component: {fileID: 114340255752406580}
   - component: {fileID: 114943019162630860}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EyeballCoral
   m_TagString: Prop
   m_Icon: {fileID: 0}
@@ -121,6 +121,7 @@ MonoBehaviour:
   lerping: 0
   lerpSpeed: 0
   desiredScale: {x: 0, y: 0, z: 0}
+  distNecToStopLerp: 0.01
   origScale: {x: 0, y: 0, z: 0}
   setScaleAtStart: 1
   startMultiplier: 0.01

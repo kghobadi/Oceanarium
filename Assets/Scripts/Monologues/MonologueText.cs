@@ -4,20 +4,25 @@ using UnityEngine.UI;
 using System;
 using System.Collections.Generic;
 using TMPro;
+using Cameras;
 
 public class MonologueText : MonoBehaviour
 {
     //player refs
     GameObject player;
     PlayerController pc;
+    CameraController playerCam;
+    CameraManager camManager;
     [Tooltip("Character or creature who speaks this monologue")]
     public GameObject hostObj;
-    [Tooltip("UI panel which holds this monologue")]
-    public FadeUI textPanel; // I often parent all of a character's monologues to a single Panel 
+    [Tooltip("Camera to use for Monologue")]
+    public GameCamera speakerCam;
     [Tooltip("Check this to start at start")]
     public bool enableAtStart;
     [Tooltip("Check this to lock your player's movement")]
     public bool lockPlayer;
+    [Tooltip("Automatically sets player to this spot")]
+    public Transform playerSpot;
     //Audio
     SpeakerSound speakerAudio;
     //animator
@@ -60,7 +65,10 @@ public class MonologueText : MonoBehaviour
         //grab refs
         player = GameObject.FindGameObjectWithTag("Player");
         pc = player.GetComponent<PlayerController>();
+        playerCam = Camera.main.GetComponent<CameraController>();
+        camManager = FindObjectOfType<CameraManager>();
         theText = GetComponent<Text>();
+
         if(theText == null)
         {
             usesTMP = true;
@@ -93,12 +101,6 @@ public class MonologueText : MonoBehaviour
         //speaker is typing out message
         if (isTyping)
         {
-            //player skips line of text to completion
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                CompleteTextLine(textLines[currentLine]);
-            }
-
             //check for player
             if (player != null)
             {
@@ -113,10 +115,10 @@ public class MonologueText : MonoBehaviour
         //player is waiting for next message
         if (waiting)
         {
-            //player skips line of text to completion
+            //player skips monologue & leaves
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                ProgressLine();
+                ResetMonologue();
             }
         }
     }
@@ -129,7 +131,7 @@ public class MonologueText : MonoBehaviour
         if (currentLine >= endAtLine)
         {
             hasFinished = true;
-            DisableMonologue();
+            ResetMonologue();
         }
         else
         {
@@ -142,12 +144,7 @@ public class MonologueText : MonoBehaviour
     //Coroutine that types out each letter individually
     private IEnumerator TextScroll(string lineOfText) 
     {
-        if (lockPlayer)
-        {
-            pc.canMove = false;
-            pc.canJump = false;
-        }
-
+        // set first letter
         int letter = 0;
         if (usesTMP)
             the_Text.text = "";
@@ -224,15 +221,10 @@ public class MonologueText : MonoBehaviour
 
             StartCoroutine(WaitToStart());
         }
-
+        //starts now
         else
         {
-            if (usesTMP)
-                the_Text.enabled = true;
-            else
-                theText.enabled = true;
-            textPanel.FadeIn();
-            StartCoroutine(TextScroll(textLines[currentLine]));
+            StartMonologue();
         }
     }
 
@@ -240,15 +232,41 @@ public class MonologueText : MonoBehaviour
     {
         yield return new WaitForSeconds(timeUntilStart);
 
+        StartMonologue();
+    }
+
+    //actually starts
+    void StartMonologue()
+    {
         if (usesTMP)
             the_Text.enabled = true;
         else
             theText.enabled = true;
 
-        StartCoroutine(TextScroll(textLines[currentLine]));
-        
-    }
+        //enable speaker cam, disable cam controller
+        camManager.Set(speakerCam);
+        playerCam.enabled = false;
+        //lock player movement
+        if (lockPlayer)
+        {
+            pc.canMove = false;
+            pc.canJump = false;
+            //NO VELOCIT
+            pc.playerRigidbody.velocity = Vector3.zero;
+        }
 
+        //set player pos
+        if (playerSpot)
+        {
+            pc.transform.position = playerSpot.position;
+        }
+
+        //set player to idle anim
+        pc.animator.SetAnimator("idle");
+
+        StartCoroutine(TextScroll(textLines[currentLine]));
+    }
+    
     public void ResetMonologue()
     {
         StopAllCoroutines();
@@ -263,15 +281,13 @@ public class MonologueText : MonoBehaviour
             the_Text.enabled = false;
         else
             theText.enabled = false;
-
-        textPanel.FadeOut();
+        
         speakerAnimator.SetAnimator("idle");
-        //start new monologues 
-        for(int i = 0; i < monologuesToEnable.Length; i++)
-        {
-            monologuesToEnable[i].EnableMonologue();
-        }
 
+        //disable speaker cam, enable cam controller
+        camManager.Disable(speakerCam);
+        playerCam.enabled = true;
+        //unlock player
         if (lockPlayer)
         {
             pc.canMove = true;
