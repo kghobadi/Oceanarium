@@ -28,7 +28,7 @@ MonoBehaviour:
     CenterLine: 0
     SuperscriptOffset: 0
     SubscriptOffset: 0
-    SubSize: 0
+    SubSize: 0.25
     Underline: 0
     UnderlineThickness: 0
     strikethrough: 0

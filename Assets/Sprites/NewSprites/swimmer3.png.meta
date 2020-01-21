@@ -1,12 +1,95 @@
 fileFormatVersion: 2
 guid: a8e8b6462d5903841bf0f1f3da13f7ab
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: swimmer3_0
+    21300002: swimmer3_1
+    21300004: swimmer3_2
+    21300006: swimmer3_3
+    21300008: swimmer3_4
+    21300010: swimmer3_5
+    21300012: swimmer3_6
+    21300014: swimmer3_7
+    21300016: swimmer3_8
+    21300018: swimmer3_9
+    21300020: swimmer3_10
+    21300022: swimmer3_11
+    21300024: swimmer3_12
+    21300026: swimmer3_13
+    21300028: swimmer3_14
+    21300030: swimmer3_15
+    21300032: swimmer3_16
+    21300034: swimmer3_17
+    21300036: swimmer3_18
+    21300038: swimmer3_19
+    21300040: swimmer3_20
+    21300042: swimmer3_21
+    21300044: swimmer3_22
+    21300046: swimmer3_23
+    21300048: swimmer3_24
+    21300050: swimmer3_25
+    21300052: swimmer3_26
+    21300054: swimmer3_27
+    21300056: swimmer3_28
+    21300058: swimmer3_29
+    21300060: swimmer3_30
+    21300062: swimmer3_31
+    21300064: swimmer3_32
+    21300066: swimmer3_33
+    21300068: swimmer3_34
+    21300070: swimmer3_35
+    21300072: swimmer3_36
+    21300074: swimmer3_37
+    21300076: swimmer3_38
+    21300078: swimmer3_39
+    21300080: swimmer3_40
+    21300082: swimmer3_41
+    21300084: swimmer3_42
+    21300086: swimmer3_43
+    21300088: swimmer3_44
+    21300090: swimmer3_45
+    21300092: swimmer3_46
+    21300094: swimmer3_47
+    21300096: swimmer3_48
+    21300098: swimmer3_49
+    21300100: swimmer3_50
+    21300102: swimmer3_51
+    21300104: swimmer3_52
+    21300106: swimmer3_53
+    21300108: swimmer3_54
+    21300110: swimmer3_55
+    21300112: swimmer3_56
+    21300114: swimmer3_57
+    21300116: swimmer3_58
+    21300118: swimmer3_59
+    21300120: swimmer3_60
+    21300122: swimmer3_61
+    21300124: swimmer3_62
+    21300126: swimmer3_63
+    21300128: swimmer3_64
+    21300130: swimmer3_65
+    21300132: swimmer3_66
+    21300134: swimmer3_67
+    21300136: swimmer3_68
+    21300138: swimmer3_69
+    21300140: swimmer3_70
+    21300142: swimmer3_71
+    21300144: swimmer3_72
+    21300146: swimmer3_73
+    21300148: swimmer3_74
+    21300150: swimmer3_75
+    21300152: swimmer3_76
+    21300154: swimmer3_77
+    21300156: swimmer3_78
+    21300158: swimmer3_79
+    21300160: swimmer3_80
+    21300162: swimmer3_81
+    21300164: swimmer3_82
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -34,13 +117,13 @@ TextureImporter:
     filterMode: -1
     aniso: -1
     mipBias: -100
-    wrapU: -1
-    wrapV: -1
+    wrapU: 1
+    wrapV: 1
     wrapW: -1
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -49,9 +132,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   maxTextureSizeSet: 0
@@ -69,13 +152,1706 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: swimmer3_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 9648
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 431c7bfd5fd56594d802d31ccebdd79e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_1
+      rect:
+        serializedVersion: 2
+        x: 1164
+        y: 9648
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a63f0bc9db01984e852626b959abbe5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_2
+      rect:
+        serializedVersion: 2
+        x: 2328
+        y: 9648
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25e9922ccca81c94e98c413b15d68f0a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_3
+      rect:
+        serializedVersion: 2
+        x: 3492
+        y: 9648
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6ef70d8649d7b846b33338e08c690a1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_4
+      rect:
+        serializedVersion: 2
+        x: 4656
+        y: 9648
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e612599c9b793944db624e9bae31087f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_5
+      rect:
+        serializedVersion: 2
+        x: 5820
+        y: 9648
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52ad65a5df0cf5f4fa48ee821cc718b1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_6
+      rect:
+        serializedVersion: 2
+        x: 6984
+        y: 9648
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8277d4d92c843f34083af202824fa85b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_7
+      rect:
+        serializedVersion: 2
+        x: 8148
+        y: 9648
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 706d5555c17aff34b9c5aa8ab9636742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_8
+      rect:
+        serializedVersion: 2
+        x: 9312
+        y: 9648
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64341dbe9504e37429368811c30b161b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8576
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce93a0af7cc702e4e9a2fb4dcc1af6c6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_10
+      rect:
+        serializedVersion: 2
+        x: 1164
+        y: 8576
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c26f9abd427bf984a82e9b8fbde995b3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_11
+      rect:
+        serializedVersion: 2
+        x: 2328
+        y: 8576
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0a0df7a5cb7e9f4c8d0cb25167822da
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_12
+      rect:
+        serializedVersion: 2
+        x: 3492
+        y: 8576
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d3d3ae3b78c39d49927fb14262c8486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_13
+      rect:
+        serializedVersion: 2
+        x: 4656
+        y: 8576
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c9ab1a1471bbbf44800b57e81ad9b67
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_14
+      rect:
+        serializedVersion: 2
+        x: 5820
+        y: 8576
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b49ab8a44ab315b4e9c14d91c47b324c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_15
+      rect:
+        serializedVersion: 2
+        x: 6984
+        y: 8576
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ac3e83f69bf4d443be411690d4dd2e6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_16
+      rect:
+        serializedVersion: 2
+        x: 8148
+        y: 8576
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 366c4bfec5a81fa4d933ea8516256b3c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_17
+      rect:
+        serializedVersion: 2
+        x: 9312
+        y: 8576
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01250052c4ff5f74083b45e9a104eccb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 7504
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6af8ef533452cf04b89b7132fa7ecf6f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_19
+      rect:
+        serializedVersion: 2
+        x: 1164
+        y: 7504
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 596b374fac1950b4ca316b09535af93c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_20
+      rect:
+        serializedVersion: 2
+        x: 2328
+        y: 7504
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44162e978f82a014594f8d1bcab5a9b1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_21
+      rect:
+        serializedVersion: 2
+        x: 3492
+        y: 7504
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb50378b1ca19ad4fbed0650af532413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_22
+      rect:
+        serializedVersion: 2
+        x: 4656
+        y: 7504
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6160b1b57477eb643b4168101041442a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_23
+      rect:
+        serializedVersion: 2
+        x: 5820
+        y: 7504
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 880ef3f4dfb2b2b4883611566fe0d693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_24
+      rect:
+        serializedVersion: 2
+        x: 6984
+        y: 7504
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d95f9b192c95554199a09aed9cbced3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_25
+      rect:
+        serializedVersion: 2
+        x: 8148
+        y: 7504
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31022a45a7d2b214ba3ace84e5806bef
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_26
+      rect:
+        serializedVersion: 2
+        x: 9312
+        y: 7504
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2570f601d6e0f44297b56ebf580860e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6432
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 261cff57458323d498e390b492cdea35
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_28
+      rect:
+        serializedVersion: 2
+        x: 1164
+        y: 6432
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1130bd507c68dc46a6266202dec5c37
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_29
+      rect:
+        serializedVersion: 2
+        x: 2328
+        y: 6432
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 655af3d476b05fe40bd1f23968b4ab82
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_30
+      rect:
+        serializedVersion: 2
+        x: 3492
+        y: 6432
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 272f8e1ff4d982e41ae8ed1c17894bca
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_31
+      rect:
+        serializedVersion: 2
+        x: 4656
+        y: 6432
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21b97bff8d26263438fe54a38bb46845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_32
+      rect:
+        serializedVersion: 2
+        x: 5820
+        y: 6432
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9b4d377b288c7f46b067a45e169020d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_33
+      rect:
+        serializedVersion: 2
+        x: 6984
+        y: 6432
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba6f8c5285d1eef449a318ee5ca6a5f3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_34
+      rect:
+        serializedVersion: 2
+        x: 8148
+        y: 6432
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d502d3499cf0af4c98f138487a3969e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_35
+      rect:
+        serializedVersion: 2
+        x: 9312
+        y: 6432
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4ba26c9364f94b469e7b19bebea4696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5360
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64a5dab01d60e9a499891a5d313c082c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_37
+      rect:
+        serializedVersion: 2
+        x: 1164
+        y: 5360
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e04aca9496b2b394c8c0b589bcf68036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_38
+      rect:
+        serializedVersion: 2
+        x: 2328
+        y: 5360
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2529f784d4fc14040bde6fc39ad57240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_39
+      rect:
+        serializedVersion: 2
+        x: 3492
+        y: 5360
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5088a3d2c7b5094d8499084d8033d0f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_40
+      rect:
+        serializedVersion: 2
+        x: 4656
+        y: 5360
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0316b6d825b8278489b9497d37df140c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_41
+      rect:
+        serializedVersion: 2
+        x: 5820
+        y: 5360
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46643c9276fb15a429f9a7093ac57bf2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_42
+      rect:
+        serializedVersion: 2
+        x: 6984
+        y: 5360
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f0b9644181dd8f46b151ec65621d12b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_43
+      rect:
+        serializedVersion: 2
+        x: 8148
+        y: 5360
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af089e80629991141b54793ef1a8031e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_44
+      rect:
+        serializedVersion: 2
+        x: 9312
+        y: 5360
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fffd8a880e6cba46abc86cf3c93d520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_45
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4288
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4de673b7aa244144b83fe79dfbcd6e8c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_46
+      rect:
+        serializedVersion: 2
+        x: 1164
+        y: 4288
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7311a07431a65c542ae26b4fa075f7b0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_47
+      rect:
+        serializedVersion: 2
+        x: 2328
+        y: 4288
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 963b3bc73305eb64ab00f0dc110c859c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_48
+      rect:
+        serializedVersion: 2
+        x: 4656
+        y: 4288
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7a6e17f93de310428e62f560b089fe6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_49
+      rect:
+        serializedVersion: 2
+        x: 5820
+        y: 4288
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95cb320af30a6be41a7c217672e210b7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_50
+      rect:
+        serializedVersion: 2
+        x: 6984
+        y: 4288
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a23b7985012d1e847b542f07f7f73448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_51
+      rect:
+        serializedVersion: 2
+        x: 8148
+        y: 4288
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6b4c7d2030f87f41a19e19f7752e5da
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_52
+      rect:
+        serializedVersion: 2
+        x: 9312
+        y: 4288
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90534a09c67ff844cb34a3380950bf6f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_53
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3216
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe7845859307ffe489655a453dee1f6b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_54
+      rect:
+        serializedVersion: 2
+        x: 1164
+        y: 3216
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adeceb0127cc8794da332c324d1b0b99
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_55
+      rect:
+        serializedVersion: 2
+        x: 2328
+        y: 3216
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5980545758fbfee478cf5d9b82683faa
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_56
+      rect:
+        serializedVersion: 2
+        x: 3492
+        y: 3216
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f68e7e20c237d434ea0fec11e1d10935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_57
+      rect:
+        serializedVersion: 2
+        x: 4656
+        y: 3216
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3691f55fd1fe4e84c8ee71a2c401414e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_58
+      rect:
+        serializedVersion: 2
+        x: 5820
+        y: 3216
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc20da4e152d17f4da1d30cd6685c01c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_59
+      rect:
+        serializedVersion: 2
+        x: 6984
+        y: 3216
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffd2cabd83e0096419a2931f150a13d8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_60
+      rect:
+        serializedVersion: 2
+        x: 8148
+        y: 3216
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c693ea1c0a014f64882109117fbe506a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_61
+      rect:
+        serializedVersion: 2
+        x: 9312
+        y: 3216
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cf9c31ef2013474bb3db73a8f439ee2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_62
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2144
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68406cd0f846e874dbe336a71fc8990c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_63
+      rect:
+        serializedVersion: 2
+        x: 1164
+        y: 2144
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db1b22f2089f9264984c7eac68aa2214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_64
+      rect:
+        serializedVersion: 2
+        x: 2328
+        y: 2144
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab5a5866e8df8284db2be12aa84d05d3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_65
+      rect:
+        serializedVersion: 2
+        x: 3492
+        y: 2144
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 974b70ce148a08a409432eb224bc6376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_66
+      rect:
+        serializedVersion: 2
+        x: 4656
+        y: 2144
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25f3da9f42fb0de41a24b483dc31f467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_67
+      rect:
+        serializedVersion: 2
+        x: 5820
+        y: 2144
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be53a22648f9d64469fa3273ad701805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_68
+      rect:
+        serializedVersion: 2
+        x: 6984
+        y: 2144
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33a5c89193ec1f84fadfccf00e0a21f4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_69
+      rect:
+        serializedVersion: 2
+        x: 8148
+        y: 2144
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3227ff640d466464bbb72c18c7770c8c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_70
+      rect:
+        serializedVersion: 2
+        x: 9312
+        y: 2144
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2052191868c13f649a89d68ec9388001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_71
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1072
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 690979842b3f97040bf9161b898144b7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_72
+      rect:
+        serializedVersion: 2
+        x: 1164
+        y: 1072
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bddbf9296ae893b4fa67e44990f743a8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_73
+      rect:
+        serializedVersion: 2
+        x: 2328
+        y: 1072
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9439572613f0f3e438a06b5f1eb974bf
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_74
+      rect:
+        serializedVersion: 2
+        x: 3492
+        y: 1072
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b37686340b9ad9a48be2564779721a56
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_75
+      rect:
+        serializedVersion: 2
+        x: 4656
+        y: 1072
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0edddb32505294746ace85f61b8e12b5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_76
+      rect:
+        serializedVersion: 2
+        x: 5820
+        y: 1072
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c48f65061d4f0874199daa590b4960c5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_77
+      rect:
+        serializedVersion: 2
+        x: 6984
+        y: 1072
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cf9eb27967aae84789b84f9b2a7aa40
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_78
+      rect:
+        serializedVersion: 2
+        x: 8148
+        y: 1072
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fb0a242e3097f148a8f117f06cddd2b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_79
+      rect:
+        serializedVersion: 2
+        x: 9312
+        y: 1072
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f7377d0b8de69b4b8692fc513f59b90
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_80
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afe67aa81c0c37146a6dc7bc49b7d865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_81
+      rect:
+        serializedVersion: 2
+        x: 1164
+        y: 0
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab228e06d1bee804e912ad012dd95fcc
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swimmer3_82
+      rect:
+        serializedVersion: 2
+        x: 2328
+        y: 0
+        width: 1164
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c439870cb0b97447bbca7f8a5ed45b2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: ef29b6a7d8fa36b4c8780314797618d7
     vertices: []
     indices: 
     edges: []
