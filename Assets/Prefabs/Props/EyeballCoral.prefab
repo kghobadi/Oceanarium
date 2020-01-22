@@ -21,12 +21,15 @@ GameObject:
   - component: {fileID: 4467691589745944}
   - component: {fileID: 212896385004799124}
   - component: {fileID: 95689064164336426}
-  - component: {fileID: 54399017576041922}
   - component: {fileID: 65013458350750646}
   - component: {fileID: 136895595016647222}
-  - component: {fileID: 114426630878797168}
   - component: {fileID: 114340255752406580}
   - component: {fileID: 114943019162630860}
+  - component: {fileID: 54046603687099584}
+  - component: {fileID: 65124840639405650}
+  - component: {fileID: 136277159266319674}
+  - component: {fileID: 114165042926367204}
+  - component: {fileID: 114769221199527218}
   m_Layer: 10
   m_Name: EyeballCoral
   m_TagString: Prop
@@ -42,12 +45,12 @@ Transform:
   m_GameObject: {fileID: 1350337349215272}
   m_LocalRotation: {x: 0.5117057, y: 0.48801365, z: -0.48801365, w: 0.5117057}
   m_LocalPosition: {x: 0.63410646, y: -0.060999755, z: 0.07591915}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.030131271, y: 0.030131327, z: 0.030131336}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &54399017576041922
+--- !u!54 &54046603687099584
 Rigidbody:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,6 +77,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.41, y: 8.120002, z: 0.20000005}
   m_Center: {x: 0, y: -0.000061035156, z: 0}
+--- !u!65 &65124840639405650
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1350337349215272}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.41, y: 8.120002, z: 0.20000005}
+  m_Center: {x: 0, y: -0.000061035156, z: 0}
 --- !u!95 &95689064164336426
 Animator:
   serializedVersion: 3
@@ -83,7 +98,7 @@ Animator:
   m_GameObject: {fileID: 1350337349215272}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 85362d7f1068a154a8dd1156d6245c1e, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5f7a0555ab08ac2438f2b7ecbc93ed9f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -92,6 +107,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114165042926367204
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1350337349215272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42947f603ad7eba40a501609da034343, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockRotation: 0
+  planets: []
+  smoothMultiplier: 1
+  overlapSphereRadius: 5
 --- !u!114 &114340255752406580
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -107,7 +137,7 @@ MonoBehaviour:
   planets: []
   smoothMultiplier: 1
   overlapSphereRadius: 5
---- !u!114 &114426630878797168
+--- !u!114 &114769221199527218
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,16 +145,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1350337349215272}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b3438be25cd83843a8d241f362b71fc, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ee61183c5013464ab17c81babd9c0f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lerping: 0
-  lerpSpeed: 0
-  desiredScale: {x: 0, y: 0, z: 0}
-  distNecToStopLerp: 0.01
-  origScale: {x: 0, y: 0, z: 0}
-  setScaleAtStart: 1
-  startMultiplier: 0.01
+  hasGravityBody: 1
 --- !u!114 &114943019162630860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -137,6 +161,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasGravityBody: 1
+--- !u!136 &136277159266319674
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1350337349215272}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 3.2050009
+  m_Height: 8.120002
+  m_Direction: 1
+  m_Center: {x: -0.000061035156, y: 0.000061035156, z: 0.000030517578}
 --- !u!136 &136895595016647222
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -185,7 +222,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 19089e5536963b048add581359b0964b, type: 3}
+  m_Sprite: {fileID: 21300064, guid: 8be8321ca15702c44bd2511f3657e453, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

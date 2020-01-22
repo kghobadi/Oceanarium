@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/Intro Galaxy.unity
-    guid: 8af3374d685dbc44089e863d27343986
+    path: Assets/Scenes/Intro Galaxy Kas.unity
+    guid: 3d3f9da9043789c4b9533d7ed6f031f4
   - enabled: 1
     path: Assets/Scenes/DiverTest.unity
     guid: 9b7e8a407e063a947a9384fdb33fc08e

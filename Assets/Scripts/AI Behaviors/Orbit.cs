@@ -5,7 +5,8 @@ using UnityEngine;
 public class Orbit : MonoBehaviour {
 
     public Transform planetToOrbit;
-
+    public bool waitToOrbit;
+    public float waitTime = 5f;
     public bool orbiting, orbitAtStart;
     public float orbitalSpeed;
 
@@ -40,6 +41,18 @@ public class Orbit : MonoBehaviour {
         {
             orbiting = true;
         }
+
+        //wait to start orbit 
+        if (waitToOrbit)
+        {
+            StartCoroutine(WaitToOrbit());
+        }
+    }
+
+    IEnumerator WaitToOrbit()
+    {
+        yield return new WaitForSeconds(waitTime);
+        orbiting = true;
     }
 
     void Update () {
