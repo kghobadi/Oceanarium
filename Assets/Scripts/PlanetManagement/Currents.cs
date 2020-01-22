@@ -143,24 +143,6 @@ public class Currents : AudioHandler {
         }
     }
 
-    public void OnTriggerStay(Collider other)
-    {
-        //if (currentActivated)
-        //{
-        //    if (other.gameObject.tag == "Player")
-        //    {
-        //        if (!ambientSource.isPlaying)
-        //            PlaySound(currentAmbience);
-
-        //        if (!hasEntered)
-        //        {
-        //            EnterCurrent();
-        //        }
-        //    }
-        //}
-      
-    }
-
     public void ActivateCurrent()
     {
         currentParticles.Play();
