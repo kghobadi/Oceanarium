@@ -6,28 +6,44 @@ public class Planter : AudioHandler {
     MeshRenderer myMR;
     CapsuleCollider capColl;
     MoveTowards movement;
-    Orbit orbital;
     GravityBody grav;
-    ParticleSystem fog;
+    ParticleSystem lure;
     ParticleSystem popLights;
 
-    [Header("Plant spawning")]
+    [Header("Planter Travel")]
+    [Tooltip("Determinations destination / activation when it arrives at final point")]
+    public PlanterType planterType;
+    public enum PlanterType
+    {
+        CURRENT, RUINS, FREEROAM,
+    }
+    [Tooltip("Check this to make me invisible on start")]
+    public bool disableOnStart;
     [Tooltip("Planet to add plants to")]
     public PlanetManager planetManager;
     [Tooltip("True once player activates my Homing Pearl")]
     public bool activated;
-    [Tooltip("Dest I will travel to before stopping.")]
-    public Transform pillarDest;
+    [Tooltip("Materials before & after activation")]
+    public Material silentMat, activeMat;
+    [Tooltip("Dests I will travel to before stopping.")]
+    public Transform[] travelPoints;
+    int travelPoint = 0;
+    bool finalPoint;
+    [Tooltip("Current script if I am going to Current")]
+    public Currents currents;
+    [Tooltip("Ruins script if i am going to Ruins")]
     public Ruins ruin;
+
+    [Header("Plant Spawning")]
     [Tooltip("Plant/prop to spawn")]
     public GameObject spawnObj;
     [Tooltip("Transform to parent spawned objects to ")]
     public Transform plantParent;
+    [Tooltip("Controls how often the planter will spawn")]
     public float spawnTimer, spawnFrequency = 0.5f;
     [Tooltip("Size multipliers for spawned objs")]
     public float minSizeMult, maxSizeMult;
-    [Tooltip("Materials before & after activation")]
-    public Material silentMat, activeMat;
+   
 
     [Tooltip("Only raycasts at Planet layer")]
     public LayerMask planetMask;
@@ -44,13 +60,17 @@ public class Planter : AudioHandler {
         //get all refs
         myMR = GetComponent<MeshRenderer>();
         myMR.material = silentMat;
+        if (disableOnStart)
+        {
+            myMR.enabled = false;
+        }
         capColl = GetComponent<CapsuleCollider>();
         movement = GetComponent<MoveTowards>();
-        orbital = GetComponent<Orbit>();
         grav = GetComponent<GravityBody>();
-        
-        popLights = transform.GetChild(0).GetComponent<ParticleSystem>();
-        fog = transform.GetChild(1).GetComponent<ParticleSystem>();
+
+        lure = transform.GetChild(0).GetComponent<ParticleSystem>();
+        popLights = transform.GetChild(1).GetComponent<ParticleSystem>();
+      
     }
 	
 	void Update ()
@@ -71,11 +91,7 @@ public class Planter : AudioHandler {
                 RaycastToPlanet();
             }
 
-            //reached dest
-            if(movement.moving == false)
-            {
-                DeactivatePlanter();
-            }
+            MoveCheck();
         }
 	}
 
@@ -86,35 +102,84 @@ public class Planter : AudioHandler {
         {
             if (!activated)
             {
-                activated = true;
-                PlaySound(activationSound, 1f);
-                myMR.material = activeMat;
-                fog.Stop();
-                fog.Clear();
-                popLights.Play();
-
-                ActivatePlanter();
+                ActivatePlanter(true);
             }
         }
     }
 
     //called by Pearl activation
-    public void ActivatePlanter()
+    public void ActivatePlanter(bool sound)
     {
-        if (pillarDest)
+        //sound?
+        if(sound)
+            PlaySound(activationSound, 1f);
+        //set MR
+        myMR.material = activeMat;
+        myMR.enabled = true;
+        //change particles
+        lure.Stop();
+        lure.Clear();
+        popLights.Play();
+        //move 
+        SetMove();
+        activated = true;
+    }
+
+    //called in Update to move
+    void MoveCheck()
+    {
+        //reached dest
+        if (movement.moving == false)
         {
-            transform.SetParent(null);
-            movement.MoveTo(pillarDest.position, movement.moveSpeed);
-            myMR.enabled = true;
-            activated = true;
+            //final point reached, so deactivate
+            if (finalPoint)
+            {
+                DeactivatePlanter();
+            }
+            //set next point
+            else
+            {
+                SetMove();
+            }
         }
+    }
+
+    void SetMove()
+    {
+        //set moveTowards component
+        movement.MoveTo(travelPoints[travelPoint].position, movement.moveSpeed);
+        //inc point up
+        if (travelPoint < travelPoints.Length - 1)
+            travelPoint++;
+        //set final point (auto does this if only 1 point)
+        if (travelPoint == travelPoints.Length - 1)
+            finalPoint = true;
     }
 
     //called when it reaches dest
     void DeactivatePlanter()
     {
-        ruin.ActivatePillar(pillarDest.gameObject);
-        myMR.enabled = false;
+        //activat Current's pillar with planter && position me right on toppp
+        if(planterType == PlanterType.CURRENT)
+        {
+            capColl.enabled = false;
+            grav.enabled = false;
+            transform.position = travelPoints[travelPoint].GetChild(0).position;
+            currents.ActivatePillar(travelPoints[travelPoint].gameObject, gameObject);
+        }
+        //activate ruins, deactivate
+        else if (planterType == PlanterType.RUINS)
+        {
+            ruin.ActivatePillar(travelPoints[travelPoint].gameObject);
+            gameObject.SetActive(false);
+        }
+
+        //deactivate entirely
+        else if (planterType == PlanterType.FREEROAM)
+        {
+            gameObject.SetActive(false);
+        }
+
         activated = false;
     }
 
@@ -127,7 +192,8 @@ public class Planter : AudioHandler {
 
         if (Physics.Raycast(castPos, -grav.GetUp(), out hit, Mathf.Infinity))
         {
-            if (hit.transform.gameObject.tag == "Planet")
+           
+            if (hit.transform.gameObject.tag == "Planet" || hit.transform.gameObject.layer == 9)
             {
                 //Debug.Log("spawning " + hit.point);
                 SpawnPlant(hit.point);
@@ -151,9 +217,11 @@ public class Planter : AudioHandler {
         //if it has scaler use that to lerp it up!!
         if(plantClone.GetComponent<LerpScale>())
         {
+            plantClone.GetComponent<LerpScale>().origScale = plantClone.transform.localScale;
+
             plantClone.transform.localScale *= 0.01f;
 
-            plantClone.GetComponent<LerpScale>().SetScaler(0.5f, plantClone.GetComponent<LerpScale>().origScale);
+            plantClone.GetComponent<LerpScale>().SetScaler(plantClone.GetComponent<LerpScale>().lerpSpeed, plantClone.GetComponent<LerpScale>().origScale);
         }
 
         //reset spawn timer

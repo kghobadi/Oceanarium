@@ -109,12 +109,11 @@ GameObject:
   - component: {fileID: 4772687556845218}
   - component: {fileID: 33887576072059238}
   - component: {fileID: 23232324270378716}
-  - component: {fileID: 135758424019838246}
-  - component: {fileID: 54183278935582718}
+  - component: {fileID: 114467938202356336}
   - component: {fileID: 114137982800586328}
   - component: {fileID: 114284984434645558}
-  - component: {fileID: 114467938202356336}
-  - component: {fileID: 114303024640908990}
+  - component: {fileID: 54183278935582718}
+  - component: {fileID: 135758424019838246}
   - component: {fileID: 136592805284605618}
   - component: {fileID: 82589994460637840}
   m_Layer: 16
@@ -510,24 +509,6 @@ MonoBehaviour:
   moving: 0
   destination: {x: 0, y: 0, z: 0}
   necessaryDist: 3
---- !u!114 &114303024640908990
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1912610056828116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e722d2373d1ff15449e9276d7951e8f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  planetToOrbit: {fileID: 0}
-  orbiting: 0
-  orbitAtStart: 0
-  orbitalSpeed: 25
-  xyOrzAxis: 1
-  randomAxis: 0
-  localOrWorld: 1
 --- !u!114 &114360254216267544
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -559,9 +540,7 @@ MonoBehaviour:
   voiceCounter: 0
   voices: []
   currentSound: 0
-  pearlType: 0
   activated: 0
-  currentStream: {fileID: 0}
   myPlanet: {fileID: 0}
   silentMat: {fileID: 2100000, guid: 3eec59d3bc3235e4bbab052b286a0793, type: 2}
   activeMat: {fileID: 2100000, guid: 3835073ca8f9c40118486ab2be982d74, type: 2}
@@ -607,9 +586,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   growthSpeed: 0.2
-  pillar: {fileID: 0}
-  ruin: {fileID: 0}
-  resting: 0
+  planters: []
   activationSound: {fileID: 8300000, guid: 52b4a239e6848440783b8eaf4e8281d0, type: 3}
   travelingSound: {fileID: 8300000, guid: 45a7fa14f49f1cb46b69844522314738, type: 3}
   orbitingSound: {fileID: 8300000, guid: 6f1076a5f6b9e8a498431ff77687447a, type: 3}

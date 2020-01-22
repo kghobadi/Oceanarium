@@ -21,14 +21,13 @@ GameObject:
   - component: {fileID: 4005258162706314}
   - component: {fileID: 33506697549380526}
   - component: {fileID: 23925202005189076}
-  - component: {fileID: 54589193323879156}
+  - component: {fileID: 114370064347705626}
   - component: {fileID: 114272397324560070}
   - component: {fileID: 114194268740016668}
-  - component: {fileID: 114370064347705626}
-  - component: {fileID: 114153023419307600}
+  - component: {fileID: 54589193323879156}
   - component: {fileID: 136963295871536634}
-  - component: {fileID: 82818848983758222}
   - component: {fileID: 135237227539290132}
+  - component: {fileID: 82818848983758222}
   m_Layer: 18
   m_Name: Planter Pearl
   m_TagString: Untagged
@@ -81,8 +80,8 @@ Transform:
   m_LocalPosition: {x: -0.7004498, y: 0.02125, z: -0.00045013428}
   m_LocalScale: {x: 0.005, y: 0.005, z: 0.005}
   m_Children:
-  - {fileID: 4309611208934814}
   - {fileID: 4250396748596666}
+  - {fileID: 4309611208934814}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -97,7 +96,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4005258162706314}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 0}
 --- !u!4 &4309611208934814
 Transform:
@@ -110,7 +109,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4005258162706314}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!23 &23925202005189076
 MeshRenderer:
@@ -265,24 +264,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &114153023419307600
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1109597415428008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e722d2373d1ff15449e9276d7951e8f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  planetToOrbit: {fileID: 0}
-  orbiting: 0
-  orbitAtStart: 0
-  orbitalSpeed: 25
-  xyOrzAxis: 1
-  randomAxis: 0
-  localOrWorld: 1
 --- !u!114 &114194268740016668
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -330,9 +311,14 @@ MonoBehaviour:
   voiceCounter: 0
   voices: []
   currentSound: 0
+  planterType: 1
   planetManager: {fileID: 0}
   activated: 0
-  pillarDest: {fileID: 0}
+  silentMat: {fileID: 2100000, guid: 3eec59d3bc3235e4bbab052b286a0793, type: 2}
+  activeMat: {fileID: 2100000, guid: 3835073ca8f9c40118486ab2be982d74, type: 2}
+  travelPoints:
+  - {fileID: 0}
+  currents: {fileID: 0}
   ruin: {fileID: 0}
   spawnObj: {fileID: 1017061435685780, guid: 8d25aac173f8174409025aac24e4f96d, type: 2}
   plantParent: {fileID: 0}
@@ -340,8 +326,6 @@ MonoBehaviour:
   spawnFrequency: 0.5
   minSizeMult: 0.75
   maxSizeMult: 2
-  silentMat: {fileID: 2100000, guid: 3eec59d3bc3235e4bbab052b286a0793, type: 2}
-  activeMat: {fileID: 2100000, guid: 3835073ca8f9c40118486ab2be982d74, type: 2}
   planetMask:
     serializedVersion: 2
     m_Bits: 1536

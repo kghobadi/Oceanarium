@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ee61183c5013464ab17c81babd9c0f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasGravityBody: 0
 --- !u!198 &198620895916918556
 ParticleSystem:
   m_ObjectHideFlags: 1
