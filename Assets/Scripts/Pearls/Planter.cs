@@ -192,10 +192,8 @@ public class Planter : AudioHandler {
 
         if (Physics.Raycast(castPos, -grav.GetUp(), out hit, Mathf.Infinity))
         {
-           
             if (hit.transform.gameObject.tag == "Planet" || hit.transform.gameObject.layer == 9)
             {
-                //Debug.Log("spawning " + hit.point);
                 SpawnPlant(hit.point);
             }
         }
@@ -211,17 +209,23 @@ public class Planter : AudioHandler {
         //randomize scale
         float sizeMult = Random.Range(minSizeMult, maxSizeMult);
         plantClone.transform.localScale *= sizeMult;
-
+        //set parent
         plantClone.transform.SetParent(plantParent);
       
         //if it has scaler use that to lerp it up!!
         if(plantClone.GetComponent<LerpScale>())
         {
-            plantClone.GetComponent<LerpScale>().origScale = plantClone.transform.localScale;
+            plantClone.GetComponent<LerpScale>().origScale = transform.localScale;
 
-            plantClone.transform.localScale *= 0.01f;
+            plantClone.transform.localScale *= plantClone.GetComponent<LerpScale>().startMultiplier;
 
-            plantClone.GetComponent<LerpScale>().SetScaler(plantClone.GetComponent<LerpScale>().lerpSpeed, plantClone.GetComponent<LerpScale>().origScale);
+            plantClone.GetComponent<LerpScale>().WaitToSetScale(0.1f, plantClone.GetComponent<LerpScale>().lerpSpeed, plantClone.GetComponent<LerpScale>().origScale);
+        }
+
+        //if it has Orbit, tell it what to orbit!
+        if (plantClone.GetComponent<Orbit>())
+        {
+            plantClone.GetComponent<Orbit>().planetToOrbit = planetManager.transform;
         }
 
         //reset spawn timer
