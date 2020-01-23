@@ -25,8 +25,7 @@ GameObject:
   - component: {fileID: 65307746498112596}
   - component: {fileID: 114258544349523354}
   - component: {fileID: 54091490103687288}
-  - component: {fileID: 114042699958710394}
-  - component: {fileID: 136568938254425846}
+  - component: {fileID: 114521119169163988}
   m_Layer: 10
   m_Name: AlienPlantSpawn
   m_TagString: Prop
@@ -83,7 +82,7 @@ Animator:
   m_GameObject: {fileID: 1440088082753194}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5bded270392ad3840809ae75411e728b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0fb545e31c5f5af439fd0d0f582e1d2d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -92,21 +91,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114042699958710394
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1440088082753194}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42947f603ad7eba40a501609da034343, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lockRotation: 0
-  planets: []
-  smoothMultiplier: 1
-  overlapSphereRadius: 20
 --- !u!114 &114247793749681354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -132,26 +116,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveTowardsOrLerp: 0
   lerping: 0
-  lerpSpeed: 2
+  lerpSpeed: 0.25
   desiredScale: {x: 0, y: 0, z: 0}
   distNecToStopLerp: 0.1
   origScale: {x: 0, y: 0, z: 0}
   setScaleAtStart: 0
   startMultiplier: 0
   distLeft: 0
---- !u!136 &136568938254425846
-CapsuleCollider:
+--- !u!114 &114521119169163988
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1440088082753194}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 3.01
-  m_Height: 7.729999
-  m_Direction: 1
-  m_Center: {x: 0.00024414062, y: 0, z: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e722d2373d1ff15449e9276d7951e8f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetToOrbit: {fileID: 0}
+  waitToOrbit: 1
+  waitTime: 5
+  orbiting: 0
+  orbitAtStart: 0
+  orbitalSpeed: 5
+  xyOrzAxis: 0
+  randomAxis: 1
+  localOrWorld: 0
 --- !u!212 &212122252608977434
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -187,7 +178,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 73db09fe7ad449841963f9486bfe19ae, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bfa1622182778b345adda04c4527e05e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

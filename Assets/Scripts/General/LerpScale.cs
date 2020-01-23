@@ -60,6 +60,20 @@ public class LerpScale : MonoBehaviour {
         }
     }
 
+    //for calling scale at start from another script 
+    public void WaitToSetScale(float wait, float speed, Vector3 newScale)
+    {
+        StartCoroutine(WaitToScale(wait, speed, newScale));
+    }
+
+    //waits then sets scaler
+    IEnumerator WaitToScale(float wait, float speed, Vector3 newScale)
+    {
+        yield return new WaitForSeconds(wait);
+
+        SetScaler(speed, newScale);
+    }
+
     //can be called from anywhere 
     public void SetScaler(float speed, Vector3 newScale)
     {
