@@ -18,7 +18,7 @@ public class Planter : AudioHandler {
         CURRENT, RUINS, FREEROAM,
     }
     [Tooltip("Check this to make me invisible on start")]
-    public bool disableOnStart;
+    public bool invisableOnStart;
     [Tooltip("Planet to add plants to")]
     public PlanetManager planetManager;
     [Tooltip("True once player activates my Homing Pearl")]
@@ -60,7 +60,8 @@ public class Planter : AudioHandler {
         //get all refs
         myMR = GetComponent<MeshRenderer>();
         myMR.material = silentMat;
-        if (disableOnStart)
+        //turn invis
+        if (invisableOnStart || planterType == PlanterType.FREEROAM)
         {
             myMR.enabled = false;
         }
@@ -111,15 +112,22 @@ public class Planter : AudioHandler {
     public void ActivatePlanter(bool sound)
     {
         //sound?
-        if(sound)
-            PlaySound(activationSound, 1f);
+        if(sound && activationSound != null)
+            PlaySoundRandomPitch(activationSound, 1f);
         //set MR
         myMR.material = activeMat;
-        myMR.enabled = true;
+
+        //if not free roaming, draw attention with active mat & popLights
+        if(planterType != PlanterType.FREEROAM)
+        {
+            myMR.enabled = true;
+            popLights.Play();
+        }
+           
         //change particles
         lure.Stop();
         lure.Clear();
-        popLights.Play();
+        
         //move 
         SetMove();
         activated = true;

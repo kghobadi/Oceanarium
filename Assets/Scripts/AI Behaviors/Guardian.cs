@@ -29,8 +29,8 @@ public class Guardian : AudioHandler {
     public bool newGalaxy;
     
     [Header("Sounds")]
-    public AudioClip waitingSound;
-    public AudioClip swimmingSound;
+    public AudioClip [] waitingSounds;
+    public AudioClip [] swimmingSounds;
 
     public override void Awake()
     {
@@ -67,7 +67,7 @@ public class Guardian : AudioHandler {
 
             //do nothing, play waiting sound 
             if (!myAudioSource.isPlaying)
-                PlaySoundRandomPitch(waitingSound, 1f);
+                PlayRandomSoundRandomPitch(waitingSounds, 1f);
 
             //player close now
             if(distFromPlayer < necDist)
@@ -94,7 +94,7 @@ public class Guardian : AudioHandler {
 
             // play swimming sound 
             if (!myAudioSource.isPlaying)
-                PlaySoundRandomPitch(swimmingSound, 1f);
+                PlayRandomSoundRandomPitch(swimmingSounds, 1f);
             //movement running
             if (movement.moving == false)
             {
