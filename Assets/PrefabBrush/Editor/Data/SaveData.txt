@@ -114,7 +114,7 @@ Depth: 0
 
 Game Object: Assets/Prefabs/Spawnable Plants/SeaweedPlace.prefab
 Layer: Default
-Toggle: True
+Toggle: False
 Slider: 1
 Lock Orientation Toggle: False
 Random Rotation Toggle: False
@@ -128,4 +128,4 @@ Fixed Rotation Toggle: False
 Fixed Rotation X: 0
 Fixed Rotation Y: 0
 Fixed Rotation Z: 0
-Depth: 1
+Depth: 2

@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114726975618477128}
   - component: {fileID: 65825423067517192}
   - component: {fileID: 114654784429739428}
+  - component: {fileID: 114084803450745776}
   m_Layer: 10
   m_Name: SeaweedPlace
   m_TagString: Prop
@@ -37,9 +38,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1408911501964028}
-  m_LocalRotation: {x: 0.13945812, y: -0, z: -0.20295972, w: 0.96920526}
-  m_LocalPosition: {x: -1511.01, y: 726.22, z: -886.94}
-  m_LocalScale: {x: 0.58763987, y: 0.58764, z: 0.58764}
+  m_LocalRotation: {x: -0.126433, y: 0.13865152, z: -0.71641093, w: 0.6719716}
+  m_LocalPosition: {x: 0.9202012, y: -0.057984006, z: -0.36558115}
+  m_LocalScale: {x: 0.011752797, y: 0.011752798, z: 0.0117528}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,6 +75,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114084803450745776
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1408911501964028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b45e195b13ef2b246bc38b1c2ddc97f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadingBack: 0
 --- !u!114 &114654784429739428
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -30,7 +30,10 @@ GameObject:
   - component: {fileID: 114571142406202224}
   - component: {fileID: 136771061962843892}
   - component: {fileID: 82263055835299408}
-  m_Layer: 0
+  - component: {fileID: 114485028534691334}
+  - component: {fileID: 114610221771314050}
+  - component: {fileID: 114157136112295102}
+  m_Layer: 15
   m_Name: Guardian
   m_TagString: Guardian
   m_Icon: {fileID: 0}
@@ -43,8 +46,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1411778178828328}
-  m_LocalRotation: {x: -0.000000029802319, y: -0, z: 0.00000002235174, w: 1}
-  m_LocalPosition: {x: -29.81, y: -6.816789, z: -0.5967709}
+  m_LocalRotation: {x: -0.0000000372529, y: 0.0000000074505797, z: -0, w: 1}
+  m_LocalPosition: {x: -873.99, y: 278.52, z: -928.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -194,16 +197,48 @@ MonoBehaviour:
   pitchRange: {x: 0.9, y: 1.1}
   voiceCounter: 0
   voices: []
+  currentSound: 0
   necDist: 10
   guardianState: 2
   guardianLocations:
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  currentPoint: 0
-  waitingSound: {fileID: 8300000, guid: f88a83de1a5544e46a7e4f8d9a52d843, type: 3}
-  swimmingSound: {fileID: 8300000, guid: 1a61618f7fa39564ea70d1140d8921d0, type: 3}
+  currentPoint: -1
+  newGalaxy: 0
+  waitingSounds:
+  - {fileID: 8300000, guid: 921f8afcd40af1949ba7a0d010ea9d5d, type: 3}
+  - {fileID: 8300000, guid: 9743f12c37e1d1541abf5673d1329d25, type: 3}
+  - {fileID: 8300000, guid: 5ee9d5201ee612d40bab065ccc5216cd, type: 3}
+  - {fileID: 8300000, guid: f9886c1fa9b1343489c55b17556d2109, type: 3}
+  - {fileID: 8300000, guid: 7137c386927c4964c98d9415da9e7913, type: 3}
+  - {fileID: 8300000, guid: 507a00986bcaf184d8382ea23cfe75f0, type: 3}
+  - {fileID: 8300000, guid: 41e23d2e94833004a983db235e10737b, type: 3}
+  - {fileID: 8300000, guid: 42855e911a25f9a45a9a9a6c308cc88f, type: 3}
+  - {fileID: 8300000, guid: 4c7d191774f35684db362574e90be695, type: 3}
+  swimmingSounds:
+  - {fileID: 8300000, guid: d9c8dff2d2073844d99f0bbd7e87adf1, type: 3}
+  - {fileID: 8300000, guid: c604fb232744d834cbc2885dfd5feb68, type: 3}
+  - {fileID: 8300000, guid: 92eccb9e522b53b4eac3cd566371200a, type: 3}
+  - {fileID: 8300000, guid: 7d7867121576ac045af0de5139dc547a, type: 3}
+  - {fileID: 8300000, guid: 64e7a15029256bb4e8d02c4a1ca734ca, type: 3}
+  - {fileID: 8300000, guid: e5bbc723cdd40c7469801ec2a1a05cad, type: 3}
+  - {fileID: 8300000, guid: 5fb51b5575803ed4e82fc8821ac277c4, type: 3}
+  - {fileID: 8300000, guid: 44a985a8c9ddf1949bf78f567ef4ab7d, type: 3}
+--- !u!114 &114157136112295102
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1411778178828328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f119006309b034dab4bb5d9a1f6737, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tripToTransition: {fileID: 114610221771314050}
+  loadsNextScene: 1
+  sceneToLoad: 
+  loadPreparesOnStart: 0
+  preparing: 0
 --- !u!114 &114253183352267458
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -215,10 +250,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ee61183c5013464ab17c81babd9c0f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingCreature: 0
-  playerCreature: 0
-  noAnim: 0
-  fadingBack: 0
+  hasGravityBody: 0
+--- !u!114 &114485028534691334
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1411778178828328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ad5835605275f429ad45bec4a7ab49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterAnimator: {fileID: 0}
+  animationBools:
+  - swimAway
 --- !u!114 &114571142406202224
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -231,12 +277,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planetToOrbit: {fileID: 0}
+  waitToOrbit: 0
+  waitTime: 5
   orbiting: 0
   orbitAtStart: 0
   orbitalSpeed: 25
   xyOrzAxis: 1
   randomAxis: 0
   localOrWorld: 1
+--- !u!114 &114610221771314050
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1411778178828328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb4b1a15adabc4a49a85c8575eeb09f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tripFader: {fileID: 0}
+  pressToTrip: {fileID: 0}
+  necessaryDistance: 15
+  tripCamera: {fileID: 0}
+  trip: {fileID: 0}
+  canTrip: 0
+  tripping: 0
+  loadsNewScene: 1
+  tripMusic: {fileID: 8300000, guid: 9d15a29218948024dac451ff0a817f30, type: 3}
+  trippingSnap: {fileID: 245889458632442960, guid: d823d1a03d06d3d478ee416f0a455437,
+    type: 2}
+  overWorld: {fileID: 24500006, guid: d823d1a03d06d3d478ee416f0a455437, type: 2}
+  tripperParticles: {fileID: 0}
+  fovIn: 15
+  lerpTimeIn: 0.2
+  lerpTimeOut: 0.05
 --- !u!114 &114675223512547350
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -249,8 +324,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lockRotation: 1
-  planets: []
+  planets:
+  - {fileID: 0}
   smoothMultiplier: 1
+  overlapSphereRadius: 20
 --- !u!114 &114729316397179096
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -262,7 +339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7500d94bec658f841b999f5725183dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 20
   origSpeed: 0
   moving: 0
   destination: {x: 0, y: 0, z: 0}
