@@ -31,15 +31,15 @@ public class DistanceAnimatorParameter : MonoBehaviour
 
     private void OnValidate()
     {
-        if (targets.Count == 0 || targets.TrueForAll(t => t == null))
-        {
-            Debug.LogWarningFormat(gameObject, "No target specified in DistanceAnimatorParameter of {0}", name);
-        }
+        //if (targets.Count == 0 || targets.TrueForAll(t => t == null))
+        //{
+        //    Debug.LogWarningFormat(gameObject, "No target specified in DistanceAnimatorParameter of {0}", name);
+        //}
 
-        if (animatorComponent == null)
-        {
-            Debug.LogWarningFormat(gameObject, "No animator component specified in DistanceAnimatorParameter of {0}", name);
-        }
+        //if (animatorComponent == null)
+        //{
+        //    Debug.LogWarningFormat(gameObject, "No animator component specified in DistanceAnimatorParameter of {0}", name);
+        //}
     }
 
     private void OnEnable()

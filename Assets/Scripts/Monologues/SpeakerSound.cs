@@ -6,6 +6,7 @@ public class SpeakerSound : AudioHandler
 {
     //audio stuff
     [Header("Speaker Bools")]
+    [Tooltip("enables voice audio")]
     public bool hasVoiceAudio;
     public bool usesAllLetters, countsUp;
     public int speakFreq = 4;
@@ -74,7 +75,7 @@ public class SpeakerSound : AudioHandler
         else
         {
             PlayRandomSound(spokenSounds, 1f);
-            //Debug.Log("gibberish");
+            Debug.Log("gibberish");
         }
 
     }
