@@ -10,13 +10,14 @@ public class TripActivation : MonoBehaviour {
     GameObject mainCam;
     CameraController camControl;
     LoadSceneAsync sceneLoader;
+    Vector3 origPos;
 
     public FadeUI tripFader;
     public FadeUI pressToTrip;
 
     [Tooltip("Player must be this close to start trip")]
     public float necessaryDistance = 15f;
-
+    public GuardianAnimation guardAnim;
     public GameObject tripCamera;
     public GameObject trip;
     public bool canTrip = true;
@@ -133,12 +134,24 @@ public class TripActivation : MonoBehaviour {
         tripCamera.SetActive(true);
         trip.SetActive(true);
 
+        //ride guardian if can
+        if (guardAnim)
+        {
+            guardAnim.SetAnimator("ride");
+            origPos = transform.position;
+            //parent guardian to camera & move to be visible
+            transform.SetParent(tripCamera.transform);
+            transform.localPosition += new Vector3(0, 0, 10);
+            gameObject.layer = 14;
+        }
+
         //start load 
         if (loadsNewScene)
         {
             //check to see if already preparing
             if(sceneLoader.loadPreparesOnStart == false)
                 sceneLoader.Load();
+
         }
 
         //deactivate player stuff
@@ -176,7 +189,7 @@ public class TripActivation : MonoBehaviour {
         pc.canJump = true;
         mainCam.SetActive(true);
         camControl.LerpFOV(camControl.originalFOV, lerpTimeOut );
-
+        
         //deactivate trip stuff 
         tripCamera.SetActive(false);
         trip.SetActive(false);
