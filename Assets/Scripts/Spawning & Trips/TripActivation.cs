@@ -9,24 +9,27 @@ public class TripActivation : MonoBehaviour {
     GravityBody gravBod;
     GameObject mainCam;
     CameraController camControl;
+    LoadSceneAsync sceneLoader;
+    Vector3 origPos;
 
     public FadeUI tripFader;
     public FadeUI pressToTrip;
 
     [Tooltip("Player must be this close to start trip")]
     public float necessaryDistance = 15f;
-
+    public GuardianAnimation guardAnim;
     public GameObject tripCamera;
     public GameObject trip;
     public bool canTrip = true;
     public bool tripping;
+    public bool loadsNewScene;
 
     MusicFader mFader;
     public AudioClip tripMusic;
     AudioClip planetMusic;
     public AudioMixerSnapshot trippingSnap;
     public AudioMixerSnapshot overWorld;
-    ParticleSystem tripperParticles;
+    public ParticleSystem tripperParticles;
     [Header("Camera Transition")]
     public float fovIn = 15f;
     public float lerpTimeIn = 0.2f, lerpTimeOut = 0.05f;
@@ -38,9 +41,11 @@ public class TripActivation : MonoBehaviour {
         gravBod = player.GetComponent<GravityBody>();
         mainCam = Camera.main.transform.gameObject;
         camControl = mainCam.GetComponent<CameraController>();
+        sceneLoader = GetComponent<LoadSceneAsync>();
         //my refs
         mFader = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicFader>();
-        tripperParticles = transform.GetChild(0).GetComponent<ParticleSystem>();
+        if(tripperParticles == null)
+            tripperParticles = transform.GetChild(0).GetComponent<ParticleSystem>();
 
         if (tripCamera == null)
             tripCamera = GameObject.FindGameObjectWithTag("TripCam");
@@ -64,10 +69,14 @@ public class TripActivation : MonoBehaviour {
                 pressToTrip.FadeIn();
 
             //play trip particles
-            if(tripperParticles.isPlaying == false)
+            if(tripperParticles != null)
             {
-                tripperParticles.Play();
+                if (tripperParticles.isPlaying == false)
+                {
+                    tripperParticles.Play();
+                }
             }
+            
         }
         //too far
         else if(distFromPlayer > necessaryDistance + 3f)
@@ -77,16 +86,25 @@ public class TripActivation : MonoBehaviour {
                 pressToTrip.FadeOut();
 
             //stop trip particles
-            if (tripperParticles.isPlaying)
+            if(tripperParticles != null)
             {
-                tripperParticles.Stop();
+                if (tripperParticles.isPlaying)
+                {
+                    tripperParticles.Stop();
+                }
             }
+            
         }
 
         //press space && not tripping // converting 
         if (Input.GetKeyDown(KeyCode.Space) && tripping && !tripFader.fadingIn && !tripFader.fadingOut)
         {
-            EndTrip();
+            if (loadsNewScene)
+            {
+                //everything happens in LoadSceneAsync now...
+            }
+            else
+                EndTrip();
         }
     }
 
@@ -115,6 +133,26 @@ public class TripActivation : MonoBehaviour {
         //activate trip stuff 
         tripCamera.SetActive(true);
         trip.SetActive(true);
+
+        //ride guardian if can
+        if (guardAnim)
+        {
+            guardAnim.SetAnimator("ride");
+            origPos = transform.position;
+            //parent guardian to camera & move to be visible
+            transform.SetParent(tripCamera.transform);
+            transform.localPosition += new Vector3(0, 0, 10);
+            gameObject.layer = 14;
+        }
+
+        //start load 
+        if (loadsNewScene)
+        {
+            //check to see if already preparing
+            if(sceneLoader.loadPreparesOnStart == false)
+                sceneLoader.Load();
+
+        }
 
         //deactivate player stuff
         pc.canMove = false;
@@ -151,7 +189,7 @@ public class TripActivation : MonoBehaviour {
         pc.canJump = true;
         mainCam.SetActive(true);
         camControl.LerpFOV(camControl.originalFOV, lerpTimeOut );
-
+        
         //deactivate trip stuff 
         tripCamera.SetActive(false);
         trip.SetActive(false);

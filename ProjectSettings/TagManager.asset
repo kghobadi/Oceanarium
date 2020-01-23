@@ -22,6 +22,7 @@ TagManager:
   - Pearl
   - Guardian
   - TripCam
+  - Ruin
   layers:
   - Default
   - TransparentFX
@@ -40,8 +41,8 @@ TagManager:
   - Trip
   - Guardian
   - Pearl
-  - 
-  - 
+  - Ruins
+  - Planter
   - 
   - 
   - 
