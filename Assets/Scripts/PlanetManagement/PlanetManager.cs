@@ -11,6 +11,9 @@ public class PlanetManager : MonoBehaviour {
 
     public string planetName;
     public bool playerHere, startingPlanet;
+    [Tooltip("If starting planet checked, player will start at this Transform")]
+    public Transform playerStartingPoint;
+    [Tooltip("This planet's colliders")]
     public Collider[] planetColliders;
     CreatureSpawner creatureSpawner;
     [Tooltip("Any sort of creature that moves with code")]
@@ -33,7 +36,8 @@ public class PlanetManager : MonoBehaviour {
     {
         if (startingPlanet)
         {
-            playerHere = true;
+            pc.transform.position = playerStartingPoint.position;
+            ActivatePlanet(guardianLocations[0].position);
         }
         else
         {
