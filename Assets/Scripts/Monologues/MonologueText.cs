@@ -42,7 +42,9 @@ public class MonologueText : MonoBehaviour
     public bool hasFinished;
 
     //typing vars
+    public bool inMonologue;
     private bool isTyping = false;
+    IEnumerator currentTypingLine;
 
     [Header("Text Timing")]
     public float timeBetweenLetters;
@@ -59,6 +61,7 @@ public class MonologueText : MonoBehaviour
 
     [Header("Monologues To Enable")]
     public MonologueText[] monologuesToEnable;
+    MonologueTrigger mTrigger;
 
     void Awake()
     {
@@ -76,6 +79,7 @@ public class MonologueText : MonoBehaviour
         }
         speakerAnimator = hostObj.GetComponentInChildren<SpeakerAnimations>();
         speakerAudio = hostObj.GetComponent<SpeakerSound>();
+        mTrigger = GetComponent<MonologueTrigger>();
     }
 
     void Start()
@@ -110,17 +114,32 @@ public class MonologueText : MonoBehaviour
                     ResetMonologue();
                 }
             }
-           
+
+            //player skips to the end of the line
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (currentTypingLine != null)
+                {
+                    StopCoroutine(currentTypingLine);
+                }
+
+                //set to full line
+                CompleteTextLine(textLines[currentLine]);
+
+                StartCoroutine(WaitToProgressLine());
+            }
+
         }
         //player is waiting for next message
         if (waiting)
         {
-            //player skips monologue & leaves
+            //player skips to next line
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                ResetMonologue();
+                ProgressLine();
             }
         }
+        
     }
 
     void ProgressLine()
@@ -128,6 +147,7 @@ public class MonologueText : MonoBehaviour
         currentLine += 1;
         waiting = false;
 
+        //reached the  end, reset
         if (currentLine >= endAtLine)
         {
             hasFinished = true;
@@ -137,7 +157,14 @@ public class MonologueText : MonoBehaviour
         {
             //this debug helps find the wait times for the current line of Monologue
             //Debug.Log(hostObj.name + " is on line " + currentLine + " which reads: " + textLines[currentLine] + " -- " + hostObj.name + " will wait " + waitTimes[currentLine].ToString() + "sec before speaking again!");
-            StartCoroutine(TextScroll(textLines[currentLine]));
+            if(currentTypingLine != null)
+            {
+                StopCoroutine(currentTypingLine);
+            }
+            currentTypingLine = TextScroll(textLines[currentLine]);
+
+            StartCoroutine(currentTypingLine);
+
         }
     }
 
@@ -152,7 +179,9 @@ public class MonologueText : MonoBehaviour
             theText.text = "";
 
         isTyping = true;
-        speakerAnimator.RandomTalkingAnim();
+        //set talking anim
+        if(speakerAnimator.talkingAnimations > 0)
+            speakerAnimator.RandomTalkingAnim();
 
         while (isTyping && (letter < lineOfText.Length - 1))
         {
@@ -188,6 +217,26 @@ public class MonologueText : MonoBehaviour
 
         ProgressLine();
 
+    }
+
+    //start wait for next line after spacebar skip
+    IEnumerator WaitToProgressLine()
+    {
+        yield return new WaitForEndOfFrame();
+
+        waiting = true;
+
+        //if conversational, use the array of wait Timers set publicly
+        if (conversational)
+        {
+            yield return new WaitForSeconds(waitTimes[currentLine]);
+        }
+        else
+        {
+            yield return new WaitForSeconds(waitTime);
+        }
+        
+        ProgressLine();
     }
 
     //completes current line of text
@@ -250,7 +299,6 @@ public class MonologueText : MonoBehaviour
         if (lockPlayer)
         {
             pc.canMove = false;
-            pc.canJump = false;
             //NO VELOCIT
             pc.playerRigidbody.velocity = Vector3.zero;
         }
@@ -263,7 +311,7 @@ public class MonologueText : MonoBehaviour
 
         //set player to idle anim
         pc.animator.SetAnimator("idle");
-
+        inMonologue = true;
         StartCoroutine(TextScroll(textLines[currentLine]));
     }
     
@@ -271,7 +319,7 @@ public class MonologueText : MonoBehaviour
     {
         StopAllCoroutines();
         DisableMonologue();
-        GetComponent<MonologueTrigger>().hasActivated = false;
+        mTrigger.WaitToReset(3f);
         currentLine = 0;
     }
 
@@ -283,7 +331,7 @@ public class MonologueText : MonoBehaviour
             theText.enabled = false;
         
         speakerAnimator.SetAnimator("idle");
-
+        inMonologue = false;
         //disable speaker cam, enable cam controller
         camManager.Disable(speakerCam);
         playerCam.enabled = true;
@@ -291,7 +339,6 @@ public class MonologueText : MonoBehaviour
         if (lockPlayer)
         {
             pc.canMove = true;
-            pc.canJump = true;
         }
     }
 }

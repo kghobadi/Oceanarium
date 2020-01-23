@@ -297,19 +297,10 @@ public class PlayerController : AudioHandler
             canJump = true;
             if (hit.distance < hoverHeight)
             {
-                animator.characterAnimator.SetBool("grounded", true);
                 float proportionalHeightSquared = Mathf.Pow((hoverHeight - hit.distance) / hoverHeight, 2);
                 // Add more force the lower we are.
                 playerRigidbody.AddForce(transform.up * proportionalHeightSquared * hoverForce);
             }
-            else
-            {
-                animator.characterAnimator.SetBool("grounded", false);
-            }
-        }
-        else
-        {
-            animator.characterAnimator.SetBool("grounded", false);
         }
     }
 
