@@ -4,6 +4,7 @@ using System.Collections;
 //This script makes any Sprite object look at the player's camera with the correct orientation from Gravity 
 public class CameraFacingBillboard : MonoBehaviour
 {
+    GameObject player;
     PlayerController pc;
     private GravityBody playerBody;
     Camera playerCam;
@@ -17,8 +18,13 @@ public class CameraFacingBillboard : MonoBehaviour
 
 	void Awake(){
         //player refs
-		playerBody = GameObject.FindGameObjectWithTag("Player").GetComponent<GravityBody>();
-        pc = playerBody.GetComponent<PlayerController>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        if (player)
+        {
+            playerBody = GetComponent<GravityBody>();
+            pc = playerBody.GetComponent<PlayerController>();
+        }
+      
         playerCam = Camera.main;
         camControl = playerCam.GetComponent<CameraController>();
         //add camera fader if not on object already 
@@ -48,7 +54,10 @@ public class CameraFacingBillboard : MonoBehaviour
         //normal, uses player gravity body for Look at function 
         else
         {
-            transform.LookAt(playerCam.transform.position, playerBody.GetUp());
+            if(player)
+                transform.LookAt(playerCam.transform.position, playerBody.GetUp());
+            else
+                transform.LookAt(playerCam.transform.position, Vector3.up);
         }
 	}
 

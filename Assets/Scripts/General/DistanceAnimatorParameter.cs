@@ -26,7 +26,8 @@ public class DistanceAnimatorParameter : MonoBehaviour
 
         targets.Clear();
         player = GameObject.FindGameObjectWithTag("Player");
-        targets.Add(player.transform);
+        if(player)
+            targets.Add(player.transform);
     }
 
     private void OnValidate()
