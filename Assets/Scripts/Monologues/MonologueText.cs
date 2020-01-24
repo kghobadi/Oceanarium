@@ -67,8 +67,12 @@ public class MonologueText : MonoBehaviour
     {
         //grab refs
         player = GameObject.FindGameObjectWithTag("Player");
-        pc = player.GetComponent<PlayerController>();
-        playerCam = Camera.main.GetComponent<CameraController>();
+        if (player)
+        {
+            pc = player.GetComponent<PlayerController>();
+            playerCam = Camera.main.GetComponent<CameraController>();
+        }
+       
         camManager = FindObjectOfType<CameraManager>();
         theText = GetComponent<Text>();
 
@@ -294,7 +298,8 @@ public class MonologueText : MonoBehaviour
 
         //enable speaker cam, disable cam controller
         camManager.Set(speakerCam);
-        playerCam.enabled = false;
+        if(playerCam)
+            playerCam.enabled = false;
         //lock player movement
         if (lockPlayer)
         {
@@ -310,7 +315,8 @@ public class MonologueText : MonoBehaviour
         }
 
         //set player to idle anim
-        pc.animator.SetAnimator("idle");
+        if(pc)
+            pc.animator.SetAnimator("idle");
         inMonologue = true;
         StartCoroutine(TextScroll(textLines[currentLine]));
     }
@@ -334,7 +340,8 @@ public class MonologueText : MonoBehaviour
         inMonologue = false;
         //disable speaker cam, enable cam controller
         camManager.Disable(speakerCam);
-        playerCam.enabled = true;
+        if(playerCam)
+            playerCam.enabled = true;
         //unlock player
         if (lockPlayer)
         {

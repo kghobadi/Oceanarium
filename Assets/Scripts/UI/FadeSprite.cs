@@ -37,8 +37,15 @@ public class FadeSprite : MonoBehaviour {
 
     public void FadeIn()
     {
-        fadingIn = true;
-        fadingOut = false;
+        if (fadeInWait > 0)
+        {
+            StartCoroutine(WaitToFadeIn());
+        }
+        else
+        {
+            fadingIn = true;
+            fadingOut = false;
+        }
     }
 
     public void FadeOut()
