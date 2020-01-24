@@ -17,7 +17,7 @@ public class TripActivation : MonoBehaviour {
 
     [Tooltip("Player must be this close to start trip")]
     public float necessaryDistance = 15f;
-    public GuardianAnimation guardAnim;
+    public GameObject guardAnim;
     public GameObject tripCamera;
     public GameObject trip;
     public bool canTrip = true;
@@ -134,16 +134,11 @@ public class TripActivation : MonoBehaviour {
         tripCamera.SetActive(true);
         trip.SetActive(true);
 
-        //ride guardian if can
         if (guardAnim)
         {
-            guardAnim.SetAnimator("ride");
-            origPos = transform.position;
-            //parent guardian to camera & move to be visible
-            transform.SetParent(tripCamera.transform);
-            transform.localPosition += new Vector3(0, 0, 10);
-            gameObject.layer = 14;
+            guardAnim.SetActive(true);
         }
+        
 
         //start load 
         if (loadsNewScene)

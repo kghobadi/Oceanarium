@@ -150,6 +150,7 @@ GameObject:
   - component: {fileID: 114706432605523304}
   - component: {fileID: 114057792929657114}
   - component: {fileID: 114984318071306866}
+  - component: {fileID: 114359694848699028}
   m_Layer: 0
   m_Name: Ghostboy
   m_TagString: Untagged
@@ -314,9 +315,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1574277908100222}
-  m_LocalRotation: {x: -0, y: -0, z: 0.019691993, w: 0.9998061}
-  m_LocalPosition: {x: -1094.8857, y: 111.39564, z: -826.934}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.003979329, y: 0.20203936, z: 0.019285733, w: 0.97917944}
+  m_LocalPosition: {x: -0.25, y: 0.969, z: 0.319}
+  m_LocalScale: {x: 0.02, y: 0.019999998, z: 0.02}
   m_Children:
   - {fileID: 224972289893322870}
   - {fileID: 4030789508436498}
@@ -330,8 +331,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1487928609934358}
-  m_LocalRotation: {x: -0.07204779, y: -0.8263494, z: -0.5575788, w: 0.032583166}
-  m_LocalPosition: {x: -0.70444286, y: -17.876125, z: 10}
+  m_LocalRotation: {x: -0.041827, y: -0.9971527, z: -0.06269374, w: 0.0025779754}
+  m_LocalPosition: {x: -0.000060349703, y: 0.00001427252, z: 23.919968}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4645523544792030}
@@ -376,7 +377,8 @@ AudioSource:
   m_GameObject: {fileID: 1109603698549972}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243711189527994880, guid: d823d1a03d06d3d478ee416f0a455437,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -471,7 +473,8 @@ AudioSource:
   m_GameObject: {fileID: 1113360456576178}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243711189527994880, guid: d823d1a03d06d3d478ee416f0a455437,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -566,7 +569,8 @@ AudioSource:
   m_GameObject: {fileID: 1811093745540130}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243711189527994880, guid: d823d1a03d06d3d478ee416f0a455437,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -661,7 +665,8 @@ AudioSource:
   m_GameObject: {fileID: 1897950170641540}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243711189527994880, guid: d823d1a03d06d3d478ee416f0a455437,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -819,6 +824,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5208d552f49f7442af29daf3c470010, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114359694848699028
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1574277908100222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b490d6b31b65e7c49a41e47e6b78d586, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets: []
+  animatorComponent: {fileID: 0}
+  parameterName: Distance
 --- !u!114 &114430357995044628
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -897,7 +916,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 2, z: 0}
+  m_TrackedObjectOffset: {x: 0, y: 3.02, z: 0}
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 10
   m_HorizontalDamping: 0.5
@@ -1030,7 +1049,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 253
+  m_firstOverflowCharacterIndex: 11
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -1058,7 +1077,7 @@ MonoBehaviour:
     spaceCount: 98
     wordCount: 96
     linkCount: 0
-    lineCount: 24
+    lineCount: 36
     pageCount: 1
     materialCount: 2
   m_havePropertiesChanged: 0
@@ -1142,7 +1161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: -17.89, z: 10}
+  m_FollowOffset: {x: 0, y: 0, z: -26}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -1250,17 +1269,25 @@ MonoBehaviour:
   - {fileID: 82819338961242180}
   - {fileID: 82333842774360136}
   currentSound: 0
-  hasVoiceAudio: 0
+  hasVoiceAudio: 1
   usesAllLetters: 0
   countsUp: 1
-  speakFreq: 3
+  speakFreq: 1
   spokenSounds:
-  - {fileID: 8300000, guid: ae86fdde314af744286b8f986ddadc04, type: 3}
-  - {fileID: 8300000, guid: cc75eeec4be455841a212567ad5cac0a, type: 3}
-  - {fileID: 8300000, guid: dedb89c641d864d45bd2e7a23b1caa27, type: 3}
-  - {fileID: 8300000, guid: af3167e896951944db89c63c07037878, type: 3}
-  - {fileID: 8300000, guid: fd962ef68c2b93041903d6b297dfa326, type: 3}
-  - {fileID: 8300000, guid: 4c2797a83c6d96e4aad731d935cb4b6e, type: 3}
+  - {fileID: 8300000, guid: 9d74b4bad8e6cad4c9d7366d0afbe143, type: 3}
+  - {fileID: 8300000, guid: 56364981430092b48988d8e6fc6cdcfc, type: 3}
+  - {fileID: 8300000, guid: 7c7b14778ed53d44b9e20b4a7c8e2426, type: 3}
+  - {fileID: 8300000, guid: 07e92f20d4f4ae04c961a73191f88c23, type: 3}
+  - {fileID: 8300000, guid: bdec176612e06b24b9b8d1cad8a73101, type: 3}
+  - {fileID: 8300000, guid: a1c21eae8337af54d89b1e98a3b0d234, type: 3}
+  - {fileID: 8300000, guid: 51feb8f14349c6449b3d04084dcd56c4, type: 3}
+  - {fileID: 8300000, guid: 7a57a2bf97889214e9301a89e69676c1, type: 3}
+  - {fileID: 8300000, guid: 5d4be5f97663e4d42b607611675ef148, type: 3}
+  - {fileID: 8300000, guid: 827e7cd9a49942642aadf483fd9d1b19, type: 3}
+  - {fileID: 8300000, guid: 44e9332198bc6e94097972a8d732bbb0, type: 3}
+  - {fileID: 8300000, guid: fc5add13e4dba4048855c9f7c4bcd482, type: 3}
+  - {fileID: 8300000, guid: f9e3a84ebf07b7c4c837ff7aa55ed185, type: 3}
+  - {fileID: 8300000, guid: 36ef314c6a34e634187f03be5994a21c, type: 3}
   letters: 
   capitalLetters: 
   spokenLetters: []
@@ -1410,7 +1437,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -40}
-  m_SizeDelta: {x: 300, y: 300}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224760913319484468
 RectTransform:
