@@ -55,10 +55,16 @@ public class TimelinePlaybackManager : MonoBehaviour {
 
 	void Awake(){
 		playerObject = GameObject.FindWithTag (playerTag);
-		inputController = playerObject.GetComponent<PlayerController> ();
-		playerCutsceneSpeedController = playerObject.GetComponent<PlayerCutsceneSpeedController> ();
+        if (playerObject)
+        {
+            inputController = playerObject.GetComponent<PlayerController>();
+            playerCutsceneSpeedController = playerObject.GetComponent<PlayerCutsceneSpeedController>();
+        }
+	
+
         guardian = GameObject.FindGameObjectWithTag("Guardian");
-        gBehavior = guardian.GetComponent<Guardian>();
+        if(guardian)
+            gBehavior = guardian.GetComponent<Guardian>();
 	}
 
     void Start()
