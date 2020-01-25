@@ -19,10 +19,10 @@ public class CameraFacingBillboard : MonoBehaviour
 	void Awake(){
         //player refs
         player = GameObject.FindGameObjectWithTag("Player");
-        if (player)
+        if (player!= null)
         {
-            playerBody = GetComponent<GravityBody>();
-            pc = playerBody.GetComponent<PlayerController>();
+            playerBody = player.GetComponent<GravityBody>();
+            pc = player.GetComponent<PlayerController>();
         }
       
         playerCam = Camera.main;

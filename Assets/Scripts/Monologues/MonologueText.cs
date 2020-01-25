@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using Cameras;
+using Cinemachine;
 
 public class MonologueText : MonoBehaviour
 {
@@ -40,6 +41,12 @@ public class MonologueText : MonoBehaviour
     public int currentLine;
     public int endAtLine;
     public bool hasFinished;
+    public bool disablesAtFinish;
+    public bool loadsScene;
+    public bool canSkip = true;
+    public bool enablesCinematic;
+    public TimelinePlaybackManager cinematic;
+    LoadSceneAsync sceneLoader;
 
     //typing vars
     public bool inMonologue;
@@ -53,7 +60,7 @@ public class MonologueText : MonoBehaviour
     public bool waitToStart;
     public float timeUntilStart;
     //wait between lines
-    public float waitTime;
+    public float timeBetweenLines;
     [Tooltip("Check this and fill in array below so that each line of text can be assigned a different wait")]
     public bool conversational;
     public float[] waitTimes;
@@ -84,6 +91,7 @@ public class MonologueText : MonoBehaviour
         speakerAnimator = hostObj.GetComponentInChildren<SpeakerAnimations>();
         speakerAudio = hostObj.GetComponent<SpeakerSound>();
         mTrigger = GetComponent<MonologueTrigger>();
+        sceneLoader = FindObjectOfType<LoadSceneAsync>();
     }
 
     void Start()
@@ -120,7 +128,7 @@ public class MonologueText : MonoBehaviour
             }
 
             //player skips to the end of the line
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && canSkip)
             {
                 if (currentTypingLine != null)
                 {
@@ -138,7 +146,7 @@ public class MonologueText : MonoBehaviour
         if (waiting)
         {
             //player skips to next line
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && canSkip)
             {
                 ProgressLine();
             }
@@ -215,7 +223,7 @@ public class MonologueText : MonoBehaviour
         }
         else
         {
-            yield return new WaitForSeconds(waitTime);
+            yield return new WaitForSeconds(timeBetweenLines);
         }
         
 
@@ -237,7 +245,7 @@ public class MonologueText : MonoBehaviour
         }
         else
         {
-            yield return new WaitForSeconds(waitTime);
+            yield return new WaitForSeconds(timeBetweenLines);
         }
         
         ProgressLine();
@@ -323,14 +331,24 @@ public class MonologueText : MonoBehaviour
     
     public void ResetMonologue()
     {
-        StopAllCoroutines();
         DisableMonologue();
-        mTrigger.WaitToReset(3f);
-        currentLine = 0;
+
+        if (loadsScene)
+        {
+            sceneLoader.Transition(3f);
+        }
+
+        if (!disablesAtFinish)
+        {
+            mTrigger.WaitToReset(3f);
+            currentLine = 0;
+        }
     }
 
     public void DisableMonologue()
     {
+        StopAllCoroutines();
+
         if (usesTMP)
             the_Text.enabled = false;
         else
@@ -339,9 +357,18 @@ public class MonologueText : MonoBehaviour
         speakerAnimator.SetAnimator("idle");
         inMonologue = false;
         //disable speaker cam, enable cam controller
-        camManager.Disable(speakerCam);
-        if(playerCam)
+        if (enablesCinematic)
+        {
+            cinematic.PlayTimeline();
+        }
+
+        //reenable player cam
+        if (playerCam)
+        {
+            camManager.Disable(speakerCam);
             playerCam.enabled = true;
+        }
+           
         //unlock player
         if (lockPlayer)
         {

@@ -6,7 +6,8 @@ using Cinemachine;
 
 public class PlayerController : AudioHandler
 {
-    public FadeUI titleCard;
+    public FadeSprite blackBack;
+    public FadeSprite wasdControls;
 
     //Current Planet
     [Header("Active Planet")]
@@ -171,8 +172,14 @@ public class PlayerController : AudioHandler
             }
 
             //fade out title card when player moves
-            if(titleCard.gameObject.activeSelf)
-                titleCard.FadeOut();
+            if(blackBack!= null)
+            {
+                if (blackBack.gameObject.activeSelf)
+                    blackBack.FadeOut();
+                if (wasdControls.gameObject.activeSelf)
+                    wasdControls.FadeOut();
+            }
+           
         }
         else
         {
