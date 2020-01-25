@@ -27,12 +27,15 @@ public class FadeSprite : MonoBehaviour {
 
         //differet syntax for image and text
         alphaValue = thisSR.color;
-        alphaValue.a = 0;
-        thisSR.color = alphaValue;
-
+        
         //automatically fadeIn at start if object has this script
-        if(fadeInAtStart)
+        if (fadeInAtStart)
+        {
+            alphaValue.a = 0;
+            thisSR.color = alphaValue;
             StartCoroutine(WaitToFadeIn());
+        }
+           
 	}
 
     public void FadeIn()

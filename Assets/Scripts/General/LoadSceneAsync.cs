@@ -16,6 +16,9 @@ public class LoadSceneAsync : MonoBehaviour
     [Tooltip("Check this to start async load at start of the scene")]
     public bool loadPreparesOnStart;
     public bool preparing = false;
+    public bool transition;
+    public FadeUI fadeToBlack;
+
     void Start()
     {
         if (loadPreparesOnStart)
@@ -63,12 +66,41 @@ public class LoadSceneAsync : MonoBehaviour
             {
                 Debug.Log("ready to load " + sceneToLoad + "!");
                 //Wait to you press the space key to activate the Scene && we are in the trip
-                if (Input.GetKeyDown(KeyCode.Space) && tripToTransition.tripping)
-                    //Activate the Scene
-                    asyncOperation.allowSceneActivation = true;
+                if(tripToTransition != null)
+                {
+                    if ((Input.GetKeyDown(KeyCode.Space) && tripToTransition.tripping))
+                    {
+                        //Activate the Scene
+                        asyncOperation.allowSceneActivation = true;
+                    }
+                }
+                //no trip, just called from other script 
+                else
+                {
+                    if (transition)
+                    {
+                        //Activate the Scene
+                        asyncOperation.allowSceneActivation = true;
+                    }
+                     
+                }
             }
 
             yield return null;
         }
+    }
+
+    public void Transition(float wait)
+    {
+        fadeToBlack.FadeIn();
+
+        StartCoroutine(WaitToTransition(wait));
+    }
+
+    IEnumerator WaitToTransition(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        transition = true;
     }
 }

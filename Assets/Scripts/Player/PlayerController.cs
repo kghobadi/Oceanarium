@@ -6,7 +6,8 @@ using Cinemachine;
 
 public class PlayerController : AudioHandler
 {
-    public FadeUI titleCard;
+    public FadeSprite blackBack;
+    public FadeSprite wasdControls;
 
     //Current Planet
     [Header("Active Planet")]
@@ -33,6 +34,7 @@ public class PlayerController : AudioHandler
     public float hoverForce = 65f;
     public float hoverHeight = 3.5f;
     public float repulsionForce = 200f, repulsionDistance = 5f;
+    public float distMaxFromPlanet = 50f;
     //player move states
     public MoveStates moveState;
     public enum MoveStates
@@ -110,12 +112,6 @@ public class PlayerController : AudioHandler
         {
             Application.Quit();
         }
-
-        //del to restart
-        if (Input.GetKeyDown(KeyCode.Delete))
-        {
-            SceneManager.LoadScene(0);
-        }
     }
 
     void FixedUpdate()
@@ -176,8 +172,14 @@ public class PlayerController : AudioHandler
             }
 
             //fade out title card when player moves
-            if(titleCard.gameObject.activeSelf)
-                titleCard.FadeOut();
+            if(blackBack!= null)
+            {
+                if (blackBack.gameObject.activeSelf)
+                    blackBack.FadeOut();
+                if (wasdControls.gameObject.activeSelf)
+                    wasdControls.FadeOut();
+            }
+           
         }
         else
         {
@@ -212,15 +214,23 @@ public class PlayerController : AudioHandler
         }
 
         //apply force 
+       
         {
-            //add twice the force when you are slow
+            //add force only if you do not exceed max vel mag
             if (playerRigidbody.velocity.magnitude < maxSpeed)
             {
                 playerRigidbody.AddForce(force * swimSpeed);
             }
 
             //ELEVATION force 
-            playerRigidbody.AddForce(transform.up * verticalMovement * elevateSpeed);
+            if (gravityBody.distanceFromPlanet < distMaxFromPlanet)
+            {
+                playerRigidbody.AddForce(transform.up * verticalMovement * elevateSpeed);
+            }
+            else
+            {
+                animator.SetAnimator("idle");
+            }
         }
 
     }

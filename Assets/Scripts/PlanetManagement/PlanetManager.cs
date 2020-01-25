@@ -54,7 +54,9 @@ public class PlanetManager : MonoBehaviour {
 
         //reset guardian AI for this planet 
         Collider[] planet = GetComponents<Collider>();
-        gBehavior.ResetGuardianLocation(guardianPos, guardianLocations, planet);
+        //only set guardian if not first planet
+        if(!startingPlanet)
+            gBehavior.ResetGuardianLocation(guardianPos, guardianLocations, planet);
 
         for(int i = 0; i < spriteCreatures.Count; i++)
         {

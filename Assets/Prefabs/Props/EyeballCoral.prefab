@@ -24,12 +24,15 @@ GameObject:
   - component: {fileID: 65013458350750646}
   - component: {fileID: 136895595016647222}
   - component: {fileID: 114340255752406580}
-  - component: {fileID: 114943019162630860}
-  - component: {fileID: 54046603687099584}
   - component: {fileID: 65124840639405650}
   - component: {fileID: 136277159266319674}
   - component: {fileID: 114165042926367204}
   - component: {fileID: 114769221199527218}
+  - component: {fileID: 54015426276927038}
+  - component: {fileID: 65697462804422456}
+  - component: {fileID: 136868928112098176}
+  - component: {fileID: 114343143337611152}
+  - component: {fileID: 114467868361295554}
   m_Layer: 10
   m_Name: EyeballCoral
   m_TagString: Prop
@@ -43,14 +46,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1350337349215272}
-  m_LocalRotation: {x: 0.5117057, y: 0.48801365, z: -0.48801365, w: 0.5117057}
-  m_LocalPosition: {x: 0.63410646, y: -0.060999755, z: 0.07591915}
-  m_LocalScale: {x: 0.030131271, y: 0.030131327, z: 0.030131336}
+  m_LocalRotation: {x: 0.69015664, y: -0, z: 0.7236601, w: 0}
+  m_LocalPosition: {x: 0.02067871, y: -0.6196069, z: -0.17117429}
+  m_LocalScale: {x: 0.03013134, y: 0.030131374, z: 0.030131398}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &54046603687099584
+  m_LocalEulerAnglesHint: {x: 0, y: 87.285, z: 180}
+--- !u!54 &54015426276927038
 Rigidbody:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,6 +92,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.41, y: 8.120002, z: 0.20000005}
   m_Center: {x: 0, y: -0.000061035156, z: 0}
+--- !u!65 &65697462804422456
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1350337349215272}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.41, y: 8.120002, z: 0.20000005}
+  m_Center: {x: -0.00012207031, y: -0.000061035156, z: 0}
 --- !u!95 &95689064164336426
 Animator:
   serializedVersion: 3
@@ -119,7 +134,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lockRotation: 0
+  usesGravity: 1
   planets: []
+  distanceFromPlanet: 0
   smoothMultiplier: 1
   overlapSphereRadius: 5
 --- !u!114 &114340255752406580
@@ -134,10 +151,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lockRotation: 0
+  usesGravity: 1
   planets: []
+  distanceFromPlanet: 0
   smoothMultiplier: 1
   overlapSphereRadius: 5
---- !u!114 &114769221199527218
+--- !u!114 &114343143337611152
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1350337349215272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42947f603ad7eba40a501609da034343, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockRotation: 0
+  usesGravity: 1
+  planets: []
+  distanceFromPlanet: 0
+  smoothMultiplier: 1
+  overlapSphereRadius: 5
+--- !u!114 &114467868361295554
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -149,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasGravityBody: 1
---- !u!114 &114943019162630860
+--- !u!114 &114769221199527218
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -174,6 +210,19 @@ CapsuleCollider:
   m_Height: 8.120002
   m_Direction: 1
   m_Center: {x: -0.000061035156, y: 0.000061035156, z: 0.000030517578}
+--- !u!136 &136868928112098176
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1350337349215272}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 3.2050006
+  m_Height: 8.120004
+  m_Direction: 1
+  m_Center: {x: 0.000061035156, y: 0.000030517578, z: 0}
 --- !u!136 &136895595016647222
 CapsuleCollider:
   m_ObjectHideFlags: 1
