@@ -21,10 +21,12 @@ public class Currents : AudioHandler {
 
     [Header("Current Activation")]
     public bool currentActivated;
-    [Tooltip("Check if player can activate directly")]
-    public bool playerActivates;
-    [Tooltip("Check if ruins activation turns on this Current")]
-    public bool ruinActivates;
+    [Tooltip("Type of thing which activates this Current")]
+    public ActivationType activationType;
+    public enum ActivationType
+    {
+        PLAYER, PLANTERPEARLS, RUINS,
+    }
     ParticleSystem ribbons;
     public ParticleSystem explosion;
     public int pearlsNecessary;
@@ -64,7 +66,7 @@ public class Currents : AudioHandler {
         {
             currentPillars[i].GetComponent<MeshRenderer>().material = silentMat;
         }
-        if (playerActivates)
+        if (activationType == ActivationType.PLAYER)
         {
             ribbons.Play();
         }
@@ -104,7 +106,7 @@ public class Currents : AudioHandler {
         //checks for pearls to activate current 
         else
         {
-            if (!playerActivates && !ruinActivates)
+            if (activationType == ActivationType.PLANTERPEARLS)
             {
                 if (activePearls.Count >= pearlsNecessary)
                 {
@@ -133,7 +135,7 @@ public class Currents : AudioHandler {
         }
         else
         {
-            if (playerActivates)
+            if (activationType == ActivationType.PLAYER)
             {
                 if (other.gameObject.tag == "Player")
                 {
@@ -161,16 +163,17 @@ public class Currents : AudioHandler {
         }
 
         //activated by MoveToCurrentPearls 
-        if(!playerActivates && !ruinActivates)
+        if(activationType == ActivationType.PLANTERPEARLS)
         {
             //play sound + cinematic
-            cinematicManager.PlayTimeline();
-            PlaySound(activationSound, 1f);
+            if(cinematicManager)
+                cinematicManager.PlayTimeline();
+            PlaySound(activationSound, myAudioSource.volume);
         }
         //also play this sound 
-        if (playerActivates)
+        else if (activationType == ActivationType.PLAYER)
         {
-            PlaySound(activationSound, 1f);
+            PlaySound(activationSound, myAudioSource.volume);
         }
     }
 

@@ -61,7 +61,7 @@ public class Planter : AudioHandler {
         myMR = GetComponent<MeshRenderer>();
         myMR.material = silentMat;
         //turn invis
-        if (invisableOnStart || planterType == PlanterType.FREEROAM)
+        if (invisableOnStart)
         {
             myMR.enabled = false;
         }
@@ -118,7 +118,7 @@ public class Planter : AudioHandler {
         myMR.material = activeMat;
 
         //if not free roaming, draw attention with active mat & popLights
-        if(planterType != PlanterType.FREEROAM)
+        if(!invisableOnStart)
         {
             myMR.enabled = true;
             popLights.Play();
