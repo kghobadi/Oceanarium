@@ -29279,7 +29279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   planetName: CubePlanet
   playerHere: 0
-  startingPlanet: 1
+  startingPlanet: 0
   playerStartingPoint: {fileID: 1988174780}
   planetColliders: []
   spriteCreatures: []
@@ -42385,7 +42385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   planetName: StartSpherePlanet
   playerHere: 0
-  startingPlanet: 0
+  startingPlanet: 1
   playerStartingPoint: {fileID: 659124163}
   planetColliders: []
   spriteCreatures: []
