@@ -230,6 +230,12 @@ public class Planter : AudioHandler {
             plantClone.GetComponent<LerpScale>().WaitToSetScale(0.1f, plantClone.GetComponent<LerpScale>().lerpSpeed, plantClone.GetComponent<LerpScale>().origScale);
         }
 
+        //set repulsion direction using planter's gravity
+        if (plantClone.GetComponent<Repulsor>())
+        {
+            plantClone.GetComponent<Repulsor>().direction = grav.GetUp();
+        }
+
         //if it has Orbit, tell it what to orbit!
         if (plantClone.GetComponent<Orbit>())
         {

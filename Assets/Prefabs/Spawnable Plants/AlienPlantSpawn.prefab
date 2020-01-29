@@ -22,10 +22,11 @@ GameObject:
   - component: {fileID: 212122252608977434}
   - component: {fileID: 95489922277747458}
   - component: {fileID: 114247793749681354}
-  - component: {fileID: 65307746498112596}
-  - component: {fileID: 114258544349523354}
   - component: {fileID: 54091490103687288}
+  - component: {fileID: 114551109054811278}
   - component: {fileID: 114521119169163988}
+  - component: {fileID: 114956202691850612}
+  - component: {fileID: 114559116194279592}
   m_Layer: 10
   m_Name: AlienPlantSpawn
   m_TagString: Prop
@@ -41,7 +42,7 @@ Transform:
   m_GameObject: {fileID: 1440088082753194}
   m_LocalRotation: {x: 0.13945812, y: -0, z: -0.20295972, w: 0.96920526}
   m_LocalPosition: {x: -1482.9089, y: 327.17105, z: -877.0507}
-  m_LocalScale: {x: 0.58763987, y: 0.58764, z: 0.58764}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -61,18 +62,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65307746498112596
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1440088082753194}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 6.02, y: 7.729999, z: 0.19999999}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95489922277747458
 Animator:
   serializedVersion: 3
@@ -103,26 +92,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasGravityBody: 0
---- !u!114 &114258544349523354
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1440088082753194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b3438be25cd83843a8d241f362b71fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveTowardsOrLerp: 0
-  lerping: 0
-  lerpSpeed: 0.25
-  desiredScale: {x: 0, y: 0, z: 0}
-  distNecToStopLerp: 0.1
-  origScale: {x: 0, y: 0, z: 0}
-  setScaleAtStart: 0
-  startMultiplier: 0
-  distLeft: 0
 --- !u!114 &114521119169163988
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -135,14 +104,70 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planetToOrbit: {fileID: 0}
-  waitToOrbit: 1
-  waitTime: 5
   orbiting: 0
   orbitAtStart: 0
+  waitTime: 0
   orbitalSpeed: 5
   xyOrzAxis: 0
   randomAxis: 1
   localOrWorld: 0
+--- !u!114 &114551109054811278
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1440088082753194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57bd4f2bae4a766409b312a0a38a7bbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  repulsing: 0
+  slowingDown: 0
+  repulseOnStart: 1
+  repulsionForce: 25
+  direction: {x: 0, y: 0, z: 0}
+  maxSpeed: 100
+  desiredDistFromPlanet: 50
+  desiredDistFromPlanetMin: 30
+  desiredDistFromPlanetMax: 60
+--- !u!114 &114559116194279592
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1440088082753194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b3438be25cd83843a8d241f362b71fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveTowardsOrLerp: 1
+  lerping: 0
+  lerpSpeed: 5
+  desiredScale: {x: 0, y: 0, z: 0}
+  distNecToStopLerp: 0.01
+  origScale: {x: 0, y: 0, z: 0}
+  setScaleAtStart: 0
+  startMultiplier: 0.1
+  distLeft: 0
+--- !u!114 &114956202691850612
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1440088082753194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42947f603ad7eba40a501609da034343, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockRotation: 0
+  usesGravity: 0
+  planets: []
+  distanceFromPlanet: 0
+  smoothMultiplier: 1
+  overlapSphereRadius: 20
 --- !u!212 &212122252608977434
 SpriteRenderer:
   m_ObjectHideFlags: 1

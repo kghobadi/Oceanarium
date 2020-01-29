@@ -131,7 +131,7 @@ Transform:
   m_GameObject: {fileID: 1864363780117772}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 0.049, y: 0.049, z: 0.049}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children: []
   m_Father: {fileID: 4724953767337294}
   m_RootOrder: 0
@@ -221,7 +221,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: c25b0c0c8c8e30649931100ecb775ebb, type: 2}
+  - {fileID: 2100000, guid: 4f1a26762acdd164c908129061d21976, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -490,7 +490,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lockRotation: 1
+  usesGravity: 1
   planets: []
+  distanceFromPlanet: 0
   smoothMultiplier: 1
   overlapSphereRadius: 20
 --- !u!114 &114284984434645558
@@ -523,7 +525,7 @@ MonoBehaviour:
   growing: 0
   scaleSpeed: 15
   radiusMultiplier: 120
-  distToStartFadingSphere: 60
+  distToStartFadingSphere: 50
 --- !u!114 &114467938202356336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -603,7 +605,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mRenderer: {fileID: 23173501155797858}
   lerpMat: {fileID: 0}
-  floatToLerp: _Teleport
+  floatToLerp: _DissolveAmount
   moveTowardsOrLerp: 1
   lerpOnStart: 0
   lerpingMat: 0
@@ -612,8 +614,8 @@ MonoBehaviour:
   resetParent: 0
   startValue: 0
   lerpValue: 0
-  endValue: -100
-  lerpSpeed: 12
+  endValue: 1
+  lerpSpeed: 0.25
 --- !u!135 &135157864041744130
 SphereCollider:
   m_ObjectHideFlags: 1
