@@ -5,9 +5,9 @@ using UnityEngine;
 public class Orbit : MonoBehaviour {
 
     public Transform planetToOrbit;
-    public bool waitToOrbit;
-    public float waitTime = 5f;
+  
     public bool orbiting, orbitAtStart;
+    public float waitTime = 5f;
     public float orbitalSpeed;
 
     [Header("Axis to Orbit")]
@@ -39,13 +39,14 @@ public class Orbit : MonoBehaviour {
         //orbit on start
         if (orbitAtStart)
         {
-            orbiting = true;
-        }
-
-        //wait to start orbit 
-        if (waitToOrbit)
-        {
-            StartCoroutine(WaitToOrbit());
+            if(waitTime > 0)
+            {
+                StartCoroutine(WaitToOrbit());
+            }
+            else
+            {
+                SetOrbit(orbitalSpeed);
+            }
         }
     }
 
@@ -61,6 +62,13 @@ public class Orbit : MonoBehaviour {
             transform.RotateAround(planetToOrbit.position, chosenAxis, orbitalSpeed * Time.deltaTime);
         }
 	}
+
+    //called to start orbit
+    public void SetOrbit(float speed)
+    {
+        orbitalSpeed = speed;
+        orbiting = true;
+    }
 
     //randomize Axis
     public void RandomizeOrbitAxis()

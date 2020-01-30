@@ -69,6 +69,7 @@ public class GravityBody : MonoBehaviour {
             planets = newPlanets;
         }
 
+        //calc future Up & total Dist
         Vector3 futureUp = Vector3.zero;
         float totalDist = 0;
         foreach (Collider planet in planets)
@@ -78,13 +79,13 @@ public class GravityBody : MonoBehaviour {
         }
         futureUp = futureUp.normalized;
 
+        //gets avg dist from planets
+        distanceFromPlanet = totalDist / planets.Length;
+
         //actually under the force of gravity
         if (usesGravity)
         {
             rb.AddForce(futureUp * -10f);
-
-            //gets avg dist from planets
-            distanceFromPlanet = totalDist / planets.Length;
 
             // up = Vector3.SmoothDamp(up, futureUp, ref smoothUp, smoothTime);
             up = Vector3.Slerp(up, futureUp, Time.deltaTime * smoothMultiplier);

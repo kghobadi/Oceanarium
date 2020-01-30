@@ -61,7 +61,7 @@ public class Planter : AudioHandler {
         myMR = GetComponent<MeshRenderer>();
         myMR.material = silentMat;
         //turn invis
-        if (invisableOnStart || planterType == PlanterType.FREEROAM)
+        if (invisableOnStart)
         {
             myMR.enabled = false;
         }
@@ -118,7 +118,7 @@ public class Planter : AudioHandler {
         myMR.material = activeMat;
 
         //if not free roaming, draw attention with active mat & popLights
-        if(planterType != PlanterType.FREEROAM)
+        if(!invisableOnStart)
         {
             myMR.enabled = true;
             popLights.Play();
@@ -228,6 +228,12 @@ public class Planter : AudioHandler {
             plantClone.transform.localScale *= plantClone.GetComponent<LerpScale>().startMultiplier;
 
             plantClone.GetComponent<LerpScale>().WaitToSetScale(0.1f, plantClone.GetComponent<LerpScale>().lerpSpeed, plantClone.GetComponent<LerpScale>().origScale);
+        }
+
+        //set repulsion direction using planter's gravity
+        if (plantClone.GetComponent<Repulsor>())
+        {
+            plantClone.GetComponent<Repulsor>().direction = grav.GetUp();
         }
 
         //if it has Orbit, tell it what to orbit!
