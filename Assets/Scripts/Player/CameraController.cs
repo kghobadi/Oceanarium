@@ -46,6 +46,7 @@ public class CameraController : MonoBehaviour {
     [Header("FOV")]
     public bool lerpingFOV;
     public float originalFOV;
+    public float meditationFOV;
     float nextFOV;
     float t;
     float lerpSpeed = 0.5f;
@@ -246,9 +247,7 @@ public class CameraController : MonoBehaviour {
             }
         }
     }
-
- 
-
+    
     //called to lerp cam fov after transitions 
     public void LerpFOV(float desiredFOV, float lerpLength)
     {
