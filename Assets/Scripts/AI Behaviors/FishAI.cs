@@ -12,10 +12,11 @@ public class FishAI : AudioHandler {
     //my behaviors  
     SpriteRenderer fRenderer;
     CreatureSprites cSprites;
-    FishAnimation fAnimation;
+    CreatureAnimation fAnimation;
     MoveTowards movement;
     Orbit orbital;
     GravityBody grav;
+    Rigidbody rBody;
 
     [Header("Fish Behaviors")]
     public FishStates currentState;
@@ -29,6 +30,8 @@ public class FishAI : AudioHandler {
     public bool waitingForSonar;
     public ObjectPooler sonarPool;
     public Transform objectOfInterest;
+    public LayerMask obstacles;
+    public float elevationSpeed = 25f;
 
     [Header("Following Herd")]
     //for Following herd
@@ -50,18 +53,21 @@ public class FishAI : AudioHandler {
         player = GameObject.FindGameObjectWithTag("Player");
         pc = player.GetComponent<PlayerController>();
 
+        //visual component refs 
+        fRenderer = GetComponentInChildren<SpriteRenderer>();
+        cSprites = GetComponentInChildren<CreatureSprites>();
+        fAnimation = GetComponentInChildren<CreatureAnimation>();
+
         //ai component refs 
-        fRenderer = GetComponent<SpriteRenderer>();
-        cSprites = GetComponent<CreatureSprites>();
-        fAnimation = GetComponent<FishAnimation>();
         movement = GetComponent<MoveTowards>();
         orbital = GetComponent<Orbit>();
         grav = GetComponent<GravityBody>();
+        rBody = GetComponent<Rigidbody>();
     }
 
     void Start()
     {
-        SetOrbitSwim();
+        SetIdle();
     }
 
     void Update ()
@@ -86,6 +92,11 @@ public class FishAI : AudioHandler {
         //MOVING
         if (currentState == FishStates.MOVING)
         {
+            //look at point of interest with grav up
+            transform.LookAt(objectOfInterest.position, grav.GetUp());
+            //send rays looking for obstacles so i can swim over them
+            CheckForward();
+            //sound 
             SoundCountdown(soundFreq, swimSounds);
 
             //movement has finished -- IDLE
@@ -119,9 +130,29 @@ public class FishAI : AudioHandler {
     //use sonar search to found next obj of interest 
     void SonarSearch()
     {
+        transform.Rotate(0f, 15f, 0f);
         GameObject sonar = sonarPool.GrabObject();
-        sonar.GetComponent<Sonar>().SendSonar(transform.position, transform.rotation);
+        sonar.GetComponent<Sonar>().SendSonar(this, transform.position, transform.rotation, orbital.planetToOrbit);
         waitingForSonar = true;
+    }
+
+    //shoots ray forward looking for obstacles 
+    void CheckForward()
+    {
+        Vector3 direction = objectOfInterest.position - transform.position;
+        RaycastHit hit;
+        if (Physics.SphereCast(transform.position, 1f, direction, out hit, 15f, obstacles))
+        {
+            //elevate if hit    
+            //Debug.Log("hit");
+            Elevate();
+        }
+    }
+
+    //called when ray forward hits obstacle
+    void Elevate()
+    {
+        rBody.AddForce(grav.GetUp() * elevationSpeed);
     }
 
     //fish will simply orbit current planet 
@@ -132,6 +163,14 @@ public class FishAI : AudioHandler {
         //randomize orbit axis again and turn it back on
         orbital.RandomizeOrbitAxis();
         orbital.orbiting = true;
+    }
+
+    //called when sonar finds something 
+    public void FoundObject(Transform obj)
+    {
+        objectOfInterest = obj;
+        SetMoveTo(objectOfInterest.position);
+        waitingForSonar = false;
     }
 
     //use grav + move towards to take fish to a specific location
