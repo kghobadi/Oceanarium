@@ -1,8 +1,8 @@
-Layer Selection: Planet
-Brush Max Size: 0
-Brush Size: 0.0971
+Layer Selection: Default
+Brush Max Size: 9.37
+Brush Size: 0.377
 Fill Mode: True
-Fill Rate: 0.098
+Fill Rate: 0.3607
 
 Game Object: Assets/Prefabs/Planets/HomingPearl.prefab
 Layer: Default
@@ -129,3 +129,21 @@ Fixed Rotation X: 0
 Fixed Rotation Y: 0
 Fixed Rotation Z: 0
 Depth: 2
+
+Game Object: Assets/Prefabs/Spawnable Plants/SwirlPlace.prefab
+Layer: Default
+Toggle: True
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.05
+Random Scale Max: 0.3
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 6
