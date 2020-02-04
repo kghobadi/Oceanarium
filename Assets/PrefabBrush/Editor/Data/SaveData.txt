@@ -1,8 +1,8 @@
 Layer Selection: Default
 Brush Max Size: 9.37
-Brush Size: 0.377
+Brush Size: 4.83
 Fill Mode: True
-Fill Rate: 0.3607
+Fill Rate: 0.0564
 
 Game Object: Assets/Prefabs/Planets/HomingPearl.prefab
 Layer: Default
@@ -132,7 +132,7 @@ Depth: 2
 
 Game Object: Assets/Prefabs/Spawnable Plants/SwirlPlace.prefab
 Layer: Default
-Toggle: True
+Toggle: False
 Slider: 1
 Lock Orientation Toggle: False
 Random Rotation Toggle: False
@@ -147,3 +147,57 @@ Fixed Rotation X: 0
 Fixed Rotation Y: 0
 Fixed Rotation Z: 0
 Depth: 6
+
+Game Object: Assets/Prefabs/Spawnable Plants/Totem.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.1
+Random Scale Max: 0.3
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 25
+
+Game Object: Assets/Prefabs/Spawnable Plants/Star.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 5
+Random Scale Max: 10
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 4
+
+Game Object: Assets/Prefabs/Props/Flower.prefab
+Layer: Default
+Toggle: True
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.7
+Random Scale Max: 0.7
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 3
