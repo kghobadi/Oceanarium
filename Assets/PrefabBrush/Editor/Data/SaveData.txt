@@ -1,8 +1,8 @@
-Layer Selection: Default
+Layer Selection: Planet
 Brush Max Size: 9.37
-Brush Size: 4.83
+Brush Size: 1.41
 Fill Mode: True
-Fill Rate: 0.0564
+Fill Rate: 0.1133
 
 Game Object: Assets/Prefabs/Planets/HomingPearl.prefab
 Layer: Default
@@ -121,9 +121,9 @@ Random Rotation Toggle: False
 Random Rotation X: False
 Random Rotation Y: False
 Random Rotation Z: False
-Random Scale Toggle: False
-Random Scale Min: 0.1
-Random Scale Max: 1
+Random Scale Toggle: True
+Random Scale Min: 0.5
+Random Scale Max: 0.5
 Fixed Rotation Toggle: False
 Fixed Rotation X: 0
 Fixed Rotation Y: 0
@@ -146,7 +146,7 @@ Fixed Rotation Toggle: False
 Fixed Rotation X: 0
 Fixed Rotation Y: 0
 Fixed Rotation Z: 0
-Depth: 6
+Depth: 25
 
 Game Object: Assets/Prefabs/Spawnable Plants/Totem.prefab
 Layer: Default
@@ -164,7 +164,7 @@ Fixed Rotation Toggle: False
 Fixed Rotation X: 0
 Fixed Rotation Y: 0
 Fixed Rotation Z: 0
-Depth: 25
+Depth: 45
 
 Game Object: Assets/Prefabs/Spawnable Plants/Star.prefab
 Layer: Default
@@ -182,9 +182,45 @@ Fixed Rotation Toggle: False
 Fixed Rotation X: 0
 Fixed Rotation Y: 0
 Fixed Rotation Z: 0
-Depth: 4
+Depth: 6
 
 Game Object: Assets/Prefabs/Props/Flower.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.1
+Random Scale Max: 0.1
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 20
+
+Game Object: Assets/Prefabs/Spawnable Plants/Bomb.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.2
+Random Scale Max: 0.8
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 30
+
+Game Object: Assets/Prefabs/Spawnable Plants/Eyes.prefab
 Layer: Default
 Toggle: True
 Slider: 1
@@ -194,10 +230,14 @@ Random Rotation X: False
 Random Rotation Y: False
 Random Rotation Z: False
 Random Scale Toggle: True
-Random Scale Min: 0.7
-Random Scale Max: 0.7
+Random Scale Min: 0.2
+Random Scale Max: 0.9
 Fixed Rotation Toggle: False
 Fixed Rotation X: 0
 Fixed Rotation Y: 0
 Fixed Rotation Z: 0
-Depth: 3
+Depth: 2
+
+Group Names:
+Boom
+star
