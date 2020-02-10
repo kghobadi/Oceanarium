@@ -43,7 +43,7 @@ public class MonologueTrigger : MonoBehaviour
     {
         if (playerInZone)
         {
-            if(Input.GetKeyDown(KeyCode.Space) && !hasActivated)
+            if(!hasActivated)
             {
                 ActivateMonologue();
             }
@@ -79,6 +79,7 @@ public class MonologueTrigger : MonoBehaviour
         pc.canJump = true;
         ToggleInteractUI(playerInZone);
 
+        WaitToReset(5f);
     }
 
 
@@ -87,17 +88,6 @@ public class MonologueTrigger : MonoBehaviour
         if (displayUI)
         {
             interactDisplay.SetActive(newState);
-        }
-    }
-
-    void OnDisable()
-    {
-        if (hasActivated)
-        {
-            for (int i = 0; i < myMonologues.Length; i++)
-            {
-                myMonologues[i].DisableMonologue();
-            }
         }
     }
 
