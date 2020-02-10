@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Cinemachine;
+using UnityEngine.Audio;
 
 public class PlayerController : AudioHandler
 {
@@ -35,11 +36,12 @@ public class PlayerController : AudioHandler
     public float hoverHeight = 3.5f;
     public float repulsionForce = 200f, repulsionDistance = 5f;
     public float distMaxFromPlanet = 50f;
+    public float idleTimer = 0f, timeUntilMeditate = 10f;
     //player move states
     public MoveStates moveState;
     public enum MoveStates
     {
-        SWIMMING, IDLE,
+        SWIMMING, IDLE, MEDITATING,
     }
 
     //for swim jumps 
@@ -70,6 +72,8 @@ public class PlayerController : AudioHandler
     public AudioClip[] swimJumpSounds, outOfBreathSounds;
     public float swimStepTimer, swimStepFrequency = 1f;
     public GameObject bubbleParticles;
+    //for meditating
+    public AudioMixerSnapshot normal, meditating;
     
     public override void Awake()
     {
@@ -164,6 +168,7 @@ public class PlayerController : AudioHandler
         //Sound checks
         if (Mathf.Abs(horizontalMovement) > 0 || Mathf.Abs(forwardMovement) > 0 || Mathf.Abs(verticalMovement) > 0)
         {
+            idleTimer = 0;
             swimStepTimer -= Time.deltaTime;
             if(swimStepTimer < 0)
             {
@@ -196,19 +201,54 @@ public class PlayerController : AudioHandler
         //IDLE
         if (forwardMovement == 0 && horizontalMovement == 0 && verticalMovement == 0)
         {
-            moveState = MoveStates.IDLE;
-            //diver look forward right
-            animator.SetAnimator("idle");
+            idleTimer += Time.deltaTime;
+            if(idleTimer < timeUntilMeditate)
+            {
+                moveState = MoveStates.IDLE;
+                //diver idle
+                animator.SetAnimator("idle");
+            }
+            //starts meditating
+            else
+            {
+                if (moveState != MoveStates.MEDITATING)
+                {
+                    camControls.LerpFOV(camControls.meditationFOV, 2f);
+                    meditating.TransitionTo(2f);
+                    canJump = false;
+                }
+
+                moveState = MoveStates.MEDITATING;
+                //diver meditates
+                animator.SetAnimator("meditating");
+            }
         }
         //elevating
         else if (verticalMovement != 0)
         {
+            //return from meditating FOV
+            if(moveState == MoveStates.MEDITATING)
+            {
+                camControls.LerpFOV(camControls.originalFOV, 2f);
+                normal.TransitionTo(2f);
+                canJump = true;
+            }
+
             moveState = MoveStates.SWIMMING;
             animator.SetAnimator("elevating");
+
         }
         //swimming 
         else if(verticalMovement == 0 && (forwardMovement != 0 || horizontalMovement != 0))
         {
+            //return from meditating FOV
+            if (moveState == MoveStates.MEDITATING)
+            {
+                camControls.LerpFOV(camControls.originalFOV, 2f);
+                normal.TransitionTo(2f);
+                canJump = true;
+            }
+
             moveState = MoveStates.SWIMMING;
             animator.SetAnimator("swimming");
         }
@@ -323,39 +363,6 @@ public class PlayerController : AudioHandler
         {
             float proportionalHeightSquared = Mathf.Pow((repulsionDistance - hit.distance) / repulsionDistance, 2);
             playerRigidbody.AddForce(-playerRigidbody.velocity * proportionalHeightSquared * repulsionForce);
-        }
-    }
-
-
-
-    void CinemachineMovement()
-    {
-        //VERTICAL force checks
-        if (forwardMovement > 0)
-        {
-            //add forward force 
-            //on that close up bottom rig
-            if (camDist < 8)
-            {
-                force += (-playerSpriteObj.transform.up * 2 + -playerSpriteObj.transform.forward) * forwardMovement;
-            }
-            //on the top rigs
-            else
-            {
-                force += (playerSpriteObj.transform.up / 3 + -playerSpriteObj.transform.forward) * forwardMovement;
-            }
-        }
-
-        //HORIZONTAL force checks
-        if (horizontalMovement > 0)
-        {
-            //add neg x force 
-            force += -playerSpriteObj.transform.right * horizontalMovement;
-        }
-        if (horizontalMovement < 0)
-        {
-            //add neg x force 
-            force += -playerSpriteObj.transform.right * horizontalMovement;
         }
     }
 }

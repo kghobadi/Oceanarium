@@ -5,7 +5,6 @@ using UnityEngine;
 //any edible Creature or moving creature will need this to correct it's sprite in the world 
 public class CreatureSprites : MonoBehaviour {
     SpriteRenderer mySR;
-    EdibleCreature edibleCreature;
     Animator creatureAnimator;
     Camera playerCam;
     CameraController camControl;
@@ -19,7 +18,6 @@ public class CreatureSprites : MonoBehaviour {
         playerCam = Camera.main;
         camControl = playerCam.GetComponent<CameraController>();
         //creature refs
-        edibleCreature = GetComponent<EdibleCreature>();
         creatureAnimator = GetComponent<Animator>();
         creatureAnimator.enabled = false;
         //set my vars
