@@ -21,7 +21,7 @@ public class Guardian : AudioHandler {
     public GuardianStates guardianState;
     public enum GuardianStates
     {
-        ORBITING, MOVING, WAITING, CHANGINGPLANETS,
+        ORBITING, MOVING, WAITING, FOLLOWPLAYER,
     }
     //guardian locations for the current planet 
     public Transform[] guardianLocations;
@@ -79,8 +79,19 @@ public class Guardian : AudioHandler {
                 }
                 //go to next point
                 else
-                {
-                    SetMove();
+                {  
+                    
+                    //inc point 
+                    if (currentPoint < guardianLocations.Length - 1)
+                    {
+                        SetMove();
+                    }
+                    //ran out of guardian points, so we are changing planets
+                    else
+                    {
+                        //just waiting 
+                    }
+                    
                 }
             }
         }
@@ -107,7 +118,7 @@ public class Guardian : AudioHandler {
         }
 
         //CHANGING PLANETS
-        if(guardianState == GuardianStates.CHANGINGPLANETS)
+        if(guardianState == GuardianStates.FOLLOWPLAYER)
         {
             //swim away 
             if (!gAnimation.Animator.GetBool("swimAway"))
@@ -128,11 +139,6 @@ public class Guardian : AudioHandler {
             currentPoint++;
             movement.MoveTo(guardianLocations[currentPoint].position, movement.moveSpeed + currentPoint);
             guardianState = GuardianStates.MOVING;
-        }
-        //ran out of guardian points, so we are changing planets
-        else
-        {
-            ChangePlanets();
         }
     }
 
@@ -158,11 +164,19 @@ public class Guardian : AudioHandler {
         guardianState = GuardianStates.MOVING;
     }
 
-    //attaches guardian to player movement for Current transition 
-    void ChangePlanets()
+    //teleport the guardian and wait at a position
+    public void TeleportGuardian(Vector3 point)
+    {
+        transform.position = point;
+        currentPoint = guardianLocations.Length - 1;
+        guardianState = GuardianStates.WAITING;
+    }
+
+    //attaches guardian to player movement 
+    void FollowPlayer()
     {
         transform.SetParent(player.transform);
         grav.enabled = false;
-        guardianState = GuardianStates.CHANGINGPLANETS;
+        guardianState = GuardianStates.FOLLOWPLAYER;
     }
 }

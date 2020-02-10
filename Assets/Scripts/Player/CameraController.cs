@@ -47,6 +47,7 @@ public class CameraController : MonoBehaviour {
     public bool lerpingFOV;
     public float originalFOV;
     public float meditationFOV;
+    public float minFOV = 10f, maxFOV = 90f;
     float nextFOV;
     float t;
     float lerpSpeed = 0.5f;
@@ -105,6 +106,7 @@ public class CameraController : MonoBehaviour {
         {
             //actual lerp 
             mainCam.fieldOfView = Mathf.Lerp(mainCam.fieldOfView, nextFOV, t);
+            mainCam.fieldOfView = Mathf.Clamp(mainCam.fieldOfView, minFOV, maxFOV);
             //interpolate!
             t += Time.deltaTime * lerpSpeed;
             //stop once t value = 1
