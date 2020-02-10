@@ -1,0 +1,1454 @@
+fileFormatVersion: 2
+guid: 02bc06cb6efd50b4d82295703a124f58
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: seewweed_0
+    21300002: seewweed_1
+    21300004: seewweed_2
+    21300006: seewweed_3
+    21300008: seewweed_4
+    21300010: seewweed_5
+    21300012: seewweed_6
+    21300014: seewweed_7
+    21300016: seewweed_8
+    21300018: seewweed_9
+    21300020: seewweed_10
+    21300022: seewweed_11
+    21300024: seewweed_12
+    21300026: seewweed_13
+    21300028: seewweed_14
+    21300030: seewweed_15
+    21300032: seewweed_16
+    21300034: seewweed_17
+    21300036: seewweed_18
+    21300038: seewweed_19
+    21300040: seewweed_20
+    21300042: seewweed_21
+    21300044: seewweed_22
+    21300046: seewweed_23
+    21300048: seewweed_24
+    21300050: seewweed_25
+    21300052: seewweed_26
+    21300054: seewweed_27
+    21300056: seewweed_28
+    21300058: seewweed_29
+    21300060: seewweed_30
+    21300062: seewweed_31
+    21300064: seewweed_32
+    21300066: seewweed_33
+    21300068: seewweed_34
+    21300070: seewweed_35
+    21300072: seewweed_36
+    21300074: seewweed_37
+    21300076: seewweed_38
+    21300078: seewweed_39
+    21300080: seewweed_40
+    21300082: seewweed_41
+    21300084: seewweed_42
+    21300086: seewweed_43
+    21300088: seewweed_44
+    21300090: seewweed_45
+    21300092: seewweed_46
+    21300094: seewweed_47
+    21300096: seewweed_48
+    21300098: seewweed_49
+    21300100: seewweed_50
+    21300102: seewweed_51
+    21300104: seewweed_52
+    21300106: seewweed_53
+    21300108: seewweed_54
+    21300110: seewweed_55
+    21300112: seewweed_56
+    21300114: seewweed_57
+    21300116: seewweed_58
+    21300118: seewweed_59
+    21300120: seewweed_60
+    21300122: seewweed_61
+    21300124: seewweed_62
+    21300126: seewweed_63
+  externalObjects: {}
+  serializedVersion: 7
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: seewweed_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 9088
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 540ec112d36a41f4db35aafb2bf1e9dc
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_1
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 9088
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcae7b0bec1d42a429a77181bdab069d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_2
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 9088
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cdf9e5e04737a24594c76e673521274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_3
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 9088
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22372be5fbf074a41b424be11dec0a92
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_4
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 9088
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 069b483e1d74ee740b443508c86dd37c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_5
+      rect:
+        serializedVersion: 2
+        x: 5120
+        y: 9088
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4330355489d3b9747af95825117c2253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_6
+      rect:
+        serializedVersion: 2
+        x: 6144
+        y: 9088
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e9122bd648ac5944b432de4d0e8335f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_7
+      rect:
+        serializedVersion: 2
+        x: 7168
+        y: 9088
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c46ea96e2c360e498f1c081ec1ce7cc
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 7952
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97dae6944464dc34b99e1668916d3e04
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_9
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 7952
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cde0bee87c9e9f245bd2de959424387c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_10
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 7952
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e61894c56c893745a8c93dfb9654e3d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_11
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 7952
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1465f74a83e1eb64fbd0b2df4b6985eb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_12
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 7952
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7789b500501746848bb74b729451bb25
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_13
+      rect:
+        serializedVersion: 2
+        x: 5120
+        y: 7952
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a500b8f215881554ca06c61161e84b44
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_14
+      rect:
+        serializedVersion: 2
+        x: 6144
+        y: 7952
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1763c56bddd52d248b5c96e21615f99f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_15
+      rect:
+        serializedVersion: 2
+        x: 7168
+        y: 7952
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c241c27286d3914ebe344fbd903a85b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6816
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ab52a03600ca604587779295fcf20ce
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_17
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 6816
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce8c8b8416ded0347bd99391a05a93b9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_18
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 6816
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 062555b856adbf747bd799b4244b9f84
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_19
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 6816
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35793da8bfe6c49479a581fa4ab1c0a3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_20
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 6816
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e299e5abfb047e84fba135d93e0d750d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_21
+      rect:
+        serializedVersion: 2
+        x: 5120
+        y: 6816
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b41b906bbaf2ac48b08936245329b73
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_22
+      rect:
+        serializedVersion: 2
+        x: 6144
+        y: 6816
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1205f6de1d81088429fa116578cf48da
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_23
+      rect:
+        serializedVersion: 2
+        x: 7168
+        y: 6816
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d39c6e8165653594e92f180155b5a6e8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5680
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3a1db9531cba1441b5976960c336ebd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_25
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 5680
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f965e2ce0e9f14048a1a9e220f1529d3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_26
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 5680
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ff75b8627d1cf346980f71ad46edaf5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_27
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 5680
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 143e8f98ad3bc7d4c83c59c762337d53
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_28
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 5680
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7706e700df0ff594e8932ff754a415d8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_29
+      rect:
+        serializedVersion: 2
+        x: 5120
+        y: 5680
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28bd3b470b8187e4fbf77122610bc7c4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_30
+      rect:
+        serializedVersion: 2
+        x: 6144
+        y: 5680
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bbf7e23582400449ac3f2847e7c1ce1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_31
+      rect:
+        serializedVersion: 2
+        x: 7168
+        y: 5680
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9861aa2e3cb35a4da9d605cc9d877b6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4544
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 413e428f9fa1c9541a4143e6cd925d84
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_33
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 4544
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e655e65de5388064e8b2c6802b818f93
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_34
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 4544
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e60895f71010b57478a2f0555eefa0d7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_35
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 4544
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d324eb396f573db49b2cf3cb5eb24649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_36
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 4544
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 518ff5f9fbbf05945a113753a7690b87
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_37
+      rect:
+        serializedVersion: 2
+        x: 5120
+        y: 4544
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aad286c834e0f8f45b7c6b128d580684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_38
+      rect:
+        serializedVersion: 2
+        x: 6144
+        y: 4544
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63197134b306a034dab1c264c22a36ab
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_39
+      rect:
+        serializedVersion: 2
+        x: 7168
+        y: 4544
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93cedbcf0f911ee49b2525982505cd12
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3408
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 738a641890ce27349bf3d30bd600b2d8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_41
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 3408
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74bc2d25298e9624c950bd8cdf0cfd49
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_42
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 3408
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13141b9e7d12bfd4f9ac1f264df08199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_43
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 3408
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9ebb4342d922ea46b08028251b1fb00
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_44
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 3408
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfb33f816a4644747bdeda44a1a6422d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_45
+      rect:
+        serializedVersion: 2
+        x: 5120
+        y: 3408
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c09419a04ad44c64ea1c7db093f56e1b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_46
+      rect:
+        serializedVersion: 2
+        x: 6144
+        y: 3408
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98236b3c7e752e44bb61cb3f33ca3d40
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_47
+      rect:
+        serializedVersion: 2
+        x: 7168
+        y: 3408
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a8cc3fba5f6a3246a783a53ed578428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2272
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 391b6b93693147d47bf75ff19f4e1454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_49
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 2272
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0385a63eb7ac304c8266e60b36d9db9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_50
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 2272
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02c35b4bf22bdd34ebe770201fd18093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_51
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 2272
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b150b72b4ca883a4caae4cbf04f8e4e4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_52
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 2272
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fafca919b8cb82e4c89dd9a3978c4d1e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_53
+      rect:
+        serializedVersion: 2
+        x: 5120
+        y: 2272
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45c4e3aab1f49684186241b8e698d0a6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_54
+      rect:
+        serializedVersion: 2
+        x: 6144
+        y: 2272
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00561b70ebadf1843902ff23700b68d3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_55
+      rect:
+        serializedVersion: 2
+        x: 7168
+        y: 2272
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba657b2ac093a31428088cbd779c386d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1136
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 056cb6f89fbefa84e838b1fa4355fa1a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_57
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1136
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f683a5a4ef9e66a4f9a6d2ea1bd808bf
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_58
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1136
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15959dae6c7886b408b539bec66b9f11
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_59
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 1136
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2f00f5934823064a9c022214ee4ad22
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_60
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 1136
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16f30f6f345258c4a90ec77a67298a17
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_61
+      rect:
+        serializedVersion: 2
+        x: 5120
+        y: 1136
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86908f55cc19d6b4ba3def007c7bf682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_62
+      rect:
+        serializedVersion: 2
+        x: 6144
+        y: 1136
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 722a72b67e33d894cb26e6fccb5d6a57
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seewweed_63
+      rect:
+        serializedVersion: 2
+        x: 7168
+        y: 1136
+        width: 1024
+        height: 1136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa3c63337ed50514e8be7078af2b33cc
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 4186b3e823e88654c9439e3965f033de
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
