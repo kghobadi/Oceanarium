@@ -46,7 +46,7 @@ public class CameraController : MonoBehaviour {
     [Header("FOV")]
     public bool lerpingFOV;
     public float originalFOV;
-    public float meditationFOV;
+    public float meditationFOV = 15f;
     public float minFOV = 10f, maxFOV = 90f;
     float nextFOV;
     float t;
