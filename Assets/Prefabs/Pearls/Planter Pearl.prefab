@@ -542,8 +542,8 @@ Transform:
   m_Children:
   - {fileID: 4913778477679134}
   - {fileID: 4600731647621746}
-  - {fileID: 4309611208934814}
   - {fileID: 4100864811988404}
+  - {fileID: 4309611208934814}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -573,7 +573,7 @@ Transform:
   m_Children:
   - {fileID: 4500027253912378}
   m_Father: {fileID: 4005258162706314}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4150735870278698
 Transform:
@@ -682,7 +682,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4005258162706314}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!4 &4316552623161102
 Transform:
@@ -1250,9 +1250,9 @@ MonoBehaviour:
   spawnObj: {fileID: 1408911501964028, guid: 21fe1f9b074ec6d469571d7d56f2505d, type: 2}
   plantParent: {fileID: 0}
   spawnTimer: 0
-  spawnFrequency: 0.5
-  minSizeMult: 0.75
-  maxSizeMult: 2
+  spawnFrequency: 0.3
+  minSizeMult: 0.25
+  maxSizeMult: 0.6
   planetMask:
     serializedVersion: 2
     m_Bits: 1536

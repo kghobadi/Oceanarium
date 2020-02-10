@@ -1,7 +1,48 @@
 fileFormatVersion: 2
 guid: 908e154f6d9ed744b8f355071b56ddb3
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: BigEye_0
+    21300002: BigEye_1
+    21300004: BigEye_2
+    21300006: BigEye_3
+    21300008: BigEye_4
+    21300010: BigEye_5
+    21300012: BigEye_6
+    21300014: BigEye_7
+    21300016: BigEye_8
+    21300018: BigEye_9
+    21300020: BigEye_10
+    21300022: BigEye_11
+    21300024: BigEye_12
+    21300026: BigEye_13
+    21300028: BigEye_14
+    21300030: BigEye_15
+    21300032: BigEye_16
+    21300034: BigEye_17
+    21300036: BigEye_18
+    21300038: BigEye_19
+    21300040: BigEye_20
+    21300042: BigEye_21
+    21300044: BigEye_22
+    21300046: BigEye_23
+    21300048: BigEye_24
+    21300050: BigEye_25
+    21300052: BigEye_26
+    21300054: BigEye_27
+    21300056: BigEye_28
+    21300058: BigEye_29
+    21300060: BigEye_30
+    21300062: BigEye_31
+    21300064: BigEye_32
+    21300066: BigEye_33
+    21300068: BigEye_34
+    21300070: BigEye_35
+    21300072: BigEye_36
+    21300074: BigEye_37
+    21300076: BigEye_38
+    21300078: BigEye_39
+    21300080: BigEye_40
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -102,13 +143,844 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: BigEye_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 10044
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fb625d28e5c07d4b962b9a33e7cb383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_1
+      rect:
+        serializedVersion: 2
+        x: 1646
+        y: 10044
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1e0a9c08de8dac4f97a9548511e53d3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_2
+      rect:
+        serializedVersion: 2
+        x: 3292
+        y: 10044
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ba4e15e5fc3eff44a2b285ce4c19089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_3
+      rect:
+        serializedVersion: 2
+        x: 4938
+        y: 10044
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbe5bf6343e04ce4fb2caa9cea51822a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_4
+      rect:
+        serializedVersion: 2
+        x: 6584
+        y: 10044
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9d38168b6b558e4194f5b59f51c7e06
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_5
+      rect:
+        serializedVersion: 2
+        x: 8230
+        y: 10044
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 336ac7aae549708488dfdab95e4da313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8370
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e8422e4ff406404db2a270415d18971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_7
+      rect:
+        serializedVersion: 2
+        x: 1646
+        y: 8370
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9d44576a163f544286461fd08043ba2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_8
+      rect:
+        serializedVersion: 2
+        x: 3292
+        y: 8370
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 019c37d34ba792d49bc6a8ce4531de4f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_9
+      rect:
+        serializedVersion: 2
+        x: 4938
+        y: 8370
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48ee33a73ccac604da6883e401f1ce8a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_10
+      rect:
+        serializedVersion: 2
+        x: 6584
+        y: 8370
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee61c755f57089f4ba0158a8d3fc054c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_11
+      rect:
+        serializedVersion: 2
+        x: 8230
+        y: 8370
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb813feba18fc0547a73bd7ba44667ea
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6696
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6f31068697621f4e9146f29d1e3787e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_13
+      rect:
+        serializedVersion: 2
+        x: 1646
+        y: 6696
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9d17c5f4ff18dc4ba781aa798e209cb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_14
+      rect:
+        serializedVersion: 2
+        x: 3292
+        y: 6696
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 718a43cbc5747c64c9d2982214cece26
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_15
+      rect:
+        serializedVersion: 2
+        x: 4938
+        y: 6696
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a030628681ca0174db43788707023f25
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_16
+      rect:
+        serializedVersion: 2
+        x: 6584
+        y: 6696
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6902397e43784f42bc832384818549f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_17
+      rect:
+        serializedVersion: 2
+        x: 8230
+        y: 6696
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb003f5a336a77a4386c0636baba9c43
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5022
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 931edc435ec01ab4799d69486cc61560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_19
+      rect:
+        serializedVersion: 2
+        x: 1646
+        y: 5022
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0fa3aa900a9e634a82475f673c0982d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_20
+      rect:
+        serializedVersion: 2
+        x: 3292
+        y: 5022
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 056d0b0e79226984d8a35f872953220d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_21
+      rect:
+        serializedVersion: 2
+        x: 4938
+        y: 5022
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f7ec67d7c56ab44d8180536c3552435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_22
+      rect:
+        serializedVersion: 2
+        x: 6584
+        y: 5022
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef5bab6ea7bf39c419a2a55130f8f012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_23
+      rect:
+        serializedVersion: 2
+        x: 8230
+        y: 5022
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9348df5f15e45c41b2b74ab73a8b82b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3348
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ba4c5b59d72c58499e87d0a40731fa2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_25
+      rect:
+        serializedVersion: 2
+        x: 1646
+        y: 3348
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a318a5bdb474644ba6724c32f127350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_26
+      rect:
+        serializedVersion: 2
+        x: 3292
+        y: 3348
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 848771969a107324abb355a4274f61a4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_27
+      rect:
+        serializedVersion: 2
+        x: 4938
+        y: 3348
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51e636074a3f9174e8dbaea401199d6d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_28
+      rect:
+        serializedVersion: 2
+        x: 6584
+        y: 3348
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b4aaa687f704b940ab0ae24e6cfeff4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_29
+      rect:
+        serializedVersion: 2
+        x: 8230
+        y: 3348
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64798a0d503583d49b155be52830bf39
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1674
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a7a9faffbd73fc4cbe07f5334ff18f0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_31
+      rect:
+        serializedVersion: 2
+        x: 1646
+        y: 1674
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b78755f1e5e7fdd42b9dd2b3f3cd1e9b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_32
+      rect:
+        serializedVersion: 2
+        x: 3292
+        y: 1674
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b2bf9725329aad40bfa003294dde791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_33
+      rect:
+        serializedVersion: 2
+        x: 4938
+        y: 1674
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11234afe899d01c47b334d5d900c54d3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_34
+      rect:
+        serializedVersion: 2
+        x: 6584
+        y: 1674
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75cbcb9bdc0112344b4fa898a2b651c3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_35
+      rect:
+        serializedVersion: 2
+        x: 8230
+        y: 1674
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5b6305c08359de44ac6c5d89ffd355f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86bdbf5e8e3647f49a06f4a3681343d9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_37
+      rect:
+        serializedVersion: 2
+        x: 1646
+        y: 0
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fb41d1f31ff60c4fa05201923413e26
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_38
+      rect:
+        serializedVersion: 2
+        x: 3292
+        y: 0
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 912b01f289241eb45978226f15813829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_39
+      rect:
+        serializedVersion: 2
+        x: 4938
+        y: 0
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d8e07e22a352c14fab5b9e5095d7e7c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigEye_40
+      rect:
+        serializedVersion: 2
+        x: 8230
+        y: 0
+        width: 1646
+        height: 1674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2afb2f922aa233c49a7fa0eb359622ab
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: bf73710012eacef419008d62a856c944
     vertices: []
     indices: 
     edges: []

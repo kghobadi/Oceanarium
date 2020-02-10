@@ -10,15 +10,6 @@ public class ObjectPooler : MonoBehaviour {
     List<GameObject> availableObjects = new List<GameObject>();
     List<GameObject> objectsInUse = new List<GameObject>();
 
-    //to link seeds & plant poolers 
-    public ObjectPooler companionPooler;
-
-    public PoolerType poolType;
-    public enum PoolerType
-    {
-        WIND, CLOUD, SHROOM, CROP, SEED, FX,
-    }
-
     protected virtual void Awake() {
         for(int i = 0; i < startingAmount; i++)
         {

@@ -37,6 +37,8 @@ public class PlanetManager : MonoBehaviour {
         if (startingPlanet)
         {
             pc.transform.position = playerStartingPoint.position;
+            if(Vector3.Distance(pc.transform.position, gBehavior.transform.position) > 50f)
+                gBehavior.TeleportGuardian(playerStartingPoint.position);
             ActivatePlanet(guardianLocations[0].position);
         }
         else
@@ -55,10 +57,10 @@ public class PlanetManager : MonoBehaviour {
         //reset guardian AI for this planet 
         Collider[] planet = GetComponents<Collider>();
         //only set guardian if not first planet
-        if(!startingPlanet)
-            gBehavior.ResetGuardianLocation(guardianPos, guardianLocations, planet);
+        gBehavior.ResetGuardianLocation(guardianPos, guardianLocations, planet);
 
-        for(int i = 0; i < spriteCreatures.Count; i++)
+
+        for (int i = 0; i < spriteCreatures.Count; i++)
         {
             spriteCreatures[i].SetActive(true);
         }

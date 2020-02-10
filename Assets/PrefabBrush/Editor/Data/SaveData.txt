@@ -222,7 +222,7 @@ Depth: 30
 
 Game Object: Assets/Prefabs/Spawnable Plants/Eyes.prefab
 Layer: Default
-Toggle: True
+Toggle: False
 Slider: 1
 Lock Orientation Toggle: False
 Random Rotation Toggle: False
@@ -237,6 +237,24 @@ Fixed Rotation X: 0
 Fixed Rotation Y: 0
 Fixed Rotation Z: 0
 Depth: 2
+
+Game Object: Assets/Prefabs/Spawnable Plants/Radio2.prefab
+Layer: Default
+Toggle: True
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.05
+Random Scale Max: 0.4
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 30
 
 Group Names:
 Boom
