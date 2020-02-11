@@ -49,9 +49,10 @@ public class Planter : AudioHandler {
     public LayerMask planetMask;
 
     [Header("Sounds")]
+    public AudioClip lureSound;
+    public AudioClip activationSound;
     public AudioClip travelingSound;
     public AudioClip orbitingSound;
-    public AudioClip activationSound;
 
     public override void Awake ()
     {
@@ -93,6 +94,15 @@ public class Planter : AudioHandler {
             }
 
             MoveCheck();
+        }
+        //not activated, luring 
+        else
+        {
+            //play moving sound
+            if (myAudioSource.isPlaying == false)
+            {
+                PlaySound(lureSound, 1f);
+            }
         }
 	}
 
