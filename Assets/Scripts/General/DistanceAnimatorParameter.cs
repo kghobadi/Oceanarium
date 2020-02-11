@@ -19,13 +19,16 @@ public class DistanceAnimatorParameter : MonoBehaviour
     private string parameterName = "Distance";
 
     private Coroutine updateCoroutine;
+    //for other scriptps to reference
+    [HideInInspector]
+    public float distance;
 
     private void Awake()
     {
         animatorComponent = GetComponent<Animator>();
-
-        targets.Clear();
+        
         player = GameObject.FindGameObjectWithTag("Player");
+
         if(player)
             targets.Add(player.transform);
     }

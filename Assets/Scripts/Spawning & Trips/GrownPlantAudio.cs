@@ -7,10 +7,21 @@ public class GrownPlantAudio : AudioHandler {
     public AudioClip growthSound;
     public AudioClip playerTouchedMe;
 
+    DistanceAnimatorParameter distanceAnim;
+    public float distToMakeSound = 5f;
+
     void Start()
     {
+        distanceAnim = GetComponent<DistanceAnimatorParameter>();
+
         if(growthSound)
             PlaySoundRandomPitch(growthSound, myAudioSource.volume);
+    }
+
+    void Update()
+    {
+        if(distanceAnim.distance < distToMakeSound)
+            PlaySoundRandomPitch(playerTouchedMe, myAudioSource.volume);
     }
 
     void OnTriggerEnter(Collider other)
