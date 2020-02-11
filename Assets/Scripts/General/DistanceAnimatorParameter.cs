@@ -29,8 +29,22 @@ public class DistanceAnimatorParameter : MonoBehaviour
         
         player = GameObject.FindGameObjectWithTag("Player");
 
+        ClearEmptyTargets();
+
         if(player)
             targets.Add(player.transform);
+    }
+
+    void ClearEmptyTargets()
+    {
+        for(int i = 0; i < targets.Count; i++)
+        {
+            if(targets[i] == null)
+            {
+                targets.RemoveAt(i);
+                i--;
+            }
+        }
     }
 
     private void OnValidate()
