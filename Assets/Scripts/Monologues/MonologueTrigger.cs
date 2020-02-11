@@ -70,6 +70,8 @@ public class MonologueTrigger : MonoBehaviour
         playerInZone = true;
         pc.canJump = false;
         ToggleInteractUI(playerInZone);
+
+        StopAllCoroutines();
     }
 
     public void PlayerExitedZone()

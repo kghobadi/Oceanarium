@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 95002572018267576}
   - component: {fileID: 114344431403451284}
   - component: {fileID: 65286943255449814}
+  - component: {fileID: 114167578090342286}
   m_Layer: 10
   m_Name: CoralSpawn
   m_TagString: Prop
@@ -104,6 +105,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114167578090342286
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1017061435685780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ba927cd901f924991946c7ddd669c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myAudioSource: {fileID: 0}
+  pitchRange: {x: 0.9, y: 1.1}
+  voiceCounter: 0
+  voices: []
+  currentSound: 0
+  growthSound: {fileID: 0}
+  playerTouchedMe: {fileID: 0}
 --- !u!114 &114344431403451284
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -25,6 +25,7 @@ public class GrowthPearl : AudioHandler {
     public Planter[] planters;
  
     [Header("Sounds")]
+    public AudioClip lureSound;
     public AudioClip activationSound;
     public AudioClip travelingSound;
     public AudioClip orbitingSound;
@@ -63,6 +64,16 @@ public class GrowthPearl : AudioHandler {
 
     void Update()
     {
+        //lure player 
+        if (!activated)
+        {
+            //play moving sound
+            if (myAudioSource.isPlaying == false)
+            {
+                PlaySound(lureSound, 1f);
+            }
+        }
+
         //turn off once growth sphere is done 
         if(activated && growthSphere.growing == false)
         {
