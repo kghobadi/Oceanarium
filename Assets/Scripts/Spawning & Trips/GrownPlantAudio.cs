@@ -3,37 +3,48 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GrownPlantAudio : AudioHandler {
+    GameObject player;
+
     [Header("Sounds")]
     public AudioClip growthSound;
     [Tooltip("Add a trigger + Rigidbody to this plant/sprite and when the player touches me I will make this sound")]
     public AudioClip playerTouchedMe;
 
-    DistanceAnimatorParameter distanceAnim;
+    
     [Tooltip("SET THIS TO SAME VALUE AS DISTANCE PARAM IN ANIMATOR: If player comes this close, i will make growth sound")]
     public float distToMakeSound = 5f;
+    [Tooltip("Distance from player at which Growth sound will reset")]
+    public float distToReset = 50f;
     public bool playedSound;
+
+    public ParticleSystem growthParticles;
 
     void Start()
     {
-        distanceAnim = GetComponent<DistanceAnimatorParameter>();
-
-        if(growthSound)
-            PlaySoundRandomPitch(growthSound, myAudioSource.volume);
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
     {
-        if(distanceAnim.distance < distToMakeSound)
+        if (player)
         {
-            if(!playedSound && growthSound)
+            float distance = Vector3.Distance(transform.position, player.transform.position);
+
+            //close enough to trigger growth 
+            if (distance < distToMakeSound)
             {
-                PlaySoundRandomPitch(growthSound, myAudioSource.volume);
-                playedSound = true;
+                if (!playedSound && growthSound)
+                {
+                    PlaySoundRandomPitch(growthSound, myAudioSource.volume);
+                    playedSound = true;
+                    growthParticles.Play();
+                }
             }
-        }
-        else
-        {
-            playedSound = false;
+            //reset growth sound 
+            else if (distance > distToReset)
+            {
+                playedSound = false;
+            }
         }
     }
 
@@ -41,8 +52,9 @@ public class GrownPlantAudio : AudioHandler {
     {
         if(other.gameObject.tag == "Player")
         {
+            Debug.Log("triggered touch");
             if(playerTouchedMe)
-                PlaySoundRandomPitch(playerTouchedMe, myAudioSource.volume);
+                PlaySoundRandomPitch(playerTouchedMe, myAudioSource.volume / 2);
         }
     }
 

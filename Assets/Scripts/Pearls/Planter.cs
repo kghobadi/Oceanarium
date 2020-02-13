@@ -8,6 +8,7 @@ public class Planter : AudioHandler {
     MoveTowards movement;
     GravityBody grav;
     ParticleSystem lure;
+    ParticleSystem tentacleTrail;
     ParticleSystem popLights;
 
     [Header("Planter Travel")]
@@ -71,7 +72,8 @@ public class Planter : AudioHandler {
         grav = GetComponent<GravityBody>();
 
         lure = transform.GetChild(0).GetComponent<ParticleSystem>();
-        popLights = transform.GetChild(1).GetComponent<ParticleSystem>();
+        tentacleTrail = transform.GetChild(1).GetComponent<ParticleSystem>();
+        popLights = transform.GetChild(3).GetComponent<ParticleSystem>();
       
     }
 	
@@ -121,8 +123,11 @@ public class Planter : AudioHandler {
     //called by Pearl activation
     public void ActivatePlanter(bool sound)
     {
+        //stop prev audio
+        if (myAudioSource.isPlaying)
+            myAudioSource.Stop();
         //sound?
-        if(sound && activationSound != null)
+        if (sound && activationSound != null)
             PlaySoundRandomPitch(activationSound, 1f);
         //set MR
         myMR.material = activeMat;
@@ -132,6 +137,7 @@ public class Planter : AudioHandler {
         {
             myMR.enabled = true;
             popLights.Play();
+            tentacleTrail.Play();
         }
            
         //change particles
@@ -251,6 +257,9 @@ public class Planter : AudioHandler {
         {
             plantClone.GetComponent<Orbit>().planetToOrbit = planetManager.transform;
         }
+
+        //trigger growth!
+        plantClone.GetComponent<Animator>().SetTrigger("grow");
 
         //reset spawn timer
         spawnTimer = spawnFrequency;

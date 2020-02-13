@@ -89,6 +89,7 @@ public class PlayerController : AudioHandler
         playerSpriteObj = transform.GetChild(0).gameObject;
         animator = playerSpriteObj.GetComponent<PlayerAnimations>();
         quitScript = FindObjectOfType<QuitGame>();
+        idleTimer = 0;
        
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -255,6 +256,7 @@ public class PlayerController : AudioHandler
                 canJump = true;
             }
 
+            idleTimer = 0;
             moveState = MoveStates.SWIMMING;
             animator.SetAnimator("swimming");
         }

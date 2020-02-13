@@ -91,7 +91,7 @@ public class Repulsor : MonoBehaviour {
             
             rBody.AddForce(force);
 
-            Debug.Log("force = " + force);
+            //Debug.Log("force = " + force);
         }
         
         //reached desired dist from planet 

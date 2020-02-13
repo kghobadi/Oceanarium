@@ -21,7 +21,7 @@ public class DistanceAnimatorParameter : MonoBehaviour
     private Coroutine updateCoroutine;
     //for other scriptps to reference
     [HideInInspector]
-    public float distance;
+    public float distanceFromPlayer;
 
     private void Awake()
     {

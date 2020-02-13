@@ -133,20 +133,18 @@ public class TripActivation : MonoBehaviour {
         //activate trip stuff 
         tripCamera.SetActive(true);
         trip.SetActive(true);
-
+        //activate guardian anim
         if (guardAnim)
         {
             guardAnim.SetActive(true);
         }
         
-
         //start load 
         if (loadsNewScene)
         {
             //check to see if already preparing
             if(sceneLoader.loadPreparesOnStart == false)
                 sceneLoader.Load();
-
         }
 
         //deactivate player stuff
