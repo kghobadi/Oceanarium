@@ -62,6 +62,7 @@ public class MonologueTrigger : MonoBehaviour
 
             hasActivated = true;
             ToggleInteractUI(false);
+            playerInZone = false;
         }
     }
 

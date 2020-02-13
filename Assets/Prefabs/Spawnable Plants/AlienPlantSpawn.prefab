@@ -27,7 +27,6 @@ GameObject:
   - component: {fileID: 114521119169163988}
   - component: {fileID: 114956202691850612}
   - component: {fileID: 114559116194279592}
-  - component: {fileID: 114306664247992118}
   m_Layer: 10
   m_Name: AlienPlantSpawn
   m_TagString: Prop
@@ -93,24 +92,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasGravityBody: 0
---- !u!114 &114306664247992118
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1440088082753194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62ba927cd901f924991946c7ddd669c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myAudioSource: {fileID: 0}
-  pitchRange: {x: 0.9, y: 1.1}
-  voiceCounter: 0
-  voices: []
-  currentSound: 0
-  growthSound: {fileID: 0}
-  playerTouchedMe: {fileID: 0}
 --- !u!114 &114521119169163988
 MonoBehaviour:
   m_ObjectHideFlags: 1

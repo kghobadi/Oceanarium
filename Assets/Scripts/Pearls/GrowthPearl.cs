@@ -94,8 +94,11 @@ public class GrowthPearl : AudioHandler {
 
     public void ActivateGrowthPearl(bool sound)
     {
-        //sound?
-        if(sound)
+        //stop prev audio
+        if (myAudioSource.isPlaying)
+            myAudioSource.Stop();
+        //sound? && null check?
+        if (sound && activationSound)
             PlaySound(activationSound, 1f);
         //set mat
         pearlMesh.material = activeMat;

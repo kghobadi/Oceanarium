@@ -175,8 +175,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1182291691226958}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -856.1, y: 271.09998, z: -928.4}
+  m_LocalRotation: {x: -0.5725026, y: 0.39457488, z: -0.4078599, w: 0.5917785}
+  m_LocalPosition: {x: -892.6432, y: 181.347, z: -928.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4315972799044510}
@@ -737,6 +737,7 @@ MonoBehaviour:
   - swimming
   - inCurrent
   - elevating
+  - meditating
 --- !u!114 &114027135453325382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -756,7 +757,8 @@ MonoBehaviour:
   - {fileID: 82360686405992226}
   - {fileID: 82634745980122810}
   currentSound: 0
-  titleCard: {fileID: 0}
+  blackBack: {fileID: 0}
+  wasdControls: {fileID: 0}
   activePlanet: {fileID: 0}
   activePlanetName: Starter
   canMove: 1
@@ -773,6 +775,9 @@ MonoBehaviour:
   hoverHeight: 4
   repulsionForce: 100
   repulsionDistance: 2
+  distMaxFromPlanet: 50
+  idleTimer: 0
+  timeUntilMeditate: 10
   moveState: 8
   infiniteJump: 0
   jumpForce: 1000
@@ -793,9 +798,7 @@ MonoBehaviour:
   swimmingSounds:
   - {fileID: 8300000, guid: 64abf5d57fd80f142ba29adb3e0a673e, type: 3}
   swimJumpSounds:
-  - {fileID: 8300000, guid: bbed5796ae0b0de429d6a3eda0cef0a2, type: 3}
-  - {fileID: 8300000, guid: fc119b12157987e4d80a7189aec494a1, type: 3}
-  - {fileID: 8300000, guid: 1cc46701a2e21264db008c2c273cd6f0, type: 3}
+  - {fileID: 8300000, guid: 575b365ec26e3b344913026c58dc530f, type: 3}
   outOfBreathSounds:
   - {fileID: 8300000, guid: 684f2826668780c4683c5233621fea53, type: 3}
   - {fileID: 8300000, guid: 47c6ee5a2812c3842811e1167b770078, type: 3}
@@ -805,6 +808,11 @@ MonoBehaviour:
   swimStepFrequency: 1.1
   bubbleParticles: {fileID: 1961293337431550, guid: c8450d5d532c05c4bb6fd81897a9bbe3,
     type: 2}
+  normal: {fileID: 24500006, guid: d823d1a03d06d3d478ee416f0a455437, type: 2}
+  meditating: {fileID: 245889458632442960, guid: d823d1a03d06d3d478ee416f0a455437,
+    type: 2}
+  restartTimer: 0
+  restartTotal: 60
 --- !u!114 &114101529383191312
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -849,8 +857,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lockRotation: 1
+  usesGravity: 1
   planets:
   - {fileID: 0}
+  distanceFromPlanet: 0
   smoothMultiplier: 1
   overlapSphereRadius: 20
 --- !u!114 &114397949886335974
@@ -912,7 +922,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 4c342f30821ca9e42bd313e956a00c49, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

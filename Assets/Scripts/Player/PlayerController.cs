@@ -74,6 +74,8 @@ public class PlayerController : AudioHandler
     public GameObject bubbleParticles;
     //for meditating
     public AudioMixerSnapshot normal, meditating;
+    QuitGame quitScript;
+    public float restartTimer, restartTotal = 60f;
     
     public override void Awake()
     {
@@ -86,6 +88,8 @@ public class PlayerController : AudioHandler
         capCollider = GetComponent<CapsuleCollider>();
         playerSpriteObj = transform.GetChild(0).gameObject;
         animator = playerSpriteObj.GetComponent<PlayerAnimations>();
+        quitScript = FindObjectOfType<QuitGame>();
+        idleTimer = 0;
        
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -109,6 +113,9 @@ public class PlayerController : AudioHandler
 
             //repulses player from planet when they land too hard
             RepulsionLogic();
+
+            //game will restart if meditate for a minute
+            MeditativeRestart();
         }
         
         //esc to quit
@@ -249,6 +256,7 @@ public class PlayerController : AudioHandler
                 canJump = true;
             }
 
+            idleTimer = 0;
             moveState = MoveStates.SWIMMING;
             animator.SetAnimator("swimming");
         }
@@ -274,8 +282,25 @@ public class PlayerController : AudioHandler
         }
 
     }
-    
 
+    //after meditating long enough, game will restart 
+    void MeditativeRestart()
+    {
+        if(moveState == MoveStates.MEDITATING)
+        {
+            restartTimer += Time.deltaTime;
+
+            if(restartTimer > restartTotal)
+            {
+                quitScript.RestartGame();
+            }
+        }
+        else
+        {
+            restartTimer = 0;
+        }
+    }
+    
     void TakeJumpInput()
     {
         //start jumpTimer
