@@ -122,6 +122,7 @@ public class Currents : AudioHandler {
     {
         pillar.GetComponent<MeshRenderer>().material = activeMat;
         activePearls.Add(pearl);
+        Debug.Log("activated a pillar");
     }
 
     public void OnTriggerEnter(Collider other)
@@ -147,6 +148,8 @@ public class Currents : AudioHandler {
 
     public void ActivateCurrent()
     {
+        Debug.Log("activated current");
+
         currentParticles.Play();
         currentBubble.material = activeMat;
         currentActivated = true;

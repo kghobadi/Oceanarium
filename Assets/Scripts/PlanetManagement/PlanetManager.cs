@@ -40,8 +40,10 @@ public class PlanetManager : MonoBehaviour {
         if (startingPlanet)
         {
             pc.transform.position = playerStartingPoint.position;
+
             if(Vector3.Distance(pc.transform.position, gBehavior.transform.position) > 50f)
                 gBehavior.TeleportGuardian(playerStartingPoint.position);
+
             ActivatePlanet(guardianLocations[0].position);
         }
         else

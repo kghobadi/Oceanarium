@@ -17,6 +17,7 @@ public class GrownPlantAudio : AudioHandler {
     public float distToReset = 50f;
     public bool playedSound;
 
+    public bool playParticles;
     public ParticleSystem growthParticles;
 
     void Start()
@@ -37,7 +38,8 @@ public class GrownPlantAudio : AudioHandler {
                 {
                     PlaySoundRandomPitch(growthSound, myAudioSource.volume);
                     playedSound = true;
-                    growthParticles.Play();
+                    if(playParticles)
+                        growthParticles.Play();
                 }
             }
             //reset growth sound 

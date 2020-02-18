@@ -359,6 +359,7 @@ public class PlayerController : AudioHandler
         animator.characterAnimator.SetTrigger("jump");
         PlaySoundMultipleAudioSources(swimJumpSounds);
         jumpTimer = 0;
+        idleTimer = 0;
     }
 
     //checks if player is grounded to planet surface 

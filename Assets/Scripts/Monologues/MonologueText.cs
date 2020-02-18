@@ -311,6 +311,12 @@ public class MonologueText : MonoBehaviour
             camManager.Set(speakerCam);
             if (playerCam)
                 playerCam.enabled = false;
+
+            //set player pos
+            if (playerSpot)
+            {
+                pc.transform.position = playerSpot.position;
+            }
         }
        
         //lock player movement
@@ -321,11 +327,7 @@ public class MonologueText : MonoBehaviour
             pc.playerRigidbody.velocity = Vector3.zero;
         }
 
-        //set player pos
-        if (playerSpot)
-        {
-            pc.transform.position = playerSpot.position;
-        }
+      
 
         //set player to idle anim
         if(pc)
