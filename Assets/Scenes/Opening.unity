@@ -142,7 +142,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2611,7 +2611,7 @@ MonoBehaviour:
   targets: []
   animatorComponent: {fileID: 0}
   parameterName: Distance
-  distance: 0
+  distanceFromPlayer: 0
 --- !u!114 &1799146705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3187,22 +3187,22 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1977362191}
     - target: {fileID: 114349603319954922, guid: a9bfd5fd5ed8f4f4884fff32cb180efa,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1977362191}
     - target: {fileID: 114090507173008984, guid: a9bfd5fd5ed8f4f4884fff32cb180efa,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1977362191}
     - target: {fileID: 114682495393964240, guid: a9bfd5fd5ed8f4f4884fff32cb180efa,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1977362191}
     - target: {fileID: 114395693121381190, guid: a9bfd5fd5ed8f4f4884fff32cb180efa,
         type: 2}
       propertyPath: m_havePropertiesChanged
@@ -3262,10 +3262,36 @@ Prefab:
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114682495393964240, guid: a9bfd5fd5ed8f4f4884fff32cb180efa,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Quit
+      objectReference: {fileID: 0}
+    - target: {fileID: 114090507173008984, guid: a9bfd5fd5ed8f4f4884fff32cb180efa,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DeactivateObj
+      objectReference: {fileID: 0}
+    - target: {fileID: 114798538547810104, guid: a9bfd5fd5ed8f4f4884fff32cb180efa,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 114349603319954922, guid: a9bfd5fd5ed8f4f4884fff32cb180efa,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DeactivateObj
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9bfd5fd5ed8f4f4884fff32cb180efa, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &1977362191 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114778638868084424, guid: a9bfd5fd5ed8f4f4884fff32cb180efa,
+    type: 2}
+  m_PrefabInternal: {fileID: 1977362190}
+  m_Script: {fileID: 11500000, guid: 5aca43a1dc4ffd64eb28e41be1fa80a7, type: 3}
 --- !u!1 &2139614210
 GameObject:
   m_ObjectHideFlags: 0
