@@ -27,15 +27,20 @@ public class PlayerController : AudioHandler
     [HideInInspector] public float verticalMovement;
     Vector3 force;
     float camDist;
-    public float currentSpeed;
-    public float driftSpeed;
+    [Tooltip("This just shows the current velocity of the player")]
+    public float currentVelocity;
+    [Tooltip("Speed player accelerates at in any WASD dir")]
     public float swimSpeed;
-    public float elevateSpeed;
+    [Tooltip("Max swim velocity player can reach")]
     public float maxSpeed = 10f;
+    [Tooltip("Speed player travels while moving up & down")]
+    public float elevateSpeed;
     public float hoverForce = 65f;
     public float hoverHeight = 3.5f;
     public float repulsionForce = 200f, repulsionDistance = 5f;
+    [Tooltip("Distance from current Planet at which player will be unable to elevate")]
     public float distMaxFromPlanet = 50f;
+    [Tooltip("When this timer reaches Time Until Meditate while player is idle / inactive, will start meditating")]
     public float idleTimer = 0f, timeUntilMeditate = 10f;
     //player move states
     public MoveStates moveState;
@@ -55,7 +60,8 @@ public class PlayerController : AudioHandler
 
     //all my body parts....
     Transform cameraT;
-    GravityBody gravityBody;
+    [HideInInspector]
+    public GravityBody gravityBody;
     CapsuleCollider capCollider;
     GameObject playerSpriteObj;
     
@@ -116,12 +122,6 @@ public class PlayerController : AudioHandler
 
             //game will restart if meditate for a minute
             MeditativeRestart();
-        }
-        
-        //esc to quit
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
         }
     }
 
@@ -267,19 +267,24 @@ public class PlayerController : AudioHandler
             //add force only if you do not exceed max vel mag
             if (playerRigidbody.velocity.magnitude < maxSpeed)
             {
+                //SWIM force
                 playerRigidbody.AddForce(force * swimSpeed);
-            }
 
-            //ELEVATION force 
-            if (gravityBody.distanceFromPlanet < distMaxFromPlanet)
-            {
-                playerRigidbody.AddForce(transform.up * verticalMovement * elevateSpeed);
-            }
-            else
-            {
-                animator.SetAnimator("idle");
+                //ELEVATION force 
+                if (gravityBody.distanceFromPlanet < distMaxFromPlanet)
+                {
+                    playerRigidbody.AddForce(transform.up * verticalMovement * elevateSpeed);
+                }
+                //set idle anim once too far from planet 
+                else
+                {
+                    animator.SetAnimator("idle");
+                }
             }
         }
+
+        //set current vel
+        currentVelocity = playerRigidbody.velocity.magnitude;
 
     }
 
@@ -371,19 +376,13 @@ public class PlayerController : AudioHandler
         if (Physics.Raycast(ray, out hit, jumpGroundMinDistance, groundedMask))
         {
             canJump = true;
-            if (hit.distance < hoverHeight)
-            {
-                float proportionalHeightSquared = Mathf.Pow((hoverHeight - hit.distance) / hoverHeight, 2);
-                // Add more force the lower we are.
-                playerRigidbody.AddForce(transform.up * proportionalHeightSquared * hoverForce);
-            }
         }
     }
 
     void RepulsionLogic()
     {
         //shoot ray in direction of player's velocity
-        Ray ray = new Ray(transform.position, -gravityBody.GetFutureUp());
+        Ray ray = new Ray(transform.position, -gravityBody.GetUp());
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, repulsionDistance, groundedMask))
         {

@@ -43,6 +43,6 @@ public class FadeForCamera : MonoBehaviour {
 
         fadingBack = true;
 
-        GetComponent<BoxCollider>().isTrigger = false;
+        //GetComponent<BoxCollider>().isTrigger = false;
     }
 }

@@ -40,13 +40,14 @@ public class CameraController : MonoBehaviour {
 
     [Header("Masks")]
     public LayerMask spriteFadeMask;
+    public float fadeRadius = 1f;
     public LayerMask obstructionMask;
     public List<int> obstructionLayers = new List<int>();  
 
     [Header("FOV")]
     public bool lerpingFOV;
     public float originalFOV;
-    public float meditationFOV = 80f;
+    public float meditationFOV = 85f;
     public float minFOV =40f, maxFOV = 90f;
     float nextFOV;
     float t;
@@ -72,12 +73,8 @@ public class CameraController : MonoBehaviour {
         Vector3 futureCameraPosition = player.transform.TransformPoint(toCamera * heightFromPlayer);
         //set new cam pos 
         cameraT.position = futureCameraPosition;
-
         //get the look rotation
-        targetLook = Quaternion.LookRotation((player.transform.position + new Vector3(yLookPosAdjust, 0, 0))
-            - transform.position, gravityBody.GetUp());
-        //set start look
-        transform.rotation = targetLook;
+        transform.LookAt(player.transform, gravityBody.GetUp());
     }
 
     void Update () {
@@ -241,7 +238,7 @@ public class CameraController : MonoBehaviour {
         Vector3 dir = player.transform.position - transform.position;
         float dist = Vector3.Distance(transform.position, player.transform.position);
         //send raycast
-        if (Physics.Raycast(transform.position, dir, out hit, dist, spriteFadeMask))
+        if (Physics.SphereCast(transform.position, fadeRadius, dir, out hit, dist, spriteFadeMask))
         {
             if(hit.transform.GetComponent<FadeForCamera>())
             {

@@ -16,6 +16,8 @@ public class MonologueTrigger : MonoBehaviour
     public GameObject interactDisplay;
     //monologues
     public MonologueText[] myMonologues;
+    [Tooltip("Time after monologue is finished until the trigger resets")]
+    public float resetTime = 5f;
 
     private void Awake()
     {
@@ -43,9 +45,9 @@ public class MonologueTrigger : MonoBehaviour
     {
         if (playerInZone)
         {
-            if(!hasActivated)
+            if(Input.GetKeyDown(KeyCode.Space) && !hasActivated)
             {
-                ActivateMonologue();
+                WaitToStart(0f);
             }
         }
     }
@@ -62,7 +64,6 @@ public class MonologueTrigger : MonoBehaviour
 
             hasActivated = true;
             ToggleInteractUI(false);
-            playerInZone = false;
         }
     }
 
@@ -77,12 +78,11 @@ public class MonologueTrigger : MonoBehaviour
 
     public void PlayerExitedZone()
     {
-
         playerInZone = false;
         pc.canJump = true;
         ToggleInteractUI(playerInZone);
 
-        WaitToReset(5f);
+        hasActivated = false;
     }
 
 
@@ -105,5 +105,18 @@ public class MonologueTrigger : MonoBehaviour
         yield return new WaitForSeconds(timer);
 
         hasActivated = false;
+    }
+
+    //called when monologue is started 
+    public void WaitToStart(float time)
+    {
+        StartCoroutine(WaitToActivate(time));
+    }
+
+    IEnumerator WaitToActivate(float timer)
+    {
+        yield return new WaitForEndOfFrame();
+
+        ActivateMonologue();
     }
 }
