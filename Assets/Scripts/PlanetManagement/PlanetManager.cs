@@ -23,9 +23,14 @@ public class PlanetManager : MonoBehaviour {
     [Tooltip("Movement points for the Guardian AI")]
     public Transform[] guardianLocations;
     public AudioClip musicTrack;
+
+    [Header("Player Movement Settings")]
+    public float newSwimSpeed = 25f;
+    public float newMaxSpeed = 15f;
     [Tooltip("Use this if the player needs a new elevation speed (for changing height)")]
-    public bool setElevationSpeed;
-    public float newElevationSpeed = 15f;
+    public float newElevationSpeed = 50f;
+    public float newMaxDistFromPlanet = 50f;
+    public float newJumpForce = 1000f;
 
     void Awake () {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -64,9 +69,12 @@ public class PlanetManager : MonoBehaviour {
         //only set guardian if not first planet
         gBehavior.ResetGuardianLocation(guardianPos, guardianLocations, planet);
 
-        //update player's elevation speed 
-        if (setElevationSpeed)
-            pc.elevateSpeed = newElevationSpeed;
+        //update player's movement settings 
+        pc.elevateSpeed = newElevationSpeed;
+        pc.swimSpeed = newSwimSpeed;
+        pc.maxSpeed = newMaxSpeed;
+        pc.distMaxFromPlanet = newMaxDistFromPlanet;
+        pc.jumpForce = newJumpForce;
 
         for (int i = 0; i < spriteCreatures.Count; i++)
         {

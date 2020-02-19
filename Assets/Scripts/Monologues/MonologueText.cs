@@ -16,14 +16,22 @@ public class MonologueText : MonoBehaviour
     CameraManager camManager;
     [Tooltip("Character or creature who speaks this monologue")]
     public GameObject hostObj;
-    [Tooltip("Camera to use for Monologue")]
-    public GameCamera speakerCam;
     [Tooltip("Check this to start at start")]
     public bool enableAtStart;
     [Tooltip("Check this to lock your player's movement")]
     public bool lockPlayer;
-    [Tooltip("Automatically sets player to this spot")]
+    [Tooltip("Automatically sets player to this spot if you set one")]
     public Transform playerSpot;
+    [Header("Camera Settings")]
+    [Tooltip("Moves camera left (-) or right (+) for player to look at char")]
+    public float cameraXPos = 10f;
+    [Tooltip("Moves camera look pos up or down. I recommend between 0 & 10")]
+    public float cameraYLook = 3f;
+    [Tooltip("Character or thing to look at, if this is empty we default to hostObj (the speaker)")]
+    public Transform lookAtObj;
+    [Tooltip("Can use a cinemachine camera instead, just place it here and it will override other camera settings")]
+    public GameCamera speakerCam;
+  
     //Audio
     SpeakerSound speakerAudio;
     //animator
@@ -41,6 +49,7 @@ public class MonologueText : MonoBehaviour
     public int currentLine;
     public int endAtLine;
     public bool hasFinished;
+    [Tooltip("Check this if you want the Monologue to disappear after the first time its seen")]
     public bool disablesAtFinish;
     public bool loadsScene;
     public bool canSkip = true;
@@ -140,6 +149,7 @@ public class MonologueText : MonoBehaviour
             //player skips to next line
             if (Input.GetKeyDown(KeyCode.Space) && canSkip)
             {
+                //stop wait coroutine 
                 if (waitForNextLine != null)
                 {
                     StopCoroutine(waitForNextLine);
@@ -311,14 +321,28 @@ public class MonologueText : MonoBehaviour
             camManager.Set(speakerCam);
             if (playerCam)
                 playerCam.enabled = false;
-
-            //set player pos
-            if (playerSpot)
-            {
-                pc.transform.position = playerSpot.position;
-            }
         }
-       
+        //use player camera, just move it around 
+        else
+        {
+            //turn off cam movement
+            playerCam.canMoveCam = false;
+            //move cam to the right 
+            playerCam.transform.Translate(new Vector3(cameraXPos, 0, 0), Space.Self);
+            //look at specific obj
+            if (lookAtObj != null)
+                playerCam.transform.LookAt(lookAtObj.transform.position + new Vector3(0, cameraYLook, 0), pc.gravityBody.GetUp());
+            //look at speaker
+            else
+                playerCam.transform.LookAt(hostObj.transform.position + new Vector3(0, cameraYLook, 0), pc.gravityBody.GetUp());
+        }
+
+        //set player pos
+        if (playerSpot)
+        {
+            pc.transform.position = playerSpot.position;
+        }
+
         //lock player movement
         if (lockPlayer)
         {
@@ -326,8 +350,6 @@ public class MonologueText : MonoBehaviour
             //NO VELOCIT
             pc.playerRigidbody.velocity = Vector3.zero;
         }
-
-      
 
         //set player to idle anim
         if(pc)
@@ -347,8 +369,8 @@ public class MonologueText : MonoBehaviour
 
         if (!disablesAtFinish)
         {
-            mTrigger.WaitToReset(3f);
             currentLine = 0;
+            hasFinished = false;
         }
     }
 
@@ -375,7 +397,10 @@ public class MonologueText : MonoBehaviour
             camManager.Disable(speakerCam);
             playerCam.enabled = true;
         }
-           
+
+        //enable cam 
+        playerCam.canMoveCam = true;
+
         //unlock player
         if (lockPlayer)
         {

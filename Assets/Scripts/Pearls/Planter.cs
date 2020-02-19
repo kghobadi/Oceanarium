@@ -22,6 +22,7 @@ public class Planter : AudioHandler {
     public bool invisableOnStart;
     [Tooltip("Planet to add plants to")]
     public PlanetManager planetManager;
+    public bool canActivate = true;
     [Tooltip("True once player activates my Homing Pearl")]
     public bool activated;
     [Tooltip("Materials before & after activation")]
@@ -113,7 +114,7 @@ public class Planter : AudioHandler {
     {
         if (other.gameObject.tag == "Player")
         {
-            if (!activated)
+            if (!activated && canActivate)
             {
                 ActivatePlanter(true);
             }
@@ -205,6 +206,7 @@ public class Planter : AudioHandler {
         }
 
         activated = false;
+        canActivate = false;
     }
 
     //called every time spawn freq timer below 0 
