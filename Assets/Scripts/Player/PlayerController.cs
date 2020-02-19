@@ -123,12 +123,6 @@ public class PlayerController : AudioHandler
             //game will restart if meditate for a minute
             MeditativeRestart();
         }
-        
-        //esc to quit
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
     }
 
     void FixedUpdate()

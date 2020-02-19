@@ -397,14 +397,13 @@ public class MonologueText : MonoBehaviour
             camManager.Disable(speakerCam);
             playerCam.enabled = true;
         }
-
-        //enable cam 
-        playerCam.canMoveCam = true;
-
+        
         //unlock player
         if (lockPlayer)
         {
             pc.canMove = true;
+            //enable cam 
+            playerCam.canMoveCam = true;
         }
     }
 }

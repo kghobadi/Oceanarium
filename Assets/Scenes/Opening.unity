@@ -1162,10 +1162,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hostObj: {fileID: 1799146703}
-  speakerCam: {fileID: 0}
   enableAtStart: 0
   lockPlayer: 0
   playerSpot: {fileID: 0}
+  cameraXPos: 10
+  cameraYLook: 3
+  lookAtObj: {fileID: 0}
+  speakerCam: {fileID: 235159937}
   textLines: []
   currentLine: 0
   endAtLine: 0
