@@ -13,7 +13,6 @@ public class Currents : AudioHandler {
     
     //current vars
     [Header("Current Vars")]
-    public GameObject currentCamera;
     public float currentSpeed;
     [HideInInspector]
     public Transform entrance, endPoint;
@@ -200,8 +199,7 @@ public class Currents : AudioHandler {
         pc.canMove = false;
         pc.animator.SetAnimator("inCurrent");
         //deactivate p cam & activate currentCam
-        currentCamera.SetActive(true);
-        camControl.canMoveCam = false;
+        camControl.LerpFOV(100f, 1f);
     }
 
     //need a delay before stopping current
@@ -211,8 +209,6 @@ public class Currents : AudioHandler {
 
         ambientSource.Stop();
         //activate p cam & deactivate currentCam
-        currentCamera.SetActive(false);
-        camControl.canMoveCam = true;
         camControl.LerpFOV(camControl.originalFOV, 2f);
         pc.canMove = true;
         gravBody.enabled = true;

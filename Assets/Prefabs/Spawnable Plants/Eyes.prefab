@@ -270,6 +270,7 @@ MonoBehaviour:
   distToMakeSound: 10
   distToReset: 50
   playedSound: 0
+  playParticles: 0
   growthParticles: {fileID: 198757093560304216}
 --- !u!114 &114636980278266034
 MonoBehaviour:

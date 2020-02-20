@@ -269,16 +269,16 @@ public class ThirdPersonController : MonoBehaviour
 
     void FadeCamObstructions()
     {
-        Ray camRay = new Ray(cameraT.position, cameraT.TransformDirection(Vector3.forward));
-        RaycastHit camHit;
+        //Ray camRay = new Ray(cameraT.position, cameraT.TransformDirection(Vector3.forward));
+        //RaycastHit camHit;
 
-        if (Physics.Raycast(camRay, out camHit, 100f, spriteFadeMask))
-        {
-            //Debug.DrawLine(transform.position, camHit.point, Color.white, 2.5f);
-            //Debug.Log("Hit " + camHit.transform.gameObject.name);
+        //if (Physics.Raycast(camRay, out camHit, 100f, spriteFadeMask))
+        //{
+        //    //Debug.DrawLine(transform.position, camHit.point, Color.white, 2.5f);
+        //    //Debug.Log("Hit " + camHit.transform.gameObject.name);
 
-            camHit.transform.GetComponent<FadeForCamera>().Fade();
-        }
+        //    camHit.transform.GetComponent<FadeForCamera>().Fade();
+        //}
     }
 
     void ChangeElevation()

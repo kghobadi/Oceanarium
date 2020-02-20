@@ -7,13 +7,13 @@ using UnityEngine.Audio;
 
 public class PlayerController : AudioHandler
 {
-    public FadeSprite blackBack;
-    public FadeSprite wasdControls;
+    public FadeSprite[] controlsAtStart;
 
     //Current Planet
     [Header("Active Planet")]
     public PlanetManager activePlanet;
     public string activePlanetName;
+    public CinemachineFreeLook currentCamera;
 
     //control bools
     [Header("Movement Bools")]
@@ -57,6 +57,10 @@ public class PlayerController : AudioHandler
     public float jumpMin, jumpMax, forceMultiplier;
     public float jumpGroundMinDistance = 20f;
     public LayerMask groundedMask, planetMask;
+    public bool jumped;
+    public float resetTimer = 0f, jumpResetTime = 2f;
+    public int jumpFrameCounter = 0, totalJumpFrames = 12;
+    public float jumpForcePerFrame, totalJumpForce;
 
     //all my body parts....
     Transform cameraT;
@@ -65,7 +69,6 @@ public class PlayerController : AudioHandler
     CapsuleCollider capCollider;
     GameObject playerSpriteObj;
     
-    public CinemachineFreeLook diverFreeLook;
     [HideInInspector]
     public CameraController camControls; //other things may need access to camera 
     [HideInInspector]
@@ -123,6 +126,9 @@ public class PlayerController : AudioHandler
             //game will restart if meditate for a minute
             MeditativeRestart();
         }
+
+        //reset jump 
+        JumpReset();
     }
 
     void FixedUpdate()
@@ -131,6 +137,17 @@ public class PlayerController : AudioHandler
         if (playerRigidbody.velocity.magnitude > maxSpeed)
         {
             playerRigidbody.velocity = Vector3.ClampMagnitude(playerRigidbody.velocity, maxSpeed);
+        }
+
+        //jump forces 
+        if (jumped)
+        {
+            //add jump force 
+            if(jumpFrameCounter < totalJumpFrames)
+            {
+                playerRigidbody.AddForce(transform.forward * jumpForcePerFrame);
+                jumpFrameCounter++;
+            }
         }
     }
 
@@ -184,12 +201,12 @@ public class PlayerController : AudioHandler
             }
 
             //fade out title card when player moves
-            if(blackBack!= null)
+            if(controlsAtStart.Length > 0)
             {
-                if (blackBack.gameObject.activeSelf)
-                    blackBack.FadeOut();
-                if (wasdControls.gameObject.activeSelf)
-                    wasdControls.FadeOut();
+                for(int i = 0; i < controlsAtStart.Length; i++)
+                {
+                    controlsAtStart[i].FadeOut();
+                }
             }
            
         }
@@ -309,7 +326,7 @@ public class PlayerController : AudioHandler
     void TakeJumpInput()
     {
         //start jumpTimer
-        if (Input.GetButton("Jump") && (infiniteJump || canJump))
+        if (Input.GetButton("Jump") && (infiniteJump || canJump) && !jumped)
         {
             //set warm up animation for charged swim jump 
             if (jumpTimer > jumpMin)
@@ -333,7 +350,7 @@ public class PlayerController : AudioHandler
     void OnJumpRelease()
     {
         //on button up
-        if (Input.GetButtonUp("Jump") && (infiniteJump || canJump))
+        if (Input.GetButtonUp("Jump") && (infiniteJump || canJump) && !jumped)
         {
             Jump();
         }
@@ -345,33 +362,53 @@ public class PlayerController : AudioHandler
         //just pressed, so normal jump
         if (jumpTimer <= jumpMin)
         {
-            playerRigidbody.AddForce(force * jumpForce);
+            totalJumpForce = jumpForce;
         }
 
         //held, so we add to the force
         if (jumpTimer > jumpMin)
         {
             //multiply jump force * time 
-            float powerJumpForce = jumpForce + (jumpTimer * forceMultiplier);
-            playerRigidbody.AddForce(transform.forward * powerJumpForce);
-
-            //spawn bubble particles
-            GameObject bubbles = Instantiate(bubbleParticles, transform.position, Quaternion.identity, transform);
-            bubbles.transform.localEulerAngles = new Vector3(0, 180, 0);
+            totalJumpForce = jumpForce + (jumpTimer * forceMultiplier);
         }
+
+        //jump force per frame 
+        jumpForcePerFrame = totalJumpForce / totalJumpFrames;
+
+        //spawn bubble particles
+        GameObject bubbles = Instantiate(bubbleParticles, transform.position, Quaternion.identity, transform);
+        bubbles.transform.localEulerAngles = new Vector3(0, 180, 0);
 
         //animate and play sound, reset jump timer
         animator.characterAnimator.SetTrigger("jump");
         PlaySoundMultipleAudioSources(swimJumpSounds);
+
+        //reset timers 
         jumpTimer = 0;
         idleTimer = 0;
+        resetTimer = 0;
+        jumpFrameCounter = 0;
+        jumped = true;
+    }
+
+    //reset jumped timer 
+    void JumpReset()
+    {
+        if (jumped)
+        {
+            resetTimer += Time.deltaTime;
+            if(resetTimer > jumpResetTime)
+            {
+                jumped = false;
+            }
+        }
     }
 
     //checks if player is grounded to planet surface 
     void JumpDetection()
     {
         canJump = false;
-        Ray ray = new Ray(transform.position, -transform.up);
+        Ray ray = new Ray(transform.position, -gravityBody.GetUp());
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, jumpGroundMinDistance, groundedMask))
         {

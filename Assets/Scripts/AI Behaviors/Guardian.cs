@@ -160,7 +160,13 @@ public class Guardian : AudioHandler {
         guardianLocations = locations;
         grav.enabled = false;
         grav.planets = planets;
-        movement.MoveTo(startingPoint, movement.origSpeed * 3);
+
+        //either teleport guardian directly to starting point
+        if(movement.origSpeed > 0)
+            movement.MoveTo(startingPoint, movement.origSpeed * 3);
+        else
+            movement.MoveTo(startingPoint, 30f);
+
         guardianState = GuardianStates.MOVING;
     }
 

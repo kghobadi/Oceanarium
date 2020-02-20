@@ -24,6 +24,9 @@ public class TripActivation : MonoBehaviour {
     public bool tripping;
     public bool loadsNewScene;
 
+    [Tooltip("Trip will end when trip timer reaches Trip length")]
+    public float tripTimer, tripLength;
+
     MusicFader mFader;
     public AudioClip tripMusic;
     AudioClip planetMusic;
@@ -96,6 +99,24 @@ public class TripActivation : MonoBehaviour {
             
         }
 
+        //trip will end once it reaches trip length 
+        if (tripping)
+        {
+            tripTimer += Time.deltaTime;
+
+            if(tripTimer > tripLength)
+            {
+                //load next scene
+                if (loadsNewScene)
+                {
+                    sceneLoader.transition = true;
+                }
+                //end trip
+                else
+                    EndTrip();
+            }
+        }
+
         //press space && not tripping // converting 
         if (Input.GetKeyDown(KeyCode.Space) && tripping && !tripFader.fadingIn && !tripFader.fadingOut)
         {
@@ -155,6 +176,7 @@ public class TripActivation : MonoBehaviour {
         //fade out black 
         tripFader.FadeOut();
 
+        tripTimer = 0;
         tripping = true;
         canTrip = false;
         Debug.Log("Started trip");

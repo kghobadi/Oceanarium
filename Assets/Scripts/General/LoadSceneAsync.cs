@@ -19,8 +19,11 @@ public class LoadSceneAsync : MonoBehaviour
     public bool transition;
     public FadeUI fadeToBlack;
 
+    MusicFader mFader;
+
     void Start()
     {
+        mFader = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicFader>();
         if (loadPreparesOnStart)
         {
             //Start loading the Scene asynchronously and output the progress bar
@@ -68,10 +71,17 @@ public class LoadSceneAsync : MonoBehaviour
                 //Wait to you press the space key to activate the Scene && we are in the trip
                 if(tripToTransition != null)
                 {
+                    //player pressed space during trip 
                     if ((Input.GetKeyDown(KeyCode.Space) && tripToTransition.tripping))
                     {
                         //Activate the Scene
                         asyncOperation.allowSceneActivation = true;
+                    }
+                    //trip timer reached trip length...
+                    if(tripToTransition.tripping && transition)
+                    {
+                        //Activate the Scene
+                        Transition(2f);
                     }
                 }
                 //no trip, just called from other script 
@@ -93,6 +103,7 @@ public class LoadSceneAsync : MonoBehaviour
     public void Transition(float wait)
     {
         fadeToBlack.FadeIn();
+        mFader.FadeOut(0);
 
         StartCoroutine(WaitToTransition(wait));
     }
