@@ -242,7 +242,7 @@ public class CameraController : MonoBehaviour {
         {
             if(hit.transform.GetComponent<FadeForCamera>())
             {
-                hit.transform.GetComponent<FadeForCamera>().Fade();
+                hit.transform.GetComponent<FadeForCamera>().Fade(0.5f);
             }
         }
     }
@@ -254,6 +254,6 @@ public class CameraController : MonoBehaviour {
         t = 0;
         lerpSpeed = lerpLength;
         lerpingFOV = true;
-        Debug.Log("somemthing called Lerp!");
+        Debug.Log("somemthing called Lerp FOV!");
     }
 }
