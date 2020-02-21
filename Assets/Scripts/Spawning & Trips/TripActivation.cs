@@ -13,7 +13,7 @@ public class TripActivation : MonoBehaviour {
     Vector3 origPos;
 
     public FadeUI tripFader;
-    public FadeUI pressToTrip;
+   
 
     [Tooltip("Player must be this close to start trip")]
     public float necessaryDistance = 15f;
@@ -33,6 +33,7 @@ public class TripActivation : MonoBehaviour {
     public AudioMixerSnapshot trippingSnap;
     public AudioMixerSnapshot overWorld;
     public ParticleSystem tripperParticles;
+    public GameObject pressToTrip;
     [Header("Camera Transition")]
     public float fovIn = 15f;
     public float lerpTimeIn = 0.2f, lerpTimeOut = 0.05f;
@@ -67,29 +68,33 @@ public class TripActivation : MonoBehaviour {
                 StartTrip();
             }
 
-            //fade in press to trip 
-            if(pressToTrip)
-                pressToTrip.FadeIn();
-
-            //play trip particles
-            if(tripperParticles != null)
+            //check can trip
+            if (canTrip)
             {
-                if (tripperParticles.isPlaying == false)
+                //fade in press to trip 
+                if (pressToTrip)
+                    pressToTrip.SetActive(true);
+
+                //play trip particles
+                if (tripperParticles != null)
                 {
-                    tripperParticles.Play();
+                    if (tripperParticles.isPlaying == false)
+                    {
+                        tripperParticles.Play();
+                    }
                 }
             }
-            
         }
+
         //too far
         else if(distFromPlayer > necessaryDistance + 3f)
         {
             //fade out press to trip
             if (pressToTrip)
-                pressToTrip.FadeOut();
+                pressToTrip.SetActive(false);
 
             //stop trip particles
-            if(tripperParticles != null)
+            if (tripperParticles != null)
             {
                 if (tripperParticles.isPlaying)
                 {

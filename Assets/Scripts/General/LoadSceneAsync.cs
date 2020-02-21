@@ -20,6 +20,7 @@ public class LoadSceneAsync : MonoBehaviour
     public FadeUI fadeToBlack;
 
     MusicFader mFader;
+    AsyncOperation asyncOperation = null;
 
     void Start()
     {
@@ -42,7 +43,7 @@ public class LoadSceneAsync : MonoBehaviour
     IEnumerator LoadScene()
     {
         yield return null;
-        AsyncOperation asyncOperation = null;
+        asyncOperation = null;
 
         //load next scene in build order  
         if (loadsNextScene)
@@ -111,7 +112,11 @@ public class LoadSceneAsync : MonoBehaviour
     IEnumerator WaitToTransition(float time)
     {
         yield return new WaitForSeconds(time);
-
-        transition = true;
+        
+        if(!transition)
+            transition = true;
+        //Activate the Scene
+        else
+            asyncOperation.allowSceneActivation = true;
     }
 }
