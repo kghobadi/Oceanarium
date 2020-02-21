@@ -165,7 +165,7 @@ public class Guardian : AudioHandler {
         if(movement.origSpeed > 0)
             movement.MoveTo(startingPoint, movement.origSpeed * 3);
         else
-            movement.MoveTo(startingPoint, 30f);
+            movement.MoveTo(startingPoint, 50f);
 
         guardianState = GuardianStates.MOVING;
     }
