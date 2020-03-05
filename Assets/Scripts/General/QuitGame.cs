@@ -20,13 +20,7 @@ public class QuitGame : MonoBehaviour {
         //activate quit group   
         if (Input.GetKeyDown(KeyCode.Escape) && quitGroup.activeSelf == false && !pressed)
         {
-            quitGroup.SetActive(true);
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-
-            //turn off restart if open
-            if (restartGroup.activeSelf)
-                restartGroup.SetActive(false);
+            ActivateQuitMenu();
 
             pressed = true;
         }
@@ -41,13 +35,7 @@ public class QuitGame : MonoBehaviour {
         //activate restart group
         if (Input.GetKeyDown(KeyCode.Delete) && restartGroup.activeSelf == false && !pressed)
         {
-            restartGroup.SetActive(true);
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-
-            //turn off quit if open
-            if (quitGroup.activeSelf)
-                quitGroup.SetActive(false);
+            ActivateRestartMenu();
 
             pressed = true;
         }
@@ -58,6 +46,28 @@ public class QuitGame : MonoBehaviour {
 
             pressed = true;
         }
+    }
+
+    public void ActivateQuitMenu()
+    {
+        quitGroup.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
+        //turn off restart if open
+        if (restartGroup.activeSelf)
+            restartGroup.SetActive(false);
+    }
+
+    public void ActivateRestartMenu()
+    {
+        restartGroup.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
+        //turn off quit if open
+        if (quitGroup.activeSelf)
+            quitGroup.SetActive(false);
     }
 
     //on the 'no' under q prompts

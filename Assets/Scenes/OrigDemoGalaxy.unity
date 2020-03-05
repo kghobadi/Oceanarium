@@ -19807,7 +19807,7 @@ MonoBehaviour:
   meditating: {fileID: 245889458632442960, guid: d823d1a03d06d3d478ee416f0a455437,
     type: 2}
   restartTimer: 0
-  restartTotal: 60
+  restartTotal: 300
 --- !u!4 &341399823
 Transform:
   m_ObjectHideFlags: 0
