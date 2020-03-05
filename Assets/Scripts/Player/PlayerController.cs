@@ -312,9 +312,10 @@ public class PlayerController : AudioHandler
         {
             restartTimer += Time.deltaTime;
 
-            if(restartTimer > restartTotal)
+            //activate restart menu after reaches total 
+            if(restartTimer > restartTotal && !quitScript.restartGroup.activeSelf)
             {
-                quitScript.RestartGame();
+                quitScript.ActivateRestartMenu();
             }
         }
         else

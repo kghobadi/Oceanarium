@@ -40136,6 +40136,11 @@ Prefab:
       propertyPath: jumpResetTime
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114027135453325382, guid: 7b387e09d07051f49833b99d795aa0e3,
+        type: 2}
+      propertyPath: restartTotal
+      value: 300
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b387e09d07051f49833b99d795aa0e3, type: 2}
   m_IsPrefabAsset: 0
