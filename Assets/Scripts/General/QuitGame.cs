@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using InControl;
 
 public class QuitGame : MonoBehaviour {
     public GameObject quitGroup;
@@ -17,15 +18,18 @@ public class QuitGame : MonoBehaviour {
     {
         bool pressed = false;
 
+        //get input device 
+        var inputDevice = InputManager.ActiveDevice;
+
         //activate quit group   
-        if (Input.GetKeyDown(KeyCode.Escape) && quitGroup.activeSelf == false && !pressed)
+        if ((Input.GetKeyDown(KeyCode.Escape) ||  inputDevice.Command.WasPressed) && quitGroup.activeSelf == false && !pressed)
         {
             ActivateQuitMenu();
 
             pressed = true;
         }
         //deactivate quit menu
-        if (Input.GetKeyDown(KeyCode.Escape) && quitGroup.activeSelf == true && !pressed)
+        if ((Input.GetKeyDown(KeyCode.Escape) || inputDevice.Command.WasPressed) && quitGroup.activeSelf == true && !pressed)
         {
             DeactivateObj(quitGroup);
 
