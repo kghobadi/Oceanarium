@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using TMPro;
 using Cameras;
 using Cinemachine;
+using InControl;
 
 public class MonologueText : MonoBehaviour
 {
@@ -124,11 +125,14 @@ public class MonologueText : MonoBehaviour
     //reset trigger if you swim away during Monologue
     void Update()
     {
+        //get input device 
+        var inputDevice = InputManager.ActiveDevice;
+
         //speaker is typing out message
         if (isTyping)
         {
             //player skips to the end of the line
-            if (Input.GetKeyDown(KeyCode.Space) && canSkip)
+            if ((Input.GetKeyDown(KeyCode.Space) || inputDevice.Action1.WasPressed ) && canSkip)
             {
                 if (currentTypingLine != null)
                 {
@@ -147,7 +151,7 @@ public class MonologueText : MonoBehaviour
         if (waiting)
         {
             //player skips to next line
-            if (Input.GetKeyDown(KeyCode.Space) && canSkip)
+            if ((Input.GetKeyDown(KeyCode.Space) || inputDevice.Action1.WasPressed) && canSkip)
             {
                 //stop wait coroutine 
                 if (waitForNextLine != null)
