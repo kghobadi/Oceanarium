@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using InControl;
 
 public class MonologueTrigger : MonoBehaviour
 {
@@ -43,9 +44,12 @@ public class MonologueTrigger : MonoBehaviour
 
     void Update()
     {
+        //get input device 
+        var inputDevice = InputManager.ActiveDevice;
+
         if (playerInZone)
         {
-            if(Input.GetKeyDown(KeyCode.Space) && !hasActivated)
+            if((Input.GetKeyDown(KeyCode.Space) || inputDevice.Action1.WasPressed) && !hasActivated)
             {
                 WaitToStart(0f);
             }

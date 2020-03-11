@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Cinemachine;
 using UnityEngine.Audio;
+using InControl;
 
 public class PlayerController : AudioHandler
 {
@@ -111,11 +112,8 @@ public class PlayerController : AudioHandler
             //check for sprinting input
             SwimInputs();
 
-            //called while spacebar is pressed
+            //called to handle jump inputs
             TakeJumpInput();
-
-            //called when spacebar is released
-            OnJumpRelease();
 
             //correlates jumping logic with animations
             JumpDetection();
@@ -157,10 +155,26 @@ public class PlayerController : AudioHandler
         //create empty force vector for this frame 
         force = Vector3.zero;
 
-        // 3 axes 
-        horizontalMovement = Input.GetAxis("Horizontal");
-        forwardMovement = Input.GetAxis("Vertical");
-        verticalMovement = Input.GetAxis("Elevation");
+        //get input device 
+        var inputDevice = InputManager.ActiveDevice;
+
+        //controller 
+        if (inputDevice.DeviceClass == InputDeviceClass.Controller)
+        {
+            // 3 axes 
+            horizontalMovement = inputDevice.LeftStickX;
+            forwardMovement = inputDevice.LeftStickY;
+            verticalMovement = inputDevice.DPadY;
+        }
+        //mouse & keyboard
+        else
+        {
+            // 3 axes 
+            horizontalMovement = Input.GetAxis("Horizontal");
+            forwardMovement = Input.GetAxis("Vertical");
+            verticalMovement = Input.GetAxis("Elevation");
+        }
+            
         //dist from camera
         camDist = Vector3.Distance(playerSpriteObj.transform.position, cameraT.position);
 
@@ -326,8 +340,11 @@ public class PlayerController : AudioHandler
     
     void TakeJumpInput()
     {
+        //get input device 
+        var inputDevice = InputManager.ActiveDevice;
+
         //start jumpTimer
-        if (Input.GetButton("Jump") && (infiniteJump || canJump) && !jumped)
+        if ((Input.GetButton("Jump")|| inputDevice.Action1) && (infiniteJump || canJump) && !jumped)
         {
             //set warm up animation for charged swim jump 
             if (jumpTimer > jumpMin)
@@ -345,13 +362,9 @@ public class PlayerController : AudioHandler
                 Jump();
             }
         }
-    }
 
-    //release jump key, set swim jump 
-    void OnJumpRelease()
-    {
         //on button up
-        if (Input.GetButtonUp("Jump") && (infiniteJump || canJump) && !jumped)
+        if ((Input.GetButtonUp("Jump") || inputDevice.Action1.WasReleased) && (infiniteJump || canJump) && !jumped)
         {
             Jump();
         }

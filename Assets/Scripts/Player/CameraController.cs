@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using InControl;
 
 public class CameraController : MonoBehaviour {
     //player ref
@@ -19,7 +20,10 @@ public class CameraController : MonoBehaviour {
     [Header("Camera Movement Vars")]
     public float mouseSensitivityX = 20;
     public float mouseSensitivityY = 20;
+    public float controllerSensitivityX = 20;
+    public float controllerSensitivityY = 20;
     public bool invertX, invertY;
+    public bool invertXc, invertYc;
     public float maxVerticalLookAngle = 85f;
     public float minVerticalLookAngle = -15f;
     public float yLookPosAdjust = 5f;
@@ -115,11 +119,30 @@ public class CameraController : MonoBehaviour {
     }
 
     void HorizontalRotation()
-    {
-        // Rotate player around Y axis        
-        hRot = Input.GetAxis("Mouse X") * mouseSensitivityX;
-        if (invertX)
-            hRot *= -1;
+    { 
+        //get input device 
+        var inputDevice = InputManager.ActiveDevice;
+
+        //controller 
+        if (inputDevice.DeviceClass == InputDeviceClass.Controller)
+        {
+            // Rotate player around Y axis        
+            hRot = inputDevice.RightStickX * controllerSensitivityX;
+            //invert
+            if (invertXc)
+                hRot *= -1;
+        }
+        //mouse & keyboard
+        else
+        {
+            // Rotate player around Y axis        
+            hRot = Input.GetAxis("Mouse X") * mouseSensitivityX;
+            //invert
+            if (invertX)
+                hRot *= -1;
+        }
+          
+       
         //set old cam pos
         oldCameraPosition = cameraT.position;
 
@@ -131,16 +154,36 @@ public class CameraController : MonoBehaviour {
 
     void VerticalRotation()
     {
-        // Rotate camera around X axis
-        // Position player
-        if (invertY)
+        //get input device 
+        var inputDevice = InputManager.ActiveDevice;
+
+        // Rotate camera around X axis  
+
+        //controller 
+        if (inputDevice.DeviceClass == InputDeviceClass.Controller)
         {
-            vRot += Input.GetAxis("Mouse Y") * mouseSensitivityY * -1f;
+            //invert
+            if (invertYc)
+                vRot += inputDevice.RightStickY * controllerSensitivityY * -1f;
+            //normal
+            else
+                vRot += inputDevice.RightStickY * controllerSensitivityY;
         }
+        //mouse & keyboard
         else
         {
-            vRot += Input.GetAxis("Mouse Y") * mouseSensitivityY;
+            Debug.Log("mouse move");
+              
+            //invert
+            if (invertY)
+                vRot += Input.GetAxis("Mouse Y") * mouseSensitivityY * -1f;
+            //normal
+            else
+                vRot += Input.GetAxis("Mouse Y") * mouseSensitivityY;
+            Debug.Log("vrot= " + vRot);
         }
+      
+        // Position player
         vRot = Mathf.Clamp(vRot, minVerticalLookAngle, maxVerticalLookAngle);
         Vector3 toCamera = Quaternion.AngleAxis(vRot, Vector3.right) * -Vector3.forward;
         Vector3 futureCameraPosition = player.transform.TransformPoint(toCamera * heightFromPlayer);
@@ -156,7 +199,34 @@ public class CameraController : MonoBehaviour {
 
     void ZoomInputs()
     {
-        zoomInput = Input.GetAxis("Mouse ScrollWheel");
+        //get input device 
+        var inputDevice = InputManager.ActiveDevice;
+
+        //controller 
+        if (inputDevice.DeviceClass == InputDeviceClass.Controller)
+        {
+            //positive
+            if (inputDevice.RightTrigger)
+            {
+                zoomInput = Mathf.Lerp(zoomInput, 1, Time.deltaTime);
+            }
+            //negative
+            else if (inputDevice.LeftTrigger)
+            {
+                zoomInput = Mathf.Lerp(zoomInput, -1, Time.deltaTime);
+            }
+            //return to 0
+            else if(inputDevice.RightTrigger.IsPressed == false && inputDevice.LeftTrigger.IsPressed == false)
+            {
+                zoomInput = Mathf.Lerp(zoomInput, 0, Time.deltaTime);
+            }
+        }
+        //mouse & keyboard
+        else
+        {
+            zoomInput = Input.GetAxis("Mouse ScrollWheel");
+        }
+       
 
         //zoom in
         if (zoomInput < 0 && heightFromPlayer > heightMin)
