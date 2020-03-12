@@ -172,15 +172,12 @@ public class CameraController : MonoBehaviour {
         //mouse & keyboard
         else
         {
-            Debug.Log("mouse move");
-              
             //invert
             if (invertY)
                 vRot += Input.GetAxis("Mouse Y") * mouseSensitivityY * -1f;
             //normal
             else
                 vRot += Input.GetAxis("Mouse Y") * mouseSensitivityY;
-            Debug.Log("vrot= " + vRot);
         }
       
         // Position player
