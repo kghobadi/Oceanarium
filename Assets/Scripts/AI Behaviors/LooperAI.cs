@@ -24,7 +24,7 @@ public class LooperAI : AudioHandler {
 
     [Tooltip("Points for AI to travel between")]
     public Transform[] waypoints;
-    public int currentPoint = 0;
+    public int currentPoint = -1;
 
     public float idleTimer, idleTime;
 
@@ -119,7 +119,8 @@ public class LooperAI : AudioHandler {
 
         if (nextSoundIn < 0)
         {
-            PlayRandomSound(sounds, 1f);
+            if(!myAudioSource.isPlaying)
+                PlayRandomSoundRandomPitch(sounds, 1f);
 
             nextSoundIn = soundFreq;
         }
