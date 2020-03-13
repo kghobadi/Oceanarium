@@ -28,6 +28,13 @@ public class QuitGame : MonoBehaviour {
 
             pressed = true;
         }
+
+        //quit
+        if(inputDevice.Action1.WasPressed && quitGroup.activeSelf == true)
+        {
+            Quit();
+        }
+
         //deactivate quit menu
         if ((Input.GetKeyDown(KeyCode.Escape) || inputDevice.Command.WasPressed) && quitGroup.activeSelf == true && !pressed)
         {
