@@ -8,6 +8,10 @@ public class Orbit : MonoBehaviour {
   
     public bool orbiting, orbitAtStart;
     public float waitTime = 5f;
+
+    [Header("Orbit Speed")]
+    public bool randomSpeed;
+    public float minSpeed, maxSpeed;
     public float orbitalSpeed;
 
     [Header("Axis to Orbit")]
@@ -25,6 +29,12 @@ public class Orbit : MonoBehaviour {
     //set chosen axis at start
     void Start()
     {
+        //randomize speed
+        if (randomSpeed)
+        {
+            RandomSpeed(minSpeed, maxSpeed);
+        }
+
         //random axis
         if (randomAxis)
         {
@@ -62,6 +72,12 @@ public class Orbit : MonoBehaviour {
             transform.RotateAround(planetToOrbit.position, chosenAxis, orbitalSpeed * Time.deltaTime);
         }
 	}
+
+    //random speed 
+    public void RandomSpeed(float min, float max)
+    {
+        orbitalSpeed = Random.Range(min, max);
+    }
 
     //called to start orbit
     public void SetOrbit(float speed)
