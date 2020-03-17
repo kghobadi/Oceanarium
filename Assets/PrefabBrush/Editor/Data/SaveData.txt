@@ -330,15 +330,33 @@ Depth: 5
 
 Game Object: Assets/Prefabs/Props/StandingRock.prefab
 Layer: Default
-Toggle: True
+Toggle: False
 Slider: 1
 Lock Orientation Toggle: False
 Random Rotation Toggle: True
 Random Rotation X: False
 Random Rotation Y: True
 Random Rotation Z: False
-Random Scale Toggle: False
-Random Scale Min: 0.1
+Random Scale Toggle: True
+Random Scale Min: 3
+Random Scale Max: 6
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 0
+
+Game Object: Assets/Prefabs/Props/Coral Planet/coral_stalk.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.5
 Random Scale Max: 1
 Fixed Rotation Toggle: False
 Fixed Rotation X: 0
@@ -346,5 +364,61 @@ Fixed Rotation Y: 0
 Fixed Rotation Z: 0
 Depth: 0
 
+Game Object: Assets/Prefabs/Props/Coral Planet/coral_branches.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.25
+Random Scale Max: 0.5
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 0
+
+Game Object: Assets/Prefabs/Props/Coral Planet/coral_thingy.prefab
+Layer: Default
+Toggle: True
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: True
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.5
+Random Scale Max: 0.75
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 0
+
+Game Object: Assets/Prefabs/Props/Coral Planet/spone.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 2
+Random Scale Max: 2
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 0
+
 Group Names:
-Rocks
+CoralStalks
+Coral Trees
+CoralRocks
