@@ -23,6 +23,7 @@ TagManager:
   - Guardian
   - TripCam
   - Ruin
+  - WorldManager
   layers:
   - Default
   - TransparentFX

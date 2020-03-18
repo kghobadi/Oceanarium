@@ -5,30 +5,46 @@ using UnityEngine;
 public class DeactivateObject : MonoBehaviour
 {
     GameObject _player;
-    ThirdPersonController tpc;
+    PlayerController pc;
     WorldManager wm;
+
+    public bool waitToCheck;
 
     void Awake()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
-        tpc = _player.GetComponent<ThirdPersonController>();
-        wm = GameObject.FindGameObjectWithTag("WorldManager").GetComponent<WorldManager>();
+        pc = _player.GetComponent<PlayerController>();
+        wm = FindObjectOfType<WorldManager>();
+    }
+
+    void Start()
+    {
+        if(!waitToCheck)
+            DistCheck();
     }
 
     void Update()
     {
-        //if player is moving 
-        if (tpc.playerRigidbody.velocity.magnitude > 0)
+        //wm null check
+        if(wm != null)
         {
-            //Debug.Log(wm);
-            //deactivate object when it's far enough away from player 
-            if (Vector3.Distance(_player.transform.position, transform.position) > (wm.activationDistance + 10f))
+            //if player is moving 
+            if (pc.playerRigidbody.velocity.magnitude > 0)
             {
-                //first add to list
-                wm.allInactiveObjects.Add(gameObject);
-                //then deactivate 
-                gameObject.SetActive(false);
+                DistCheck();
             }
+        }
+    }
+
+    //deactivate object when it's far enough away from player 
+    void DistCheck()
+    {
+        if (Vector3.Distance(_player.transform.position, transform.position) > (wm.activationDistance + 10f))
+        {
+            //first add to list
+            wm.allInactiveObjects.Add(gameObject);
+            //then deactivate 
+            gameObject.SetActive(false);
         }
     }
 }

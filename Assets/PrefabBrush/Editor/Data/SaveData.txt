@@ -204,7 +204,7 @@ Depth: 20
 
 Game Object: Assets/Prefabs/Spawnable Plants/Bomb.prefab
 Layer: Default
-Toggle: False
+Toggle: True
 Slider: 1
 Lock Orientation Toggle: False
 Random Rotation Toggle: False
@@ -384,7 +384,7 @@ Depth: 0
 
 Game Object: Assets/Prefabs/Props/Coral Planet/coral_thingy.prefab
 Layer: Default
-Toggle: True
+Toggle: False
 Slider: 1
 Lock Orientation Toggle: False
 Random Rotation Toggle: False
@@ -422,3 +422,4 @@ Group Names:
 CoralStalks
 Coral Trees
 CoralRocks
+Asteroid Squids

@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 135381610205041748}
   - component: {fileID: 114044254913400628}
   - component: {fileID: 96675694992875838}
+  - component: {fileID: 114695583384706588}
   m_Layer: 9
   m_Name: Asteroid
   m_TagString: Untagged
@@ -245,6 +246,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scaleMin: 0.5
   scaleMax: 3
+--- !u!114 &114695583384706588
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1879146863365852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fa783ed7a240054e89b035e069f84af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  squidPrefab: {fileID: 1637701273792164, guid: aeee939a123ae4548ac481df7dcf0728,
+    type: 2}
+  spawnAtStart: 1
 --- !u!135 &135381610205041748
 SphereCollider:
   m_ObjectHideFlags: 1
