@@ -8,6 +8,7 @@ public class PlanetManager : MonoBehaviour {
     PlayerController pc;
     GameObject guardian;
     Guardian gBehavior;
+    MusicFader mFader;
 
     public string planetName;
     public bool playerHere, startingPlanet;
@@ -38,18 +39,22 @@ public class PlanetManager : MonoBehaviour {
         creatureSpawner = GetComponent<CreatureSpawner>();
         guardian = GameObject.FindGameObjectWithTag("Guardian");
         gBehavior = guardian.GetComponent<Guardian>();
+        mFader = FindObjectOfType<MusicFader>();
 	}
 
     void Start()
     {
         if (startingPlanet)
         {
+            //teleport player 
             pc.transform.position = playerStartingPoint.position;
-
+            //teleport guardian 
             if(Vector3.Distance(pc.transform.position, gBehavior.transform.position) > 50f)
                 gBehavior.TeleportGuardian(playerStartingPoint.position);
-
+            //activate planet 
             ActivatePlanet(guardianLocations[0].position);
+            //fade to music
+            mFader.FadeTo(musicTrack);
         }
         else
         {

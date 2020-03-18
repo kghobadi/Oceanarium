@@ -22,7 +22,6 @@ public class CurrentObjectManager : MonoBehaviour {
 
     [Header("Changes Jump Force")]
     public bool setJumpForce;
-    public float newJumpForce;
 
     [Header("Changes Music")]
     public bool newTrack;
@@ -64,7 +63,7 @@ public class CurrentObjectManager : MonoBehaviour {
 
             if (setJumpForce)
             {
-                pc.jumpForce = newJumpForce;
+                pc.jumpForce = nextPlanet.newJumpForce;
             }
 
             if (newTrack)
