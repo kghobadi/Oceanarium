@@ -3,21 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WorldManager : MonoBehaviour {
+    GameObject _player;
+    PlayerController pc;
 
     public List<GameObject> allInactiveObjects = new List<GameObject>();
     public float activationDistance = 75f;
-    GameObject _player;
-
-    void Start()
+   
+    void Awake()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
+        pc = _player.GetComponent<PlayerController>();
     }
 
-    void Update () {
-        //loop through all objects and check distances from player
-		for(int i = 0; i < allInactiveObjects.Count; i++)
+    void Update ()
+    {
+        //if player is moving 
+        if (pc.playerRigidbody.velocity.magnitude > 0)
         {
-            if(allInactiveObjects[i] != null)
+            WasteManagement();
+        }
+        
+	}
+
+    void WasteManagement()
+    {
+        //loop through all objects and check distances from player
+        for (int i = 0; i < allInactiveObjects.Count; i++)
+        {
+            if (allInactiveObjects[i] != null)
             {
                 float distanceFromPlayer = Vector3.Distance(allInactiveObjects[i].transform.position, _player.transform.position);
 
@@ -39,7 +52,7 @@ public class WorldManager : MonoBehaviour {
                 //move i back once to account for change in list index
                 i--;
             }
-            
+
         }
-	}
+    }
 }
