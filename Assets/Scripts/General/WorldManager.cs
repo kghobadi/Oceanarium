@@ -38,6 +38,21 @@ public class WorldManager : MonoBehaviour {
                 {
                     //set object active
                     allInactiveObjects[i].SetActive(true);
+
+                    //check if it has a sprite renderer 
+                    SpriteRenderer sprite = allInactiveObjects[i].GetComponent<SpriteRenderer>();
+                    if(sprite = null)
+                    {
+                        //check is sprite render is vis
+                        if (sprite.isVisible)
+                        {
+                            FadeSprite fade = allInactiveObjects[i].GetComponent<FadeSprite>();
+                            //fade in if has fade sprite comp
+                            if (fade != null)
+                                fade.FadeIn();
+                        }
+                    }
+                    
                     //remove from list
                     allInactiveObjects.Remove(allInactiveObjects[i]);
                     //move i back once to account for change in list index

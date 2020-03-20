@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114521119169163988}
   - component: {fileID: 114956202691850612}
   - component: {fileID: 114559116194279592}
+  - component: {fileID: 114243699549511196}
   m_Layer: 10
   m_Name: AlienPlantSpawn
   m_TagString: Prop
@@ -80,6 +81,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114243699549511196
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1440088082753194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3de83a42024898649849558f7d401192, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitToCheck: 1
+  individualDistOffset: 50
 --- !u!114 &114247793749681354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -107,6 +121,9 @@ MonoBehaviour:
   orbiting: 0
   orbitAtStart: 0
   waitTime: 0
+  randomSpeed: 0
+  minSpeed: 0
+  maxSpeed: 0
   orbitalSpeed: 5
   xyOrzAxis: 0
   randomAxis: 1
