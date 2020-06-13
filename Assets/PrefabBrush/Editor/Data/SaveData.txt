@@ -1,8 +1,8 @@
 Layer Selection: Planet
-Brush Max Size: 9.37
-Brush Size: 1.41
+Brush Max Size: 107.61
+Brush Size: 0.1
 Fill Mode: True
-Fill Rate: 0.1133
+Fill Rate: 0.01
 
 Game Object: Assets/Prefabs/Planets/HomingPearl.prefab
 Layer: Default
@@ -204,7 +204,7 @@ Depth: 20
 
 Game Object: Assets/Prefabs/Spawnable Plants/Bomb.prefab
 Layer: Default
-Toggle: True
+Toggle: False
 Slider: 1
 Lock Orientation Toggle: False
 Random Rotation Toggle: False
@@ -418,8 +418,110 @@ Fixed Rotation Y: 0
 Fixed Rotation Z: 0
 Depth: 0
 
-Group Names:
-CoralStalks
-Coral Trees
-CoralRocks
-Asteroid Squids
+Game Object: Assets/Prefabs/Props/Lilly.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.3
+Random Scale Max: 1
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 5
+
+Game Object: Assets/Prefabs/Props/Wavey.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.4
+Random Scale Max: 1
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 4
+
+Game Object: Assets/Prefabs/Props/Wavey 1.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 2
+Random Scale Max: 2
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 4
+
+Game Object: Assets/Prefabs/Props/BallFlower.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 1
+Random Scale Max: 1
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 4
+
+Game Object: Assets/Prefabs/Spawnable Plants/TinyFlower.prefab
+Layer: Default
+Toggle: True
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.2
+Random Scale Max: 0.5
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 3
+
+Game Object: Assets/Prefabs/Spawnable Plants/Stack.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.8
+Random Scale Max: 1.2
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 9
