@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Opening.unity
     guid: c625510e82ce52546b66c980fa1db47d
   - enabled: 1
-    path: Assets/Scenes/Intro Galaxy Paloma.unity
-    guid: 7dcdb76c380f03d40ba99aa2435eac21
+    path: Assets/Scenes/New Intro Galaxy.unity
+    guid: d4b909e16e18ab34bbffc707beb7e6f4
   - enabled: 1
     path: Assets/Scenes/OrigDemoGalaxy.unity
     guid: 9b7e8a407e063a947a9384fdb33fc08e

@@ -9,6 +9,7 @@ public class Monologue : ScriptableObject
 {
     [Header("Info for Monologue Manager")]
     public TextAsset monologue;
+    [Tooltip("This Monologue's Index within World Monologue Manager on WorldManager GameObject")]
     public int worldMonoIndex;
     [Tooltip("Check this to wait timeUntilStart from trigger Activation to enable Monologue")]
     public bool waitToStart;
