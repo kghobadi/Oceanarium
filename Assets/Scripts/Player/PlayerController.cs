@@ -73,6 +73,8 @@ public class PlayerController : AudioHandler
     [HideInInspector]
     public CameraController camControls; //other things may need access to camera 
     [HideInInspector]
+    public MeditationMovement meditationControls; // meditation camera controls 
+    [HideInInspector]
     public Rigidbody playerRigidbody; // Public because of currents.
     [HideInInspector]
     public PlayerAnimations animator; // can trigger animations from elsewhere 
@@ -93,6 +95,7 @@ public class PlayerController : AudioHandler
 
         cameraT = Camera.main.transform;
         camControls = cameraT.GetComponent<CameraController>();
+        meditationControls = cameraT.GetComponent<MeditationMovement>();  
         playerRigidbody = GetComponent<Rigidbody>();
         gravityBody = GetComponent<GravityBody>();
         capCollider = GetComponent<CapsuleCollider>();
@@ -122,7 +125,7 @@ public class PlayerController : AudioHandler
             RepulsionLogic();
 
             //game will restart if meditate for a minute
-            MeditativeRestart();
+            //MeditativeRestart();
         }
 
         //reset jump 
@@ -131,6 +134,8 @@ public class PlayerController : AudioHandler
 
     void FixedUpdate()
     {
+        ApplySwimForce();
+
         // Limit velocity
         if (playerRigidbody.velocity.magnitude > maxSpeed)
         {
@@ -164,7 +169,11 @@ public class PlayerController : AudioHandler
             // 3 axes 
             horizontalMovement = inputDevice.LeftStickX;
             forwardMovement = inputDevice.LeftStickY;
-            verticalMovement = inputDevice.DPadY;
+            //only elevate when not meditating 
+            if (moveState != MoveStates.MEDITATING)
+            {
+                verticalMovement = inputDevice.DPadY;
+            }
         }
         //mouse & keyboard
         else
@@ -172,13 +181,17 @@ public class PlayerController : AudioHandler
             // 3 axes 
             horizontalMovement = Input.GetAxis("Horizontal");
             forwardMovement = Input.GetAxis("Vertical");
-            verticalMovement = Input.GetAxis("Elevation");
+            //only elevate when not meditating 
+            if (moveState != MoveStates.MEDITATING)
+            {
+                verticalMovement = Input.GetAxis("Elevation");
+            }
         }
             
         //dist from camera
         camDist = Vector3.Distance(playerSpriteObj.transform.position, cameraT.position);
 
-        //VERTICAL force checks
+        //FORWARD force checks
         if (forwardMovement > 0)
         {
             //add forward force 
@@ -201,8 +214,7 @@ public class PlayerController : AudioHandler
             //add neg x force 
             force += transform.right * horizontalMovement;
         }
-
-
+        
         //Sound checks
         if (Mathf.Abs(horizontalMovement) > 0 || Mathf.Abs(forwardMovement) > 0 || Mathf.Abs(verticalMovement) > 0)
         {
@@ -222,7 +234,6 @@ public class PlayerController : AudioHandler
                     controlsAtStart[i].FadeOut();
                 }
             }
-           
         }
         else
         {
@@ -249,74 +260,82 @@ public class PlayerController : AudioHandler
             //starts meditating
             else
             {
-                if (moveState != MoveStates.MEDITATING)
-                {
-                    camControls.LerpFOV(camControls.meditationFOV, 2f);
-                    meditating.TransitionTo(2f);
-                    canJump = false;
-                }
-
-                moveState = MoveStates.MEDITATING;
-                //diver meditates
-                animator.SetAnimator("meditating");
+                SetMeditation();
             }
         }
         //elevating
         else if (verticalMovement != 0)
         {
-            //return from meditating FOV
-            if(moveState == MoveStates.MEDITATING)
-            {
-                camControls.LerpFOV(camControls.originalFOV, 2f);
-                normal.TransitionTo(2f);
-                canJump = true;
-            }
-
             moveState = MoveStates.SWIMMING;
             animator.SetAnimator("elevating");
-
         }
         //swimming 
         else if(verticalMovement == 0 && (forwardMovement != 0 || horizontalMovement != 0))
         {
-            //return from meditating FOV
-            if (moveState == MoveStates.MEDITATING)
-            {
-                camControls.LerpFOV(camControls.originalFOV, 2f);
-                normal.TransitionTo(2f);
-                canJump = true;
-            }
+            DisableMeditation();
 
             idleTimer = 0;
             moveState = MoveStates.SWIMMING;
             animator.SetAnimator("swimming");
         }
+    }
 
-        //apply force 
-       
+    //begin meditating
+    void SetMeditation()
+    {
+        if (moveState != MoveStates.MEDITATING)
         {
-            //add force only if you do not exceed max vel mag
-            if (playerRigidbody.velocity.magnitude < maxSpeed)
-            {
-                //SWIM force
-                playerRigidbody.AddForce(force * swimSpeed);
+            camControls.LerpFOV(camControls.meditationFOV, 2f);
+            camControls.canMoveCam = false;
+            meditationControls.Activate();
 
-                //ELEVATION force 
-                if (gravityBody.distanceFromPlanet < distMaxFromPlanet)
-                {
-                    playerRigidbody.AddForce(transform.up * verticalMovement * elevateSpeed);
-                }
-                //set idle anim once too far from planet 
-                else
-                {
-                    animator.SetAnimator("idle");
-                }
+            meditating.TransitionTo(2f);
+            canJump = false;
+
+            moveState = MoveStates.MEDITATING;
+            //diver meditates
+            animator.SetAnimator("meditating");
+        }
+    }
+
+    //stop meditating 
+    void DisableMeditation()
+    {
+        //return from meditating FOV
+        if (moveState == MoveStates.MEDITATING)
+        {
+            camControls.LerpFOV(camControls.originalFOV, 2f);
+            camControls.canMoveCam = true;
+            meditationControls.Deactivate();
+
+            normal.TransitionTo(2f);
+            canJump = true;
+        }
+    }
+
+    //apply force 
+    void ApplySwimForce()
+    {
+        //add force only if you do not exceed max vel mag
+        if (playerRigidbody.velocity.magnitude < maxSpeed)
+        {
+            //SWIM force
+            playerRigidbody.AddForce(force * swimSpeed);
+
+            //ELEVATION force 
+            if (gravityBody.distanceFromPlanet < distMaxFromPlanet)
+            {
+                playerRigidbody.AddForce(transform.up * verticalMovement * elevateSpeed);
+            }
+            //set idle anim once too far from planet 
+            else
+            {
+                animator.SetAnimator("idle");
             }
         }
 
         //set current vel
         currentVelocity = playerRigidbody.velocity.magnitude;
-
     }
 
     //after meditating long enough, game will restart 
