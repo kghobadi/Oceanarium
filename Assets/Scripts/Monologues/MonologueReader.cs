@@ -59,7 +59,8 @@ public class MonologueReader : MonoBehaviour {
 
     void Update ()
     {
-        //LineSkipping();
+        if(canSkip)
+            LineSkipping();
     }
 
     void LineSkipping()

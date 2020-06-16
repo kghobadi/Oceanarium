@@ -244,12 +244,13 @@ public class MonologueManager : MonoBehaviour
         }
 
         //reenable player cam
-        if (speakerCam && camController)
+        if (speakerCam)
         {
             camManager.Disable(speakerCam);
             camController.enabled = true;
         }
-        
+        camController.canMoveCam = true;
+
         //check for cinematic to enable 
         if (mono.playsCinematic)
         {

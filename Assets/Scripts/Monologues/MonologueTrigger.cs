@@ -70,6 +70,7 @@ public class MonologueTrigger : MonoBehaviour
         {
             for (int i = 0; i < myMonologues.Length; i++)
             {
+                myMonologues[i].mTrigger = this;
                 myMonologues[i].EnableMonologue();
             }
 

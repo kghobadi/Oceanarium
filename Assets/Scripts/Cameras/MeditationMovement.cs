@@ -54,7 +54,6 @@ public class MeditationMovement : MonoBehaviour
         thirdEyeParent.localRotation = Quaternion.identity;
         thirdEyeParent.SetParent(null);
         transform.SetParent(thirdEyeParent);
-        transform.LookAt(pc.transform);
         thirdBody.enabled = true;
         isActive = true;
     }
@@ -91,9 +90,8 @@ public class MeditationMovement : MonoBehaviour
         smoothV.x = Mathf.Lerp(smoothV.x, newRotate.x, 1f / smoothing);
         smoothV.y = Mathf.Lerp(smoothV.y, newRotate.y, 1f / smoothing);
 
-        //smooth & clamp y look
+        //smooth mouse look
         mouseLook += smoothV;
-        mouseLook.y = Mathf.Clamp(mouseLook.y, -90f, 90f);
 
         //actually set rotations
         transform.localRotation = Quaternion.AngleAxis(-mouseLook.y, Vector3.right);
