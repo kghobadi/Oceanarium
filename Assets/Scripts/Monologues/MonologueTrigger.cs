@@ -10,13 +10,20 @@ public class MonologueTrigger : MonoBehaviour
     PlayerController pc;
 
     //general
+    [Tooltip("Indicates whether the Monologue has been activated by Player or not")]
     public bool hasActivated;
+    [Tooltip("Player will immediately activate Monologue when they enter the Trigger")]
+    public bool autoActivates;
+    [Tooltip("Player will set this true when entering trigger, false when exiting")]
     public bool playerInZone;
+    [Tooltip("Check this as true to show interactDisplay UI")]
     public bool displayUI;
 
+    [Tooltip("This UI object will generally be located under the Monologue Canvas")]
     public GameObject interactDisplay;
     //monologues
-    public MonologueText[] myMonologues;
+    [Tooltip("Drag and Drop any Monologue Managers that should be activated by this Trigger")]
+    public MonologueManager[] myMonologues;
     [Tooltip("Time after monologue is finished until the trigger resets")]
     public float resetTime = 5f;
 
@@ -49,7 +56,7 @@ public class MonologueTrigger : MonoBehaviour
 
         if (playerInZone)
         {
-            if((Input.GetKeyDown(KeyCode.Space) || inputDevice.Action1.WasPressed) && !hasActivated)
+            if((Input.GetKeyDown(KeyCode.Space) || inputDevice.Action1.WasPressed || autoActivates) && !hasActivated)
             {
                 WaitToStart(0f);
             }
@@ -63,6 +70,7 @@ public class MonologueTrigger : MonoBehaviour
         {
             for (int i = 0; i < myMonologues.Length; i++)
             {
+                myMonologues[i].mTrigger = this;
                 myMonologues[i].EnableMonologue();
             }
 
