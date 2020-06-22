@@ -5,9 +5,9 @@ using InControl;
 
 public class CameraController : MonoBehaviour {
     //player ref
-    GameObject player;
+    GameObject player, origPlayer;
     PlayerController pc;
-    GravityBody gravityBody;
+    GravityBody gravityBody, origGBody;
     //camera refs
     Transform cameraT;
     Camera mainCam;
@@ -57,13 +57,21 @@ public class CameraController : MonoBehaviour {
     float t;
     float lerpSpeed = 0.5f;
 
+    [Header("Astral Body")]
+    public GameObject astralBody;
+    GravityBody astralGravity;
+    
+
     void Awake () {
         cameraT = Camera.main.transform;
         mainCam = cameraT.GetComponent<Camera>();
         originalFOV = mainCam.fieldOfView;
         player = GameObject.FindGameObjectWithTag("Player");
+        origPlayer = player;
         pc = player.GetComponent<PlayerController>();
         gravityBody = player.GetComponent<GravityBody>();
+        origGBody = gravityBody;
+        astralGravity = astralBody.GetComponent<GravityBody>();
     }
 
     void Start()
@@ -322,5 +330,21 @@ public class CameraController : MonoBehaviour {
         lerpSpeed = lerpLength;
         lerpingFOV = true;
         Debug.Log("somemthing called Lerp FOV!");
+    }
+
+    //called when meditating
+    public void SetAstralBody()
+    {
+        astralBody.SetActive(true);
+        player = astralBody;
+        gravityBody = astralGravity;
+    }
+
+    //called when returning to body from meditation
+    public void DisableAstralBody()
+    {
+        astralBody.SetActive(false);
+        player = origPlayer;
+        gravityBody = origGBody;
     }
 }

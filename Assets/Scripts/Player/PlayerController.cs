@@ -134,8 +134,12 @@ public class PlayerController : AudioHandler
 
     void FixedUpdate()
     {
-        ApplySwimForce();
-
+        //only apply swim force when not meditating 
+        if(moveState != MoveStates.MEDITATING)
+        {
+            ApplySwimForce();
+        }
+            
         // Limit velocity
         if (playerRigidbody.velocity.magnitude > maxSpeed)
         {
@@ -167,25 +171,27 @@ public class PlayerController : AudioHandler
         if (inputDevice.DeviceClass == InputDeviceClass.Controller)
         {
             // 3 axes 
-            horizontalMovement = inputDevice.LeftStickX;
-            forwardMovement = inputDevice.LeftStickY;
+            
             //only elevate when not meditating 
             if (moveState != MoveStates.MEDITATING)
             {
-                verticalMovement = inputDevice.DPadY;
+                horizontalMovement = inputDevice.LeftStickX;
+                forwardMovement = inputDevice.LeftStickY;
             }
+            verticalMovement = inputDevice.DPadY;
         }
         //mouse & keyboard
         else
         {
             // 3 axes 
-            horizontalMovement = Input.GetAxis("Horizontal");
-            forwardMovement = Input.GetAxis("Vertical");
-            //only elevate when not meditating 
+           
+            //only swim when not meditating 
             if (moveState != MoveStates.MEDITATING)
             {
-                verticalMovement = Input.GetAxis("Elevation");
+                horizontalMovement = Input.GetAxis("Horizontal");
+                forwardMovement = Input.GetAxis("Vertical");
             }
+            verticalMovement = Input.GetAxis("Elevation");
         }
             
         //dist from camera
@@ -266,14 +272,14 @@ public class PlayerController : AudioHandler
         //elevating
         else if (verticalMovement != 0)
         {
+            DisableMeditation();
+
             moveState = MoveStates.SWIMMING;
             animator.SetAnimator("elevating");
         }
         //swimming 
         else if(verticalMovement == 0 && (forwardMovement != 0 || horizontalMovement != 0))
         {
-            DisableMeditation();
-
             idleTimer = 0;
             moveState = MoveStates.SWIMMING;
             animator.SetAnimator("swimming");
@@ -286,8 +292,9 @@ public class PlayerController : AudioHandler
         if (moveState != MoveStates.MEDITATING)
         {
             camControls.LerpFOV(camControls.meditationFOV, 2f);
+            //camControls.SetAstralBody();
             camControls.canMoveCam = false;
-            meditationControls.Activate();
+            meditationControls.ActivateFPS();
 
             meditating.TransitionTo(2f);
             canJump = false;
@@ -306,7 +313,8 @@ public class PlayerController : AudioHandler
         {
             camControls.LerpFOV(camControls.originalFOV, 2f);
             camControls.canMoveCam = true;
-            meditationControls.Deactivate();
+            //camControls.DisableAstralBody();
+            meditationControls.DeactivateFPS();
 
             normal.TransitionTo(2f);
             canJump = true;
