@@ -20,6 +20,12 @@ public class OffsetAnimator : MonoBehaviour {
         myAnimator.enabled = false;
     }
 
+    private void OnEnable()
+    {
+        if (randomOffset)
+            RandomOffset();
+    }
+
     //offset by a random amount, with range designated in inspector or elsewhere 
     public void RandomOffset()
     {

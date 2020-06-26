@@ -48,16 +48,30 @@ public class CameraFacingBillboard : MonoBehaviour
             //Quaternion origRot = transform.rotation;
             //transform.LookAt(playerCam.transform.position, gravBody.GetUp());
             //Quaternion newRot = transform.rotation;
-            //manually set x rot value to t look at z value
+            ////manually set x rot value to t look at z value
             //transform.rotation = new Quaternion(newRot.z, newRot.y, origRot.z, newRot.w);
         }
         //normal, uses player gravity body for Look at function 
         else
         {
-            if(player)
-                transform.LookAt(playerCam.transform.position, playerBody.GetUp());
-            else
-                transform.LookAt(playerCam.transform.position, Vector3.up);
+            //NORMAL MOVEMENT 
+            if(pc.moveState != PlayerController.MoveStates.MEDITATING)
+            {
+                if (player)
+                    transform.LookAt(playerCam.transform.position, playerBody.GetUp());
+                else
+                    transform.LookAt(playerCam.transform.position, Vector3.up);
+            }
+            //MEDITATING
+            else if (pc.moveState == PlayerController.MoveStates.MEDITATING)
+            {
+                //fp -- look at cam
+                if (pc.firstOrThirdPersonMeditation)
+                    transform.LookAt(playerCam.transform.position, playerCam.transform.up);
+                //tp -- use astral body up 
+                else
+                    transform.LookAt(playerCam.transform.position, camControl.gravityBody.GetUp());
+            }
         }
 	}
 

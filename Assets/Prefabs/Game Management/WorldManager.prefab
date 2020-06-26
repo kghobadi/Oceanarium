@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1781972076680628}
+  m_IsPrefabAsset: 1
+--- !u!1 &1781972076680628
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4986395485200504}
+  - component: {fileID: 114178247563022304}
+  - component: {fileID: 114659884049412714}
+  - component: {fileID: 114240034710783366}
+  m_Layer: 0
+  m_Name: WorldManager
+  m_TagString: WorldManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4986395485200504
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1781972076680628}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114178247563022304
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1781972076680628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab1a2da7cef67cf40b70e9dae8e0422a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allInactiveObjects: []
+  activationDistance: 75
+--- !u!114 &114240034710783366
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1781972076680628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b556b3d9f304fc645ab751fb7ef9ae5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToRestart: 5
+  restartTimer: 0
+--- !u!114 &114659884049412714
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1781972076680628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9be0adcd7dc7d44cb010bab89e719f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allMonologues:
+  - monoName: Nudi's Speech
+    monologue: {fileID: 11400000, guid: 5f9493a561dcc3b41b7d52cdd797dc40, type: 2}
+    mTrigger: {fileID: 0}
+  - monoName: Urchin's Speech
+    monologue: {fileID: 11400000, guid: 54f2f0d9c5f00874d9c907c183480360, type: 2}
+    mTrigger: {fileID: 0}
+  - monoName: Skully's Speech
+    monologue: {fileID: 11400000, guid: d394515c18a21a94c8b753e38cb1a60d, type: 2}
+    mTrigger: {fileID: 0}
+  - monoName: Ghostboy's Lament
+    monologue: {fileID: 11400000, guid: 48b67f006158e964e9be08f2f0e6e5a4, type: 2}
+    mTrigger: {fileID: 0}
+  - monoName: Another Diver Meditation
+    monologue: {fileID: 11400000, guid: 90852e6b69182eb49853c4ac4017010e, type: 2}
+    mTrigger: {fileID: 0}

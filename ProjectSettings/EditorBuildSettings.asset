@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OrigDemoGalaxy.unity
     guid: 9b7e8a407e063a947a9384fdb33fc08e
+  - enabled: 1
+    path: Assets/Scenes/Triforce Galaxy.unity
+    guid: ea49fa7ad1e533a4484b7ce0090d637e
   m_configObjects: {}

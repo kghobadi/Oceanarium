@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Ghost Boy's Lament
   m_EditorClassIdentifier: 
   monologue: {fileID: 4900000, guid: b5a3c429433ae7d4f9b412ed0359d526, type: 3}
-  worldMonoIndex: 1
+  worldMonoIndex: 3
   waitToStart: 0
   timeUntilStart: 0
   lockPlayer: 1

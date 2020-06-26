@@ -66,6 +66,9 @@ public class MonologueManager : MonoBehaviour
         monoReader.hostObj = gameObject;
         monoReader.monoManager = this;
         sceneLoader = FindObjectOfType<LoadSceneAsync>();
+
+        //looper AI integration
+        looperAI = GetComponent<LooperAI>();
     }
 
     void Start()
@@ -179,19 +182,23 @@ public class MonologueManager : MonoBehaviour
             //no move
             player.canMove = false;
             player.canJump = false;
+            //set to talking state 
+            player.moveState = PlayerController.MoveStates.TALKING;
+            player.animator.SetAnimator("idle");
             //zero player vel
             player.playerRigidbody.velocity = Vector3.zero;
             player.playerRigidbody.angularVelocity = Vector3.zero;
         }
 
+        //begin mono 
+        inMonologue = true;
+
         //is this a looperAI?
         if (looperAI)
         {
             //set talking behavior
+            looperAI.SetTalking();
         }
-        
-        //begin mono 
-        inMonologue = true;
 
         //start the typing!
         monoReader.SetTypingLine();
@@ -220,14 +227,30 @@ public class MonologueManager : MonoBehaviour
         {
             //set speaker to idle
         }
-        
-        StartCoroutine(WaitForCameraTransition());
+
+        //reenable player cam
+        if (speakerCam)
+        {
+            camManager.Disable(speakerCam);
+
+            StartCoroutine(WaitForCameraTransition());
+        }
+        //no speaker cam, just disable mono
+        else
+        {
+            EndMonologue();
+        }
     }
 
     IEnumerator WaitForCameraTransition()
     {
         yield return new WaitForSeconds(1f);
 
+        EndMonologue();
+    }
+
+    void EndMonologue()
+    {
         Monologue mono = allMyMonologues[currentMonologue];
 
         //is this an npc?
@@ -241,14 +264,12 @@ public class MonologueManager : MonoBehaviour
         {
             player.canMove = true;
             player.canJump = true;
+            player.moveState = PlayerController.MoveStates.IDLE;
         }
-
-        //reenable player cam
-        if (speakerCam)
-        {
-            camManager.Disable(speakerCam);
+        
+        //set cam controller
+        if(camController.enabled == false)
             camController.enabled = true;
-        }
         camController.canMoveCam = true;
 
         //check for cinematic to enable 
@@ -264,11 +285,12 @@ public class MonologueManager : MonoBehaviour
                 cineManager.allCinematics[mono.cTriggers[i].cIndex].cTrigger.gameObject.SetActive(true);
             }
         }
-        
+
         //if this monologue repeats at finish
         if (mono.repeatsAtFinish)
         {
             //reset the monologue trigger after 3 sec 
+            monoReader.currentLine = 0;
             mTrigger.WaitToReset(5f);
         }
         //disable the monologue trigger, it's done 
@@ -281,7 +303,7 @@ public class MonologueManager : MonoBehaviour
         if (mono.triggersMonologues)
         {
             //enable the monologues but wait to make them usable to player 
-            for(int i = 0; i< mono.monologueIndeces.Length; i++)
+            for (int i = 0; i < mono.monologueIndeces.Length; i++)
             {
                 MonologueTrigger mTrigger = wmManager.allMonologues[mono.monologueIndeces[i]].mTrigger;
                 mTrigger.gameObject.SetActive(true);

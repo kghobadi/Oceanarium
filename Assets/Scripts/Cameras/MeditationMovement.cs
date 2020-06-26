@@ -18,18 +18,20 @@ public class MeditationMovement : MonoBehaviour
 
     //astral eye body 
     public Transform astralEye;
-    public GameCamera freeLook;
     CharacterController astralBody;
     Animator astralAnimator;
     SpriteRenderer astralRenderer;  
 
     [Header("Old FPS movement")]
     public bool isActive;
+    public bool fp;
     public Transform thirdEyeParent;
+    GravityBody thirdGravity;
     CharacterController thirdBody;
+    float hRot, vRot;
     public float sensitivityX = 1f;
     public float sensitivityY = 1f;
-    public float smoothing = 2.0f;
+    public bool invertX, invertY;
 
     [Header("Astral Body Movement")]
     public float moveSpeed = 10f;
@@ -56,15 +58,19 @@ public class MeditationMovement : MonoBehaviour
 
         //for fps 
         if (thirdEyeParent)
+        {
             thirdBody = thirdEyeParent.GetComponent<CharacterController>();
+            thirdGravity = thirdEyeParent.GetComponent<GravityBody>();
+        }
     }
 
     void Update()
     { 
         if (isActive)
         {
-            CameraRotation();
-            //RotateCamera();
+            //only call camera rotation during fp meditation 
+            if(fp)
+                CameraRotation();
 
             WASDmovement();
 
@@ -84,6 +90,7 @@ public class MeditationMovement : MonoBehaviour
         astralAnimator.enabled = true;
         //freeLook.gameObject.SetActive(true);
 
+        fp = false;
         isActive = true;
     }
 
@@ -110,6 +117,8 @@ public class MeditationMovement : MonoBehaviour
         thirdEyeParent.SetParent(null);
         transform.SetParent(thirdEyeParent);
         thirdBody.enabled = true;
+
+        fp = true;
         isActive = true;
     }
 
@@ -211,117 +220,46 @@ public class MeditationMovement : MonoBehaviour
             mainCam.fieldOfView -= fovSpeed;
         }
     }
-
-
+    
     //only camera rotation 
     void CameraRotation()
     {
         //get input device 
         var inputDevice = InputManager.ActiveDevice;
-        //zero rotation
-        var newRotate = new Vector2(0, 0);
 
         //controller 
         if (inputDevice.DeviceClass == InputDeviceClass.Controller)
         {
-            newRotate = new Vector2(inputDevice.RightStickX, inputDevice.RightStickY);
+            hRot = sensitivityX * inputDevice.RightStickX;
+            vRot = sensitivityY * inputDevice.RightStickY;
         }
         //mouse
         else
         {
-            newRotate = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+            hRot = sensitivityX * Input.GetAxis("Mouse X");
+            vRot = sensitivityY * Input.GetAxis("Mouse Y");
         }
 
-        //multiply inputs by sensitivity
-        newRotate = Vector2.Scale(newRotate, new Vector2(sensitivityX * smoothing, sensitivityY * smoothing));
-        smoothV.x = Mathf.Lerp(smoothV.x, newRotate.x, 1f / smoothing);
-        smoothV.y = Mathf.Lerp(smoothV.y, newRotate.y, 1f / smoothing);
+        //neg value 
+        if (invertX)
+            hRot *= -1f;
+        //neg value 
+        if (invertY)
+            vRot *= -1f;
 
-        //smooth mouse look
-        mouseLook += smoothV;
-
-        //actually set rotations
-        transform.localRotation = Quaternion.AngleAxis(-mouseLook.y, Vector3.right);
-        thirdEyeParent.localRotation = Quaternion.AngleAxis(mouseLook.x, thirdEyeParent.up);
+        //Rotates Player on "X" Axis Acording to Mouse Input
+        //Rotates Player on "Y" Axis Acording to Mouse Input
+        transform.Rotate(vRot, hRot, 0);
     }
-
-    ////meditation camera controls 
-    //Vector3 horizontalRotation;
-    //Vector3 verticalRotation;
-    //Vector3 xLook;
-    //Vector3 yLook;
-    //Vector3 targetMove;
-    //Quaternion targetLook;
-    //float heightFromPlayer;
-    //float distanceFromPlayer;
-    //[Header("Camera movement")]
-    //public float heightMin = 5f;
-    //public float heightMax = 20f;
-    //public float xLookSpeed = 5f;
-    //public float yLookSpeed = 5f;
-    //public float smoothLook = 5f, mSmoothLook = 5f;
-    //public float smoothMove = 5f, mSmoothMove = 5f;
-    //public float cameraRotationSpeedX = 5f, cameraRotationSpeedY = 5f;
-    //public float mCameraRotationSpeedX = 5f, mCameraRotationSpeedY = 5f;
-
-    ////allows you to look up and down, left and right 
-    //void RotateCamera()
-    //{
-    //    //get input device 
-    //    var inputDevice = InputManager.ActiveDevice;
-
-    //    //lets set up right analogue stick to enable us to rotate the camera around player and redirect motion as we do so
-    //    horizontalRotation = Vector3.zero;
-    //    verticalRotation = Vector3.zero;
-
-    //    //set target move 
-    //    targetMove = astralEye.position + (astralEye.rotation * new Vector3(0, heightFromPlayer, -distanceFromPlayer));
-
-    //    //using ps4 controller
-    //    if (inputDevice.DeviceClass == InputDeviceClass.Controller)
-    //    {
-    //        //cam pos
-    //        transform.position = Vector3.Lerp(transform.position, targetMove, smoothMove * Time.deltaTime);
-    //        //cam inputs
-    //        horizontalRotation = new Vector3(inputDevice.RightStickX * cameraRotationSpeedX, 0, 0);
-    //        verticalRotation = new Vector3(0, inputDevice.RightStickY * cameraRotationSpeedY, 0);
-    //    }
-    //    //using mouse and WASD
-    //    else
-    //    {
-    //        //cam pos
-    //        transform.position = Vector3.Lerp(transform.position, targetMove, mSmoothMove * Time.deltaTime);
-    //        //cam inputs
-    //        horizontalRotation = new Vector3(Input.GetAxis("Mouse X") * mCameraRotationSpeedX, 0, 0);
-    //        verticalRotation = new Vector3(0, Input.GetAxis("Mouse Y") * mCameraRotationSpeedY, 0);
-    //    }
-
-    //    //calc x look
-    //    xLook = Vector3.Lerp(xLook, astralEye.right * horizontalRotation.x, Time.deltaTime * xLookSpeed);
-
-    //    //calc y look
-    //    yLook = Vector3.Lerp(yLook, astralEye.up * verticalRotation.y, Time.deltaTime * yLookSpeed);
-
-    //    //add yLook to the player pos, then subtract cam pos to get the forward look
-    //    targetLook = Quaternion.LookRotation((astralEye.position + xLook + yLook) - transform.position);
-
-    //    //using ps4 controller
-    //    if (inputDevice.DeviceClass == InputDeviceClass.Controller)
-    //    {
-    //        transform.rotation = Quaternion.Lerp(transform.rotation, targetLook, smoothLook * Time.deltaTime);
-    //    }
-    //    //mouse 
-    //    else
-    //    {
-    //        transform.rotation = Quaternion.Lerp(transform.rotation, targetLook, mSmoothLook * Time.deltaTime);
-    //    }
-
-    //    //clamp height from player 
-    //    heightFromPlayer = Mathf.Clamp(heightFromPlayer, heightMin, heightMax);
-    //}
-
+    
     private void OnDisable()
     {
-        DeactivateFPS();
+        if (isActive)
+        {
+            if (fp)
+                DeactivateFPS();
+            else
+                Deactivate();
+        }
     }
 }

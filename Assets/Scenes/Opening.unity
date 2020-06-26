@@ -353,6 +353,7 @@ MonoBehaviour:
   fadeOutSpeed: 1
   fadeInAtStart: 1
   returnsToPool: 0
+  worldManage: 0
 --- !u!1 &116245411
 GameObject:
   m_ObjectHideFlags: 0
@@ -1493,6 +1494,7 @@ MonoBehaviour:
   fadeOutSpeed: 1
   fadeInAtStart: 1
   returnsToPool: 0
+  worldManage: 0
 --- !u!1 &1449282948
 GameObject:
   m_ObjectHideFlags: 0
@@ -1572,18 +1574,20 @@ MonoBehaviour:
   playTimelineOnlyOnce: 0
   interactKey: 0
   disablePlayerInput: 0
-  zerosPlayerVelocity: 0
-  setPlayerTimelinePosition: 0
+  parentPlayerToPos: 0
   playerTimelinePosition: {fileID: 0}
+  playerExitPosition: {fileID: 0}
+  characterTransforms: []
+  newCharacterPositions: []
+  parentCharacters: 
+  exitPositions: []
   triggerZoneObject: {fileID: 0}
   displayUI: 0
   interactDisplay: {fileID: 0}
-  resetGuardianBehavior: 0
-  planetPoints: {fileID: 0}
-  nextSpot: {fileID: 0}
-  currentToActivate: {fileID: 0}
-  pullsPlayerIntoCurrent: 0
   playerTag: Player
+  cinematicFade: {fileID: 0}
+  fadesIn: 0
+  fadesOut: 0
 --- !u!1 &1450652369
 GameObject:
   m_ObjectHideFlags: 0
@@ -2720,6 +2724,7 @@ MonoBehaviour:
   fadeOutSpeed: 1
   fadeInAtStart: 0
   returnsToPool: 0
+  worldManage: 0
 --- !u!95 &1799146708
 Animator:
   serializedVersion: 3
@@ -3304,6 +3309,30 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: DeactivateObj
+      objectReference: {fileID: 0}
+    - target: {fileID: 1393712762734674, guid: a9bfd5fd5ed8f4f4884fff32cb180efa, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1398375126166668, guid: a9bfd5fd5ed8f4f4884fff32cb180efa, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664435188314668, guid: a9bfd5fd5ed8f4f4884fff32cb180efa, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591164427489958, guid: a9bfd5fd5ed8f4f4884fff32cb180efa, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246883747551754, guid: a9bfd5fd5ed8f4f4884fff32cb180efa, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1479339186058330, guid: a9bfd5fd5ed8f4f4884fff32cb180efa, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9bfd5fd5ed8f4f4884fff32cb180efa, type: 2}
