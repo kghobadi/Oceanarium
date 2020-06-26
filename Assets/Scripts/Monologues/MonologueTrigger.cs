@@ -66,7 +66,7 @@ public class MonologueTrigger : MonoBehaviour
     //activates monologues
     void ActivateMonologue()
     {
-        if (!hasActivated)
+        if (!hasActivated && pc.canMove)
         {
             for (int i = 0; i < myMonologues.Length; i++)
             {
@@ -83,8 +83,8 @@ public class MonologueTrigger : MonoBehaviour
     {
         playerInZone = true;
         pc.canJump = false;
+      
         ToggleInteractUI(playerInZone);
-
         StopAllCoroutines();
     }
 

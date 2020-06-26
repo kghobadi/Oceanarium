@@ -5,9 +5,9 @@ using InControl;
 
 public class CameraController : MonoBehaviour {
     //player ref
-    GameObject player;
+    GameObject player, origPlayer;
     PlayerController pc;
-    GravityBody gravityBody;
+    [HideInInspector] public GravityBody gravityBody, origGBody;
     //camera refs
     Transform cameraT;
     Camera mainCam;
@@ -29,6 +29,18 @@ public class CameraController : MonoBehaviour {
     public float yLookPosAdjust = 5f;
     public float smoothMove = 0.5f;
     public float smoothLook = 0.5f;
+
+    [Header("Meditation Values")]
+    public float m_SensitivityX = 3f;
+    public float m_SensitivityY = 1f;
+    public float m_maxVerticalLookAngle = 180f;
+    public float m_minVerticalLookAngle = -180f;
+    public float m_yLookPosAdjust = 0f;
+    float origSensitivityX;
+    float origSensitivityY;
+    float origMaxLook, origMinLook;
+    float origYLookAdjust;
+
     [Header("Zoom Vars")]
     public float heightFromPlayer = 20f;
     public float heightMin, heightMax;
@@ -57,13 +69,21 @@ public class CameraController : MonoBehaviour {
     float t;
     float lerpSpeed = 0.5f;
 
+    [Header("Astral Body")]
+    public GameObject astralBody;
+    GravityBody astralGravity;
+    
+
     void Awake () {
         cameraT = Camera.main.transform;
         mainCam = cameraT.GetComponent<Camera>();
         originalFOV = mainCam.fieldOfView;
         player = GameObject.FindGameObjectWithTag("Player");
+        origPlayer = player;
         pc = player.GetComponent<PlayerController>();
         gravityBody = player.GetComponent<GravityBody>();
+        origGBody = gravityBody;
+        astralGravity = astralBody.GetComponent<GravityBody>();
     }
 
     void Start()
@@ -262,7 +282,7 @@ public class CameraController : MonoBehaviour {
         //send raycast
         if (Physics.SphereCast(transform.position, 1f, dir, out hit, dist , obstructionMask))
         {
-            Debug.Log("hit ground, zoomng in");
+            //Debug.Log("hit ground, zoomng in");
             //anytime we hit the planet ground, zoome out 
             if (heightFromPlayer > heightMin)
                 ZoomIn(-0.05f);
@@ -322,5 +342,76 @@ public class CameraController : MonoBehaviour {
         lerpSpeed = lerpLength;
         lerpingFOV = true;
         Debug.Log("somemthing called Lerp FOV!");
+    }
+
+    //called when meditating
+    public void SetAstralBody()
+    {
+        astralBody.SetActive(true);
+        player = astralBody;
+        gravityBody = astralGravity;
+
+        //zoom out a bit 
+        ZoomOut(15f);
+        
+        //get input device 
+        var inputDevice = InputManager.ActiveDevice;
+
+        //controller 
+        if (inputDevice.DeviceClass == InputDeviceClass.Controller)
+        {
+            origSensitivityX = controllerSensitivityX;
+            origSensitivityY = controllerSensitivityY;
+
+            controllerSensitivityX = m_SensitivityX;
+            controllerSensitivityY = m_SensitivityY;
+        }
+        //m keyboard
+        else
+        {
+            origSensitivityX = mouseSensitivityX;
+            origSensitivityY = mouseSensitivityY;
+
+            mouseSensitivityX = m_SensitivityX;
+            mouseSensitivityY = m_SensitivityY;
+        }
+
+        //set originals
+        origMinLook = minVerticalLookAngle;
+        origMaxLook = maxVerticalLookAngle;
+        origYLookAdjust = yLookPosAdjust;
+        //set new values for astral projection
+        minVerticalLookAngle = m_minVerticalLookAngle;
+        maxVerticalLookAngle = m_maxVerticalLookAngle;
+        yLookPosAdjust = m_yLookPosAdjust;
+    }
+
+    //called when returning to body from meditation
+    public void DisableAstralBody()
+    {
+        astralBody.SetActive(false);
+        player = origPlayer;
+        gravityBody = origGBody;
+
+        //get input device 
+        var inputDevice = InputManager.ActiveDevice;
+
+        //controller 
+        if (inputDevice.DeviceClass == InputDeviceClass.Controller)
+        {
+            controllerSensitivityX = origSensitivityX;
+            controllerSensitivityY = origSensitivityY;
+        }
+        //m keyboard
+        else
+        {
+            mouseSensitivityX = origSensitivityX;
+            mouseSensitivityY = origSensitivityY;
+        }
+
+        //return values to original for swimming 
+        minVerticalLookAngle = origMinLook;
+        maxVerticalLookAngle = origMaxLook;
+        yLookPosAdjust = origYLookAdjust;
     }
 }

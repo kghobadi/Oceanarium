@@ -19,7 +19,7 @@ public class LooperAI : AudioHandler {
     public AIStates aiState;
     public enum AIStates
     {
-        IDLE, MOVING,
+        IDLE, MOVING, TALKING,
     }
 
     [Tooltip("Points for AI to travel between")]
@@ -34,6 +34,8 @@ public class LooperAI : AudioHandler {
 
     public float nextSoundIn;
     public float idleSoundFreq, movingSoundsFreq;
+    
+    MonologueManager monoManager;
 
     public override void Awake()
     {
@@ -48,6 +50,9 @@ public class LooperAI : AudioHandler {
         movement = GetComponent<MoveTowards>();
         orbital = GetComponent<Orbit>();
         gravBody = GetComponent<GravityBody>();
+
+        //monologue integration
+        monoManager = GetComponent<MonologueManager>();
     }
 
     void Start ()
@@ -81,6 +86,16 @@ public class LooperAI : AudioHandler {
 
             //movement running
             if (movement.moving == false)
+            {
+                SetIdle();
+            }
+        }
+
+        //TALKING 
+        if(aiState == AIStates.TALKING)
+        {
+            //once monologue is over return to idle
+            if(monoManager.inMonologue == false)
             {
                 SetIdle();
             }
@@ -124,5 +139,16 @@ public class LooperAI : AudioHandler {
 
             nextSoundIn = soundFreq;
         }
+    }
+
+    //called when player initiates Monologue 
+    public void SetTalking()
+    {
+        //stop moving!
+        if (movement.moving)
+            movement.moving = false;
+
+        aiState = AIStates.TALKING;
+        cAnimation.SetAnimator("idle");
     }
 }

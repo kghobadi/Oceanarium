@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Cinemachine;
 using UnityEngine.Audio;
@@ -20,6 +21,9 @@ public class PlayerController : AudioHandler
     [Header("Movement Bools")]
     public bool canMove = true;
     public bool canJump;
+    public bool firstOrThirdPersonMeditation = true;
+    public Toggle meditationTypeToggle;
+    public TMPro.TMP_Text modeType; 
 
     [Header("Movement Speeds & Vars")]
     //general movement
@@ -47,7 +51,7 @@ public class PlayerController : AudioHandler
     public MoveStates moveState;
     public enum MoveStates
     {
-        SWIMMING, IDLE, MEDITATING,
+        SWIMMING, IDLE, MEDITATING, TALKING,
     }
 
     //for swim jumps 
@@ -103,6 +107,12 @@ public class PlayerController : AudioHandler
         animator = playerSpriteObj.GetComponent<PlayerAnimations>();
         quitScript = FindObjectOfType<QuitGame>();
         idleTimer = 0;
+
+        if (meditationTypeToggle)
+        {
+            meditationTypeToggle.isOn = firstOrThirdPersonMeditation;
+            SetMeditationModeText();
+        }
        
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -134,8 +144,12 @@ public class PlayerController : AudioHandler
 
     void FixedUpdate()
     {
-        ApplySwimForce();
-
+        //only apply swim force when not meditating 
+        if(moveState != MoveStates.MEDITATING && moveState != MoveStates.TALKING)
+        {
+            ApplySwimForce();
+        }
+            
         // Limit velocity
         if (playerRigidbody.velocity.magnitude > maxSpeed)
         {
@@ -167,25 +181,27 @@ public class PlayerController : AudioHandler
         if (inputDevice.DeviceClass == InputDeviceClass.Controller)
         {
             // 3 axes 
-            horizontalMovement = inputDevice.LeftStickX;
-            forwardMovement = inputDevice.LeftStickY;
+            
             //only elevate when not meditating 
             if (moveState != MoveStates.MEDITATING)
             {
-                verticalMovement = inputDevice.DPadY;
+                horizontalMovement = inputDevice.LeftStickX;
+                forwardMovement = inputDevice.LeftStickY;
             }
+            verticalMovement = inputDevice.DPadY;
         }
         //mouse & keyboard
         else
         {
             // 3 axes 
-            horizontalMovement = Input.GetAxis("Horizontal");
-            forwardMovement = Input.GetAxis("Vertical");
-            //only elevate when not meditating 
+           
+            //only swim when not meditating 
             if (moveState != MoveStates.MEDITATING)
             {
-                verticalMovement = Input.GetAxis("Elevation");
+                horizontalMovement = Input.GetAxis("Horizontal");
+                forwardMovement = Input.GetAxis("Vertical");
             }
+            verticalMovement = Input.GetAxis("Elevation");
         }
             
         //dist from camera
@@ -266,50 +282,17 @@ public class PlayerController : AudioHandler
         //elevating
         else if (verticalMovement != 0)
         {
+            DisableMeditation();
+
             moveState = MoveStates.SWIMMING;
             animator.SetAnimator("elevating");
         }
         //swimming 
         else if(verticalMovement == 0 && (forwardMovement != 0 || horizontalMovement != 0))
         {
-            DisableMeditation();
-
             idleTimer = 0;
             moveState = MoveStates.SWIMMING;
             animator.SetAnimator("swimming");
-        }
-    }
-
-    //begin meditating
-    void SetMeditation()
-    {
-        if (moveState != MoveStates.MEDITATING)
-        {
-            camControls.LerpFOV(camControls.meditationFOV, 2f);
-            camControls.canMoveCam = false;
-            meditationControls.Activate();
-
-            meditating.TransitionTo(2f);
-            canJump = false;
-
-            moveState = MoveStates.MEDITATING;
-            //diver meditates
-            animator.SetAnimator("meditating");
-        }
-    }
-
-    //stop meditating 
-    void DisableMeditation()
-    {
-        //return from meditating FOV
-        if (moveState == MoveStates.MEDITATING)
-        {
-            camControls.LerpFOV(camControls.originalFOV, 2f);
-            camControls.canMoveCam = true;
-            meditationControls.Deactivate();
-
-            normal.TransitionTo(2f);
-            canJump = true;
         }
     }
 
@@ -337,7 +320,82 @@ public class PlayerController : AudioHandler
         //set current vel
         currentVelocity = playerRigidbody.velocity.magnitude;
     }
+    
+    //called by menu toggle
+    public void ToggleMeditationType()
+    {
+        //only change if not currently meditating 
+        if(moveState != MoveStates.MEDITATING)
+        {
+            firstOrThirdPersonMeditation = meditationTypeToggle.isOn;
 
+            SetMeditationModeText();
+        }
+    }
+
+    //set menu text 
+    void SetMeditationModeText()
+    {
+        if (firstOrThirdPersonMeditation)
+            modeType.text = "first person";
+        else
+            modeType.text = "third person";
+    }
+
+    //begin meditating
+    void SetMeditation()
+    {
+        //only if not already and controls from start are gone 
+        if (moveState != MoveStates.MEDITATING && controlsAtStart[0].gameObject.activeSelf == false)
+        {
+            camControls.LerpFOV(camControls.meditationFOV, 2f);
+            meditating.TransitionTo(2f);
+            canJump = false;
+
+            //diver meditates
+            moveState = MoveStates.MEDITATING;
+            animator.SetAnimator("meditating");
+
+            //fp
+            if (firstOrThirdPersonMeditation)
+            {
+                camControls.canMoveCam = false;
+                meditationControls.ActivateFPS();
+            }
+            //tp
+            else
+            {
+                camControls.SetAstralBody();
+                meditationControls.Activate();
+            }
+        }
+    }
+
+    //stop meditating 
+    void DisableMeditation()
+    {
+        //return from meditating FOV
+        if (moveState == MoveStates.MEDITATING)
+        {
+            camControls.LerpFOV(camControls.originalFOV, 2f);
+            normal.TransitionTo(2f);
+            canJump = true;
+
+            //fp
+            if (firstOrThirdPersonMeditation)
+            {
+                camControls.canMoveCam = true;
+                meditationControls.DeactivateFPS();
+            }
+            //tp
+            else
+            {
+                camControls.DisableAstralBody();
+                meditationControls.Deactivate();
+            }
+        }
+    }
+    
     //after meditating long enough, game will restart 
     void MeditativeRestart()
     {
