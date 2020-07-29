@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a3861b9ea3b4c43b0c9e901c55bc6c, type: 3}
   m_Name: Skully's Speech
   m_EditorClassIdentifier: 
-  monologue: {fileID: 4900000, guid: 42babf6f926f1784f99597b1d0afb016, type: 3}
+  monologue: {fileID: 4900000, guid: ca0448bf53b6ede438b3728a0fc0041f, type: 3}
   worldMonoIndex: 2
   waitToStart: 0
   timeUntilStart: 0

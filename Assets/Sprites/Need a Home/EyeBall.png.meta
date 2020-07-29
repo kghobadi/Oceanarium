@@ -1,0 +1,835 @@
+fileFormatVersion: 2
+guid: c22b230748c8f6f499b429568b35c8ce
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: EyeBall_0
+    21300002: EyeBall_1
+    21300004: EyeBall_2
+    21300006: EyeBall_3
+    21300008: EyeBall_4
+    21300010: EyeBall_5
+    21300012: EyeBall_6
+    21300014: EyeBall_7
+    21300016: EyeBall_8
+    21300018: EyeBall_9
+    21300020: EyeBall_10
+    21300022: EyeBall_11
+    21300024: EyeBall_12
+    21300026: EyeBall_13
+    21300028: EyeBall_14
+    21300030: EyeBall_15
+    21300032: EyeBall_16
+    21300034: EyeBall_17
+    21300036: EyeBall_18
+    21300038: EyeBall_19
+    21300040: EyeBall_20
+    21300042: EyeBall_21
+    21300044: EyeBall_22
+    21300046: EyeBall_23
+    21300048: EyeBall_24
+    21300050: EyeBall_25
+    21300052: EyeBall_26
+    21300054: EyeBall_27
+    21300056: EyeBall_28
+    21300058: EyeBall_29
+    21300060: EyeBall_30
+    21300062: EyeBall_31
+    21300064: EyeBall_32
+    21300066: EyeBall_33
+  externalObjects: {}
+  serializedVersion: 7
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: EyeBall_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8625
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8a7b57f2d3b82e49bbbefec1fe248aa
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeBall_1
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 8625
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1963538ca15a634bba208dcb7f4dc42
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeBall_2
+      rect:
+        serializedVersion: 2
+        x: 3328
+        y: 8625
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e233395493ce5584b824255aac21787a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeBall_3
+      rect:
+        serializedVersion: 2
+        x: 4992
+        y: 8625
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57c2b74e81144e54f947ccf14a10c467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeBall_4
+      rect:
+        serializedVersion: 2
+        x: 6656
+        y: 8625
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da53975685e9eba4e817762d85e19b05
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeBall_5
+      rect:
+        serializedVersion: 2
+        x: 8320
+        y: 8625
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57a04bc30bdd25243a99c35626d94801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeBall_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6900
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e9aa93d595bb5649965d5d2e96a6a32
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeBall_7
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 6900
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccb1e5be458f31541a4b0f24b08940b8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeBall_8
+      rect:
+        serializedVersion: 2
+        x: 3328
+        y: 6900
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 583a902bf031a2845af707bf7c9e7eca
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeBall_9
+      rect:
+        serializedVersion: 2
+        x: 4992
+        y: 6900
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e755f25104554147b58573b3bbd42c0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeBall_10
+      rect:
+        serializedVersion: 2
+        x: 6656
+        y: 6900
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4442f719589ae6a4eafc98c6d6a5bed5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeBall_11
+      rect:
+        serializedVersion: 2
+        x: 8320
+        y: 6900
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db65bacd4ee9bfd4d800633c73448608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeBall_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5175
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 368248c3e5571b849ba34bbbfbd4d2c1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeBall_13
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 5175
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7ed0ef63946dc64494b5e5b459fc93e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeBall_14
+      rect:
+        serializedVersion: 2
+        x: 3328
+        y: 5175
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8aadb0bdf4f847b43a41885c819eb6b8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeBall_15
+      rect:
+        serializedVersion: 2
+        x: 4992
+        y: 5175
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90e6c3f7ba957e241949913726b0d307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeBall_16
+      rect:
+        serializedVersion: 2
+        x: 6656
+        y: 5175
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 564666c01dac70b4f9ddcab7abe0d200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeBall_17
+      rect:
+        serializedVersion: 2
+        x: 8320
+        y: 5175
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cca1cb9d1b7a594b97cdb4a78845f92
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeBall_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3450
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68a74c3974baebe43bec54312a776564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeBall_19
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 3450
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a2c4f9043453a246a825b258a184007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeBall_20
+      rect:
+        serializedVersion: 2
+        x: 3328
+        y: 3450
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f4c5f1f17ab28c41a1934bb8ecb683a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeBall_21
+      rect:
+        serializedVersion: 2
+        x: 4992
+        y: 3450
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfd75c72b0a87ff4bb6185b81f5cc09c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeBall_22
+      rect:
+        serializedVersion: 2
+        x: 6656
+        y: 3450
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c4e5718aae0b6d4bac50ce3dcde996e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeBall_23
+      rect:
+        serializedVersion: 2
+        x: 8320
+        y: 3450
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71f4aeee3e680524c9ed02d6451f97aa
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeBall_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1725
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87ff3295705ac1148ad492741a6b73d6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeBall_25
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 1725
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5ceea1a3b295554e83c11f25a36dfe5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeBall_26
+      rect:
+        serializedVersion: 2
+        x: 3328
+        y: 1725
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33875d89c7d3d3e47a06027c755f86ac
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeBall_27
+      rect:
+        serializedVersion: 2
+        x: 4992
+        y: 1725
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea001a0d437f2074b9a8ae608e9d6c6a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeBall_28
+      rect:
+        serializedVersion: 2
+        x: 6656
+        y: 1725
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32187f751d13ec343a293eeb651d0c60
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeBall_29
+      rect:
+        serializedVersion: 2
+        x: 8320
+        y: 1725
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0600976939e798f418cf7d86ea1a3228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeBall_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5a4bcae2dc780e408b73395cee9ea14
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeBall_31
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 0
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae1b642c00c163143b689292b04bc33a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeBall_32
+      rect:
+        serializedVersion: 2
+        x: 3328
+        y: 0
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5899292c9fc3d654fadb9399aec8c44d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EyeBall_33
+      rect:
+        serializedVersion: 2
+        x: 4992
+        y: 0
+        width: 1664
+        height: 1725
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8198ca61749b6b54a90c5ffcc29a78ea
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 50938d46f0095ea43ae9a78b71849bcf
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
