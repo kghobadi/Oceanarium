@@ -90,6 +90,11 @@ public class CameraController : MonoBehaviour {
     {
         //can move at start
         canMoveCam = true;
+        SetCamPos();
+    }
+
+    public void SetCamPos()
+    {
         //set start height to middle val 
         heightFromPlayer = heightMin + ((heightMax - heightMin) / 2);
         //calc start pos
