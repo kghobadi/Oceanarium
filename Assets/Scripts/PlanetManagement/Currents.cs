@@ -145,6 +145,18 @@ public class Currents : AudioHandler {
         }
     }
 
+    //stay check to pull you in once activated 
+    public void OnTriggerStay(Collider other)
+    {
+        if (currentActivated)
+        {
+            if (other.gameObject.tag == "Player" && !entering && !hasEntered)
+            {
+                EnterCurrent();
+            }
+        }
+    }
+
     public void ActivateCurrent()
     {
         Debug.Log("activated current");
