@@ -8,7 +8,7 @@ public class PlanetManager : MonoBehaviour {
     PlayerController pc;
     GameObject guardian;
     Guardian gBehavior;
-    MusicFader mFader;
+    [HideInInspector] public MusicFader mFader;
 
     public string planetName;
     public bool playerHere, startingPlanet;

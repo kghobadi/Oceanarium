@@ -5,13 +5,21 @@ using UnityEngine.SceneManagement;
 using InControl;
 
 public class QuitGame : MonoBehaviour {
-    public GameObject quitGroup;
-    public GameObject restartGroup;
+    public GameObject escMenu;
 
+    [Header("Esc Menu Selections & Sub Menus")]
+    public StarSelectors[] menuSelections;
+    public GameObject[] subMenus;
+    public int currentSelector = 0;
+
+    [Header("Controls UI")]
+    public GameObject controlsUI;
+    public GameObject controlsKeyboard;
+    public GameObject controllerInputs;
+    
     void Start()
     {
-        quitGroup.SetActive(false);
-        restartGroup.SetActive(false);
+        escMenu.SetActive(false);
     }
 
     void Update ()
@@ -21,71 +29,97 @@ public class QuitGame : MonoBehaviour {
         //get input device 
         var inputDevice = InputManager.ActiveDevice;
 
+        //controller 
+        if (inputDevice.DeviceClass == InputDeviceClass.Controller)
+        {
+            // need to check current selector based on l analog axis movement 
+        }
+        //mouse & keyboard
+        else
+        {
+
+        }
+
         //activate quit group   
-        if ((Input.GetKeyDown(KeyCode.Escape) ||  inputDevice.Command.WasPressed) && quitGroup.activeSelf == false && !pressed)
+        if ((Input.GetKeyDown(KeyCode.Escape) ||  inputDevice.Command.WasPressed) && escMenu.activeSelf == false && !pressed)
         {
             ActivateQuitMenu();
 
             pressed = true;
         }
 
-        //quit
-        if(inputDevice.Action1.WasPressed && quitGroup.activeSelf == true)
+        //either turns off all sub menus, or leaves esc menu 
+        if ((Input.GetKeyDown(KeyCode.Escape) || inputDevice.Command.WasPressed) && escMenu.activeSelf == true && !pressed)
         {
-            Quit();
-        }
+            bool subMenus = CheckSubMenusActive();
 
-        //deactivate quit menu
-        if ((Input.GetKeyDown(KeyCode.Escape) || inputDevice.Command.WasPressed) && quitGroup.activeSelf == true && !pressed)
-        {
-            DeactivateObj(quitGroup);
-
-            pressed = true;
-        }
-
-        //activate restart group
-        if (Input.GetKeyDown(KeyCode.Delete) && restartGroup.activeSelf == false && !pressed)
-        {
-            ActivateRestartMenu();
-
-            pressed = true;
-        }
-        //deactivate restart menu
-        if (Input.GetKeyDown(KeyCode.Delete) && restartGroup.activeSelf == true && !pressed)
-        {
-            DeactivateObj(restartGroup);
+            if (subMenus)
+                DeactivateAllSubMenus();
+            else
+                DeactivateObj(escMenu);
 
             pressed = true;
         }
     }
 
+    //called to open esc menu 
     public void ActivateQuitMenu()
     {
-        quitGroup.SetActive(true);
+        escMenu.SetActive(true);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
-        //turn off restart if open
-        if (restartGroup.activeSelf)
-            restartGroup.SetActive(false);
+        currentSelector = 0;
+        menuSelections[currentSelector].ActivateStars();
     }
 
-    public void ActivateRestartMenu()
+    //checks if there is a sub menu open
+    bool CheckSubMenusActive()
     {
-        restartGroup.SetActive(true);
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        for(int i = 0; i < subMenus.Length; i++)
+        {
+            if (subMenus[i].activeSelf)
+                return true;
+        }
 
-        //turn off quit if open
-        if (quitGroup.activeSelf)
-            quitGroup.SetActive(false);
+        return false;
     }
 
+    //turns off all subMenus
+    public void DeactivateAllSubMenus()
+    {
+        for (int i = 0; i < subMenus.Length; i++)
+        {
+            subMenus[i].SetActive(false);
+        }
+    }
+
+    public void ShowControls()
+    {
+        //get input device 
+        var inputDevice = InputManager.ActiveDevice;
+
+        //enable controls header obj
+        controlsUI.SetActive(true);
+
+        //controller 
+        if (inputDevice.DeviceClass == InputDeviceClass.Controller)
+        {
+            controllerInputs.SetActive(true);
+            controlsKeyboard.SetActive(false);
+        }
+        //mouse & keyboard
+        else
+        {
+            controlsKeyboard.SetActive(true);
+            controllerInputs.SetActive(false);
+        }
+    }
+    
     //on the 'no' under q prompts
     public void DeactivateObj(GameObject obj)
     {
         obj.SetActive(false);
-        
     }
 
     public void Quit()

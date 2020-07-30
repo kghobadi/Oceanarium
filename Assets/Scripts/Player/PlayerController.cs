@@ -396,25 +396,6 @@ public class PlayerController : AudioHandler
         }
     }
     
-    //after meditating long enough, game will restart 
-    void MeditativeRestart()
-    {
-        if(moveState == MoveStates.MEDITATING)
-        {
-            restartTimer += Time.deltaTime;
-
-            //activate restart menu after reaches total 
-            if(restartTimer > restartTotal && !quitScript.restartGroup.activeSelf)
-            {
-                quitScript.ActivateRestartMenu();
-            }
-        }
-        else
-        {
-            restartTimer = 0;
-        }
-    }
-    
     void TakeJumpInput()
     {
         //get input device 
