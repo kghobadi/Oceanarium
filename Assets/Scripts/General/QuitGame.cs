@@ -16,6 +16,10 @@ public class QuitGame : MonoBehaviour {
     public GameObject controlsUI;
     public GameObject controlsKeyboard;
     public GameObject controllerInputs;
+
+    //for controller selections 
+    bool canChange;
+    float changeTimer, changeReset = 0.25f;
     
     void Start()
     {
@@ -32,7 +36,10 @@ public class QuitGame : MonoBehaviour {
         //controller 
         if (inputDevice.DeviceClass == InputDeviceClass.Controller)
         {
-            // need to check current selector based on l analog axis movement 
+            //handles controller inputs for the menu
+            ControllerSelection();
+            //resets when you change selectors
+            ChangeReset();
         }
         //mouse & keyboard
         else
@@ -62,6 +69,101 @@ public class QuitGame : MonoBehaviour {
         }
     }
 
+    //function controls selection with controller
+    void ControllerSelection()
+    {
+        //get input device 
+        var inputDevice = InputManager.ActiveDevice;
+
+        float inputValY = inputDevice.LeftStickY;
+
+        //detection of changing 
+        if (canChange)
+        {
+            //pos val, selection moves up
+            if (inputValY > 0)
+            {
+                ChangeMenuSelector(true);
+            }
+            //neg val, selection moves down
+            else if (inputValY < 0)
+            {
+                ChangeMenuSelector(false);
+            }
+        }
+
+        //detection of selection
+        if (inputDevice.Action1.WasPressed)
+        {
+            if (menuSelections[currentSelector])
+                menuSelections[currentSelector].SelectMe();
+        }
+
+        //detection of closing submenus
+        if (inputDevice.Action2.WasPressed)
+        {
+            DeactivateAllSubMenus();
+        }
+    }
+
+    //allows you to increment menu selector & change stars
+    public void ChangeMenuSelector(bool upOrDown)
+    {
+        if (menuSelections.Length > 1)
+        {
+            //deactivate current stars
+            menuSelections[currentSelector].DeactivateStars();
+
+            //up
+            if (upOrDown)
+            {
+                //increment up
+                if (currentSelector < menuSelections.Length - 1)
+                {
+                    currentSelector++;
+                }
+                else
+                {
+                    currentSelector = 0;
+                }
+            }
+            //down
+            else
+            {
+                //increment down
+                if (currentSelector > 0)
+                {
+                    currentSelector--;
+                }
+                else
+                {
+                    currentSelector = menuSelections.Length - 1;
+                }
+            }
+
+            //activate next stars
+            menuSelections[currentSelector].ActivateStars();
+
+            //change reset called 
+            canChange = false;
+            changeTimer = 0;
+        }
+    }
+
+    //handles reset timer for controller selection
+    void ChangeReset()
+    {
+        if(canChange == false)
+        {
+            changeTimer += Time.deltaTime;
+
+            if(changeTimer > changeReset)
+            {
+                canChange = true;
+            }
+        }
+    }
+
     //called to open esc menu 
     public void ActivateQuitMenu()
     {
@@ -69,8 +171,10 @@ public class QuitGame : MonoBehaviour {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
+        //set Selector
         currentSelector = 0;
-        menuSelections[currentSelector].ActivateStars();
+        if(menuSelections.Length > 0)
+            menuSelections[currentSelector].ActivateStars();
     }
 
     //checks if there is a sub menu open
