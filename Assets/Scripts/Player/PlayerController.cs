@@ -47,6 +47,8 @@ public class PlayerController : AudioHandler
     public float distMaxFromPlanet = 50f;
     [Tooltip("When this timer reaches Time Until Meditate while player is idle / inactive, will start meditating")]
     public float idleTimer = 0f, timeUntilMeditate = 10f;
+    [Tooltip("Can't meditate until we reach quadsphere")]
+    public bool canMeditate;
     //player move states
     public MoveStates moveState;
     public enum MoveStates
@@ -133,9 +135,6 @@ public class PlayerController : AudioHandler
 
             //repulses player from planet when they land too hard
             RepulsionLogic();
-
-            //game will restart if meditate for a minute
-            //MeditativeRestart();
         }
 
         //reset jump 
@@ -181,7 +180,6 @@ public class PlayerController : AudioHandler
         if (inputDevice.DeviceClass == InputDeviceClass.Controller)
         {
             // 3 axes 
-            
             //only elevate when not meditating 
             if (moveState != MoveStates.MEDITATING)
             {
@@ -194,7 +192,6 @@ public class PlayerController : AudioHandler
         else
         {
             // 3 axes 
-           
             //only swim when not meditating 
             if (moveState != MoveStates.MEDITATING)
             {
@@ -342,11 +339,20 @@ public class PlayerController : AudioHandler
             modeType.text = "third person";
     }
 
+    //called when you reach quadsphere
+    public void EnableMeditationAbility()
+    {
+        canMeditate = true;
+    }
+
     //begin meditating
     void SetMeditation()
     {
-        //only if not already and controls from start are gone 
-        if (moveState != MoveStates.MEDITATING && controlsAtStart[0].gameObject.activeSelf == false)
+        //only if not already and controls from start are gone and not in pause menu
+        if (moveState != MoveStates.MEDITATING 
+            && controlsAtStart[0].gameObject.activeSelf == false
+            && quitScript.escMenu.activeSelf == false
+            && canMeditate)
         {
             camControls.LerpFOV(camControls.meditationFOV, 2f);
             meditating.TransitionTo(2f);

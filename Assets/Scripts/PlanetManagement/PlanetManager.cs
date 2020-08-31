@@ -2,6 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public struct GuardianBehaviorSets
+{
+    [Tooltip("Point for the guardian to travel to")]
+    public Transform guardianLocation;
+    [Tooltip("Check if guardian will deliver monologue at above point")]
+    public bool hasMonologue;
+    [Tooltip("Index of monologue within Guardian Mono Manager")]
+    public int monologueIndex;
+}
+
 public class PlanetManager : MonoBehaviour {
 
     GameObject player;
@@ -21,9 +32,10 @@ public class PlanetManager : MonoBehaviour {
     public List<GameObject> spriteCreatures = new List<GameObject>();
     [Tooltip("Any stagnant, animated object on the planet")]
     public List<GameObject> props = new List<GameObject>();
-    [Tooltip("Movement points for the Guardian AI")]
-    public Transform[] guardianLocations;
     public AudioClip musicTrack;
+
+    [Header("Guardian Behaviors")]
+    public GuardianBehaviorSets[] guardianBehaviors;
 
     [Header("Player Movement Settings")]
     public float newSwimSpeed = 25f;
@@ -33,15 +45,16 @@ public class PlanetManager : MonoBehaviour {
     public float newMaxDistFromPlanet = 50f;
     public float newJumpForce = 1000f;
 
-    void Awake () {
+    void Awake ()
+    {
         player = GameObject.FindGameObjectWithTag("Player");
         pc = player.GetComponent<PlayerController>();
         creatureSpawner = GetComponent<CreatureSpawner>();
         guardian = GameObject.FindGameObjectWithTag("Guardian");
         gBehavior = guardian.GetComponent<Guardian>();
         mFader = FindObjectOfType<MusicFader>();
-	}
-
+    }
+    
     void Start()
     {
         if (startingPlanet)
@@ -52,7 +65,7 @@ public class PlanetManager : MonoBehaviour {
             if(Vector3.Distance(pc.transform.position, gBehavior.transform.position) > 50f)
                 gBehavior.TeleportGuardian(playerStartingPoint.position);
             //activate planet 
-            ActivatePlanet(guardianLocations[0].position);
+            ActivatePlanet(guardianBehaviors[0].guardianLocation.position);
             //fade to music
             mFader.FadeTo(musicTrack);
         }
@@ -72,7 +85,7 @@ public class PlanetManager : MonoBehaviour {
         //reset guardian AI for this planet 
         Collider[] planet = GetComponents<Collider>();
         //only set guardian if not first planet
-        gBehavior.ResetGuardianLocation(guardianPos, guardianLocations, planet);
+        gBehavior.ResetGuardianLocation(guardianPos, guardianBehaviors, planet);
 
         //update player's movement settings 
         pc.elevateSpeed = newElevationSpeed;

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using InControl;
 
 //this script is for the first button press in the opening scene 
 public class SpaceToStart : MonoBehaviour {
@@ -18,9 +19,27 @@ public class SpaceToStart : MonoBehaviour {
 	
 	void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !hasStarted)
+        //get input device 
+        var inputDevice = InputManager.ActiveDevice;
+
+        if (!hasStarted)
         {
-            StartFades();
+            //controller 
+            if (inputDevice.DeviceClass == InputDeviceClass.Controller)
+            {
+                if (inputDevice.Action1.WasPressed)
+                {
+                    StartFades();
+                }
+            }
+            //mouse keyboard
+            else
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    StartFades();
+                }
+            }
         }
 	}
 
