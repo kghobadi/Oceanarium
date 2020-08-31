@@ -79,6 +79,7 @@ public class MonologueTrigger : MonoBehaviour
         }
     }
 
+    //player inside trigger
     public void PlayerEnteredZone()
     {
         playerInZone = true;
@@ -88,6 +89,7 @@ public class MonologueTrigger : MonoBehaviour
         StopAllCoroutines();
     }
 
+    //player left trigger
     public void PlayerExitedZone()
     {
         playerInZone = false;
@@ -97,7 +99,7 @@ public class MonologueTrigger : MonoBehaviour
         hasActivated = false;
     }
 
-
+    //turns on and off interact UI
     void ToggleInteractUI(bool newState)
     {
         if (displayUI)

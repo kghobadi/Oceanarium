@@ -104,7 +104,7 @@ public class LoadSceneAsync : MonoBehaviour
     public void Transition(float wait)
     {
         fadeToBlack.FadeIn();
-        mFader.FadeOut(0);
+        mFader.FadeOut(0, mFader.fadeSpeed);
 
         StartCoroutine(WaitToTransition(wait));
     }

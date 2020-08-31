@@ -32,7 +32,7 @@ public class PlanetSelector : MonoBehaviour {
             if (Vector3.Distance(pc.transform.position, guardian.transform.position) > 50f)
                 guardian.TeleportGuardian(planet.playerStartingPoint.position);
             //activate planet 
-            planet.ActivatePlanet(planet.guardianLocations[0].position);
+            planet.ActivatePlanet(planet.guardianBehaviors[0].guardianLocation.position);
             //fade to music
             planet.mFader.FadeTo(planet.musicTrack);
         }
