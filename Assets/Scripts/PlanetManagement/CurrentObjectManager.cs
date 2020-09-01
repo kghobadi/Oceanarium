@@ -54,6 +54,7 @@ public class CurrentObjectManager : MonoBehaviour {
         {
             //turn off old planet, activate new one 
             prevPlanet.DeactivatePlanet();
+
             nextPlanet.ActivatePlanet(currentParent.endPoint.position);
 
             if (lerpPlayerScale)
@@ -70,6 +71,8 @@ public class CurrentObjectManager : MonoBehaviour {
             {
                 mFader.FadeTo(nextPlanet.musicTrack);
             }
+
+            //Debug.Log("transitioned to " + nextPlanet.planetName);
         }
     }
 }

@@ -50,6 +50,16 @@ public abstract class AudioHandler : MonoBehaviour
         myAudioSource.PlayOneShot(sound, vol);
     }
 
+    public virtual void PlayRandomSoundRandomPitchSource(AudioClip[] sounds, float vol, AudioSource source)
+    {
+        //set pitch
+        float pitch = Random.Range(pitchRange.x, pitchRange.y);
+        source.pitch = pitch;
+        //get sound and play from source
+        AudioClip sound = sounds[Random.Range(0, sounds.Length)];
+        source.PlayOneShot(sound, vol);
+    }
+
     //randomizes npc audio source pitch based on range provided 
     public virtual void RandomizePitch(float min, float max)
     {

@@ -80,7 +80,7 @@ public class Guardian : AudioHandler {
             if(currentPoint >= 0)
             {
                 //monologue
-                if (guardianMonoChecks[currentPoint])
+                if (guardianMonoChecks[currentPoint] == true)
                 {
                     //only set move once mono activated && monoMan is not active
                     if (monoTrigger.hasActivated && monoManager.inMonologue == false)
@@ -200,7 +200,12 @@ public class Guardian : AudioHandler {
                 }
 
                 //reset mono trigger
-                monoTrigger.WaitToReset(0f);
+                monoTrigger.Reset();
+            }
+            //make it so you can't trigger anything by accidente
+            else
+            {
+                monoTrigger.hasActivated = true;
             }
         }
         

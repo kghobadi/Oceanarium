@@ -350,7 +350,6 @@ public class PlayerController : AudioHandler
     {
         //only if not already and controls from start are gone and not in pause menu
         if (moveState != MoveStates.MEDITATING 
-            && controlsAtStart[0].gameObject.activeSelf == false
             && quitScript.escMenu.activeSelf == false
             && canMeditate)
         {

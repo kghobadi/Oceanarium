@@ -7,11 +7,13 @@ using InControl;
 
 //this script is responsible for the active reading out of a monologue 
 public class MonologueReader : MonoBehaviour {
+    [HideInInspector]
     public GameObject hostObj;  // parent NPC obj set by MonologueManager
     [HideInInspector]
     public MonologueManager monoManager; //my mono manager
+    [HideInInspector]
+    public SpeakerSound speakerAudio; // speaker sound 
 
-    SpeakerSound speakerAudio;
     [HideInInspector] public Text theText;
     [HideInInspector] public TMP_Text the_Text;
     [HideInInspector] public bool usesTMP;
@@ -21,7 +23,6 @@ public class MonologueReader : MonoBehaviour {
     public int currentLine;
     public int endAtLine;
     public bool canSkip = true;
-    public bool hasFinished;
     //typing vars
     private bool isTyping = false;
     IEnumerator currentTypingLine;
@@ -49,7 +50,8 @@ public class MonologueReader : MonoBehaviour {
 
     void Start()
     {
-        speakerAudio = hostObj.GetComponent<SpeakerSound>();
+        if(hostObj)
+            speakerAudio = hostObj.GetComponent<SpeakerSound>();
 
         if (usesTMP)
             the_Text.enabled = false;
@@ -111,7 +113,6 @@ public class MonologueReader : MonoBehaviour {
         //reached the  end, reset
         if (currentLine >= endAtLine)
         {
-            hasFinished = true;
             monoManager.DisableMonologue();
         }
         //set next typing line 

@@ -12,4 +12,7 @@ public struct Monologues
 public class WorldMonologueManager : MonoBehaviour
 {
     public Monologues[] allMonologues;
+
+    [Tooltip("The Monologue Reader on the MainCanvas Object")]
+    public MonologueReader screenSpaceReader;
 }
