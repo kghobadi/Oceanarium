@@ -10,6 +10,7 @@ public class Currents : AudioHandler {
     Transform mainCam;
     CameraController camControl;
     ParticleSystem currentParticles;
+    CurrentObjectManager cObjectMan;
     
     //current vars
     [Header("Current Vars")]
@@ -36,11 +37,16 @@ public class Currents : AudioHandler {
     [Tooltip("Only needs this if current activated by MoveToCurrent Pearls")]
     public TimelinePlaybackManager cinematicManager;
 
+    [Tooltip("Check this to permanently turn off the previous planet")]
+    public bool disablesPrevPlanet;
+
     [HideInInspector]
     public AudioSource ambientSource;
     [Header("Sounds")]
     public AudioClip[] currentAmbience;
     public AudioClip activationSound;
+
+   
 
     public override void Awake()
     {
@@ -55,6 +61,7 @@ public class Currents : AudioHandler {
         currentParticles.Stop();
         currentBubble.material = silentMat;
         ribbons = transform.GetChild(3).GetComponent<ParticleSystem>();
+        cObjectMan = GetComponentInChildren<CurrentObjectManager>();    
     }
 
     void Start()
@@ -225,8 +232,14 @@ public class Currents : AudioHandler {
         pc.canMove = true;
         gravBody.enabled = true;
         pc.animator.SetAnimator("idle");
-    }
 
+        //disable previous planet completely
+        if (disablesPrevPlanet)
+        {
+            cObjectMan.prevPlanet.gameObject.SetActive(false);
+        }
+    }
+    
     //called to play sounds 
     public void PlaySound(AudioClip[] soundArray)
     {

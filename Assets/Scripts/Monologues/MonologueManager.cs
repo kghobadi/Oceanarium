@@ -22,6 +22,7 @@ public class MonologueManager : MonoBehaviour
     public LooperAI looperAI;
     MonologueReader monoReader;
     LoadSceneAsync sceneLoader;
+    SpeakerSound speakerSound;
 
     [Tooltip("if there is a background for speaking text")]
     public FadeUI textBack;
@@ -30,6 +31,9 @@ public class MonologueManager : MonoBehaviour
     public int currentMonologue;
     [Tooltip("Fill this with all the individual monologues the character will give")]
     public List<Monologue> allMyMonologues = new List<Monologue>();
+
+    [Tooltip("Check this if you want to use a worldspace canvas beneath this host obj")]
+    public bool worldSpaceCanvas;
 
     [Tooltip("True while monologue system is active & character speaking")]
     public bool inMonologue;
@@ -62,9 +66,20 @@ public class MonologueManager : MonoBehaviour
         wmManager = FindObjectOfType<WorldMonologueManager>();
         cineManager = FindObjectOfType<CinematicsManager>();
         camManager = FindObjectOfType<CameraManager>();
-        monoReader = GetComponentInChildren<MonologueReader>();
-        monoReader.hostObj = gameObject;
-        monoReader.monoManager = this;
+        speakerSound = GetComponent<SpeakerSound>();
+
+        //diff set up depending on whether we use worldspace canvas or not 
+        if (worldSpaceCanvas)
+        {
+            monoReader = GetComponentInChildren<MonologueReader>();
+            monoReader.hostObj = gameObject;
+            monoReader.monoManager = this;
+        }
+        else
+        {
+            monoReader = wmManager.screenSpaceReader;
+        }
+       
         sceneLoader = FindObjectOfType<LoadSceneAsync>();
 
         //looper AI integration
@@ -74,7 +89,7 @@ public class MonologueManager : MonoBehaviour
     void Start()
     {
         //set text to first string in my list of monologues 
-        if(allMyMonologues.Count > 0)
+        if(allMyMonologues.Count > 0 && worldSpaceCanvas)
             SetMonologueSystem(0);
 
         //play mono 0 
@@ -107,6 +122,13 @@ public class MonologueManager : MonoBehaviour
     //has a wait for built in
     public void EnableMonologue()
     {
+        //set mono reader
+        if (!worldSpaceCanvas)
+        {
+            monoReader.speakerAudio = speakerSound;
+            monoReader.monoManager = this;
+        }
+
         //disable until its time to start 
         if (allMyMonologues[currentMonologue].waitToStart)
         {
@@ -292,11 +314,6 @@ public class MonologueManager : MonoBehaviour
             //reset the monologue trigger after 3 sec 
             monoReader.currentLine = 0;
             mTrigger.WaitToReset(5f);
-        }
-        //disable the monologue trigger, it's done 
-        else
-        {
-            mTrigger.gameObject.SetActive(false);
         }
 
         //if this monologue has a new monologue to activate
