@@ -18,12 +18,16 @@ public class MonologueTrigger : MonoBehaviour
     public bool playerInZone;
     [Tooltip("Check this as true to show interactDisplay UI")]
     public bool displayUI;
+    [Tooltip("Check if this is the guardian's trigger")]
+    public bool guardian;
 
     [Tooltip("This UI object will generally be located under the Monologue Canvas")]
     public GameObject interactDisplay;
     //monologues
     [Tooltip("Drag and Drop any Monologue Managers that should be activated by this Trigger")]
     public MonologueManager[] myMonologues;
+    [Tooltip("Indeces corresponding to monologues inside each manager listed")]
+    public int[] monologueIndeces;
     [Tooltip("Time after monologue is finished until the trigger resets")]
     public float resetTime = 5f;
 
@@ -71,6 +75,13 @@ public class MonologueTrigger : MonoBehaviour
             for (int i = 0; i < myMonologues.Length; i++)
             {
                 myMonologues[i].mTrigger = this;
+
+                //set monologue system 
+                //if(myMonologues[i].worldSpaceCanvas == false)
+                //{
+                //    myMonologues[i].SetMonologueSystem(monologueIndeces[i]);
+                //}
+
                 myMonologues[i].EnableMonologue();
             }
 
@@ -79,30 +90,40 @@ public class MonologueTrigger : MonoBehaviour
         }
     }
 
+    //player inside trigger
     public void PlayerEnteredZone()
     {
         playerInZone = true;
         pc.canJump = false;
       
-        ToggleInteractUI(playerInZone);
+        if(!hasActivated)
+            ToggleInteractUI(playerInZone);
+
         StopAllCoroutines();
     }
 
+    //player left trigger
     public void PlayerExitedZone()
     {
         playerInZone = false;
         pc.canJump = true;
+
         ToggleInteractUI(playerInZone);
 
-        hasActivated = false;
+        if(!guardian)
+            hasActivated = false;
     }
 
-
+    //turns on and off interact UI
     void ToggleInteractUI(bool newState)
     {
         if (displayUI)
         {
             interactDisplay.SetActive(newState);
+        }
+        else
+        {
+            interactDisplay.SetActive(false);
         }
     }
 
@@ -119,6 +140,12 @@ public class MonologueTrigger : MonoBehaviour
         hasActivated = false;
     }
 
+    //immediate reset 
+    public void Reset()
+    {
+        hasActivated = false;
+    }
+
     //called when monologue is started 
     public void WaitToStart(float time)
     {
@@ -127,6 +154,8 @@ public class MonologueTrigger : MonoBehaviour
 
     IEnumerator WaitToActivate(float timer)
     {
+        yield return new WaitForSeconds(timer);
+
         yield return new WaitForEndOfFrame();
 
         ActivateMonologue();

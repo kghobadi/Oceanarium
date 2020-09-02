@@ -346,7 +346,7 @@ public class CameraController : MonoBehaviour {
         t = 0;
         lerpSpeed = lerpLength;
         lerpingFOV = true;
-        Debug.Log("somemthing called Lerp FOV!");
+        //Debug.Log("somemthing called Lerp FOV!");
     }
 
     //called when meditating

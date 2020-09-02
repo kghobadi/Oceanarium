@@ -9,7 +9,8 @@ public class MusicFader : MonoBehaviour
     public AudioClip musicTrack;
 
     public float fadeSpeed = 1f;
-    public float fadeInAmount = 1f;
+    float currentFadeSpeed;
+    public float fadeInAmount = 0.5f;
     public float fadeOutAmount = 0f;
 
     public bool switchingSound;
@@ -23,19 +24,18 @@ public class MusicFader : MonoBehaviour
     {
         if (fadingVolOut)
         {
-            musicSource.volume -= Time.deltaTime * fadeSpeed;
+            musicSource.volume -= Time.deltaTime * currentFadeSpeed;
 
             if (musicSource.volume <= 0)
             {
+                fadingVolOut = false;
                 //set fade in to new sound
                 if (switchingSound)
                 {
                     SetSound(musicTrack);
-                    FadeIn(fadeInAmount);
+                    FadeIn(fadeInAmount, fadeSpeed);
                     switchingSound = false;
                 }
-
-                fadingVolOut = false;
             }
         }
 
@@ -62,20 +62,34 @@ public class MusicFader : MonoBehaviour
     {
         musicTrack = nextTrack;
         switchingSound = true;
-        FadeOut(fadeOutAmount);
+        FadeOut(fadeInAmount, fadeSpeed);
     }
 
     //starts fade in to specified amount  
-    public void FadeIn(float fadeIn)
+    public void FadeIn(float fadeIn, float speed)
     {
         fadeInAmount = fadeIn;
+        currentFadeSpeed = speed;
         fadingVolIn = true;
     }
 
     //fades out to specified amount  
-    public void FadeOut(float fadeOut)
+    public void FadeOut(float fadeOut, float speed)
     {
         fadeOutAmount = fadeOut;
+        currentFadeSpeed = speed;
+        fadingVolOut = true;
+    }
+
+    //fade in
+    public void FadeInBasic()
+    {
+        fadingVolIn = true;
+    }
+
+    //fades out  
+    public void FadeOutBasic()
+    {
         fadingVolOut = true;
     }
 }
