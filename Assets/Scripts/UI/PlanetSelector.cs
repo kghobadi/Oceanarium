@@ -9,6 +9,7 @@ public class PlanetSelector : MonoBehaviour {
     CameraController cc;
 
     public PlanetManager planet;
+    public FadeSprite blackground;
     
 	void Awake ()
     {
@@ -35,6 +36,10 @@ public class PlanetSelector : MonoBehaviour {
             planet.ActivatePlanet(planet.guardianBehaviors[0].guardianLocation.position);
             //fade to music
             planet.mFader.FadeTo(planet.musicTrack);
+
+            //fade out starting blackground
+            if (blackground)
+                blackground.FadeOut();
         }
     }
 }

@@ -45,6 +45,23 @@ public class MonologueTrigger : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            if (playerInZone)
+            {
+                if (displayUI)
+                {
+                    if (interactDisplay.activeSelf == false && hasActivated == false)
+                    {
+                        ToggleInteractUI(true);
+                    }
+                }
+            }
+        }
+    }
+
     void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Player")
