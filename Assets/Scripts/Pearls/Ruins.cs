@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Ruins : AudioHandler {
 
+    PlayerController pc;
+
     [Header("Ruins Settings")]
     public GameObject[] pillars;
     public int activatedPillars = 0;
@@ -20,6 +22,8 @@ public class Ruins : AudioHandler {
 
 	public override void Awake () {
         base.Awake();
+
+        pc = FindObjectOfType<PlayerController>();
 
 		for(int i = 0; i < pillars.Length; i++)
         {
@@ -55,8 +59,12 @@ public class Ruins : AudioHandler {
             portalParticles.Play();
         }
 
-        //play sound + cinematic
-        cinematicManager.PlayTimeline();
+        //play sound + cinematic only if player is not talking or meditating (camera issues)
+        if(pc.moveState != PlayerController.MoveStates.TALKING && pc.moveState != PlayerController.MoveStates.MEDITATING)
+        {
+            cinematicManager.PlayTimeline();
+        }
+      
         PlaySound(activationSound, 1f);
     }
     
