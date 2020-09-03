@@ -7,9 +7,10 @@ using UnityEngine;
 //Orbit script, 
 //a rigidbody (set to Kinematic), 
 //a sphereCollider set to Trigger
-
+[RequireComponent(typeof(Orbit))]
 public class EdibleCreature : AudioHandler {
     //ref to player and spawner on this planet
+    [HideInInspector]
     public CreatureSpawner mySpawner;
     GameObject player;
     PlayerController pc;
