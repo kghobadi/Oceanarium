@@ -186,16 +186,7 @@ public class TimelinePlaybackManager : MonoBehaviour
     void EndTimeline()
     {
         ToggleInput(true);
-
-        if (!playTimelineOnlyOnce)
-        {
-            triggerZoneObject.SetActive(true);
-        }
-        else if (playTimelineOnlyOnce)
-        {
-            playerInZone = false;
-        }
-
+        
         if(playerExitPosition)
             SetPlayerToTimelinePosition(playerExitPosition, false);
 
@@ -208,6 +199,18 @@ public class TimelinePlaybackManager : MonoBehaviour
         }
 
         timelinePlaying = false;
+
+        //disable cinematic object
+        if (playTimelineOnlyOnce)
+        {
+            playerInZone = false;
+            gameObject.SetActive(false);
+        }
+        //reactivates trigger
+        else
+        {
+            triggerZoneObject.SetActive(true);
+        }
     }
 
     void ToggleInput(bool newState)

@@ -7,6 +7,8 @@ public class Guardian : AudioHandler {
     GameObject player;
     PlayerController pc;
     float distFromPlayer, lastDist;
+    float distFromNextPoint;
+    float distFromPlayerToNextPoint;
     public float necDist = 10f;
     Vector3 lastPos, currentPos;
 
@@ -63,10 +65,20 @@ public class Guardian : AudioHandler {
 	void Update () {
         //dist calc
         currentPos = transform.position;
+        //dist from guardian to player
         distFromPlayer = Vector3.Distance(transform.position, player.transform.position);
 
+        //check so that we dont get indexOutOfRange
+        if(currentPoint + 1 < guardianLocations.Length)
+        {
+            //calcs dist from guardian to next point in array
+            distFromNextPoint = Vector3.Distance(transform.position, guardianLocations[currentPoint + 1].position);
+            //calc dist from player to my next point 
+            distFromPlayerToNextPoint = Vector3.Distance(player.transform.position, guardianLocations[currentPoint + 1].position);
+        }
+
         //WAITING
-		if(guardianState == GuardianStates.WAITING)
+        if (guardianState == GuardianStates.WAITING)
         {
             //look towards player
             if(gAnimation.Animator.GetBool("swimAway"))
@@ -91,6 +103,20 @@ public class Guardian : AudioHandler {
                         //could add more logic to have reset for mono -- like is this a repeating hint?
                         //if so, we should attach set move conditions to whatever hint is regarding 
                         // i.e. whatever goal guardian is waiting for player to complete!
+                    }
+
+                    //distance checks
+                    //not in monologue, has not talked, plus dist checks require me to go to next 
+                    else if (monoManager.inMonologue == false && monoTrigger.hasActivated == false &&
+                    (distFromPlayer > distFromNextPoint && distFromPlayerToNextPoint < distFromPlayer))
+                    {
+                        //set trigger off
+                        if (currentPoint + 1 < guardianLocations.Length)
+                        {
+                            monoTrigger.hasActivated = true;
+                        }
+
+                        SetMove();
                     }
                 }
                 //no monologue -- simply wait for player to get near me 
@@ -164,6 +190,12 @@ public class Guardian : AudioHandler {
 
             }
         }
+        //player is further from guardian than what is required to travel to next point 
+        // && player is closer to my next point than i am to the player
+        else if (distFromPlayer > distFromNextPoint && distFromPlayerToNextPoint < distFromPlayer)
+        {
+            SetMove();
+        }
     }
 
     //sets move to next point in guardian locations 
@@ -218,6 +250,7 @@ public class Guardian : AudioHandler {
     {
         movement.MoveTo(location.position, movement.moveSpeed);
         guardianState = GuardianStates.MOVING;
+        monoTrigger.gameObject.SetActive(false);
         tripper.canTrip = true;
         newGalaxy = true;
     }
@@ -258,7 +291,8 @@ public class Guardian : AudioHandler {
     {
         transform.position = point;
         currentPoint = guardianLocations.Length - 1;
-        guardianState = GuardianStates.WAITING;
+
+        SetWaiting();
     }
 
     //attaches guardian to player movement 
