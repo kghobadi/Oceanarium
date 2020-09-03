@@ -237,31 +237,45 @@ public class Planter : AudioHandler {
         plantClone.transform.localScale *= sizeMult;
         //set parent
         plantClone.transform.SetParent(plantParent);
-      
+
         //if it has scaler use that to lerp it up!!
-        if(plantClone.GetComponent<LerpScale>())
+        LerpScale scaleLerper = plantClone.GetComponent<LerpScale>();
+        if (scaleLerper != null)
         {
-            plantClone.GetComponent<LerpScale>().origScale = transform.localScale;
+            scaleLerper.origScale = transform.localScale;
 
-            plantClone.transform.localScale *= plantClone.GetComponent<LerpScale>().startMultiplier;
+            plantClone.transform.localScale *= scaleLerper.startMultiplier;
 
-            plantClone.GetComponent<LerpScale>().WaitToSetScale(0.1f, plantClone.GetComponent<LerpScale>().lerpSpeed, plantClone.GetComponent<LerpScale>().origScale);
+            scaleLerper.WaitToSetScale(0.1f, scaleLerper.lerpSpeed, scaleLerper.origScale);
         }
 
         //set repulsion direction using planter's gravity
-        if (plantClone.GetComponent<Repulsor>())
+        Repulsor repulsor = plantClone.GetComponent<Repulsor>();
+        if (repulsor != null)
         {
-            plantClone.GetComponent<Repulsor>().direction = grav.GetUp();
+            repulsor.direction = grav.GetUp();
         }
 
         //if it has Orbit, tell it what to orbit!
-        if (plantClone.GetComponent<Orbit>())
+        Orbit orbiter = plantClone.GetComponent<Orbit>();
+        if (orbiter != null)
         {
-            plantClone.GetComponent<Orbit>().planetToOrbit = planetManager.transform;
+            orbiter.planetToOrbit = planetManager.transform;
+        }
+
+        //if it is creature
+        EdibleCreature creature = plantClone.GetComponent<EdibleCreature>();
+        if (creature != null)
+        {
+            creature.mySpawner = planetManager.creatureSpawner;
         }
 
         //trigger growth!
-        plantClone.GetComponent<Animator>().SetTrigger("grow");
+        Animator animator = plantClone.GetComponent<Animator>();
+        if (animator)
+        {
+            animator.SetTrigger("grow");
+        }
 
         //reset spawn timer
         spawnTimer = spawnFrequency;
