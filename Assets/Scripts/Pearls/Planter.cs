@@ -8,7 +8,6 @@ public class Planter : AudioHandler {
     MoveTowards movement;
     GravityBody grav;
     ParticleSystem lure;
-    ParticleSystem tentacleTrail;
     ParticleSystem popLights;
 
     [Header("Planter Travel")]
@@ -72,10 +71,9 @@ public class Planter : AudioHandler {
         movement = GetComponent<MoveTowards>();
         grav = GetComponent<GravityBody>();
 
+        //lure and poplights
         lure = transform.GetChild(0).GetComponent<ParticleSystem>();
-        tentacleTrail = transform.GetChild(1).GetComponent<ParticleSystem>();
-        popLights = transform.GetChild(3).GetComponent<ParticleSystem>();
-      
+        popLights = transform.GetChild(1).GetComponent<ParticleSystem>();
     }
 	
 	void Update ()
@@ -138,12 +136,11 @@ public class Planter : AudioHandler {
         {
             myMR.enabled = true;
             popLights.Play();
-            tentacleTrail.Play();
         }
            
         //change particles
         lure.Stop();
-        lure.Clear();
+        //lure.Clear();
         
         //move 
         SetMove();
@@ -187,10 +184,8 @@ public class Planter : AudioHandler {
         //activat Current's pillar with planter && position me right on toppp
         if(planterType == PlanterType.CURRENT)
         {
-            capColl.enabled = false;
-            grav.enabled = false;
-            transform.position = travelPoints[travelPoint].GetChild(0).position;
             currents.ActivatePillar(travelPoints[travelPoint].gameObject, gameObject);
+            gameObject.SetActive(false);
         }
         //activate ruins, deactivate
         else if (planterType == PlanterType.RUINS)
