@@ -18,6 +18,8 @@ public class Guardian : AudioHandler {
     MoveTowards movement;
     Orbit orbital;
     GravityBody grav;
+    ObstacleAvoidance obstacleAvoidance;
+    Rigidbody rBody;
     TripActivation tripper;
     MonologueManager monoManager;
     MonologueTrigger monoTrigger;
@@ -34,7 +36,7 @@ public class Guardian : AudioHandler {
     public int[] guardianMonoIndeces;
     public int currentPoint = 0;
     public bool newGalaxy;
-    
+
     [Header("Sounds")]
     public AudioClip [] waitingSounds;
     public AudioClip [] swimmingSounds;
@@ -55,6 +57,8 @@ public class Guardian : AudioHandler {
         tripper = GetComponent<TripActivation>();
         monoManager = GetComponent<MonologueManager>();
         monoTrigger = GetComponentInChildren<MonologueTrigger>();
+        rBody = GetComponent<Rigidbody>();
+        obstacleAvoidance = GetComponent<ObstacleAvoidance>();
     }
 
     void Start ()
@@ -69,7 +73,7 @@ public class Guardian : AudioHandler {
         distFromPlayer = Vector3.Distance(transform.position, player.transform.position);
 
         //check so that we dont get indexOutOfRange
-        if(currentPoint + 1 < guardianLocations.Length)
+        if(currentPoint + 1 < guardianLocations.Length - 1)
         {
             //calcs dist from guardian to next point in array
             distFromNextPoint = Vector3.Distance(transform.position, guardianLocations[currentPoint + 1].position);
@@ -206,6 +210,9 @@ public class Guardian : AudioHandler {
         {
             currentPoint++;
             movement.MoveTo(guardianLocations[currentPoint].position, movement.moveSpeed + currentPoint);
+            if(obstacleAvoidance)
+                obstacleAvoidance.travelDest = guardianLocations[currentPoint];
+            monoTrigger.hasActivated = true;
             guardianState = GuardianStates.MOVING;
         }
     }

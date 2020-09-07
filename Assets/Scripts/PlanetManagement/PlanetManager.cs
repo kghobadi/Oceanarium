@@ -27,7 +27,7 @@ public class PlanetManager : MonoBehaviour {
     public Transform playerStartingPoint;
     [Tooltip("This planet's colliders")]
     public Collider[] planetColliders;
-    CreatureSpawner creatureSpawner;
+    [HideInInspector] public CreatureSpawner creatureSpawner;
     [Tooltip("Any sort of creature that moves with code")]
     public List<GameObject> spriteCreatures = new List<GameObject>();
     [Tooltip("Any stagnant, animated object on the planet")]

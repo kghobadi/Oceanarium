@@ -8,11 +8,9 @@ public class GravityBody : MonoBehaviour {
     public bool usesGravity = true;
 	public Collider[] planets;
 	private Vector3 up = Vector3.zero;
-   
+    private Vector3 futureUp = Vector3.zero;
+    private Vector3 smoothUp;
     public float distanceFromPlanet;
-
-	private Vector3 futureUp = Vector3.zero;
-	private Vector3 smoothUp;
 	private LayerMask planetMask;
 	Rigidbody rb;
 
@@ -70,7 +68,7 @@ public class GravityBody : MonoBehaviour {
         }
 
         //calc future Up & total Dist
-        Vector3 futureUp = Vector3.zero;
+        futureUp = Vector3.zero;
         float totalDist = 0;
         foreach (Collider planet in planets)
         {
