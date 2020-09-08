@@ -207,7 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveTowardsOrLerp: 1
   lerping: 0
-  lerpSpeed: 5
+  lerpSpeed: 2
   desiredScale: {x: 0, y: 0, z: 0}
   distNecToStopLerp: 0.01
   origScale: {x: 0, y: 0, z: 0}
