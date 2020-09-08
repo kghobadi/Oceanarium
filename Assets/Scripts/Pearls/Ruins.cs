@@ -5,29 +5,35 @@ using UnityEngine;
 public class Ruins : AudioHandler {
 
     PlayerController pc;
+    Guardian guardianScript;
 
     [Header("Ruins Settings")]
     public GameObject[] pillars;
+    MeshRenderer[] pMeshes;
     public int activatedPillars = 0;
-    public Guardian guardianScript;
-    public Transform guardianPos;
-    public ParticleSystem portalParticles;
+   
     [Tooltip("True if this Ruin activates a current inside, false if it is used for Guardian to take you to next Galaxy")]
-    public bool activatesCurrent;
+    public bool activatesCurrent = true;
     public Currents currentToActivate;
     public Material silentMat, activeMat;
     public TimelinePlaybackManager cinematicManager;
-
     public AudioClip activationSound;
 
+    [Header("Guardian Trip")]
+    public Transform guardianPos;
+    public ParticleSystem portalParticles;
+    
 	public override void Awake () {
         base.Awake();
 
         pc = FindObjectOfType<PlayerController>();
+        guardianScript = FindObjectOfType<Guardian>();
 
+        pMeshes = new MeshRenderer[pillars.Length];
 		for(int i = 0; i < pillars.Length; i++)
         {
-            pillars[i].GetComponent<MeshRenderer>().material = silentMat;
+            pMeshes[i] = pillars[i].GetComponent<MeshRenderer>();
+            pMeshes[i].material = silentMat;
         }
 	}
     

@@ -43,7 +43,7 @@ Transform:
   m_GameObject: {fileID: 1440088082753194}
   m_LocalRotation: {x: 0.13945812, y: -0, z: -0.20295972, w: 0.96920526}
   m_LocalPosition: {x: -1482.9089, y: 327.17105, z: -877.0507}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -161,12 +161,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveTowardsOrLerp: 1
   lerping: 0
-  lerpSpeed: 5
+  lerpSpeed: 0.005
   desiredScale: {x: 0, y: 0, z: 0}
-  distNecToStopLerp: 0.01
+  distNecToStopLerp: 0.001
   origScale: {x: 0, y: 0, z: 0}
   setScaleAtStart: 0
-  startMultiplier: 0.1
+  startMultiplier: 0.005
   distLeft: 0
 --- !u!114 &114956202691850612
 MonoBehaviour:

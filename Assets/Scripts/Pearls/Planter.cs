@@ -225,23 +225,25 @@ public class Planter : AudioHandler {
     {
         //spawn and set parent
         GameObject plantClone = Instantiate(spawnObj, pos, Quaternion.identity);
+        
+        //set parent
+        plantClone.transform.SetParent(plantParent);
+
         //set scale
         plantClone.transform.localScale = new Vector3(1, 1, 1);
         //randomize scale
         float sizeMult = Random.Range(minSizeMult, maxSizeMult);
         plantClone.transform.localScale *= sizeMult;
-        //set parent
-        plantClone.transform.SetParent(plantParent);
 
         //if it has scaler use that to lerp it up!!
         LerpScale scaleLerper = plantClone.GetComponent<LerpScale>();
         if (scaleLerper != null)
         {
-            scaleLerper.origScale = transform.localScale;
+            scaleLerper.origScale = plantClone.transform.localScale;
 
             plantClone.transform.localScale *= scaleLerper.startMultiplier;
 
-            scaleLerper.WaitToSetScale(0.1f, scaleLerper.lerpSpeed, scaleLerper.origScale);
+            scaleLerper.SetScaler(scaleLerper.lerpSpeed, scaleLerper.origScale);
         }
 
         //set repulsion direction using planter's gravity

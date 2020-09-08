@@ -379,8 +379,8 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   maxSpeed: 50
   desiredDistFromPlanet: 15
-  desiredDistFromPlanetMin: 10
-  desiredDistFromPlanetMax: 25
+  desiredDistFromPlanetMin: 4
+  desiredDistFromPlanetMax: 10
 --- !u!114 &114683897428418718
 MonoBehaviour:
   m_ObjectHideFlags: 1
