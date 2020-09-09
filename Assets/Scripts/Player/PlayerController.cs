@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PostProcessing;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Cinemachine;
@@ -49,6 +50,9 @@ public class PlayerController : AudioHandler
     public float idleTimer = 0f, timeUntilMeditate = 10f;
     [Tooltip("Can't meditate until we reach quadsphere")]
     public bool canMeditate;
+    public FadeSprite camFade;
+    PostProcessingBehaviour camBehavior;
+    public PostProcessingProfile normalPP, meditationPP;
     //player move states
     public MoveStates moveState;
     public enum MoveStates
@@ -101,6 +105,7 @@ public class PlayerController : AudioHandler
 
         cameraT = Camera.main.transform;
         camControls = cameraT.GetComponent<CameraController>();
+        camBehavior = cameraT.GetComponent<PostProcessingBehaviour>();
         meditationControls = cameraT.GetComponent<MeditationMovement>();  
         playerRigidbody = GetComponent<Rigidbody>();
         gravityBody = GetComponent<GravityBody>();
@@ -361,6 +366,16 @@ public class PlayerController : AudioHandler
             moveState = MoveStates.MEDITATING;
             animator.SetAnimator("meditating");
 
+            //fade 
+            if (camFade)
+                camFade.FadeIn();
+
+            //set pp 
+            camBehavior.profile = meditationPP;
+
+            //planet manager sets all pearl lures 
+            activePlanet.SetMeditationVisuals();
+
             //fp
             if (firstOrThirdPersonMeditation)
             {
@@ -385,6 +400,16 @@ public class PlayerController : AudioHandler
             camControls.LerpFOV(camControls.originalFOV, 2f);
             normal.TransitionTo(2f);
             canJump = true;
+
+            //planet manager resets all pearl lures 
+            activePlanet.ResetVisuals();
+
+            //fade 
+            if(camFade)
+                camFade.FadeOut();
+
+            //set pp 
+            camBehavior.profile = normalPP;
 
             //fp
             if (firstOrThirdPersonMeditation)

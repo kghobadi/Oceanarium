@@ -8,9 +8,12 @@ public class CreatureSprites : MonoBehaviour {
     Animator creatureAnimator;
     Camera playerCam;
     CameraController camControl;
-
-    float checkXtimer;
     Vector3 lastViewPos;
+
+    float checkTimer, checkTotal = 0.1f;
+
+    public bool checksX = true;
+    public bool checksY;
 
     void Awake ()
     {
@@ -26,20 +29,23 @@ public class CreatureSprites : MonoBehaviour {
     
     void Start()
     {
-        checkXtimer = 0.1f;
-
         StartCoroutine(StartAnimator());
     }
 
     void Update () {
-        //if i am visible to the camera AND i am a moving creature
-        if (mySR.isVisible && !camControl.isMovingCam)
+        //if i am visible to the camera AND camera angle is not being moved by player
+        if (mySR.isVisible && camControl.isMovingCamAngle == false)
         {
-            checkXtimer -= Time.deltaTime;
+            checkTimer -= Time.deltaTime;
 
-            if (checkXtimer < 0)
+            if(checkTimer < 0)
             {
-                CheckXDirection();
+                if (checksX)
+                    CheckXDirection();
+                if (checksY)
+                    CheckYDirection();
+
+                checkTimer = checkTotal;
             }
         }
     }
@@ -47,7 +53,6 @@ public class CreatureSprites : MonoBehaviour {
     //called when the Renderer comp becomes visible to any camera
     void OnBecameVisible()
     {
-        CheckXDirection();
         //make animation wait a sec before starting 
         if (creatureAnimator)
             StartCoroutine(StartAnimator());
@@ -80,7 +85,26 @@ public class CreatureSprites : MonoBehaviour {
 
         //reset lastViewPos and timer
         lastViewPos = viewPos;
-        checkXtimer = 0.1f;
+    }
+
+    //called to flip sprite based on creatures movement
+    void CheckYDirection()
+    {
+        Vector3 viewPos = playerCam.WorldToViewportPoint(transform.position);
+
+        //we are moving to the top on the view plane
+        if (viewPos.y > lastViewPos.y)
+        {
+            mySR.flipY = false;
+        }
+        //we are moving to the bottom on the view plane
+        else if (viewPos.y < lastViewPos.y)
+        {
+            mySR.flipY = true;
+        }
+
+        //reset lastViewPos and timer
+        lastViewPos = viewPos;
     }
 
     IEnumerator StartAnimator()

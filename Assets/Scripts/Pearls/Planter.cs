@@ -8,7 +8,7 @@ public class Planter : AudioHandler {
     MoveTowards movement;
     GravityBody grav;
     ParticleSystem lure;
-    ParticleSystem tentacleTrail;
+    Vector3 origLureScale;
     ParticleSystem popLights;
 
     [Header("Planter Travel")]
@@ -72,10 +72,10 @@ public class Planter : AudioHandler {
         movement = GetComponent<MoveTowards>();
         grav = GetComponent<GravityBody>();
 
+        //lure and poplights
         lure = transform.GetChild(0).GetComponent<ParticleSystem>();
-        tentacleTrail = transform.GetChild(1).GetComponent<ParticleSystem>();
-        popLights = transform.GetChild(3).GetComponent<ParticleSystem>();
-      
+        origLureScale = lure.transform.localScale;
+        popLights = transform.GetChild(1).GetComponent<ParticleSystem>();
     }
 	
 	void Update ()
@@ -138,12 +138,11 @@ public class Planter : AudioHandler {
         {
             myMR.enabled = true;
             popLights.Play();
-            tentacleTrail.Play();
         }
            
         //change particles
         lure.Stop();
-        lure.Clear();
+        //lure.Clear();
         
         //move 
         SetMove();
@@ -187,10 +186,8 @@ public class Planter : AudioHandler {
         //activat Current's pillar with planter && position me right on toppp
         if(planterType == PlanterType.CURRENT)
         {
-            capColl.enabled = false;
-            grav.enabled = false;
-            transform.position = travelPoints[travelPoint].GetChild(0).position;
             currents.ActivatePillar(travelPoints[travelPoint].gameObject, gameObject);
+            gameObject.SetActive(false);
         }
         //activate ruins, deactivate
         else if (planterType == PlanterType.RUINS)
@@ -230,23 +227,25 @@ public class Planter : AudioHandler {
     {
         //spawn and set parent
         GameObject plantClone = Instantiate(spawnObj, pos, Quaternion.identity);
+        
+        //set parent
+        plantClone.transform.SetParent(plantParent);
+
         //set scale
         plantClone.transform.localScale = new Vector3(1, 1, 1);
         //randomize scale
         float sizeMult = Random.Range(minSizeMult, maxSizeMult);
         plantClone.transform.localScale *= sizeMult;
-        //set parent
-        plantClone.transform.SetParent(plantParent);
 
         //if it has scaler use that to lerp it up!!
         LerpScale scaleLerper = plantClone.GetComponent<LerpScale>();
         if (scaleLerper != null)
         {
-            scaleLerper.origScale = transform.localScale;
+            scaleLerper.origScale = plantClone.transform.localScale;
 
             plantClone.transform.localScale *= scaleLerper.startMultiplier;
 
-            scaleLerper.WaitToSetScale(0.1f, scaleLerper.lerpSpeed, scaleLerper.origScale);
+            scaleLerper.SetScaler(scaleLerper.lerpSpeed, scaleLerper.origScale);
         }
 
         //set repulsion direction using planter's gravity
@@ -281,5 +280,20 @@ public class Planter : AudioHandler {
         spawnTimer = spawnFrequency;
         //add to planet manager list 
         planetManager.props.Add(plantClone);
+    }
+
+    //for attracting player to pearl during meditation
+    public void SetMeditationLure()
+    {
+        if(activated == false)
+        {
+            lure.transform.localScale = origLureScale * 10f;
+        }
+    }
+
+    //after meditation reset lure scale
+    public void ResetLure()
+    {
+        lure.transform.localScale = origLureScale;
     }
 }

@@ -943,15 +943,14 @@ MonoBehaviour:
   - {fileID: 1723794143949282}
   - {fileID: 1899534296075282}
   activatedPillars: 0
-  guardianScript: {fileID: 0}
-  guardianPos: {fileID: 4949969238290896}
-  portalParticles: {fileID: 198658068212753450}
   activatesCurrent: 1
   currentToActivate: {fileID: 0}
   silentMat: {fileID: 2100000, guid: 3eec59d3bc3235e4bbab052b286a0793, type: 2}
   activeMat: {fileID: 2100000, guid: 3835073ca8f9c40118486ab2be982d74, type: 2}
   cinematicManager: {fileID: 114828130339968650}
-  activationSound: {fileID: 8300000, guid: 2ab4e141e829fb04d8d92af262e19b2d, type: 3}
+  activationSound: {fileID: 8300000, guid: 52ac7ba1db33c26428b848a1b843f474, type: 3}
+  guardianPos: {fileID: 4949969238290896}
+  portalParticles: {fileID: 198658068212753450}
 --- !u!114 &114231899954361678
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1022,17 +1021,20 @@ MonoBehaviour:
   playTimelineOnlyOnce: 1
   interactKey: 0
   disablePlayerInput: 0
-  setPlayerTimelinePosition: 0
+  parentPlayerToPos: 0
   playerTimelinePosition: {fileID: 0}
+  playerExitPosition: {fileID: 0}
+  characterTransforms: []
+  newCharacterPositions: []
+  parentCharacters: 
+  exitPositions: []
   triggerZoneObject: {fileID: 1392542536444772}
   displayUI: 0
   interactDisplay: {fileID: 0}
-  resetGuardianBehavior: 0
-  planetPoints: {fileID: 0}
-  nextSpot: {fileID: 0}
-  currentToActivate: {fileID: 0}
-  pullsPlayerIntoCurrent: 0
   playerTag: Player
+  cinematicFade: {fileID: 0}
+  fadesIn: 0
+  fadesOut: 0
 --- !u!114 &114967470212743146
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -13,11 +13,13 @@ public class Guardian : AudioHandler {
     Vector3 lastPos, currentPos;
 
     //my behaviors  
+    Transform gSpriteHolder;
     SpriteRenderer gRenderer;
     GuardianAnimation gAnimation;
     MoveTowards movement;
     Orbit orbital;
     GravityBody grav;
+    ObstacleAvoidance obstacleAvoidance;
     Rigidbody rBody;
     TripActivation tripper;
     MonologueManager monoManager;
@@ -36,12 +38,6 @@ public class Guardian : AudioHandler {
     public int currentPoint = 0;
     public bool newGalaxy;
 
-    [Header("Obstacle Avoidance")]
-    public Transform travelDest;
-    public LayerMask obstacles;
-    public float elevationSpeed = 25f;
-    public float maxHeight = 50f;
-
     [Header("Sounds")]
     public AudioClip [] waitingSounds;
     public AudioClip [] swimmingSounds;
@@ -54,15 +50,17 @@ public class Guardian : AudioHandler {
         pc = player.GetComponent<PlayerController>();
 
         //ai component refs 
-        gRenderer = GetComponent<SpriteRenderer>();
-        gAnimation = GetComponent<GuardianAnimation>();
+        gSpriteHolder = transform.GetChild(0);
+        gRenderer = gSpriteHolder.GetComponent<SpriteRenderer>();
+        gAnimation = gSpriteHolder.GetComponent<GuardianAnimation>();
         movement = GetComponent<MoveTowards>();
         orbital = GetComponent<Orbit>();
         grav = GetComponent<GravityBody>();
-        tripper = GetComponent<TripActivation>();
+        tripper = FindObjectOfType<TripActivation>();
         monoManager = GetComponent<MonologueManager>();
         monoTrigger = GetComponentInChildren<MonologueTrigger>();
         rBody = GetComponent<Rigidbody>();
+        obstacleAvoidance = GetComponent<ObstacleAvoidance>();
     }
 
     void Start ()
@@ -150,9 +148,6 @@ public class Guardian : AudioHandler {
             if (!myAudioSource.isPlaying)
                 PlayRandomSoundRandomPitch(swimmingSounds, 1f);
 
-            //send rays looking for obstacles so i can swim over them
-            CheckForward();
-
             //movement running
             if (movement.moving == false)
             {
@@ -217,7 +212,8 @@ public class Guardian : AudioHandler {
         {
             currentPoint++;
             movement.MoveTo(guardianLocations[currentPoint].position, movement.moveSpeed + currentPoint);
-            travelDest = guardianLocations[currentPoint];
+            if(obstacleAvoidance)
+                obstacleAvoidance.travelDest = guardianLocations[currentPoint];
             monoTrigger.hasActivated = true;
             guardianState = GuardianStates.MOVING;
         }
@@ -314,43 +310,5 @@ public class Guardian : AudioHandler {
         transform.SetParent(player.transform);
         grav.enabled = false;
         guardianState = GuardianStates.FOLLOWPLAYER;
-    }
-
-    //shoots ray forward looking for obstacles 
-    void CheckForward()
-    {
-        Vector3 direction;
-        if (travelDest)
-            direction = travelDest.position - transform.position;
-        else
-            direction = movement.destination - transform.position;
-        RaycastHit hit;
-        if (Physics.SphereCast(transform.position, 1f, direction, out hit, 10f, obstacles))
-        {
-            //elevate if hit    
-            //Debug.Log("hit");
-            if(grav.distanceFromPlanet < maxHeight - 2f)
-            {
-                Elevate();
-            }
-            else if(grav.distanceFromPlanet > maxHeight + 2f)
-            {
-                SideStep();
-            }
-            
-        }
-    }
-
-    //called when ray forward hits obstacle
-    void Elevate()
-    {
-        rBody.AddForce(grav.GetUp() * elevationSpeed);
-    }
-
-    //called when ray forward hits obstacle
-    void SideStep()
-    {
-        Vector3 right = transform.right * elevationSpeed;
-        rBody.AddForce(right);
     }
 }

@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114668001276922036}
   - component: {fileID: 114525134223968938}
   - component: {fileID: 65895913328455730}
+  - component: {fileID: 114839394729322602}
   m_Layer: 10
   m_Name: SwirlPlace
   m_TagString: Prop
@@ -88,6 +89,7 @@ MonoBehaviour:
   targets: []
   animatorComponent: {fileID: 0}
   parameterName: Distance
+  distanceFromPlayer: 0
 --- !u!114 &114668001276922036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -100,6 +102,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasGravityBody: 0
+--- !u!114 &114839394729322602
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1527533092881028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ba927cd901f924991946c7ddd669c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myAudioSource: {fileID: 0}
+  pitchRange: {x: 0.5, y: 1}
+  voiceCounter: 0
+  voices: []
+  currentSound: 0
+  growthSound: {fileID: 8300000, guid: 21d7b3093aa00ec40bc625c10c21d94b, type: 3}
+  playerTouchedMe: {fileID: 8300000, guid: 56a7c5198443a0348acac2541ccefc45, type: 3}
+  distToMakeSound: 25
+  distToReset: 50
+  playedSound: 0
+  playParticles: 0
+  growthParticles: {fileID: 0}
 --- !u!212 &212430265754278618
 SpriteRenderer:
   m_ObjectHideFlags: 1

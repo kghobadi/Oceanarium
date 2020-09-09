@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waitToCheck: 1
+  individualDistOffset: 10
 --- !u!114 &114525134223968938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -155,8 +156,8 @@ MonoBehaviour:
   orbitAtStart: 0
   waitTime: 0
   randomSpeed: 1
-  minSpeed: 2
-  maxSpeed: 4
+  minSpeed: 0.25
+  maxSpeed: 0.5
   orbitalSpeed: 2
   xyOrzAxis: 0
   randomAxis: 1
@@ -187,12 +188,12 @@ MonoBehaviour:
   repulsing: 0
   slowingDown: 0
   repulseOnStart: 1
-  repulsionForce: 25
+  repulsionForce: 15
   direction: {x: 0, y: 0, z: 0}
   maxSpeed: 100
-  desiredDistFromPlanet: 75
-  desiredDistFromPlanetMin: 75
-  desiredDistFromPlanetMax: 150
+  desiredDistFromPlanet: 15
+  desiredDistFromPlanetMin: 10
+  desiredDistFromPlanetMax: 20
 --- !u!114 &114948228339410980
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -206,7 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveTowardsOrLerp: 1
   lerping: 0
-  lerpSpeed: 5
+  lerpSpeed: 2
   desiredScale: {x: 0, y: 0, z: 0}
   distNecToStopLerp: 0.01
   origScale: {x: 0, y: 0, z: 0}
