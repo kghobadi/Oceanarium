@@ -13,6 +13,7 @@ public class Guardian : AudioHandler {
     Vector3 lastPos, currentPos;
 
     //my behaviors  
+    Transform gSpriteHolder;
     SpriteRenderer gRenderer;
     GuardianAnimation gAnimation;
     MoveTowards movement;
@@ -49,12 +50,13 @@ public class Guardian : AudioHandler {
         pc = player.GetComponent<PlayerController>();
 
         //ai component refs 
-        gRenderer = GetComponent<SpriteRenderer>();
-        gAnimation = GetComponent<GuardianAnimation>();
+        gSpriteHolder = transform.GetChild(0);
+        gRenderer = gSpriteHolder.GetComponent<SpriteRenderer>();
+        gAnimation = gSpriteHolder.GetComponent<GuardianAnimation>();
         movement = GetComponent<MoveTowards>();
         orbital = GetComponent<Orbit>();
         grav = GetComponent<GravityBody>();
-        tripper = GetComponent<TripActivation>();
+        tripper = FindObjectOfType<TripActivation>();
         monoManager = GetComponent<MonologueManager>();
         monoTrigger = GetComponentInChildren<MonologueTrigger>();
         rBody = GetComponent<Rigidbody>();

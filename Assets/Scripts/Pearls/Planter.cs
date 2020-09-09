@@ -8,6 +8,7 @@ public class Planter : AudioHandler {
     MoveTowards movement;
     GravityBody grav;
     ParticleSystem lure;
+    Vector3 origLureScale;
     ParticleSystem popLights;
 
     [Header("Planter Travel")]
@@ -73,6 +74,7 @@ public class Planter : AudioHandler {
 
         //lure and poplights
         lure = transform.GetChild(0).GetComponent<ParticleSystem>();
+        origLureScale = lure.transform.localScale;
         popLights = transform.GetChild(1).GetComponent<ParticleSystem>();
     }
 	
@@ -278,5 +280,20 @@ public class Planter : AudioHandler {
         spawnTimer = spawnFrequency;
         //add to planet manager list 
         planetManager.props.Add(plantClone);
+    }
+
+    //for attracting player to pearl during meditation
+    public void SetMeditationLure()
+    {
+        if(activated == false)
+        {
+            lure.transform.localScale = origLureScale * 10f;
+        }
+    }
+
+    //after meditation reset lure scale
+    public void ResetLure()
+    {
+        lure.transform.localScale = origLureScale;
     }
 }

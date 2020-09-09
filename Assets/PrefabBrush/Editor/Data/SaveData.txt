@@ -150,7 +150,7 @@ Depth: 10
 
 Game Object: Assets/Prefabs/Spawnable Plants/Totem w Audio.prefab
 Layer: Default
-Toggle: True
+Toggle: False
 Slider: 1
 Lock Orientation Toggle: False
 Random Rotation Toggle: False
@@ -524,4 +524,4 @@ Fixed Rotation Toggle: False
 Fixed Rotation X: 0
 Fixed Rotation Y: 0
 Fixed Rotation Z: 0
-Depth: 9
+Depth: 8

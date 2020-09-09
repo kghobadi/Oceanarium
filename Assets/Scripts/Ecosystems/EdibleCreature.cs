@@ -14,6 +14,7 @@ public class EdibleCreature : AudioHandler {
     public CreatureSpawner mySpawner;
     GameObject player;
     PlayerController pc;
+    Transform spriteHolder;
 
     //ref to orbit script (uses this during swimming state)
     Orbit myOrbiter;
@@ -31,7 +32,7 @@ public class EdibleCreature : AudioHandler {
     //set publicly to determine place in ecosystem
     public enum CreatureTypes
     {
-        SMALLFISH, CUDDLE, FAIRYDRAGON,
+        SMALLFISH, CUDDLE, JELLY,
     }
 
     //this creature's AI states
@@ -63,10 +64,16 @@ public class EdibleCreature : AudioHandler {
         pc = player.GetComponent<PlayerController>();
         currentState = States.SWIMMING;
         myOrbiter = GetComponent<Orbit>();
-        creatureAnimator = GetComponent<CreatureAnimation>();
+        spriteHolder = transform.GetChild(0);
+        creatureAnimator = spriteHolder.GetComponent<CreatureAnimation>();
         creatureAnimator.SetAnimator("swimming");
         fleeWaitTimer = Random.Range(0.25f, 0.5f);
         soundTimer = soundFreq;
+    }
+
+    void Start()
+    {
+        SetSwimming();
     }
 
     //check distance for fleeing
@@ -124,10 +131,7 @@ public class EdibleCreature : AudioHandler {
             //if we reached it, set back to swimming state
             if (distanceTilHome < 1f)
             {
-                currentState = States.SWIMMING;
-                //randomize orbit axis again and turn it back on
-                myOrbiter.RandomizeOrbitAxis();
-                myOrbiter.orbiting = true;
+                SetSwimming();
             }
         }
 
@@ -163,6 +167,14 @@ public class EdibleCreature : AudioHandler {
 
             }
         }
+    }
+
+    void SetSwimming()
+    {
+        currentState = States.SWIMMING;
+        //randomize orbit axis again and turn it back on
+        myOrbiter.RandomizeOrbitAxis();
+        myOrbiter.orbiting = true;
     }
 
     //call when player is eating

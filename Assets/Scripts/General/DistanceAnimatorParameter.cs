@@ -5,6 +5,7 @@ using UnityEngine;
 public class DistanceAnimatorParameter : MonoBehaviour
 {
     GameObject player;
+    Transform cameraT;
 
     [SerializeField]
     [Tooltip("The transforms with which distance will be checked. Only the closest one will be used.")]
@@ -29,10 +30,15 @@ public class DistanceAnimatorParameter : MonoBehaviour
         
         player = GameObject.FindGameObjectWithTag("Player");
 
+        cameraT = Camera.main.transform;
+
         ClearEmptyTargets();
 
         if(player)
             targets.Add(player.transform);
+
+        if (cameraT)
+            targets.Add(cameraT);
     }
 
     void ClearEmptyTargets()

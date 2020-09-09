@@ -626,7 +626,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1539699048525040}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.4210834e-13, y: 0, z: -0.0000011920926}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.000001, y: 1.0000001, z: 1.000001}
   m_Children: []
   m_Father: {fileID: 4841900980724820}
@@ -1568,6 +1568,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mFader: {fileID: 0}
+  planterPearls: []
+  growthPearls: []
   planetName: StartSpherePlanet
   playerHere: 0
   startingPlanet: 1
@@ -1762,9 +1764,6 @@ MonoBehaviour:
   moving: 0
   destination: {x: 0, y: 0, z: 0}
   necessaryDist: 5
-  obstructionMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &114641070561919404
 MonoBehaviour:
   m_ObjectHideFlags: 1

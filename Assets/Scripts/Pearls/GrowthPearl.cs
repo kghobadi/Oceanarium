@@ -8,7 +8,8 @@ public class GrowthPearl : AudioHandler {
     MoveTowards movement;
     MeshRenderer pearlMesh;
     GravityBody grav;
-    ParticleSystem fog, popLights;
+    ParticleSystem lure, popLights;
+    Vector3 origLureScale;
     GrowthSphere growthSphere;
     
     [Header("Pearl Activation")]
@@ -37,7 +38,8 @@ public class GrowthPearl : AudioHandler {
         pearlMesh = GetComponent<MeshRenderer>();
         pearlMesh.material = silentMat;
         grav = GetComponent<GravityBody>();
-        fog = transform.GetChild(0).GetComponent<ParticleSystem>();
+        lure = transform.GetChild(0).GetComponent<ParticleSystem>();
+        origLureScale = lure.transform.localScale;
         popLights = transform.GetChild(1).GetComponent<ParticleSystem>();
         growthSphere = transform.GetComponentInChildren<GrowthSphere>();
     }
@@ -103,8 +105,8 @@ public class GrowthPearl : AudioHandler {
         //set mat
         pearlMesh.material = activeMat;
         //set particles
-        fog.Stop();
-        fog.Clear();
+        lure.Stop();
+        lure.Clear();
         popLights.Play();
 
         //I must bring my environment to LIFE!
@@ -130,4 +132,18 @@ public class GrowthPearl : AudioHandler {
         growthSphere.GrowObjects(growthSpeed);
     }
     
+    //for attracting player to pearl during meditation
+    public void SetMeditationLure()
+    {
+        if (activated == false)
+        {
+            lure.transform.localScale = origLureScale * 10f;
+        }
+    }
+
+    //after meditation reset lure scale
+    public void ResetLure()
+    {
+        lure.transform.localScale = origLureScale;
+    }
 }

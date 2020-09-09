@@ -39,7 +39,24 @@ public class ObstacleAvoidance : MonoBehaviour {
         {
             if (orbital.orbiting)
             {
-                CheckDest();
+                //pos X
+                if(orbital.xyOrzAxis == Orbit.Axes.X && orbital.orbitalSpeed > 0)
+                    CheckDirection(transform.right);
+                //neg X
+                else if (orbital.xyOrzAxis == Orbit.Axes.X && orbital.orbitalSpeed < 0)
+                    CheckDirection(-transform.right);
+                //pos Z
+                if (orbital.xyOrzAxis == Orbit.Axes.Z && orbital.orbitalSpeed > 0)
+                    CheckDirection(transform.forward);
+                //neg Z
+                else if (orbital.xyOrzAxis == Orbit.Axes.Z && orbital.orbitalSpeed < 0)
+                    CheckDirection(-transform.forward);
+                //pos Y
+                if (orbital.xyOrzAxis == Orbit.Axes.Y && orbital.orbitalSpeed > 0)
+                    CheckDirection(transform.up);
+                //neg Y
+                else if (orbital.xyOrzAxis == Orbit.Axes.Y && orbital.orbitalSpeed < 0)
+                    CheckDirection(-transform.up);
             }
         }
 	}
@@ -72,15 +89,15 @@ public class ObstacleAvoidance : MonoBehaviour {
         //hit nothing, try forward shot
         else
         {
-            CheckForward();
+            CheckDirection(transform.forward);
         }
     }
 
     //shoots ray forward looking for obstacles 
-    void CheckForward()
+    void CheckDirection(Vector3 dir)
     {
         RaycastHit hit;
-        if (Physics.SphereCast(transform.position, 1f, transform.forward, out hit, 10f, obstacles))
+        if (Physics.SphereCast(transform.position, 1f, dir, out hit, 10f, obstacles))
         {
             //elevate if hit    
             Debug.Log(gameObject.name + " found obstacles");
@@ -101,8 +118,10 @@ public class ObstacleAvoidance : MonoBehaviour {
     //called when ray forward hits obstacle
     void Elevate()
     {
-        rBody.AddForce(grav.GetUp() * elevationSpeed);
-
+        if(grav)
+            rBody.AddForce(grav.GetUp() * elevationSpeed);
+        else
+            rBody.AddForce(transform.up * elevationSpeed);
         Debug.Log(gameObject.name + " Elevating");
     }
 
