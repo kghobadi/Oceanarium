@@ -34,7 +34,7 @@ public class CreatureSprites : MonoBehaviour {
 
     void Update () {
         //if i am visible to the camera AND camera angle is not being moved by player
-        if (mySR.isVisible && camControl.isMovingCamAngle == false)
+        if (mySR.isVisible /*&& camControl.isMovingCamAngle == false*/)
         {
             checkTimer -= Time.deltaTime;
 
