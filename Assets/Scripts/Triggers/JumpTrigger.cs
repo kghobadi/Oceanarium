@@ -35,7 +35,7 @@ public class JumpTrigger : AudioHandler {
     void JumpPlayer()
     {
         //get force
-        Vector3 upForce = grav.GetUp() * jumpForce;
+        Vector3 upForce = transform.up * jumpForce;
         //apply to player
         pc.playerRigidbody.AddForce(upForce);
         //player bounce anim

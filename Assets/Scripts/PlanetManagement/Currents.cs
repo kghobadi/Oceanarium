@@ -10,7 +10,6 @@ public class Currents : AudioHandler {
     Transform mainCam;
     CameraController camControl;
     ParticleSystem currentParticles;
-    CurrentObjectManager cObjectMan;
     
     //current vars
     [Header("Current Vars")]
@@ -18,6 +17,8 @@ public class Currents : AudioHandler {
     [HideInInspector]
     public Transform entrance, endPoint;
     public bool entering, hasEntered;
+    [Tooltip("Only needs a ref if this is a 2 way")]
+    public CurrentObjectManager cObjectMan;
 
     [Header("Current Activation")]
     public bool currentActivated;
@@ -45,9 +46,7 @@ public class Currents : AudioHandler {
     [Header("Sounds")]
     public AudioClip[] currentAmbience;
     public AudioClip activationSound;
-
-   
-
+    
     public override void Awake()
     {
         base.Awake();
@@ -212,6 +211,12 @@ public class Currents : AudioHandler {
             hasEntered = true;
         }
 
+        //for 2 way cObj -- set returning if we are on 'next planet' 
+        if(cObjectMan.twoWay && cObjectMan.nextPlanet == pc.activePlanet)
+        {
+            cObjectMan.returning = true;
+        }
+
         //reset velocity
         pc.playerRigidbody.velocity = Vector3.zero;
         gravBody.enabled = false;
@@ -236,7 +241,8 @@ public class Currents : AudioHandler {
         //disable previous planet completely
         if (disablesPrevPlanet)
         {
-            cObjectMan.prevPlanet.gameObject.SetActive(false);
+            if(cObjectMan)
+                cObjectMan.prevPlanet.gameObject.SetActive(false);
         }
     }
     
