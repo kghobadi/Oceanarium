@@ -6,6 +6,8 @@ using InControl;
 //this script is for the first button press in the opening scene 
 public class SpaceToStart : MonoBehaviour {
 
+    LoadSceneAsync sceneLoader;
+
     public FadeSprite [] spritesToFadeIn;
     public FadeSprite [] spritesToFadeOut;
     public FadeUItmp[] textToFadeOut;
@@ -16,8 +18,14 @@ public class SpaceToStart : MonoBehaviour {
     public ParticleSystem explosion;
 
     public bool hasStarted;
-	
-	void Update ()
+    float holdSpaceTimer, timeNec = 1f;
+
+    private void Awake()
+    {
+        sceneLoader = FindObjectOfType<LoadSceneAsync>();
+    }
+
+    void Update ()
     {
         //get input device 
         var inputDevice = InputManager.ActiveDevice;
@@ -39,6 +47,24 @@ public class SpaceToStart : MonoBehaviour {
                 {
                     StartFades();
                 }
+            }
+        }
+        else
+        {
+            //allows you to skip intro by holding space 
+            if (Input.GetKey(KeyCode.Space))
+            {
+                holdSpaceTimer += Time.deltaTime;
+
+                if (holdSpaceTimer > timeNec && sceneLoader.transition == false)
+                {
+                    sceneLoader.Transition(1f);
+                }
+            }
+
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                holdSpaceTimer = 0;
             }
         }
 	}

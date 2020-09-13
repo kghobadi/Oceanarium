@@ -100,6 +100,8 @@ public class CurrentObjectManager : MonoBehaviour {
             }
 
             returning = false;
+
+            hasActivated = true;
             //Debug.Log("transitioned to " + nextPlanet.planetName);
         }
     }

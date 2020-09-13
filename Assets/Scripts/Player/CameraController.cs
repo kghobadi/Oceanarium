@@ -218,6 +218,17 @@ public class CameraController : MonoBehaviour {
             - transform.position, gravityBody.GetUp());
         //lerp towards new look rotation 
         transform.rotation = Quaternion.Lerp(transform.rotation, targetLook, smoothLook * Time.deltaTime);
+
+        //checks if input for fading out cam controls image at start
+        if (pc.controlsAtStart.Length > 1)
+        {
+            if (pc.controlsAtStart[1].gameObject.activeSelf && !pc.controlsAtStart[1].fadingIn)
+            {
+                //input ? 
+                if(vRot != 0 || hRot != 0)
+                    pc.controlsAtStart[1].FadeOut();
+            }
+        }
     }
 
     void ZoomInputs()
