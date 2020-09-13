@@ -60,7 +60,10 @@ public class Currents : AudioHandler {
         currentParticles.Stop();
         currentBubble.material = silentMat;
         ribbons = transform.GetChild(3).GetComponent<ParticleSystem>();
-        cObjectMan = GetComponentInChildren<CurrentObjectManager>();    
+
+        //only fetch if it is not set publicly
+        if(cObjectMan == null)
+            cObjectMan = GetComponentInChildren<CurrentObjectManager>();    
     }
 
     void Start()
