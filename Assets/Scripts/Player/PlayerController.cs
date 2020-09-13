@@ -247,10 +247,8 @@ public class PlayerController : AudioHandler
             //fade out title card when player moves
             if(controlsAtStart.Length > 0)
             {
-                for(int i = 0; i < controlsAtStart.Length; i++)
-                {
-                    controlsAtStart[i].FadeOut();
-                }
+                //fade out WASD
+                controlsAtStart[0].FadeOut();
             }
         }
         else
@@ -371,7 +369,8 @@ public class PlayerController : AudioHandler
                 camFade.FadeIn();
 
             //set pp 
-            camBehavior.profile = meditationPP;
+            if(meditationPP)
+                camBehavior.profile = meditationPP;
 
             //planet manager sets all pearl lures 
             activePlanet.SetMeditationVisuals();
@@ -409,7 +408,8 @@ public class PlayerController : AudioHandler
                 camFade.FadeOut();
 
             //set pp 
-            camBehavior.profile = normalPP;
+            if(normalPP)
+                camBehavior.profile = normalPP;
 
             //fp
             if (firstOrThirdPersonMeditation)
