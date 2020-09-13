@@ -140,6 +140,7 @@ public class Guardian : AudioHandler {
         //MOVING
         if(guardianState == GuardianStates.MOVING)
         {
+
             //swim away 
             if (!gAnimation.Animator.GetBool("swimAway"))
                 gAnimation.Animator.SetBool("swimAway", true);
