@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waitToCheck: 1
-  individualDistOffset: 10
+  individualDistOffset: 50
 --- !u!114 &114525134223968938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -207,7 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveTowardsOrLerp: 1
   lerping: 0
-  lerpSpeed: 5
+  lerpSpeed: 2
   desiredScale: {x: 0, y: 0, z: 0}
   distNecToStopLerp: 0.01
   origScale: {x: 0, y: 0, z: 0}

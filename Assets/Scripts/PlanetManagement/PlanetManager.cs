@@ -20,6 +20,8 @@ public class PlanetManager : MonoBehaviour {
     GameObject guardian;
     Guardian gBehavior;
     [HideInInspector] public MusicFader mFader;
+    [HideInInspector] public Planter[] planterPearls;
+    [HideInInspector] public GrowthPearl[] growthPearls;
 
     public string planetName;
     public bool playerHere, startingPlanet;
@@ -53,6 +55,8 @@ public class PlanetManager : MonoBehaviour {
         guardian = GameObject.FindGameObjectWithTag("Guardian");
         gBehavior = guardian.GetComponent<Guardian>();
         mFader = FindObjectOfType<MusicFader>();
+        planterPearls = GetComponentsInChildren<Planter>();
+        growthPearls = GetComponentsInChildren<GrowthPearl>();
     }
     
     void Start()
@@ -114,6 +118,30 @@ public class PlanetManager : MonoBehaviour {
         for (int i = 0; i < props.Count; i++)
         {
             props[i].SetActive(false);
+        }
+    }
+
+    public void SetMeditationVisuals()
+    {
+        for(int i = 0; i < planterPearls.Length; i++)
+        {
+            planterPearls[i].SetMeditationLure();
+        }
+        for (int i = 0; i < growthPearls.Length; i++)
+        {
+            growthPearls[i].SetMeditationLure();
+        }
+    }
+
+    public void ResetVisuals()
+    {
+        for (int i = 0; i < planterPearls.Length; i++)
+        {
+            planterPearls[i].ResetLure();
+        }
+        for (int i = 0; i < growthPearls.Length; i++)
+        {
+            growthPearls[i].ResetLure();
         }
     }
 

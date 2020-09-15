@@ -351,6 +351,8 @@ MonoBehaviour:
   fadeOutWait: 0
   fadeInSpeed: 0.75
   fadeOutSpeed: 1
+  fadeInAmount: 1
+  fadeOutAmount: 0
   fadeInAtStart: 1
   returnsToPool: 0
   worldManage: 0
@@ -1622,6 +1624,8 @@ MonoBehaviour:
   fadeOutWait: 0
   fadeInSpeed: 1
   fadeOutSpeed: 1
+  fadeInAmount: 1
+  fadeOutAmount: 0
   fadeInAtStart: 1
   returnsToPool: 0
   worldManage: 0
@@ -2807,9 +2811,8 @@ MonoBehaviour:
   - {fileID: 1795335029}
   currentSound: 0
   hasVoiceAudio: 1
-  usesAllLetters: 0
-  countsUp: 1
   speakFreq: 1
+  randomizePitch: 0
   spokenSounds:
   - {fileID: 0}
   - {fileID: 8300000, guid: 4c7d191774f35684db362574e90be695, type: 3}
@@ -2831,9 +2834,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 44a985a8c9ddf1949bf78f567ef4ab7d, type: 3}
   - {fileID: 8300000, guid: 80df87c6add17504491bface4dce6e6b, type: 3}
   - {fileID: 8300000, guid: 9743f12c37e1d1541abf5673d1329d25, type: 3}
-  letters: 
-  capitalLetters: 
-  spokenLetters: []
 --- !u!114 &1799146706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2869,6 +2869,8 @@ MonoBehaviour:
   fadeOutWait: 0
   fadeInSpeed: 0.25
   fadeOutSpeed: 1
+  fadeInAmount: 1
+  fadeOutAmount: 0
   fadeInAtStart: 0
   returnsToPool: 0
   worldManage: 0

@@ -15,6 +15,10 @@ public class CurrentObjectManager : MonoBehaviour {
     float timeToReactivate;
     public PlanetManager prevPlanet, nextPlanet;
 
+    [Header("It is used by 2 planets")]
+    public bool twoWay;
+    public bool returning;
+
     [Header("Changes Player Scale")]
     public bool lerpPlayerScale;
     public Vector3 desiredScale;
@@ -36,7 +40,8 @@ public class CurrentObjectManager : MonoBehaviour {
         timeToReactivate = 1;
 	}
 	
-	void Update () {
+	void Update ()
+    {
         if (hasActivated)
         {
             timeToReactivate -= Time.deltaTime;
@@ -52,11 +57,33 @@ public class CurrentObjectManager : MonoBehaviour {
     {
         if (other.gameObject.tag == "Player" && !hasActivated)
         {
-            //turn off old planet, activate new one 
-            prevPlanet.DeactivatePlanet();
+            if (twoWay)
+            {
+                //returning -- reverse -- will be set true upon entering current
+                if (returning)
+                {
+                    //turn off old planet, activate new one 
+                    nextPlanet.DeactivatePlanet();
 
-            nextPlanet.ActivatePlanet(currentParent.endPoint.position);
+                    prevPlanet.ActivatePlanet(prevPlanet.guardianBehaviors[0].guardianLocation.position);
+                }
+                //leaving -- normal 
+                else
+                {
+                    //turn off old planet, activate new one 
+                    prevPlanet.DeactivatePlanet();
 
+                    nextPlanet.ActivatePlanet(currentParent.endPoint.position);
+                }
+            }
+            else
+            {
+                //turn off old planet, activate new one 
+                prevPlanet.DeactivatePlanet();
+
+                nextPlanet.ActivatePlanet(currentParent.endPoint.position);
+            }
+            
             if (lerpPlayerScale)
             {
                 playerScaler.SetScaler(scaleSpeed, desiredScale);
@@ -72,6 +99,9 @@ public class CurrentObjectManager : MonoBehaviour {
                 mFader.FadeTo(nextPlanet.musicTrack);
             }
 
+            returning = false;
+
+            hasActivated = true;
             //Debug.Log("transitioned to " + nextPlanet.planetName);
         }
     }

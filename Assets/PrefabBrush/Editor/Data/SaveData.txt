@@ -4,8 +4,8 @@ Brush Size: 1.8
 Fill Mode: True
 Fill Rate: 0.01
 
-Game Object: Assets/Prefabs/Planets/HomingPearl.prefab
-Layer: Default
+Game Object: None
+Layer: 
 Toggle: False
 Slider: 1
 Lock Orientation Toggle: False
@@ -148,7 +148,7 @@ Fixed Rotation Y: 0
 Fixed Rotation Z: 0
 Depth: 10
 
-Game Object: Assets/Prefabs/Spawnable Plants/Totem.prefab
+Game Object: Assets/Prefabs/Spawnable Plants/Totem w Audio.prefab
 Layer: Default
 Toggle: False
 Slider: 1
@@ -158,13 +158,13 @@ Random Rotation X: False
 Random Rotation Y: False
 Random Rotation Z: False
 Random Scale Toggle: True
-Random Scale Min: 0.1
-Random Scale Max: 0.3
+Random Scale Min: 0.5
+Random Scale Max: 1
 Fixed Rotation Toggle: False
 Fixed Rotation X: 0
 Fixed Rotation Y: 0
 Fixed Rotation Z: 0
-Depth: 45
+Depth: 25
 
 Game Object: Assets/Prefabs/Spawnable Plants/Star.prefab
 Layer: Default
@@ -438,7 +438,7 @@ Depth: 5
 
 Game Object: Assets/Prefabs/Props/Wavey.prefab
 Layer: Default
-Toggle: True
+Toggle: False
 Slider: 1
 Lock Orientation Toggle: False
 Random Rotation Toggle: False
@@ -456,7 +456,7 @@ Depth: 4
 
 Game Object: Assets/Prefabs/Props/Wavey 1.prefab
 Layer: Default
-Toggle: False
+Toggle: True
 Slider: 1
 Lock Orientation Toggle: False
 Random Rotation Toggle: False
@@ -464,8 +464,8 @@ Random Rotation X: False
 Random Rotation Y: False
 Random Rotation Z: False
 Random Scale Toggle: True
-Random Scale Min: 2
-Random Scale Max: 2
+Random Scale Min: 5
+Random Scale Max: 10
 Fixed Rotation Toggle: False
 Fixed Rotation X: 0
 Fixed Rotation Y: 0
@@ -510,7 +510,7 @@ Depth: 3
 
 Game Object: Assets/Prefabs/Spawnable Plants/Stack.prefab
 Layer: Default
-Toggle: True
+Toggle: False
 Slider: 1
 Lock Orientation Toggle: False
 Random Rotation Toggle: False
@@ -524,4 +524,4 @@ Fixed Rotation Toggle: False
 Fixed Rotation X: 0
 Fixed Rotation Y: 0
 Fixed Rotation Z: 0
-Depth: 9
+Depth: 8

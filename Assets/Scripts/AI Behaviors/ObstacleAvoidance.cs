@@ -30,7 +30,7 @@ public class ObstacleAvoidance : MonoBehaviour {
         {
             if (movement.moving)
             {
-                CheckForward();
+                CheckDest();
             }
         }
 
@@ -39,13 +39,30 @@ public class ObstacleAvoidance : MonoBehaviour {
         {
             if (orbital.orbiting)
             {
-                CheckForward();
+                //pos X
+                if(orbital.xyOrzAxis == Orbit.Axes.X && orbital.orbitalSpeed > 0)
+                    CheckDirection(transform.right);
+                //neg X
+                else if (orbital.xyOrzAxis == Orbit.Axes.X && orbital.orbitalSpeed < 0)
+                    CheckDirection(-transform.right);
+                //pos Z
+                if (orbital.xyOrzAxis == Orbit.Axes.Z && orbital.orbitalSpeed > 0)
+                    CheckDirection(transform.forward);
+                //neg Z
+                else if (orbital.xyOrzAxis == Orbit.Axes.Z && orbital.orbitalSpeed < 0)
+                    CheckDirection(-transform.forward);
+                //pos Y
+                if (orbital.xyOrzAxis == Orbit.Axes.Y && orbital.orbitalSpeed > 0)
+                    CheckDirection(transform.up);
+                //neg Y
+                else if (orbital.xyOrzAxis == Orbit.Axes.Y && orbital.orbitalSpeed < 0)
+                    CheckDirection(-transform.up);
             }
         }
 	}
 
     //shoots ray forward looking for obstacles 
-    void CheckForward()
+    void CheckDest()
     {
         Vector3 direction;
         if (travelDest)
@@ -56,7 +73,7 @@ public class ObstacleAvoidance : MonoBehaviour {
         if (Physics.SphereCast(transform.position, 1f, direction, out hit, 10f, obstacles))
         {
             //elevate if hit    
-            //Debug.Log("hit");
+            Debug.Log(gameObject.name + " found obstacles");
             if (grav.distanceFromPlanet < maxHeight - 2f)
             {
                 if (usesFwdThrust)
@@ -66,18 +83,54 @@ public class ObstacleAvoidance : MonoBehaviour {
             }
             else if (grav.distanceFromPlanet > maxHeight + 2f)
             {
-                SideStep();
+                SideStepRight();
             }
+        }
+        //hit nothing, try forward shot
+        else
+        {
+            CheckDirection(transform.forward);
+        }
+    }
 
+    //shoots ray forward looking for obstacles 
+    void CheckDirection(Vector3 dir)
+    {
+        RaycastHit hit;
+        if (Physics.SphereCast(transform.position, 1f, dir, out hit, 10f, obstacles))
+        {
+            //elevate if hit    
+            Debug.Log(gameObject.name + " found obstacles");
+            if (grav.distanceFromPlanet < maxHeight - 2f)
+            {
+                if (usesFwdThrust)
+                    ForwardThrust();
+                else
+                    Elevate();
+            }
+            else if (grav.distanceFromPlanet > maxHeight + 2f)
+            {
+                SideStepRight();
+            }
         }
     }
 
     //called when ray forward hits obstacle
     void Elevate()
     {
-        rBody.AddForce(grav.GetUp() * elevationSpeed);
+        if(grav)
+            rBody.AddForce(grav.GetUp() * elevationSpeed);
+        else
+            rBody.AddForce(transform.up * elevationSpeed);
+        Debug.Log(gameObject.name + " Elevating");
+    }
 
-        Debug.Log("Elevating");
+    //called when ray forward hits obstacle
+    void Descend()
+    {
+        rBody.AddForce(-transform.up * elevationSpeed);
+
+        Debug.Log(gameObject.name + " Descending");
     }
 
     //called when ray forward hits obstacle
@@ -86,15 +139,33 @@ public class ObstacleAvoidance : MonoBehaviour {
         Vector3 fwd = transform.forward * elevationSpeed;
         rBody.AddForce(fwd);
 
-        Debug.Log("fwd thrusting");
+        Debug.Log(gameObject.name + " fwd thrusting");
     }
 
     //called when ray forward hits obstacle
-    void SideStep()
+    void BackwardThrust()
+    {
+        Vector3 bkwd = -transform.forward * elevationSpeed;
+        rBody.AddForce(bkwd);
+
+        Debug.Log(gameObject.name + " backward thrusting");
+    }
+
+    //called when ray forward hits obstacle
+    void SideStepRight()
     {
         Vector3 right = transform.right * elevationSpeed;
         rBody.AddForce(right);
         
-        Debug.Log("side stepping");
+        Debug.Log(gameObject.name + " side stepping right");
+    }
+
+    //called when ray forward hits obstacle
+    void SideStepLeft()
+    {
+        Vector3 left = -transform.right * elevationSpeed;
+        rBody.AddForce(left);
+
+        Debug.Log(gameObject.name + " side stepping left");
     }
 }

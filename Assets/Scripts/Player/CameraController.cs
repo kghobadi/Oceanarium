@@ -15,7 +15,8 @@ public class CameraController : MonoBehaviour {
     //control bools
     [Header("Cam Movement Bools")]
     public bool canMoveCam = true;
-    public bool isMovingCam;
+    public bool isMovingCamPos;
+    public bool isMovingCamAngle;
 
     [Header("Camera Movement Vars")]
     public float mouseSensitivityX = 20;
@@ -73,8 +74,8 @@ public class CameraController : MonoBehaviour {
     public GameObject astralBody;
     GravityBody astralGravity;
     
-
-    void Awake () {
+    void Awake ()
+    {
         cameraT = Camera.main.transform;
         mainCam = cameraT.GetComponent<Camera>();
         originalFOV = mainCam.fieldOfView;
@@ -106,8 +107,8 @@ public class CameraController : MonoBehaviour {
         transform.LookAt(player.transform, gravityBody.GetUp());
     }
 
-    void Update () {
-
+    void Update ()
+    {
         if (canMoveCam)
         {
             HorizontalRotation();
@@ -217,6 +218,17 @@ public class CameraController : MonoBehaviour {
             - transform.position, gravityBody.GetUp());
         //lerp towards new look rotation 
         transform.rotation = Quaternion.Lerp(transform.rotation, targetLook, smoothLook * Time.deltaTime);
+
+        //checks if input for fading out cam controls image at start
+        if (pc.controlsAtStart.Length > 1)
+        {
+            if (pc.controlsAtStart[1].gameObject.activeSelf && !pc.controlsAtStart[1].fadingIn)
+            {
+                //input ? 
+                if(vRot != 0 || hRot != 0)
+                    pc.controlsAtStart[1].FadeOut();
+            }
+        }
     }
 
     void ZoomInputs()
@@ -309,15 +321,24 @@ public class CameraController : MonoBehaviour {
         //save rot 
         currentCamRot = cameraT.localEulerAngles;
 
-        //check if cam pos or cam rot has changed
-        if (Vector3.Distance(cameraT.position, oldCameraPosition) > 0.1f ||
-            Vector3.Distance(currentCamRot, lastCamRot) > 0.1f)
+        //check if cam rot has changed
+        if (Vector3.Distance(currentCamRot, lastCamRot) > 0.1f)
         {
-            isMovingCam = true;
+            isMovingCamAngle = true;
         }
         else
         {
-            isMovingCam = false;
+            isMovingCamAngle = false;
+        }
+
+        //check if cam pos
+        if (Vector3.Distance(cameraT.position, oldCameraPosition) > 0.1f)
+        {
+            isMovingCamPos = true;
+        }
+        else
+        {
+            isMovingCamPos = false;
         }
 
         lastCamRot = cameraT.localEulerAngles;

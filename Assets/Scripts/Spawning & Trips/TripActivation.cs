@@ -20,6 +20,7 @@ public class TripActivation : MonoBehaviour {
     public GameObject guardAnim;
     public GameObject tripCamera;
     public GameObject trip;
+    [Tooltip("Gets set true by Guardian behavior")]
     public bool canTrip = true;
     public bool tripping;
     public bool loadsNewScene;

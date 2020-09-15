@@ -18,7 +18,7 @@ MonoBehaviour:
   lockPlayer: 1
   loadsScene: 0
   timeBetweenLetters: 0.1
-  timeBetweenLines: 3
+  timeBetweenLines: 2
   conversational: 0
   waitTimes: []
   repeatsAtFinish: 1

@@ -28,7 +28,7 @@ AnimationClip:
       value: {fileID: 21300160, guid: a8e8b6462d5903841bf0f1f3da13f7ab, type: 3}
     - time: 0.6666667
       value: {fileID: 21300162, guid: a8e8b6462d5903841bf0f1f3da13f7ab, type: 3}
-    - time: 0.8333333
+    - time: 0.8333334
       value: {fileID: 21300164, guid: a8e8b6462d5903841bf0f1f3da13f7ab, type: 3}
     attribute: m_Sprite
     path: 
