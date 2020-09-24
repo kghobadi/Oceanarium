@@ -112,4 +112,4 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _RimColor: {r: 0.9622642, g: 0.88945395, b: 0.25872195, a: 0}
+    - _RimColor: {r: 0.46969736, g: 0.3537736, b: 1, a: 0}
