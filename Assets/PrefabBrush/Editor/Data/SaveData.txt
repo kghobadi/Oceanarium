@@ -1,4 +1,4 @@
-Layer Selection: Default
+Layer Selection: Planet
 Brush Max Size: 107.61
 Brush Size: 1.8
 Fill Mode: True
@@ -528,7 +528,7 @@ Depth: 8
 
 Game Object: Assets/Prefabs/Props/coral_light.prefab
 Layer: Default
-Toggle: True
+Toggle: False
 Slider: 1
 Lock Orientation Toggle: False
 Random Rotation Toggle: False
