@@ -11,6 +11,7 @@ public class CameraFacingBillboard : MonoBehaviour
     CameraController camControl;
     //fades sprite when in front of pcam
     FadeForCamera cameraFader;
+    SpriteRenderer sr;
 
     [Tooltip("Has gravity body set up")]
     public bool hasGravityBody;
@@ -27,6 +28,9 @@ public class CameraFacingBillboard : MonoBehaviour
       
         playerCam = Camera.main;
         camControl = playerCam.GetComponent<CameraController>();
+
+        sr = GetComponent<SpriteRenderer>();
+
         //add camera fader if not on object already 
         cameraFader = GetComponent<FadeForCamera>();
         if(cameraFader == null)
@@ -37,6 +41,11 @@ public class CameraFacingBillboard : MonoBehaviour
         if (hasGravityBody)
         {
             gravBody = GetComponent<GravityBody>();
+
+            if(gravBody == null)
+            {
+                gravBody = gameObject.AddComponent<GravityBody>();
+            }
         }
 	}
 
@@ -45,11 +54,8 @@ public class CameraFacingBillboard : MonoBehaviour
         //uses own gravity for up axis
         if (hasGravityBody)
         {
-            //Quaternion origRot = transform.rotation;
-            //transform.LookAt(playerCam.transform.position, gravBody.GetUp());
-            //Quaternion newRot = transform.rotation;
-            ////manually set x rot value to t look at z value
-            //transform.rotation = new Quaternion(newRot.z, newRot.y, origRot.z, newRot.w);
+            if(sr.isVisible)
+                transform.LookAt(playerCam.transform.position, gravBody.GetUp());
         }
         //normal, uses player gravity body for Look at function 
         else
@@ -75,5 +81,22 @@ public class CameraFacingBillboard : MonoBehaviour
         }
 	}
 
-  
+    private void OnBecameVisible()
+    {
+        if (hasGravityBody)
+        {
+            if (gravBody.enabled)
+                gravBody.enabled = false;
+        }
+    }
+
+    private void OnBecameInvisible()
+    {
+        if (hasGravityBody)
+        {
+            if (!gravBody.enabled)
+                gravBody.enabled = true;
+        }
+    }
+
 }

@@ -41059,6 +41059,17 @@ Prefab:
       value: 
       objectReference: {fileID: 1325035832891966, guid: 7709f28bbe9301843838666d8545343a,
         type: 2}
+    - target: {fileID: 114659884049412714, guid: 1b0819e2e6a62d74e9397c32cb600752,
+        type: 2}
+      propertyPath: allMonologues.Array.data[16].monologue
+      value: 
+      objectReference: {fileID: 11400000, guid: 6af4fa93879f099449f6027782e68f05,
+        type: 2}
+    - target: {fileID: 114659884049412714, guid: 1b0819e2e6a62d74e9397c32cb600752,
+        type: 2}
+      propertyPath: allMonologues.Array.data[16].mTrigger
+      value: 
+      objectReference: {fileID: 12330603}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b0819e2e6a62d74e9397c32cb600752, type: 2}
   m_IsPrefabAsset: 0
@@ -44328,6 +44339,12 @@ Prefab:
       propertyPath: worldSpaceCanvas
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114072909307197466, guid: 52c0d16dc420a7440a4ecd0c818c145c,
+        type: 2}
+      propertyPath: allMyMonologues.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6af4fa93879f099449f6027782e68f05,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52c0d16dc420a7440a4ecd0c818c145c, type: 2}
   m_IsPrefabAsset: 0
@@ -71290,6 +71307,18 @@ Prefab:
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719206232782670, guid: f4da982ea5501d84bb638051cbd7b677, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.00398
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719206232782670, guid: f4da982ea5501d84bb638051cbd7b677, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.69329
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719206232782670, guid: f4da982ea5501d84bb638051cbd7b677, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.00725
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4da982ea5501d84bb638051cbd7b677, type: 2}

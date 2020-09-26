@@ -23,6 +23,7 @@ public class MonologueManager : MonoBehaviour
     MonologueReader monoReader;
     LoadSceneAsync sceneLoader;
     SpeakerSound speakerSound;
+    FadeSprite fade;
 
     [Tooltip("if there is a background for speaking text")]
     public FadeUI textBack;
@@ -44,7 +45,10 @@ public class MonologueManager : MonoBehaviour
     public bool enableOnStart;
     [Tooltip("If there is a specific spot the player should be teleported to for Monologue")]
     public Transform playerSpot;
-    
+
+    [Tooltip("Check this to make character fade out upon completing mono")]
+    public bool fadeOut;
+
     [Header("Camera Settings")]
     [Tooltip("Moves camera left (-) or right (+) for player to look at char")]
     public float cameraXPos = 10f;
@@ -67,6 +71,7 @@ public class MonologueManager : MonoBehaviour
         cineManager = FindObjectOfType<CinematicsManager>();
         camManager = FindObjectOfType<CameraManager>();
         speakerSound = GetComponent<SpeakerSound>();
+        fade = GetComponent<FadeSprite>();
 
         //diff set up depending on whether we use worldspace canvas or not 
         if (worldSpaceCanvas)
@@ -327,6 +332,12 @@ public class MonologueManager : MonoBehaviour
                 mTrigger.hasActivated = true;
                 mTrigger.WaitToReset(mono.monologueWaits[i]);
             }
+        }
+
+        //character fades out 
+        if (fadeOut)
+        {
+            fade.FadeOut();
         }
 
         //loads next scene!

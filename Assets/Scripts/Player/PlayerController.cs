@@ -357,6 +357,7 @@ public class PlayerController : AudioHandler
             && canMeditate)
         {
             camControls.LerpFOV(camControls.meditationFOV, 2f);
+            camControls.cRigidbody.isKinematic = true;
             meditating.TransitionTo(2f);
             canJump = false;
 
@@ -397,6 +398,7 @@ public class PlayerController : AudioHandler
         if (moveState == MoveStates.MEDITATING)
         {
             camControls.LerpFOV(camControls.originalFOV, 2f);
+            camControls.cRigidbody.isKinematic = false;
             normal.TransitionTo(2f);
             canJump = true;
 
