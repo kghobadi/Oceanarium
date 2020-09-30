@@ -2,17 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public struct GuardianBehaviorSets
-{
-    [Tooltip("Point for the guardian to travel to")]
-    public Transform guardianLocation;
-    [Tooltip("Check if guardian will deliver monologue at above point")]
-    public bool hasMonologue;
-    [Tooltip("Index of monologue within Guardian Mono Manager")]
-    public int monologueIndex;
-}
-
 public class PlanetManager : MonoBehaviour {
 
     GameObject player;
@@ -144,5 +133,4 @@ public class PlanetManager : MonoBehaviour {
             growthPearls[i].ResetLure();
         }
     }
-
 }

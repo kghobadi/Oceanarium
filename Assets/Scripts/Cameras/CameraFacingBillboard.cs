@@ -72,11 +72,7 @@ public class CameraFacingBillboard : MonoBehaviour
             else if (pc.moveState == PlayerController.MoveStates.MEDITATING)
             {
                 //fp -- look at cam
-                if (pc.firstOrThirdPersonMeditation)
-                    transform.LookAt(playerCam.transform.position, playerCam.transform.up);
-                //tp -- use astral body up 
-                else
-                    transform.LookAt(playerCam.transform.position, camControl.gravityBody.GetUp());
+                transform.LookAt(playerCam.transform.position, playerCam.transform.up);
             }
         }
 	}

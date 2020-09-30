@@ -22,9 +22,6 @@ public class PlayerController : AudioHandler
     [Header("Movement Bools")]
     public bool canMove = true;
     public bool canJump;
-    public bool firstOrThirdPersonMeditation = true;
-    public Toggle meditationTypeToggle;
-    public TMPro.TMP_Text modeType; 
 
     [Header("Movement Speeds & Vars")]
     //general movement
@@ -114,12 +111,6 @@ public class PlayerController : AudioHandler
         animator = playerSpriteObj.GetComponent<PlayerAnimations>();
         quitScript = FindObjectOfType<QuitGame>();
         idleTimer = 0;
-
-        if (meditationTypeToggle)
-        {
-            meditationTypeToggle.isOn = firstOrThirdPersonMeditation;
-            SetMeditationModeText();
-        }
        
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -267,7 +258,8 @@ public class PlayerController : AudioHandler
         if (forwardMovement == 0 && horizontalMovement == 0 && verticalMovement == 0)
         {
             idleTimer += Time.deltaTime;
-            if(idleTimer < timeUntilMeditate)
+            //idle until reach meditation time
+            if(idleTimer < timeUntilMeditate && moveState != MoveStates.MEDITATING)
             {
                 moveState = MoveStates.IDLE;
                 //diver idle
@@ -321,31 +313,25 @@ public class PlayerController : AudioHandler
         currentVelocity = playerRigidbody.velocity.magnitude;
     }
     
-    //called by menu toggle
-    public void ToggleMeditationType()
-    {
-        //only change if not currently meditating 
-        if(moveState != MoveStates.MEDITATING)
-        {
-            firstOrThirdPersonMeditation = meditationTypeToggle.isOn;
-
-            SetMeditationModeText();
-        }
-    }
-
-    //set menu text 
-    void SetMeditationModeText()
-    {
-        if (firstOrThirdPersonMeditation)
-            modeType.text = "first person";
-        else
-            modeType.text = "third person";
-    }
-
     //called when you reach quadsphere
     public void EnableMeditationAbility()
     {
         canMeditate = true;
+    }
+
+    //begin meditating
+    public void SetPearlMeditation()
+    {
+        //only if not already and controls from start are gone and not in pause menu
+        if (moveState != MoveStates.MEDITATING
+            && quitScript.escMenu.activeSelf == false)
+        {
+            canJump = false;
+
+            //diver meditates
+            moveState = MoveStates.MEDITATING;
+            animator.SetAnimator("meditating");
+        }
     }
 
     //begin meditating
@@ -377,17 +363,8 @@ public class PlayerController : AudioHandler
             activePlanet.SetMeditationVisuals();
 
             //fp
-            if (firstOrThirdPersonMeditation)
-            {
-                camControls.canMoveCam = false;
-                meditationControls.ActivateFPS();
-            }
-            //tp
-            else
-            {
-                camControls.SetAstralBody();
-                meditationControls.Activate();
-            }
+            camControls.canMoveCam = false;
+            meditationControls.ActivateFPS();
         }
     }
 
@@ -414,17 +391,8 @@ public class PlayerController : AudioHandler
                 camBehavior.profile = normalPP;
 
             //fp
-            if (firstOrThirdPersonMeditation)
-            {
-                camControls.canMoveCam = true;
-                meditationControls.DeactivateFPS();
-            }
-            //tp
-            else
-            {
-                camControls.DisableAstralBody();
-                meditationControls.Deactivate();
-            }
+            camControls.canMoveCam = true;
+            meditationControls.DeactivateFPS();
         }
     }
     
