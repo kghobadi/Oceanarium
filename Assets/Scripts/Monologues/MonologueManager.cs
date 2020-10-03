@@ -23,6 +23,7 @@ public class MonologueManager : MonoBehaviour
     MonologueReader monoReader;
     LoadSceneAsync sceneLoader;
     SpeakerSound speakerSound;
+    FadeSprite fade;
 
     [Tooltip("if there is a background for speaking text")]
     public FadeUI textBack;
@@ -44,7 +45,10 @@ public class MonologueManager : MonoBehaviour
     public bool enableOnStart;
     [Tooltip("If there is a specific spot the player should be teleported to for Monologue")]
     public Transform playerSpot;
-    
+
+    [Tooltip("Check this to make character fade out upon completing mono")]
+    public bool fadeOut;
+
     [Header("Camera Settings")]
     [Tooltip("Moves camera left (-) or right (+) for player to look at char")]
     public float cameraXPos = 10f;
@@ -54,6 +58,11 @@ public class MonologueManager : MonoBehaviour
     public Transform lookAtObj;
     [Tooltip("Can use a cinemachine camera instead, just place it here and it will override other camera settings")]
     public GameCamera speakerCam;
+    [Tooltip("Defaults to talking -- can set to Meditation")]
+    public PlayerController.MoveStates animationType = PlayerController.MoveStates.TALKING;
+    [Tooltip("Choices for displaying at the end of a Monologue -- for now only used by Guardian")]
+    public GameObject dialogueChoices;
+    DialogueChoice[] dChoices;
 
     void Awake()
     {
@@ -67,6 +76,7 @@ public class MonologueManager : MonoBehaviour
         cineManager = FindObjectOfType<CinematicsManager>();
         camManager = FindObjectOfType<CameraManager>();
         speakerSound = GetComponent<SpeakerSound>();
+        fade = GetComponent<FadeSprite>();
 
         //diff set up depending on whether we use worldspace canvas or not 
         if (worldSpaceCanvas)
@@ -84,6 +94,17 @@ public class MonologueManager : MonoBehaviour
 
         //looper AI integration
         looperAI = GetComponent<LooperAI>();
+
+        //get dchoices && set mono manager ref -- then disable choices object
+        if (dialogueChoices)
+        {
+            dChoices = dialogueChoices.GetComponentsInChildren<DialogueChoice>();
+            for (int i = 0; i < dChoices.Length; i++)
+            {
+                dChoices[i].monoManager = this;
+            }
+            dialogueChoices.SetActive(false);
+        }
     }
 
     void Start()
@@ -117,6 +138,7 @@ public class MonologueManager : MonoBehaviour
         monoReader.timeBetweenLines = allMyMonologues[currentMonologue].timeBetweenLines;
         monoReader.conversational = allMyMonologues[currentMonologue].conversational;
         monoReader.waitTimes = allMyMonologues[currentMonologue].waitTimes;
+        monoReader.displayChoices = allMyMonologues[currentMonologue].displayChoices;
     }
 
     //has a wait for built in
@@ -204,9 +226,20 @@ public class MonologueManager : MonoBehaviour
             //no move
             player.canMove = false;
             player.canJump = false;
+
             //set to talking state 
-            player.moveState = PlayerController.MoveStates.TALKING;
-            player.animator.SetAnimator("idle");
+            if (animationType == PlayerController.MoveStates.TALKING)
+            {
+                player.moveState = PlayerController.MoveStates.TALKING;
+                player.animator.SetAnimator("idle");
+            }
+            //set to meditating
+            else if (animationType == PlayerController.MoveStates.MEDITATING)
+            {
+                player.moveState = PlayerController.MoveStates.MEDITATING;
+                player.animator.SetAnimator("meditating");
+            }
+
             //zero player vel
             player.playerRigidbody.velocity = Vector3.zero;
             player.playerRigidbody.angularVelocity = Vector3.zero;
@@ -284,9 +317,13 @@ public class MonologueManager : MonoBehaviour
         //unlock player
         if (mono.lockPlayer)
         {
+            //reenable movement 
             player.canMove = true;
             player.canJump = true;
+
+            //return to idle
             player.moveState = PlayerController.MoveStates.IDLE;
+            player.animator.SetAnimator("idle");
         }
         
         //set cam controller
@@ -327,6 +364,12 @@ public class MonologueManager : MonoBehaviour
                 mTrigger.hasActivated = true;
                 mTrigger.WaitToReset(mono.monologueWaits[i]);
             }
+        }
+
+        //character fades out 
+        if (fadeOut)
+        {
+            fade.FadeOut();
         }
 
         //loads next scene!

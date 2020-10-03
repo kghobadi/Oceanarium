@@ -30,6 +30,9 @@ public class Monologue : ScriptableObject
     public bool repeatsAtFinish;
     [Tooltip("A condensed version of the Task assignment for repeating")]
     public TextAsset condensedMonologue;
+    [Tooltip("For 'dialogue' options at the end of Monologue")]
+    public bool displayChoices;
+
 
     [Header("New Monologues")]
     [Tooltip("Use this for Monologues that do not assign tasks to activate a new dialogue after a certain amount of time")]

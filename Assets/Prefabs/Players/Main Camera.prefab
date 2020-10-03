@@ -250,7 +250,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   astralEye: {fileID: 0}
-  freeLook: {fileID: 0}
   isActive: 0
   fp: 0
   thirdEyeParent: {fileID: 4757129388583524}
@@ -279,6 +278,8 @@ MonoBehaviour:
   fadeOutWait: 0
   fadeInSpeed: 1
   fadeOutSpeed: 0.5
+  fadeInAmount: 1
+  fadeOutAmount: 0
   fadeInAtStart: 0
   returnsToPool: 0
   worldManage: 0
@@ -301,6 +302,8 @@ MonoBehaviour:
   fadeOutWait: 0
   fadeInSpeed: 1
   fadeOutSpeed: 0.5
+  fadeInAmount: 1
+  fadeOutAmount: 0
   fadeInAtStart: 0
   returnsToPool: 0
   worldManage: 0
@@ -359,8 +362,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravityBody: {fileID: 0}
   origGBody: {fileID: 0}
+  cRigidbody: {fileID: 0}
   canMoveCam: 1
-  isMovingCam: 1
+  isMovingCamPos: 0
+  isMovingCamAngle: 0
   mouseSensitivityX: 1.25
   mouseSensitivityY: 1
   controllerSensitivityX: 3
@@ -380,13 +385,15 @@ MonoBehaviour:
   m_minVerticalLookAngle: -180
   m_yLookPosAdjust: 0
   heightFromPlayer: 15
-  heightMin: 12
+  heightMin: 6
   heightMax: 30
   zoomSpeed: 500
   spriteFadeMask:
     serializedVersion: 2
     m_Bits: 1024
   fadeRadius: 1
+  overlapSphereRadius: 5
+  forcePush: 5
   obstructionMask:
     serializedVersion: 2
     m_Bits: 135680
@@ -408,8 +415,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90f0937831952f47b08753296142234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  infoType: 0
   controller: {fileID: 21300000, guid: 9d76f99b6db006549939a9eaa95a45f5, type: 3}
   mKeyboard: {fileID: 21300000, guid: dbee6d70b27a103489f8e95c264ebca3, type: 3}
+  controllerText: 
+  mKeyboardText: 
 --- !u!114 &114600380841823140
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -421,8 +431,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90f0937831952f47b08753296142234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  infoType: 0
   controller: {fileID: 21300000, guid: 6bfdaad82739df549903fd903b600c2e, type: 3}
   mKeyboard: {fileID: 21300000, guid: b25908619f332af4dbaf80ec85bf95fa, type: 3}
+  controllerText: 
+  mKeyboardText: 
 --- !u!114 &114656889624116314
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -442,6 +455,8 @@ MonoBehaviour:
   fadeOutWait: 0
   fadeInSpeed: 1
   fadeOutSpeed: 0.5
+  fadeInAmount: 1
+  fadeOutAmount: 0
   fadeInAtStart: 0
   returnsToPool: 0
   worldManage: 0

@@ -11,7 +11,8 @@ public class CameraController : MonoBehaviour {
     //camera refs
     Transform cameraT;
     Camera mainCam;
-   
+    [HideInInspector] public Rigidbody cRigidbody;
+
     //control bools
     [Header("Cam Movement Bools")]
     public bool canMoveCam = true;
@@ -58,6 +59,8 @@ public class CameraController : MonoBehaviour {
     [Header("Masks")]
     public LayerMask spriteFadeMask;
     public float fadeRadius = 1f;
+    public float overlapSphereRadius = 5f;
+    public float forcePush = 5f;
     public LayerMask obstructionMask;
     public List<int> obstructionLayers = new List<int>();  
 
@@ -83,6 +86,7 @@ public class CameraController : MonoBehaviour {
         origPlayer = player;
         pc = player.GetComponent<PlayerController>();
         gravityBody = player.GetComponent<GravityBody>();
+        cRigidbody = GetComponent<Rigidbody>();
         origGBody = gravityBody;
         astralGravity = astralBody.GetComponent<GravityBody>();
     }
@@ -299,11 +303,36 @@ public class CameraController : MonoBehaviour {
         //send raycast
         if (Physics.SphereCast(transform.position, 1f, dir, out hit, dist , obstructionMask))
         {
-            //Debug.Log("hit ground, zoomng in");
             //anytime we hit the planet ground, zoome out 
             if (heightFromPlayer > heightMin)
+            {
                 ZoomIn(-0.05f);
+                //Debug.Log("zoom cast");
+            }
+                
+            return;
         }
+
+        //overlap sphere 
+        Collider[] obstructions = Physics.OverlapSphere(transform.position, overlapSphereRadius, obstructionMask);
+        if (obstructions.Length > 0)
+        {
+            if (heightFromPlayer > heightMin)
+            {
+                ZoomIn(-0.05f);
+
+                //Debug.Log("zoom overlap sphere");
+            }
+            //else
+            //{  
+            //    //add force to cam pos?                
+            //    if (pc.moveState != PlayerController.MoveStates.MEDITATING && pc.moveState != PlayerController.MoveStates.TALKING)
+            //        cRigidbody.AddForce(0f, forcePush, 0f);
+
+            //    Debug.Log("force overlap sphere");
+            //}
+        }
+
     }
 
     private void OnTriggerStay(Collider other)
@@ -311,7 +340,8 @@ public class CameraController : MonoBehaviour {
         //zoom in if camera is collding with stuff we dont like
         if (obstructionLayers.Contains(other.gameObject.layer))
         {
-            ZoomIn(-0.05f);
+            if (heightFromPlayer > heightMin)
+                ZoomIn(-0.05f);
         }
     }
 

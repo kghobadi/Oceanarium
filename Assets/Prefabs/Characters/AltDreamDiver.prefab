@@ -939,9 +939,8 @@ MonoBehaviour:
   - {fileID: 82612818459152270}
   currentSound: 0
   hasVoiceAudio: 1
-  usesAllLetters: 0
-  countsUp: 1
   speakFreq: 1
+  randomizePitch: 0
   spokenSounds:
   - {fileID: 8300000, guid: 3792a99fe977b854cbf2093ccb72136d, type: 3}
   - {fileID: 8300000, guid: 83d6ca983664e7a47a0e665052cd8b7b, type: 3}
@@ -952,9 +951,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c5842b81be7fe9541ae85644babb4f00, type: 3}
   - {fileID: 8300000, guid: 56a7c5198443a0348acac2541ccefc45, type: 3}
   - {fileID: 8300000, guid: 21d7b3093aa00ec40bc625c10c21d94b, type: 3}
-  letters: 
-  capitalLetters: 
-  spokenLetters: []
 --- !u!114 &114109759283125250
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -982,9 +978,11 @@ MonoBehaviour:
   autoActivates: 0
   playerInZone: 0
   displayUI: 1
+  guardian: 0
   interactDisplay: {fileID: 1087646893991152}
   myMonologues:
   - {fileID: 114549565882622306}
+  monologueIndeces: 
   resetTime: 5
 --- !u!114 &114230125946439644
 MonoBehaviour:
@@ -1206,6 +1204,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hostObj: {fileID: 1464027715759642}
   monoManager: {fileID: 0}
+  speakerAudio: {fileID: 0}
   theText: {fileID: 0}
   the_Text: {fileID: 0}
   usesTMP: 0
@@ -1213,7 +1212,6 @@ MonoBehaviour:
   currentLine: 0
   endAtLine: 0
   canSkip: 1
-  hasFinished: 0
   timeBetweenLetters: 0.01
   timeBetweenLines: 0
   conversational: 0
@@ -1262,6 +1260,7 @@ MonoBehaviour:
   currentMonologue: 0
   allMyMonologues:
   - {fileID: 11400000, guid: 5f9493a561dcc3b41b7d52cdd797dc40, type: 2}
+  worldSpaceCanvas: 0
   inMonologue: 0
   mTrigger: {fileID: 0}
   enableOnStart: 0
@@ -5934,7 +5933,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300156, guid: a8e8b6462d5903841bf0f1f3da13f7ab, type: 3}
-  m_Color: {r: 0.9550917, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
