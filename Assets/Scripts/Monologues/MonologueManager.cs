@@ -60,6 +60,9 @@ public class MonologueManager : MonoBehaviour
     public GameCamera speakerCam;
     [Tooltip("Defaults to talking -- can set to Meditation")]
     public PlayerController.MoveStates animationType = PlayerController.MoveStates.TALKING;
+    [Tooltip("Choices for displaying at the end of a Monologue -- for now only used by Guardian")]
+    public GameObject dialogueChoices;
+    DialogueChoice[] dChoices;
 
     void Awake()
     {
@@ -91,6 +94,17 @@ public class MonologueManager : MonoBehaviour
 
         //looper AI integration
         looperAI = GetComponent<LooperAI>();
+
+        //get dchoices && set mono manager ref -- then disable choices object
+        if (dialogueChoices)
+        {
+            dChoices = dialogueChoices.GetComponentsInChildren<DialogueChoice>();
+            for (int i = 0; i < dChoices.Length; i++)
+            {
+                dChoices[i].monoManager = this;
+            }
+            dialogueChoices.SetActive(false);
+        }
     }
 
     void Start()
@@ -124,6 +138,7 @@ public class MonologueManager : MonoBehaviour
         monoReader.timeBetweenLines = allMyMonologues[currentMonologue].timeBetweenLines;
         monoReader.conversational = allMyMonologues[currentMonologue].conversational;
         monoReader.waitTimes = allMyMonologues[currentMonologue].waitTimes;
+        monoReader.displayChoices = allMyMonologues[currentMonologue].displayChoices;
     }
 
     //has a wait for built in

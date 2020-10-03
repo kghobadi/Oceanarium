@@ -17,6 +17,8 @@ public struct GuardianBehaviorSets
 [Serializable]
 public struct GuardianBehaviorGroup
 {
+    [Tooltip("Name of behavior group")]
+    public string behaviorName;
     [Tooltip("An array of Guardian Behavior Sets")]
     public GuardianBehaviorSets[] gBehaviorGroup;
 }

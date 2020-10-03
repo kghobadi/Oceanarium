@@ -7,6 +7,7 @@ public class PlanetManager : MonoBehaviour {
     GameObject player;
     PlayerController pc;
     GameObject guardian;
+    MonologueManager gMonoManager;
     Guardian gBehavior;
     [HideInInspector] public MusicFader mFader;
     [HideInInspector] public Planter[] planterPearls;
@@ -27,6 +28,7 @@ public class PlanetManager : MonoBehaviour {
 
     [Header("Guardian Behaviors")]
     public GuardianBehaviorSets[] guardianBehaviors;
+    GuardianBehaviors gBehaviorsGroups; 
 
     [Header("Player Movement Settings")]
     public float newSwimSpeed = 25f;
@@ -46,6 +48,28 @@ public class PlanetManager : MonoBehaviour {
         mFader = FindObjectOfType<MusicFader>();
         planterPearls = GetComponentsInChildren<Planter>();
         growthPearls = GetComponentsInChildren<GrowthPearl>();
+        gBehaviorsGroups = GetComponent<GuardianBehaviors>();
+        gMonoManager = guardian.GetComponent<MonologueManager>();
+    }
+
+    //called to change guardian behavior group on this planet
+    public void ReassignGuardianBehaviors(int index)
+    {
+        if (gBehaviorsGroups)
+        {
+            //disable gMonologue 
+            if(gMonoManager.inMonologue)
+                gMonoManager.DisableMonologue();
+
+            //sets behavior to proper group
+            guardianBehaviors = gBehaviorsGroups.gBehaviors[index].gBehaviorGroup;
+
+            //reset guardian AI for this planet 
+            Collider[] planet = GetComponents<Collider>();
+
+            //only set guardian if not first planet
+            gBehavior.ResetGuardianLocation(guardianBehaviors[0].guardianLocation.position, guardianBehaviors, planet);
+        }
     }
     
     void Start()
