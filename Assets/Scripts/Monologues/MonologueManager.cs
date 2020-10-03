@@ -58,6 +58,8 @@ public class MonologueManager : MonoBehaviour
     public Transform lookAtObj;
     [Tooltip("Can use a cinemachine camera instead, just place it here and it will override other camera settings")]
     public GameCamera speakerCam;
+    [Tooltip("Defaults to talking -- can set to Meditation")]
+    public PlayerController.MoveStates animationType = PlayerController.MoveStates.TALKING;
 
     void Awake()
     {
@@ -209,9 +211,20 @@ public class MonologueManager : MonoBehaviour
             //no move
             player.canMove = false;
             player.canJump = false;
+
             //set to talking state 
-            player.moveState = PlayerController.MoveStates.TALKING;
-            player.animator.SetAnimator("idle");
+            if (animationType == PlayerController.MoveStates.TALKING)
+            {
+                player.moveState = PlayerController.MoveStates.TALKING;
+                player.animator.SetAnimator("idle");
+            }
+            //set to meditating
+            else if (animationType == PlayerController.MoveStates.MEDITATING)
+            {
+                player.moveState = PlayerController.MoveStates.MEDITATING;
+                player.animator.SetAnimator("meditating");
+            }
+
             //zero player vel
             player.playerRigidbody.velocity = Vector3.zero;
             player.playerRigidbody.angularVelocity = Vector3.zero;
@@ -289,9 +302,13 @@ public class MonologueManager : MonoBehaviour
         //unlock player
         if (mono.lockPlayer)
         {
+            //reenable movement 
             player.canMove = true;
             player.canJump = true;
+
+            //return to idle
             player.moveState = PlayerController.MoveStates.IDLE;
+            player.animator.SetAnimator("idle");
         }
         
         //set cam controller

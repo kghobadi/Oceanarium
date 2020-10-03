@@ -123,14 +123,17 @@ public class PlayerController : AudioHandler
             //check for sprinting input
             SwimInputs();
 
-            //called to handle jump inputs
-            TakeJumpInput();
-
             //correlates jumping logic with animations
             JumpDetection();
 
             //repulses player from planet when they land too hard
             RepulsionLogic();
+
+            if (canJump)
+            {
+                //called to handle jump inputs
+                TakeJumpInput();
+            }
         }
 
         //reset jump 
@@ -259,7 +262,7 @@ public class PlayerController : AudioHandler
         {
             idleTimer += Time.deltaTime;
             //idle until reach meditation time
-            if(idleTimer < timeUntilMeditate && moveState != MoveStates.MEDITATING)
+            if(idleTimer < timeUntilMeditate)
             {
                 moveState = MoveStates.IDLE;
                 //diver idle
@@ -323,14 +326,29 @@ public class PlayerController : AudioHandler
     public void SetPearlMeditation()
     {
         //only if not already and controls from start are gone and not in pause menu
-        if (moveState != MoveStates.MEDITATING
-            && quitScript.escMenu.activeSelf == false)
+        if (quitScript.escMenu.activeSelf == false)
         {
+            canMove = false;
             canJump = false;
 
             //diver meditates
             moveState = MoveStates.MEDITATING;
             animator.SetAnimator("meditating");
+        }
+    }
+
+    //stop pearl meditating --unnecessary due to logic in MonologeManager
+    public void DisablePearlMeditation()
+    {
+        //only if not already and controls from start are gone and not in pause menu
+        if (moveState == MoveStates.MEDITATING)
+        {
+            canMove = true;
+            canJump = true;
+
+            //diver idle
+            moveState = MoveStates.IDLE;
+            animator.SetAnimator("idle");
         }
     }
 
@@ -402,7 +420,7 @@ public class PlayerController : AudioHandler
         var inputDevice = InputManager.ActiveDevice;
 
         //start jumpTimer
-        if ((Input.GetButton("Jump")|| inputDevice.Action1) && (infiniteJump || canJump) && !jumped)
+        if ((Input.GetButton("Jump")|| inputDevice.Action1) && !jumped)
         {
             //set warm up animation for charged swim jump 
             if (jumpTimer > jumpMin)
@@ -422,7 +440,7 @@ public class PlayerController : AudioHandler
         }
 
         //on button up
-        if ((Input.GetButtonUp("Jump") || inputDevice.Action1.WasReleased) && (infiniteJump || canJump) && !jumped)
+        if ((Input.GetButtonUp("Jump") || inputDevice.Action1.WasReleased) && !jumped)
         {
             Jump();
         }
