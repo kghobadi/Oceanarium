@@ -204,6 +204,8 @@ public class MonologueManager : MonoBehaviour
         {
             //turn off cam movement
             camController.canMoveCam = false;
+            //set current speaker
+            camController.currentSpeaker = transform;
             //move cam to the right 
             camController.transform.Translate(new Vector3(cameraXPos, 0, 0), Space.Self);
             //look at specific obj
@@ -330,6 +332,8 @@ public class MonologueManager : MonoBehaviour
         if(camController.enabled == false)
             camController.enabled = true;
         camController.canMoveCam = true;
+        //set current speaker
+        camController.currentSpeaker = null;
 
         //check for cinematic to enable 
         if (mono.playsCinematic)

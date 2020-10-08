@@ -510,7 +510,7 @@ Depth: 3
 
 Game Object: Assets/Prefabs/Spawnable Plants/Stack.prefab
 Layer: Default
-Toggle: False
+Toggle: True
 Slider: 1
 Lock Orientation Toggle: False
 Random Rotation Toggle: False
@@ -519,7 +519,7 @@ Random Rotation Y: False
 Random Rotation Z: False
 Random Scale Toggle: True
 Random Scale Min: 1
-Random Scale Max: 3
+Random Scale Max: 2
 Fixed Rotation Toggle: False
 Fixed Rotation X: 0
 Fixed Rotation Y: 0
@@ -636,7 +636,7 @@ Depth: 3
 
 Game Object: Assets/Prefabs/Props/TwinkleEye.prefab
 Layer: Default
-Toggle: True
+Toggle: False
 Slider: 1
 Lock Orientation Toggle: False
 Random Rotation Toggle: False

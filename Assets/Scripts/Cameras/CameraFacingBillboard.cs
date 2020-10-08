@@ -9,8 +9,6 @@ public class CameraFacingBillboard : MonoBehaviour
     private GravityBody playerBody;
     Camera playerCam;
     CameraController camControl;
-    //fades sprite when in front of pcam
-    FadeForCamera cameraFader;
     SpriteRenderer sr;
 
     [Tooltip("Has gravity body set up")]
@@ -26,17 +24,12 @@ public class CameraFacingBillboard : MonoBehaviour
             pc = player.GetComponent<PlayerController>();
         }
       
+        //cam refs
         playerCam = Camera.main;
         camControl = playerCam.GetComponent<CameraController>();
 
         sr = GetComponent<SpriteRenderer>();
 
-        //add camera fader if not on object already 
-        cameraFader = GetComponent<FadeForCamera>();
-        if(cameraFader == null)
-        {
-            cameraFader = gameObject.AddComponent<FadeForCamera>();
-        }
         //gets and uses own grav body 
         if (hasGravityBody)
         {

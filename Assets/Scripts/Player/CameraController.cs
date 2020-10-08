@@ -62,7 +62,8 @@ public class CameraController : MonoBehaviour {
     public float overlapSphereRadius = 5f;
     public float forcePush = 5f;
     public LayerMask obstructionMask;
-    public List<int> obstructionLayers = new List<int>();  
+    public List<int> obstructionLayers = new List<int>();
+    [HideInInspector] public Transform currentSpeaker;
 
     [Header("FOV")]
     public bool lerpingFOV;
@@ -127,9 +128,11 @@ public class CameraController : MonoBehaviour {
         }
 
         //fade objs when player can move 
-        if (pc.canMove)
+        FadeCamObstructions();
+        //when player cannot move -- this is mostly during mono
+        if(pc.canMove == false && currentSpeaker != null)
         {
-            FadeCamObstructions();
+            FadeSprites();
         }
 
         //smoothly changing FOV
@@ -323,17 +326,9 @@ public class CameraController : MonoBehaviour {
 
                 //Debug.Log("zoom overlap sphere");
             }
-            //else
-            //{  
-            //    //add force to cam pos?                
-            //    if (pc.moveState != PlayerController.MoveStates.MEDITATING && pc.moveState != PlayerController.MoveStates.TALKING)
-            //        cRigidbody.AddForce(0f, forcePush, 0f);
-
-            //    Debug.Log("force overlap sphere");
-            //}
         }
-
     }
+    
 
     private void OnTriggerStay(Collider other)
     {
@@ -383,13 +378,33 @@ public class CameraController : MonoBehaviour {
         //send raycast
         if (Physics.SphereCast(transform.position, fadeRadius, dir, out hit, dist, spriteFadeMask))
         {
-            if(hit.transform.GetComponent<FadeForCamera>())
+            FadeForCamera ffCam = hit.transform.GetComponent<FadeForCamera>();
+            if (ffCam)
             {
-                hit.transform.GetComponent<FadeForCamera>().Fade(0.5f);
+                ffCam.Fade(0.5f);
+                Debug.Log("fading " + ffCam.gameObject.name + " for cam");
             }
         }
     }
-    
+
+    //shoots rays towards speakers and fades opacities of sprites
+    void FadeSprites()
+    {
+        RaycastHit hit = new RaycastHit();
+        Vector3 dir = currentSpeaker.transform.position - transform.position;
+        float dist = Vector3.Distance(transform.position, currentSpeaker.transform.position);
+        //send raycast
+        if (Physics.SphereCast(transform.position, fadeRadius, dir, out hit, dist, spriteFadeMask))
+        {
+            FadeForCamera ffCam = hit.transform.GetComponent<FadeForCamera>();
+            if (ffCam)
+            {
+                ffCam.Fade(0.5f);
+                Debug.Log("fading " + ffCam.gameObject.name + " for char");
+            }
+        }
+    }
+
     //called to lerp cam fov after transitions 
     public void LerpFOV(float desiredFOV, float lerpLength)
     {
