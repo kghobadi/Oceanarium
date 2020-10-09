@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4249715214794676}
   - component: {fileID: 198563796363386318}
   - component: {fileID: 199877711257700296}
-  m_Layer: 16
+  m_Layer: 22
   m_Name: Spawnlights (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,9 +40,10 @@ GameObject:
   - component: {fileID: 95872039000287610}
   - component: {fileID: 114726975618477128}
   - component: {fileID: 65825423067517192}
-  - component: {fileID: 114799134739830948}
   - component: {fileID: 114662397241693038}
-  m_Layer: 10
+  - component: {fileID: 114497800451413472}
+  - component: {fileID: 114809700157258416}
+  m_Layer: 22
   m_Name: SeaweedSpawn
   m_TagString: Prop
   m_Icon: {fileID: 0}
@@ -106,6 +107,30 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114497800451413472
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1408911501964028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96b05950a51549c47bb37725b78f266a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadingIn: 0
+  fadingOut: 0
+  keepActive: 0
+  fadeOutImmediately: 0
+  fadeInWait: 0
+  fadeOutWait: 0
+  fadeInSpeed: 0.75
+  fadeOutSpeed: 1
+  fadeInAmount: 1
+  fadeOutAmount: 0
+  fadeInAtStart: 0
+  returnsToPool: 0
+  worldManage: 0
 --- !u!114 &114662397241693038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -133,7 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasGravityBody: 0
---- !u!114 &114799134739830948
+--- !u!114 &114809700157258416
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,10 +166,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1408911501964028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3de83a42024898649849558f7d401192, type: 3}
+  m_Script: {fileID: 11500000, guid: b45e195b13ef2b246bc38b1c2ddc97f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitToCheck: 1
 --- !u!198 &198563796363386318
 ParticleSystem:
   m_ObjectHideFlags: 1
