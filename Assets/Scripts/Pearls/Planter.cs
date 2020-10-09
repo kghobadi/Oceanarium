@@ -28,6 +28,7 @@ public class Planter : AudioHandler {
     [Tooltip("Planet to add plants to")]
     public PlanetManager planetManager;
     public bool playerPresent;
+    bool hasMonos;
     public bool canActivate = true;
     [Tooltip("True once player activates my Homing Pearl")]
     public bool activated;
@@ -84,20 +85,26 @@ public class Planter : AudioHandler {
         lure = transform.GetChild(0).GetComponent<ParticleSystem>();
         origLureScale = lure.transform.localScale;
         popLights = transform.GetChild(1).GetComponent<ParticleSystem>();
-        interactObj = transform.GetChild(2).gameObject;
 
-        //turn off interact obj 
-        if(interactObj)
-            interactObj.SetActive(false);
-
-        //pearl mono
-        pearlMono = transform.GetChild(3).gameObject;
-        if (pearlMono)
+        //for pearl monos
+        if(transform.childCount > 2)
         {
-            selfFade = pearlMono.GetComponent<FadeSprite>();
-            innerMono = pearlMono.GetComponent<MonologueManager>();
-        }
+            interactObj = transform.GetChild(2).gameObject;
 
+            //turn off interact obj 
+            if (interactObj)
+                interactObj.SetActive(false);
+
+            //pearl mono
+            pearlMono = transform.GetChild(3).gameObject;
+            if (pearlMono)
+            {
+                selfFade = pearlMono.GetComponent<FadeSprite>();
+                innerMono = pearlMono.GetComponent<MonologueManager>();
+            }
+
+            hasMonos = true;
+        }
     }
 	
 	void Update ()
@@ -105,7 +112,17 @@ public class Planter : AudioHandler {
         //player in trigger
         if (playerPresent)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (hasMonos)
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    if (!activated && canActivate)
+                    {
+                        ActivatePlanter(true);
+                    }
+                }
+            }
+            else
             {
                 if (!activated && canActivate)
                 {

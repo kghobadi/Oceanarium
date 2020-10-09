@@ -128,11 +128,11 @@ public class CameraController : MonoBehaviour {
         }
 
         //fade objs when player can move 
-        FadeCamObstructions();
+        FadeCamObstructions(player.transform, 0.5f);
         //when player cannot move -- this is mostly during mono
-        if(pc.canMove == false && currentSpeaker != null)
+        if(currentSpeaker != null)
         {
-            FadeSprites();
+            FadeCamObstructions(currentSpeaker.transform, 0.1f);
         }
 
         //smoothly changing FOV
@@ -329,7 +329,6 @@ public class CameraController : MonoBehaviour {
         }
     }
     
-
     private void OnTriggerStay(Collider other)
     {
         //zoom in if camera is collding with stuff we dont like
@@ -370,7 +369,7 @@ public class CameraController : MonoBehaviour {
     }
 
     //shoots rays towards players and fades opacities of sprite s
-    void FadeCamObstructions()
+    void FadeCamObstructions(Transform objectToCheck, float fadeOutAmount)
     {
         RaycastHit hit = new RaycastHit();
         Vector3 dir = player.transform.position - transform.position;
@@ -381,26 +380,8 @@ public class CameraController : MonoBehaviour {
             FadeForCamera ffCam = hit.transform.GetComponent<FadeForCamera>();
             if (ffCam)
             {
-                ffCam.Fade(0.5f);
+                ffCam.Fade(fadeOutAmount);
                 Debug.Log("fading " + ffCam.gameObject.name + " for cam");
-            }
-        }
-    }
-
-    //shoots rays towards speakers and fades opacities of sprites
-    void FadeSprites()
-    {
-        RaycastHit hit = new RaycastHit();
-        Vector3 dir = currentSpeaker.transform.position - transform.position;
-        float dist = Vector3.Distance(transform.position, currentSpeaker.transform.position);
-        //send raycast
-        if (Physics.SphereCast(transform.position, fadeRadius, dir, out hit, dist, spriteFadeMask))
-        {
-            FadeForCamera ffCam = hit.transform.GetComponent<FadeForCamera>();
-            if (ffCam)
-            {
-                ffCam.Fade(0.5f);
-                Debug.Log("fading " + ffCam.gameObject.name + " for char");
             }
         }
     }
