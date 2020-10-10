@@ -7,8 +7,12 @@ public class DeactivateObject : MonoBehaviour
     GameObject _player;
     PlayerController pc;
     WorldManager wm;
-    SpriteRenderer sRenderer;
-    FadeSprite fader;
+
+    //so worldmanager can access these 
+    [HideInInspector]
+    public SpriteRenderer sRenderer;
+    [HideInInspector]
+    public FadeSprite fader;
     
     [Tooltip("Added to WorldMan dist")]
     public float individualDistOffset = 10f;
@@ -31,6 +35,7 @@ public class DeactivateObject : MonoBehaviour
                 fader = sRenderer.gameObject.AddComponent<FadeSprite>();
             }
         }
+        //sprite renderer found on this transform
         else
         {
             fader = GetComponent<FadeSprite>();
@@ -41,9 +46,11 @@ public class DeactivateObject : MonoBehaviour
         }
 
         //set fader
-        fader.wm = this;
-        fader.worldManage = true;
-        
+        if (fader)
+        {
+            fader.wm = this;
+            fader.worldManage = true;
+        }
     }
 
     void Update()
@@ -68,19 +75,13 @@ public class DeactivateObject : MonoBehaviour
         if (distFromPlayer > (wm.activationDistance + individualDistOffset))
         {
             //null check on sprite renderer
-            if(sRenderer != null)
+            if(fader != null)
             {
-                //check if sprite is visible 
-                if (sRenderer.isVisible)
+                //fade out! -- if not already. Fader will Deactivate once it is transparent
+                if (fader.fadeState != FadeSprite.FadeStates.FADINGOUT && 
+                    fader.fadeState != FadeSprite.FadeStates.TRANSPARENT)
                 {
-                    //fade out already!
-                    if (!fader.fadingOut)
-                        fader.FadeOut();
-                }
-                //just deactivate
-                else
-                {
-                    Deactivate();
+                    fader.FadeOut();
                 }
             }
             //just deactivate

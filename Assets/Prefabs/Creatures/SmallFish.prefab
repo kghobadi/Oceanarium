@@ -349,8 +349,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3de83a42024898649849558f7d401192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  individualDistOffset: 50
-  dist: 10
+  sRenderer: {fileID: 0}
+  fader: {fileID: 0}
+  individualDistOffset: 100
+  distFromPlayer: 0
 --- !u!114 &114743028797002464
 MonoBehaviour:
   m_ObjectHideFlags: 1
