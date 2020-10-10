@@ -9,10 +9,10 @@ public class DeactivateObject : MonoBehaviour
     WorldManager wm;
     SpriteRenderer sRenderer;
     FadeSprite fader;
-
-    public bool waitToCheck;
+    
+    [Tooltip("Added to WorldMan dist")]
     public float individualDistOffset = 10f;
-
+    public float distFromPlayer;
     void Awake()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
@@ -20,24 +20,30 @@ public class DeactivateObject : MonoBehaviour
         wm = FindObjectOfType<WorldManager>();
         sRenderer = GetComponent<SpriteRenderer>();
 
-        SetFader();
-    }
-
-    void SetFader()
-    {
-        fader = GetComponent<FadeSprite>();
-        if (fader == null)
+        //assure sprite renderer and fade sprite exist 
+        if (sRenderer == null)
         {
-            fader = gameObject.AddComponent<FadeSprite>();
+            sRenderer = GetComponentInChildren<SpriteRenderer>();
+
+            fader = sRenderer.GetComponent<FadeSprite>();
+            if (fader == null)
+            {
+                fader = sRenderer.gameObject.AddComponent<FadeSprite>();
+            }
+        }
+        else
+        {
+            fader = GetComponent<FadeSprite>();
+            if (fader == null)
+            {
+                fader = gameObject.AddComponent<FadeSprite>();
+            }
         }
 
+        //set fader
+        fader.wm = this;
         fader.worldManage = true;
-    }
-
-    void Start()
-    {
-        if(!waitToCheck)
-            DistCheck();
+        
     }
 
     void Update()
@@ -56,8 +62,10 @@ public class DeactivateObject : MonoBehaviour
     //deactivate object when it's far enough away from player 
     void DistCheck()
     {
+        distFromPlayer = Vector3.Distance(_player.transform.position, transform.position);
+
         //check to see if its greater than wm dist
-        if (Vector3.Distance(_player.transform.position, transform.position) > (wm.activationDistance + individualDistOffset))
+        if (distFromPlayer > (wm.activationDistance + individualDistOffset))
         {
             //null check on sprite renderer
             if(sRenderer != null)

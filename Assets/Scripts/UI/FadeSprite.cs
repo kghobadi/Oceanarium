@@ -11,7 +11,8 @@ public class FadeSprite : MonoBehaviour {
     //store image/text + color
     SpriteRenderer thisSR;
     Color alphaValue;
-    DeactivateObject wm;
+    [HideInInspector]
+    public DeactivateObject wm;
 
     //these will be on during the fades
     public bool fadingIn, fadingOut, keepActive, fadeOutImmediately;
@@ -25,11 +26,16 @@ public class FadeSprite : MonoBehaviour {
     public bool returnsToPool;
     public bool worldManage;
 
-	void Start () {
+    private void Awake()
+    {
         //checks privately whether this object has image or text component
         thisSR = GetComponent<SpriteRenderer>();
-        wm = GetComponent<DeactivateObject>();
 
+        wm = GetComponent<DeactivateObject>();
+    }
+
+    void Start () {
+        
         //differet syntax for image and text
         alphaValue = thisSR.color;
         
