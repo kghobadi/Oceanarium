@@ -284,6 +284,7 @@ public class Guardian : AudioHandler {
             guardianMonoIndeces[i] = gBehaviors[i].monologueIndex;
         }
 
+        //set grav
         grav.enabled = false;
         grav.planets = planets;
 

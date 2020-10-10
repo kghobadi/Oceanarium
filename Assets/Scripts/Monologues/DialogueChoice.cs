@@ -32,8 +32,12 @@ public class DialogueChoice : MonoBehaviour {
             events[i].Invoke();
         }
 
+        //activated
         hasActivated = true;
         choiceHeader.gameObject.SetActive(false);
+        //deactivate mono
+        if(monoManager.inMonologue)
+            monoManager.DisableMonologue();
 
         //disable cursor
         Cursor.visible = false;

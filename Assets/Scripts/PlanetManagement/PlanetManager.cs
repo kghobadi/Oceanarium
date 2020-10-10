@@ -7,7 +7,6 @@ public class PlanetManager : MonoBehaviour {
     GameObject player;
     PlayerController pc;
     GameObject guardian;
-    MonologueManager gMonoManager;
     Guardian gBehavior;
     [HideInInspector] public MusicFader mFader;
     [HideInInspector] public Planter[] planterPearls;
@@ -49,7 +48,6 @@ public class PlanetManager : MonoBehaviour {
         planterPearls = GetComponentsInChildren<Planter>();
         growthPearls = GetComponentsInChildren<GrowthPearl>();
         gBehaviorsGroups = GetComponent<GuardianBehaviors>();
-        gMonoManager = guardian.GetComponent<MonologueManager>();
     }
 
     //called to change guardian behavior group on this planet
@@ -57,10 +55,6 @@ public class PlanetManager : MonoBehaviour {
     {
         if (gBehaviorsGroups)
         {
-            //disable gMonologue 
-            if(gMonoManager.inMonologue)
-                gMonoManager.DisableMonologue();
-
             //sets behavior to proper group
             guardianBehaviors = gBehaviorsGroups.gBehaviors[index].gBehaviorGroup;
 
@@ -69,6 +63,7 @@ public class PlanetManager : MonoBehaviour {
 
             //only set guardian if not first planet
             gBehavior.ResetGuardianLocation(guardianBehaviors[0].guardianLocation.position, guardianBehaviors, planet);
+            
         }
     }
     
