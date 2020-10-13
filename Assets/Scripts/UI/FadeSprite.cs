@@ -11,10 +11,19 @@ public class FadeSprite : MonoBehaviour {
     //store image/text + color
     SpriteRenderer thisSR;
     Color alphaValue;
-    DeactivateObject wm;
+    [HideInInspector]
+    public DeactivateObject wm;
 
-    //these will be on during the fades
-    public bool fadingIn, fadingOut, keepActive, fadeOutImmediately;
+    public FadeStates fadeState;
+    public enum FadeStates
+    {
+        FADINGIN, FADINGOUT, OPAQUE, TRANSPARENT,
+    }
+
+    [Tooltip("Keep gameObject active when fades out")]
+    public bool keepActive;
+    [Tooltip("Fade out as soon as object has fully faded in")]
+    public bool fadeOutImmediately;
 
     //controls the speed of the fade
     public float fadeInWait, fadeOutWait, fadeInSpeed = 0.75f, fadeOutSpeed = 1f;
@@ -24,21 +33,32 @@ public class FadeSprite : MonoBehaviour {
     public bool fadeInAtStart;
     public bool returnsToPool;
     public bool worldManage;
-
-	void Start () {
+    
+    private void Awake()
+    {
         //checks privately whether this object has image or text component
         thisSR = GetComponent<SpriteRenderer>();
-        wm = GetComponent<DeactivateObject>();
 
+        wm = GetComponent<DeactivateObject>();
+    }
+
+    void Start () {
+        
         //differet syntax for image and text
         alphaValue = thisSR.color;
+
+        //default fade state to transparent?
+        fadeState = FadeStates.OPAQUE;
         
         //automatically fadeIn at start if object has this script
         if (fadeInAtStart)
         {
+            //set alpha to 0
             alphaValue.a = 0;
             thisSR.color = alphaValue;
-            StartCoroutine(WaitToFadeIn());
+
+            //fade in!
+            FadeIn();
         }
 	}
 
@@ -50,20 +70,18 @@ public class FadeSprite : MonoBehaviour {
         }
         else
         {
-            fadingIn = true;
-            fadingOut = false;
+            fadeState = FadeStates.FADINGIN;
         }
     }
 
     public void FadeOut()
     {
-        fadingIn = false;
-        fadingOut = true;
+        fadeState = FadeStates.FADINGOUT;
     }
 	
 	void Update () {
         //when fadingIn, this is called every frame
-        if (fadingIn)
+        if (fadeState == FadeStates.FADINGIN)
         {
             if(alphaValue.a < fadeInAmount)
             {
@@ -72,7 +90,12 @@ public class FadeSprite : MonoBehaviour {
             }
             else
             {
-                fadingIn = false;
+                //set alpha val
+                alphaValue.a = fadeInAmount;
+                thisSR.color = alphaValue;
+                //set fade state -- faded in
+                fadeState = FadeStates.OPAQUE;
+
                 if (fadeOutImmediately)
                 {
                     StartCoroutine(WaitToFadeOut());
@@ -81,7 +104,7 @@ public class FadeSprite : MonoBehaviour {
         }
 
         //when fading out, this is called every frame and eventually turns off object
-        if (fadingOut)
+        if (fadeState == FadeStates.FADINGOUT)
         {
             if (alphaValue.a > fadeOutAmount)
             {
@@ -90,15 +113,19 @@ public class FadeSprite : MonoBehaviour {
             }
             else
             {
-                fadingOut = false;
+                //set to transparent state -- faded out
+                fadeState = FadeStates.TRANSPARENT;
+                //deactivate
                 if (!keepActive)
                 {
                     gameObject.SetActive(false);
                 }
+                //deactivate with WM
                 if (worldManage)
                 {
                     wm.Deactivate();
                 }
+                //pooled object -- return to pool
                 if (returnsToPool)
                 {
                     GetComponent<PooledObject>().ReturnToPool();
@@ -110,14 +137,14 @@ public class FadeSprite : MonoBehaviour {
     public IEnumerator WaitToFadeIn()
     {
         yield return new WaitForSeconds(fadeInWait);
-        
-        fadingIn = true;
+
+        fadeState = FadeStates.FADINGIN;
     }
 
     public IEnumerator WaitToFadeOut()
     {
         yield return new WaitForSeconds(fadeOutWait);
-        
-        fadingOut = true;
+
+        fadeState = FadeStates.FADINGOUT;
     }
 }

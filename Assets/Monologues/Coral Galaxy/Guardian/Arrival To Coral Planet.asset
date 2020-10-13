@@ -23,6 +23,7 @@ MonoBehaviour:
   waitTimes: []
   repeatsAtFinish: 0
   condensedMonologue: {fileID: 0}
+  displayChoices: 1
   triggersMonologues: 0
   monologueIndeces: 
   monologueWaits: []

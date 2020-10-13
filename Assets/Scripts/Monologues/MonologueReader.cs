@@ -37,6 +37,9 @@ public class MonologueReader : MonoBehaviour {
     public float[] waitTimes;
     bool waiting;
 
+    [Tooltip("For 'dialogue' options at the end of Monologue")]
+    public bool displayChoices;
+
     void Awake()
     {
         theText = GetComponent<Text>();
@@ -113,7 +116,18 @@ public class MonologueReader : MonoBehaviour {
         //reached the  end, reset
         if (currentLine >= endAtLine)
         {
-            monoManager.DisableMonologue();
+            if (displayChoices)
+            {
+                monoManager.dialogueChoices.SetActive(true);
+
+                //enable cursor
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
+            else
+            {
+                monoManager.DisableMonologue();
+            }
         }
         //set next typing line 
         else

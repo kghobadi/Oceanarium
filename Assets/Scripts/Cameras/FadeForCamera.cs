@@ -3,106 +3,58 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Fades a sprite if its in front of the camera
+[RequireComponent(typeof(FadeSprite))]
 public class FadeForCamera : MonoBehaviour {
     
-    public bool fadingBack;
-
+    FadeSprite fader;
     SpriteRenderer spriteRender;
-    BoxCollider bCollider;
-    SphereCollider sphereCol;
-    public bool boxOrSphere;
+    BoxCollider col;
+    SphereCollider sCol;
+    readonly int plantLayer = 22;
 
     void Awake()
     {
-        GetRefs();
-    }
-
-    void GetRefs()
-    {
         spriteRender = GetComponent<SpriteRenderer>();
-
-        //get collider on this obj
-        bCollider = GetComponent<BoxCollider>();
-        if (bCollider != null)
-            boxOrSphere = true;
-        else
-        {
-            sphereCol = GetComponent<SphereCollider>();
-            boxOrSphere = false;
-        }
-    }
-
-    void Update () {
-        //lerps alpha back after Fade for obstruction
-        if (fadingBack)
-        {
-            Color alphaVal = spriteRender.color;
-            alphaVal.a = Mathf.Lerp(alphaVal.a, 1, Time.deltaTime);
-            spriteRender.color = alphaVal;
-
-            if (alphaVal.a > 0.99f)
-            {
-                fadingBack = false;
-
-                alphaVal = spriteRender.color;
-                alphaVal.a = 1f;
-                spriteRender.color = alphaVal;
-
-                SetTrigger(false);
-            }
-        }
+        col = GetComponent<BoxCollider>();
+        sCol = GetComponent<SphereCollider>();
+        fader = GetComponent<FadeSprite>();
+        fader.keepActive = true;
+        fader.fadeInSpeed = 0.25f;
+        fader.fadeOutSpeed = 2f;
+        //set this obj layer to plant
+        gameObject.layer = plantLayer;
     }
 
     //called by camera on Objects which are stagnant in env and might block view of player
     public void Fade(float amount)
     {
+        //set fade out 
+        fader.StopAllCoroutines();
+        fader.fadeOutAmount = amount;
+        fader.FadeOut();
+
+        //set fade in
+        fader.fadeInWait = 1f;
+        fader.fadeInAmount = 1f;
+        fader.StartCoroutine(fader.WaitToFadeIn());
+
+        //set col
         StopAllCoroutines();
-        fadingBack = false;
-
-        //null check 
-        if (spriteRender == null)
-            GetRefs();
-        
-        Color alphaVal = spriteRender.color;
-        alphaVal.a = amount;
-        spriteRender.color = alphaVal;
-
-        SetTrigger(true);
-
-        StartCoroutine(FadeOut());
+        if(col)
+            col.isTrigger = true;
+        if(sCol)
+            sCol.isTrigger = true;
+        StartCoroutine(ReturnCollider(1f));
     }
 
-    //sets collider to trigger or not
-    void SetTrigger(bool trueOrFalse)
+    //resets collider to active 
+    IEnumerator ReturnCollider(float wait)
     {
-        if (boxOrSphere)
-            bCollider.isTrigger = trueOrFalse;
-        else
-            sphereCol.isTrigger = trueOrFalse;
-    }
+        yield return new WaitForSeconds(wait);
 
-    //fades object back to normal alpha when no longer obstructing view of player
-    IEnumerator FadeOut()
-    {
-        yield return new WaitForSeconds(1);
-
-        fadingBack = true;
-        
-    }
-
-    //fades object back to normal alpha when no longer obstructing view of player
-    IEnumerator ResetTrigger(bool trueOrFalse)
-    {
-        yield return new WaitForSeconds(1);
-
-        SetTrigger(trueOrFalse);
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.tag == "Player")
-        {
-            Fade(0.95f);
-        }
+        if (col)
+            col.isTrigger = false;
+        if (sCol)
+            sCol.isTrigger = false;
     }
 }

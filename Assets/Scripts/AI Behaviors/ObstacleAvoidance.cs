@@ -100,7 +100,7 @@ public class ObstacleAvoidance : MonoBehaviour {
         if (Physics.SphereCast(transform.position, 1f, dir, out hit, 10f, obstacles))
         {
             //elevate if hit    
-            Debug.Log(gameObject.name + " found obstacles");
+            //Debug.Log(gameObject.name + " found obstacles");
             if (grav.distanceFromPlanet < maxHeight - 2f)
             {
                 if (usesFwdThrust)
@@ -122,7 +122,7 @@ public class ObstacleAvoidance : MonoBehaviour {
             rBody.AddForce(grav.GetUp() * elevationSpeed);
         else
             rBody.AddForce(transform.up * elevationSpeed);
-        Debug.Log(gameObject.name + " Elevating");
+        //Debug.Log(gameObject.name + " Elevating");
     }
 
     //called when ray forward hits obstacle
@@ -130,7 +130,7 @@ public class ObstacleAvoidance : MonoBehaviour {
     {
         rBody.AddForce(-transform.up * elevationSpeed);
 
-        Debug.Log(gameObject.name + " Descending");
+        //Debug.Log(gameObject.name + " Descending");
     }
 
     //called when ray forward hits obstacle
@@ -139,7 +139,7 @@ public class ObstacleAvoidance : MonoBehaviour {
         Vector3 fwd = transform.forward * elevationSpeed;
         rBody.AddForce(fwd);
 
-        Debug.Log(gameObject.name + " fwd thrusting");
+        //Debug.Log(gameObject.name + " fwd thrusting");
     }
 
     //called when ray forward hits obstacle
@@ -148,7 +148,7 @@ public class ObstacleAvoidance : MonoBehaviour {
         Vector3 bkwd = -transform.forward * elevationSpeed;
         rBody.AddForce(bkwd);
 
-        Debug.Log(gameObject.name + " backward thrusting");
+        //Debug.Log(gameObject.name + " backward thrusting");
     }
 
     //called when ray forward hits obstacle
@@ -157,7 +157,7 @@ public class ObstacleAvoidance : MonoBehaviour {
         Vector3 right = transform.right * elevationSpeed;
         rBody.AddForce(right);
         
-        Debug.Log(gameObject.name + " side stepping right");
+        //Debug.Log(gameObject.name + " side stepping right");
     }
 
     //called when ray forward hits obstacle
@@ -166,6 +166,6 @@ public class ObstacleAvoidance : MonoBehaviour {
         Vector3 left = -transform.right * elevationSpeed;
         rBody.AddForce(left);
 
-        Debug.Log(gameObject.name + " side stepping left");
+        //Debug.Log(gameObject.name + " side stepping left");
     }
 }

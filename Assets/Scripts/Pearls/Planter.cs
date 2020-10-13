@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Planter : AudioHandler {
+    PlayerController pc;
     MeshRenderer myMR;
     CapsuleCollider capColl;
     MoveTowards movement;
@@ -10,6 +11,10 @@ public class Planter : AudioHandler {
     ParticleSystem lure;
     Vector3 origLureScale;
     ParticleSystem popLights;
+    GameObject interactObj;
+    GameObject pearlMono;
+    FadeSprite selfFade;
+    MonologueManager innerMono;
 
     [Header("Planter Travel")]
     [Tooltip("Determinations destination / activation when it arrives at final point")]
@@ -22,6 +27,8 @@ public class Planter : AudioHandler {
     public bool invisableOnStart;
     [Tooltip("Planet to add plants to")]
     public PlanetManager planetManager;
+    public bool playerPresent;
+    bool hasMonos;
     public bool canActivate = true;
     [Tooltip("True once player activates my Homing Pearl")]
     public bool activated;
@@ -60,6 +67,8 @@ public class Planter : AudioHandler {
     {
         base.Awake();
 
+        pc = FindObjectOfType<PlayerController>();
+
         //get all refs
         myMR = GetComponent<MeshRenderer>();
         myMR.material = silentMat;
@@ -76,10 +85,51 @@ public class Planter : AudioHandler {
         lure = transform.GetChild(0).GetComponent<ParticleSystem>();
         origLureScale = lure.transform.localScale;
         popLights = transform.GetChild(1).GetComponent<ParticleSystem>();
+
+        //for pearl monos
+        if(transform.childCount > 2)
+        {
+            interactObj = transform.GetChild(2).gameObject;
+
+            //turn off interact obj 
+            if (interactObj)
+                interactObj.SetActive(false);
+
+            //pearl mono
+            pearlMono = transform.GetChild(3).gameObject;
+            if (pearlMono)
+            {
+                selfFade = pearlMono.GetComponent<FadeSprite>();
+                innerMono = pearlMono.GetComponent<MonologueManager>();
+            }
+
+            hasMonos = true;
+        }
     }
 	
 	void Update ()
     {
+        //player in trigger
+        if (playerPresent)
+        {
+            if (hasMonos)
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    if (!activated && canActivate)
+                    {
+                        ActivatePlanter(true);
+                    }
+                }
+            }
+            else
+            {
+                if (!activated && canActivate)
+                {
+                    ActivatePlanter(true);
+                }
+            }
+        }
         if (activated)
         {
             //play moving sound
@@ -114,10 +164,25 @@ public class Planter : AudioHandler {
     {
         if (other.gameObject.tag == "Player")
         {
-            if (!activated && canActivate)
+            if(activated == false)
             {
-                ActivatePlanter(true);
+                playerPresent = true;
+                pc.canJump = false;
+                if (interactObj)
+                    interactObj.SetActive(true);
             }
+        }
+    }
+
+    //trigger to activate!
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            playerPresent = false;
+            pc.canJump = true;
+            if (interactObj)
+                interactObj.SetActive(false);
         }
     }
 
@@ -132,9 +197,29 @@ public class Planter : AudioHandler {
             PlaySoundRandomPitch(activationSound, 1f);
         //set MR
         myMR.material = activeMat;
+        //turn off interact obj 
+        if (interactObj)
+            interactObj.SetActive(false);
+
+        //pearl mono?
+        if (pearlMono)
+        {
+            //player command 
+            pc.SetPearlMeditation();
+
+            //unparent from pearl
+            pearlMono.transform.SetParent(planetManager.transform);
+
+            //set mono
+            innerMono.SetMonologueSystem(0);
+            innerMono.EnableMonologue();
+
+            //fade in
+            selfFade.FadeIn();
+        }
 
         //if not free roaming, draw attention with active mat & popLights
-        if(!invisableOnStart)
+        if (!invisableOnStart)
         {
             myMR.enabled = true;
             popLights.Play();
@@ -142,7 +227,7 @@ public class Planter : AudioHandler {
            
         //change particles
         lure.Stop();
-        //lure.Clear();
+        lure.Clear();
         
         //move 
         SetMove();
