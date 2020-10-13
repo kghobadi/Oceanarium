@@ -11,7 +11,8 @@ public class CameraController : MonoBehaviour {
     //camera refs
     Transform cameraT;
     Camera mainCam;
-   
+    [HideInInspector] public Rigidbody cRigidbody;
+
     //control bools
     [Header("Cam Movement Bools")]
     public bool canMoveCam = true;
@@ -58,8 +59,11 @@ public class CameraController : MonoBehaviour {
     [Header("Masks")]
     public LayerMask spriteFadeMask;
     public float fadeRadius = 1f;
+    public float overlapSphereRadius = 5f;
+    public float forcePush = 5f;
     public LayerMask obstructionMask;
-    public List<int> obstructionLayers = new List<int>();  
+    public List<int> obstructionLayers = new List<int>();
+    [HideInInspector] public Transform currentSpeaker;
 
     [Header("FOV")]
     public bool lerpingFOV;
@@ -83,6 +87,7 @@ public class CameraController : MonoBehaviour {
         origPlayer = player;
         pc = player.GetComponent<PlayerController>();
         gravityBody = player.GetComponent<GravityBody>();
+        cRigidbody = GetComponent<Rigidbody>();
         origGBody = gravityBody;
         astralGravity = astralBody.GetComponent<GravityBody>();
     }
@@ -123,9 +128,11 @@ public class CameraController : MonoBehaviour {
         }
 
         //fade objs when player can move 
-        if (pc.canMove)
+        FadeCamObstructions(player.transform, 0.5f);
+        //when player cannot move -- this is mostly during mono
+        if(currentSpeaker != null)
         {
-            FadeCamObstructions();
+            FadeCamObstructions(currentSpeaker.transform, 0.1f);
         }
 
         //smoothly changing FOV
@@ -222,7 +229,10 @@ public class CameraController : MonoBehaviour {
         //checks if input for fading out cam controls image at start
         if (pc.controlsAtStart.Length > 1)
         {
-            if (pc.controlsAtStart[1].gameObject.activeSelf && !pc.controlsAtStart[1].fadingIn)
+            //check that its active and not already fading out 
+            if (pc.controlsAtStart[1].gameObject.activeSelf &&
+                pc.controlsAtStart[1].fadeState != FadeSprite.FadeStates.FADINGOUT &&
+                pc.controlsAtStart[1].fadeState != FadeSprite.FadeStates.TRANSPARENT)
             {
                 //input ? 
                 if(vRot != 0 || hRot != 0)
@@ -299,19 +309,36 @@ public class CameraController : MonoBehaviour {
         //send raycast
         if (Physics.SphereCast(transform.position, 1f, dir, out hit, dist , obstructionMask))
         {
-            //Debug.Log("hit ground, zoomng in");
             //anytime we hit the planet ground, zoome out 
             if (heightFromPlayer > heightMin)
+            {
                 ZoomIn(-0.05f);
+                //Debug.Log("zoom cast");
+            }
+                
+            return;
+        }
+
+        //overlap sphere 
+        Collider[] obstructions = Physics.OverlapSphere(transform.position, overlapSphereRadius, obstructionMask);
+        if (obstructions.Length > 0)
+        {
+            if (heightFromPlayer > heightMin)
+            {
+                ZoomIn(-0.05f);
+
+                //Debug.Log("zoom overlap sphere");
+            }
         }
     }
-
+    
     private void OnTriggerStay(Collider other)
     {
         //zoom in if camera is collding with stuff we dont like
         if (obstructionLayers.Contains(other.gameObject.layer))
         {
-            ZoomIn(-0.05f);
+            if (heightFromPlayer > heightMin)
+                ZoomIn(-0.05f);
         }
     }
 
@@ -345,7 +372,7 @@ public class CameraController : MonoBehaviour {
     }
 
     //shoots rays towards players and fades opacities of sprite s
-    void FadeCamObstructions()
+    void FadeCamObstructions(Transform objectToCheck, float fadeOutAmount)
     {
         RaycastHit hit = new RaycastHit();
         Vector3 dir = player.transform.position - transform.position;
@@ -353,13 +380,15 @@ public class CameraController : MonoBehaviour {
         //send raycast
         if (Physics.SphereCast(transform.position, fadeRadius, dir, out hit, dist, spriteFadeMask))
         {
-            if(hit.transform.GetComponent<FadeForCamera>())
+            FadeForCamera ffCam = hit.transform.GetComponent<FadeForCamera>();
+            if (ffCam)
             {
-                hit.transform.GetComponent<FadeForCamera>().Fade(0.5f);
+                ffCam.Fade(fadeOutAmount);
+                Debug.Log("fading " + ffCam.gameObject.name + " for cam");
             }
         }
     }
-    
+
     //called to lerp cam fov after transitions 
     public void LerpFOV(float desiredFOV, float lerpLength)
     {

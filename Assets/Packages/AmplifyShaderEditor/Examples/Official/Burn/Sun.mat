@@ -80,7 +80,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - BaseEmber: 0
-    - GlowBaseFrequency: 2
+    - GlowBaseFrequency: 0.39
     - GlowBaseFrequency159: 1.1
     - GlowBaseFrequency89: 4.08
     - GlowColorIntensity: 4

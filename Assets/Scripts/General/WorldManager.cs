@@ -22,7 +22,6 @@ public class WorldManager : MonoBehaviour {
         {
             WasteManagement();
         }
-        
 	}
 
     void WasteManagement()
@@ -30,31 +29,18 @@ public class WorldManager : MonoBehaviour {
         //loop through all objects and check distances from player
         for (int i = 0; i < allInactiveObjects.Count; i++)
         {
+            //does the object exist?
             if (allInactiveObjects[i] != null)
             {
+                //dist calc
                 float distanceFromPlayer = Vector3.Distance(allInactiveObjects[i].transform.position, _player.transform.position);
 
+                //is it close enough to activate?
                 if (distanceFromPlayer < activationDistance)
                 {
-                    //set object active
-                    allInactiveObjects[i].SetActive(true);
+                    //activate it 
+                    ActivateObject(allInactiveObjects[i]);
 
-                    //check if it has a sprite renderer 
-                    SpriteRenderer sprite = allInactiveObjects[i].GetComponent<SpriteRenderer>();
-                    if(sprite = null)
-                    {
-                        //check is sprite render is vis
-                        if (sprite.isVisible)
-                        {
-                            FadeSprite fade = allInactiveObjects[i].GetComponent<FadeSprite>();
-                            //fade in if has fade sprite comp
-                            if (fade != null)
-                                fade.FadeIn();
-                        }
-                    }
-                    
-                    //remove from list
-                    allInactiveObjects.Remove(allInactiveObjects[i]);
                     //move i back once to account for change in list index
                     i--;
                 }
@@ -69,5 +55,21 @@ public class WorldManager : MonoBehaviour {
             }
 
         }
+    }
+
+    public void ActivateObject(GameObject objToActivate)
+    {
+        //set object active
+        objToActivate.SetActive(true);
+
+        //get DeactivateObj
+        DeactivateObject deactivate = objToActivate.GetComponent<DeactivateObject>();
+
+        //fade in if has fade sprite comp
+        if (deactivate.fader != null)
+            deactivate.fader.FadeIn();
+
+        //remove from list
+        allInactiveObjects.Remove(objToActivate);
     }
 }
