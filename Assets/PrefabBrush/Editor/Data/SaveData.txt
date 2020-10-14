@@ -651,3 +651,21 @@ Fixed Rotation X: 0
 Fixed Rotation Y: 0
 Fixed Rotation Z: 0
 Depth: 3.5
+
+Game Object: Assets/Prefabs/Props/dot.prefab
+Layer: Default
+Toggle: True
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.1
+Random Scale Max: 2
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 6
