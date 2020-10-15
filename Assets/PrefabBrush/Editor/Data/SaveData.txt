@@ -1,8 +1,8 @@
 Layer Selection: Planet
 Brush Max Size: 107.61
-Brush Size: 1.8
+Brush Size: 5.8
 Fill Mode: True
-Fill Rate: 0.01
+Fill Rate: 0.1913
 
 Game Object: None
 Layer: 
@@ -510,7 +510,7 @@ Depth: 3
 
 Game Object: Assets/Prefabs/Spawnable Plants/Stack.prefab
 Layer: Default
-Toggle: True
+Toggle: False
 Slider: 1
 Lock Orientation Toggle: False
 Random Rotation Toggle: False
@@ -644,8 +644,8 @@ Random Rotation X: False
 Random Rotation Y: False
 Random Rotation Z: False
 Random Scale Toggle: True
-Random Scale Min: 0.1
-Random Scale Max: 0.5
+Random Scale Min: 0.5
+Random Scale Max: 1
 Fixed Rotation Toggle: False
 Fixed Rotation X: 0
 Fixed Rotation Y: 0
@@ -654,7 +654,7 @@ Depth: 3.5
 
 Game Object: Assets/Prefabs/Props/dot.prefab
 Layer: Default
-Toggle: True
+Toggle: False
 Slider: 1
 Lock Orientation Toggle: False
 Random Rotation Toggle: False
@@ -669,3 +669,42 @@ Fixed Rotation X: 0
 Fixed Rotation Y: 0
 Fixed Rotation Z: 0
 Depth: 6
+
+Game Object: Assets/Prefabs/Props/Lightskeleton.prefab
+Layer: Default
+Toggle: True
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.1
+Random Scale Max: 1
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 2
+
+Game Object: Assets/Prefabs/Props/Lightskeleton 1.prefab
+Layer: Default
+Toggle: True
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.1
+Random Scale Max: 1
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 2
+
+Group Names:
+Innerworld_props
