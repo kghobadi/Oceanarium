@@ -48,7 +48,6 @@ public class FadeForCamera : MonoBehaviour {
             fader.worldManage = false;
         }
        
-
         //set fade in
         fader.fadeInWait = 1f;
         fader.fadeInAmount = 1f;

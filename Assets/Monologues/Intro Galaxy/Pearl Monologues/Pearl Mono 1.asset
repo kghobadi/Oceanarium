@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Pearl Mono 1
   m_EditorClassIdentifier: 
   monologue: {fileID: 4900000, guid: 18db64947545a38468d72975f86bbbf1, type: 3}
-  worldMonoIndex: 0
+  worldMonoIndex: 16
   waitToStart: 1
   timeUntilStart: 3
   lockPlayer: 1
@@ -23,6 +23,7 @@ MonoBehaviour:
   waitTimes: []
   repeatsAtFinish: 0
   condensedMonologue: {fileID: 0}
+  displayChoices: 0
   triggersMonologues: 0
   monologueIndeces: 
   monologueWaits: []

@@ -85,6 +85,9 @@ public class PlayerController : AudioHandler
     public Rigidbody playerRigidbody; // Public because of currents.
     [HideInInspector]
     public PlayerAnimations animator; // can trigger animations from elsewhere 
+    //essence
+    [HideInInspector]
+    public EssenceInventory essenceInventory;
 
     [Header("Audio & Vis FX")]
     public AudioClip[] swimmingSounds;
@@ -111,6 +114,9 @@ public class PlayerController : AudioHandler
         animator = playerSpriteObj.GetComponent<PlayerAnimations>();
         quitScript = FindObjectOfType<QuitGame>();
         idleTimer = 0;
+        //essence Inventory check
+        if (essenceInventory == null)
+            essenceInventory = gameObject.AddComponent<EssenceInventory>();
        
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
