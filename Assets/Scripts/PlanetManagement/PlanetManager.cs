@@ -43,7 +43,8 @@ public class PlanetManager : MonoBehaviour {
         pc = player.GetComponent<PlayerController>();
         creatureSpawner = GetComponent<CreatureSpawner>();
         guardian = GameObject.FindGameObjectWithTag("Guardian");
-        gBehavior = guardian.GetComponent<Guardian>();
+        if(guardian)
+            gBehavior = guardian.GetComponent<Guardian>();
         mFader = FindObjectOfType<MusicFader>();
         planterPearls = GetComponentsInChildren<Planter>();
         growthPearls = GetComponentsInChildren<GrowthPearl>();
@@ -74,8 +75,11 @@ public class PlanetManager : MonoBehaviour {
             //teleport player 
             pc.transform.position = playerStartingPoint.position;
             //teleport guardian 
-            if(Vector3.Distance(pc.transform.position, gBehavior.transform.position) > 50f)
-                gBehavior.TeleportGuardian(playerStartingPoint.position);
+            if (guardian)
+            {
+                if (Vector3.Distance(pc.transform.position, gBehavior.transform.position) > 50f)
+                    gBehavior.TeleportGuardian(playerStartingPoint.position);
+            }
             //activate planet 
             ActivatePlanet(guardianBehaviors[0].guardianLocation.position);
             //fade to music
@@ -97,7 +101,8 @@ public class PlanetManager : MonoBehaviour {
         //reset guardian AI for this planet 
         Collider[] planet = GetComponents<Collider>();
         //only set guardian if not first planet
-        gBehavior.ResetGuardianLocation(guardianPos, guardianBehaviors, planet);
+        if(gBehavior)
+            gBehavior.ResetGuardianLocation(guardianPos, guardianBehaviors, planet);
 
         //update player's movement settings 
         pc.elevateSpeed = newElevationSpeed;

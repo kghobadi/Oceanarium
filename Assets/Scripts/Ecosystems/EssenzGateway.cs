@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 /// <summary>
 /// A generic gateway object that requires a certain # of essenz for player to progress.
 /// Still need to rewrite dialogue logic to work with Monologues
@@ -12,27 +13,26 @@ public class EssenzGateway : MonoBehaviour {
 
     public int essenzToll;
     public bool takeAllEssenz;
-    public GameObject essenzGagu, currentPath;
 
-    Text myText;
+    public GameObject essenzGate;
+    public Currents current;
+    public Ruins ruins;
+
+    public TMP_Text myText;
     public string essenzMessage, notEnoughEssenz;
 
     public GameObject yesDonate, noDonate;
 
-    DialogueText myDialogueText;
-
-	void Start () {
-        //turn off gate objects
-        currentPath.SetActive(false);
-        yesDonate.SetActive(false);
-        noDonate.SetActive(false);
-
-        //set text
-        myText = GetComponent<Text>();
-        myDialogueText = GetComponent<DialogueText>();
-
+    void Awake()
+    {
         //player script ref
         pc = FindObjectOfType<PlayerController>();
+    }
+
+    void Start () {
+        //turn off gate objects
+        yesDonate.SetActive(false);
+        noDonate.SetActive(false);
 	}
 
     public void ActivateDonationButtons()
@@ -42,9 +42,6 @@ public class EssenzGateway : MonoBehaviour {
         {
             //set dialogue
             myText.text = essenzMessage + "If you wish to proceed, you must donate your Essenz";
-            myDialogueText.ResetStringText();
-            myDialogueText.EnableDialogue();
-            myDialogueText.waitTime = 10;
 
             //while choice is active turn off movement, activate cursor
             pc.canMove = false;
@@ -62,9 +59,6 @@ public class EssenzGateway : MonoBehaviour {
             //set dialogue
             myText.text = notEnoughEssenz + "\n" + "If you wish to proceed," + "\n" +
                 "Return when your Aura has grown";
-            myDialogueText.ResetStringText();
-            myDialogueText.EnableDialogue();
-            myDialogueText.waitTime = 1;
         }
     }
 
@@ -80,6 +74,8 @@ public class EssenzGateway : MonoBehaviour {
 
     IEnumerator DonateEssenz()
     {
+        pc.canMove = false;
+
         //we set the toll to the same amount as player has
         if (takeAllEssenz)
         {
@@ -95,9 +91,9 @@ public class EssenzGateway : MonoBehaviour {
         }
 
         //activate particles and deactive mouthman
-        currentPath.SetActive(true);
+        current.ActivateCurrent();
 
-        essenzGagu.SetActive(false);
+        essenzGate.SetActive(false);
 
         pc.canMove = true;
 
@@ -112,8 +108,7 @@ public class EssenzGateway : MonoBehaviour {
         //deactivate everything
         yesDonate.SetActive(false);
         noDonate.SetActive(false);
-
-        myDialogueText.DisableDialogue();
+        
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }

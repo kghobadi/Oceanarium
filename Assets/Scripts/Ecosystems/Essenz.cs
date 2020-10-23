@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Orbit))]
 public class Essenz : AudioHandler
 {
+    public AudioClip[] collectionSounds;
     public AudioClip[] donationSounds;
     PlayerController pc;
     Orbit orbitScript;
@@ -73,7 +75,7 @@ public class Essenz : AudioHandler
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player" &&
-            cState != CollectibleStates.VORTEX)
+            cState == CollectibleStates.AWAIT)
         {
             VortexToPlayer();
         }
@@ -86,6 +88,7 @@ public class Essenz : AudioHandler
         cState = CollectibleStates.VORTEX;
         //add to player list 
         pc.essenceInventory.collectedEssenz.Add(this);
+        Debug.Log("Vortexing to player");
     }
 
     //set orbit state
