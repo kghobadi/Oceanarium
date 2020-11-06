@@ -8,6 +8,7 @@ public class PlanetManager : MonoBehaviour {
     PlayerController pc;
     GameObject guardian;
     Guardian gBehavior;
+    SaveSystem saveSystem;
     [HideInInspector] public MusicFader mFader;
     [HideInInspector] public Planter[] planterPearls;
     [HideInInspector] public GrowthPearl[] growthPearls;
@@ -16,6 +17,8 @@ public class PlanetManager : MonoBehaviour {
     public bool playerHere, startingPlanet;
     [Tooltip("If starting planet checked, player will start at this Transform")]
     public Transform playerStartingPoint;
+    [Tooltip("Location player will be teleported when using Galaxy map")]
+    public Transform teleportationPoint;
     [Tooltip("This planet's colliders")]
     public Collider[] planetColliders;
     [HideInInspector] public CreatureSpawner creatureSpawner;
@@ -24,6 +27,8 @@ public class PlanetManager : MonoBehaviour {
     [Tooltip("Any stagnant, animated object on the planet")]
     public List<GameObject> props = new List<GameObject>();
     public AudioClip musicTrack;
+    [Tooltip("My selector on Galaxy Map")]
+    public PlanetSelector pSelector;
 
     [Header("Guardian Behaviors")]
     public GuardianBehaviorSets[] guardianBehaviors;
@@ -42,6 +47,8 @@ public class PlanetManager : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player");
         pc = player.GetComponent<PlayerController>();
         creatureSpawner = GetComponent<CreatureSpawner>();
+        saveSystem = FindObjectOfType<SaveSystem>();
+        saveSystem.startNewGame.AddListener(NewGame);
         guardian = GameObject.FindGameObjectWithTag("Guardian");
         if(guardian)
             gBehavior = guardian.GetComponent<Guardian>();
@@ -70,25 +77,31 @@ public class PlanetManager : MonoBehaviour {
     
     void Start()
     {
+        DeactivatePlanet();
+    }
+
+    void NewGame()
+    {
         if (startingPlanet)
         {
-            //teleport player 
-            pc.transform.position = playerStartingPoint.position;
-            //teleport guardian 
-            if (guardian)
-            {
-                if (Vector3.Distance(pc.transform.position, gBehavior.transform.position) > 50f)
-                    gBehavior.TeleportGuardian(playerStartingPoint.position);
-            }
-            //activate planet 
-            ActivatePlanet(guardianBehaviors[0].guardianLocation.position);
-            //fade to music
-            mFader.FadeTo(musicTrack);
+            StartPlayerAtPlanet();
         }
-        else
+    }
+
+    public void StartPlayerAtPlanet()
+    {
+        //teleport player 
+        pc.transform.position = playerStartingPoint.position;
+        //teleport guardian 
+        if (guardian)
         {
-            DeactivatePlanet();
+            if (Vector3.Distance(pc.transform.position, gBehavior.transform.position) > 50f)
+                gBehavior.TeleportGuardian(playerStartingPoint.position);
         }
+        //activate planet 
+        ActivatePlanet(guardianBehaviors[0].guardianLocation.position);
+        //fade to music
+        mFader.FadeTo(musicTrack);
     }
 
     public void ActivatePlanet(Vector3 guardianPos)

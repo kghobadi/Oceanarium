@@ -73,10 +73,6 @@ public class CameraController : MonoBehaviour {
     float nextFOV;
     float t;
     float lerpSpeed = 0.5f;
-
-    [Header("Astral Body")]
-    public GameObject astralBody;
-    GravityBody astralGravity;
     
     void Awake ()
     {
@@ -89,7 +85,6 @@ public class CameraController : MonoBehaviour {
         gravityBody = player.GetComponent<GravityBody>();
         cRigidbody = GetComponent<Rigidbody>();
         origGBody = gravityBody;
-        astralGravity = astralBody.GetComponent<GravityBody>();
     }
 
     void Start()
@@ -399,74 +394,4 @@ public class CameraController : MonoBehaviour {
         //Debug.Log("somemthing called Lerp FOV!");
     }
 
-    //called when meditating
-    public void SetAstralBody()
-    {
-        astralBody.SetActive(true);
-        player = astralBody;
-        gravityBody = astralGravity;
-
-        //zoom out a bit 
-        ZoomOut(15f);
-        
-        //get input device 
-        var inputDevice = InputManager.ActiveDevice;
-
-        //controller 
-        if (inputDevice.DeviceClass == InputDeviceClass.Controller)
-        {
-            origSensitivityX = controllerSensitivityX;
-            origSensitivityY = controllerSensitivityY;
-
-            controllerSensitivityX = m_SensitivityX;
-            controllerSensitivityY = m_SensitivityY;
-        }
-        //m keyboard
-        else
-        {
-            origSensitivityX = mouseSensitivityX;
-            origSensitivityY = mouseSensitivityY;
-
-            mouseSensitivityX = m_SensitivityX;
-            mouseSensitivityY = m_SensitivityY;
-        }
-
-        //set originals
-        origMinLook = minVerticalLookAngle;
-        origMaxLook = maxVerticalLookAngle;
-        origYLookAdjust = yLookPosAdjust;
-        //set new values for astral projection
-        minVerticalLookAngle = m_minVerticalLookAngle;
-        maxVerticalLookAngle = m_maxVerticalLookAngle;
-        yLookPosAdjust = m_yLookPosAdjust;
-    }
-
-    //called when returning to body from meditation
-    public void DisableAstralBody()
-    {
-        astralBody.SetActive(false);
-        player = origPlayer;
-        gravityBody = origGBody;
-
-        //get input device 
-        var inputDevice = InputManager.ActiveDevice;
-
-        //controller 
-        if (inputDevice.DeviceClass == InputDeviceClass.Controller)
-        {
-            controllerSensitivityX = origSensitivityX;
-            controllerSensitivityY = origSensitivityY;
-        }
-        //m keyboard
-        else
-        {
-            mouseSensitivityX = origSensitivityX;
-            mouseSensitivityY = origSensitivityY;
-        }
-
-        //return values to original for swimming 
-        minVerticalLookAngle = origMinLook;
-        maxVerticalLookAngle = origMaxLook;
-        yLookPosAdjust = origYLookAdjust;
-    }
 }
