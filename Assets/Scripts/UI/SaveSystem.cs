@@ -58,7 +58,7 @@ public class SaveSystem : MonoBehaviour {
 	public void LoadPrefs()
     {
 		//check if player has played before
-        if (PlayerPrefs.HasKey("Sessions"))
+        if (PlayerPrefs.GetInt("Sessions") > 0)
         {
 			//get session
 			sessions = PlayerPrefs.GetInt("Sessions");
@@ -66,6 +66,8 @@ public class SaveSystem : MonoBehaviour {
 			currentGalaxy = PlayerPrefs.GetInt("Galaxy");
 			//planets
 			LoadPlanets();
+
+			Debug.Log("loading game");
 		}
 		//
         else
@@ -75,6 +77,8 @@ public class SaveSystem : MonoBehaviour {
 			PlayerPrefs.SetInt("Sessions", sessions);
 			//invoke start game -- planet which is starting will listen
 			startNewGame.Invoke();
+
+			Debug.Log("started new game");
 		}
     }
 
@@ -110,6 +114,7 @@ public class SaveSystem : MonoBehaviour {
 		PlayerPrefs.SetInt("Sessions", sessions);
 	}
 
+    //just for testing...
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Delete))
