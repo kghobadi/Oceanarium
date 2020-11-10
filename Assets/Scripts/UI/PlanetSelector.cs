@@ -69,6 +69,7 @@ public class PlanetSelector : MonoBehaviour {
         }
     }
 
+    //NEED TO CALL THIS WHEN PLAYER FINISHES PLANET -- i.e. activates current/RUINS
     //called when player first reaches planet 
     public void UnlockPlanet()
     {

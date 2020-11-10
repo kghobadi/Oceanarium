@@ -122,6 +122,15 @@ public class PlayerController : AudioHandler
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    //called when player loads in rather than starting new game
+    public void DeactivateControls()
+    {
+        for (int i = 0; i < controlsAtStart.Length; i++)
+        {
+            controlsAtStart[i].gameObject.SetActive(false);
+        }
+    }
+
     void Update()
     {
         if (canMove)
