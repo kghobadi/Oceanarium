@@ -112,6 +112,8 @@ public class SaveSystem : MonoBehaviour {
 		//save session 
 		sessions++;
 		PlayerPrefs.SetInt("Sessions", sessions);
+
+		Debug.Log("Saving prefs");
 	}
 
     //just for testing...
@@ -123,10 +125,12 @@ public class SaveSystem : MonoBehaviour {
         }
     }
 
+	//MAKE AN EDITOR BUTTON FOR THIS SO YOU DONT HAVE TO DO IT DURING RUNTIME
     //deletes all player prefs
     public void ResetPlayerPrefs()
     {
 		PlayerPrefs.DeleteAll();
+		Debug.Log("Deleted all player prefs");
     }
 
     private void OnDisable()

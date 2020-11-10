@@ -125,20 +125,34 @@ public class MonologueManager : MonoBehaviour
     {
         //set current monologue
         currentMonologue = index;
+        //get mono
+        Monologue mono = allMyMonologues[currentMonologue];
 
         //set mono reader text lines 
-        monoReader.textLines = (allMyMonologues[currentMonologue].monologue.text.Split('\n'));
+        monoReader.textLines = (mono.monologue.text.Split('\n'));
 
         //set current to 0 and end to length 
         monoReader.currentLine = 0;
         monoReader.endAtLine = monoReader.textLines.Length;
 
         //set mono reader text speeds 
-        monoReader.timeBetweenLetters = allMyMonologues[currentMonologue].timeBetweenLetters;
-        monoReader.timeBetweenLines = allMyMonologues[currentMonologue].timeBetweenLines;
-        monoReader.conversational = allMyMonologues[currentMonologue].conversational;
-        monoReader.waitTimes = allMyMonologues[currentMonologue].waitTimes;
-        monoReader.displayChoices = allMyMonologues[currentMonologue].displayChoices;
+        monoReader.timeBetweenLetters = mono.timeBetweenLetters;
+        monoReader.timeBetweenLines = mono.timeBetweenLines;
+        monoReader.conversational = mono.conversational;
+        monoReader.waitTimes = mono.waitTimes;
+        monoReader.displayChoices = mono.displayChoices;
+
+        //overwrites camera angle stuff in manager
+        if (mono.adjustsCamera)
+        {
+            cameraXPos = mono.cameraXPos;
+            cameraYLook = mono.cameraYLook;
+            //only replace these if we have a new value 
+            if(mono.lookAtObj)
+                lookAtObj = mono.lookAtObj;
+            if(mono.speakerCam)
+                speakerCam = mono.speakerCam;
+        }
     }
 
     //has a wait for built in

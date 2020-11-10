@@ -80,6 +80,7 @@ public class PlanetManager : MonoBehaviour {
         DeactivatePlanet();
     }
 
+    //invoked by Save system
     void NewGame()
     {
         if (startingPlanet)
@@ -90,6 +91,9 @@ public class PlanetManager : MonoBehaviour {
 
     public void StartPlayerAtPlanet()
     {
+        //null check
+        if(pc == null)
+            Awake();
         //teleport player 
         pc.transform.position = playerStartingPoint.position;
         //teleport guardian 
@@ -102,6 +106,12 @@ public class PlanetManager : MonoBehaviour {
         ActivatePlanet(guardianBehaviors[0].guardianLocation.position);
         //fade to music
         mFader.FadeTo(musicTrack);
+
+        //we KNOW the player loaded rather than new game
+        if (!startingPlanet)
+        {
+            pc.DeactivateControls();
+        }
     }
 
     public void ActivatePlanet(Vector3 guardianPos)

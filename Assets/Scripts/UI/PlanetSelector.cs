@@ -26,11 +26,8 @@ public class PlanetSelector : MonoBehaviour {
 
     void CheckLockState()
     {
-        if (PlayerPrefs.HasKey(planet.planetName))
-        {
-            if (PlayerPrefs.GetString(planet.planetName) == "unlocked")
-                unlocked = true;
-        }
+        if (PlayerPrefs.GetString(planet.planetName) == "unlocked")
+            unlocked = true;
     }
 	
     //teleports player to planet
@@ -68,6 +65,7 @@ public class PlanetSelector : MonoBehaviour {
         else
         {
             //maybe play a sound that indicates this is not available?
+            Debug.Log(planet.planetName + " is locked");
         }
     }
 
