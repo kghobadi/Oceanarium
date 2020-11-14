@@ -6,6 +6,7 @@ public class Ruins : AudioHandler {
 
     PlayerController pc;
     Guardian guardianScript;
+    PlanetManager planetMan;
 
     [Header("Ruins Settings")]
     public GameObject[] pillars;
@@ -28,6 +29,7 @@ public class Ruins : AudioHandler {
 
         pc = FindObjectOfType<PlayerController>();
         guardianScript = FindObjectOfType<Guardian>();
+        planetMan = GetComponentInParent<PlanetManager>();
 
         pMeshes = new MeshRenderer[pillars.Length];
 		for(int i = 0; i < pillars.Length; i++)

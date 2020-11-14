@@ -80,6 +80,21 @@ public class PlanetManager : MonoBehaviour {
         DeactivatePlanet();
     }
 
+    public void SetAsStart()
+    {
+        //get planets
+        PlanetManager[] allPlanets = FindObjectsOfType<PlanetManager>();
+
+        //disable starting planet for all others
+        for (int i = 0; i < allPlanets.Length; i++)
+        {
+            allPlanets[i].startingPlanet = false;
+        }
+
+        //set this as start 
+        startingPlanet = true;
+    }
+
     //invoked by Save system
     void NewGame()
     {

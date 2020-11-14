@@ -21,6 +21,7 @@ public class SaveSystem : MonoBehaviour {
 	[Tooltip("Debug option to unlock all planets")]
 	public bool unlockAll;
 	public UnityEvent startNewGame;
+	public UnityEvent returningGame;
 
 	void Awake()
 	{
@@ -66,6 +67,8 @@ public class SaveSystem : MonoBehaviour {
 			currentGalaxy = PlayerPrefs.GetInt("Galaxy");
 			//planets
 			LoadPlanets();
+			//for other scripts
+			returningGame.Invoke();
 
 			Debug.Log("loading game");
 		}
@@ -116,16 +119,7 @@ public class SaveSystem : MonoBehaviour {
 		Debug.Log("Saving prefs");
 	}
 
-    //just for testing...
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Delete))
-        {
-			ResetPlayerPrefs();
-        }
-    }
-
-	//MAKE AN EDITOR BUTTON FOR THIS SO YOU DONT HAVE TO DO IT DURING RUNTIME
+	//editor button or Tools > calls this
     //deletes all player prefs
     public void ResetPlayerPrefs()
     {

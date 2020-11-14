@@ -98,7 +98,8 @@ public class PlayerController : AudioHandler
     public AudioMixerSnapshot normal, meditating;
     QuitGame quitScript;
     public float restartTimer, restartTotal = 60f;
-    
+
+    #region Monobehaviour
     public override void Awake()
     {
         base.Awake();
@@ -180,7 +181,9 @@ public class PlayerController : AudioHandler
             }
         }
     }
+    #endregion
 
+    #region Movement
     //controls swimming 
     void SwimInputs()
     {
@@ -330,7 +333,10 @@ public class PlayerController : AudioHandler
         //set current vel
         currentVelocity = playerRigidbody.velocity.magnitude;
     }
-    
+
+    #endregion
+
+    #region Meditation
     //called when you reach quadsphere
     public void EnableMeditationAbility()
     {
@@ -380,6 +386,10 @@ public class PlayerController : AudioHandler
             meditating.TransitionTo(2f);
             canJump = false;
 
+            //set timer 
+            if (idleTimer < timeUntilMeditate)
+                idleTimer = timeUntilMeditate;
+
             //diver meditates
             moveState = MoveStates.MEDITATING;
             animator.SetAnimator("meditating");
@@ -428,7 +438,10 @@ public class PlayerController : AudioHandler
             meditationControls.DeactivateFPS();
         }
     }
-    
+
+    #endregion
+
+    #region Jumping/Diving
     void TakeJumpInput()
     {
         //get input device 
@@ -532,4 +545,6 @@ public class PlayerController : AudioHandler
             playerRigidbody.AddForce(-playerRigidbody.velocity * proportionalHeightSquared * repulsionForce);
         }
     }
+
+    #endregion 
 }
