@@ -175,7 +175,10 @@ public class Currents : AudioHandler {
         currentParticles.Play();
         currentBubble.material = activeMat;
         currentActivated = true;
-        planetMan.pSelector.UnlockPlanet();
+
+        //null check
+        if(planetMan.pSelector)
+            planetMan.pSelector.UnlockPlanet();
 
         //turn off the ribbons
         if (ribbons)

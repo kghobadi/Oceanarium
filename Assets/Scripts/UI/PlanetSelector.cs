@@ -1,37 +1,49 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PlanetSelector : MonoBehaviour {
+public class PlanetSelector : MonoBehaviour
+{
 
     Guardian guardian;
     PlayerController pc;
     CameraController cc;
     SaveSystem saveSystem;
+    Image planetImage;
 
     public PlanetManager planet;
     public FadeSprite blackground;
 
     public bool unlocked;
 
-	void Awake ()
+    void Awake()
     {
         guardian = FindObjectOfType<Guardian>();
         pc = FindObjectOfType<PlayerController>();
         cc = FindObjectOfType<CameraController>();
         saveSystem = FindObjectOfType<SaveSystem>();
+        planetImage = GetComponent<Image>();
 
         CheckLockState();
-	}
+    }
 
     void CheckLockState()
     {
+        //unlocked
         if (PlayerPrefs.GetString(planet.planetName) == "unlocked")
-            unlocked = true;
+        {
+            UnlockPlanet();
+        }
+        //locked
+        else
+        {
+            planetImage.color = Color.black;
+        }
     }
-	
+
     //teleports player to planet
-	public void TeleportTo()
+    public void TeleportTo()
     {
         if (unlocked)
         {
@@ -41,7 +53,7 @@ public class PlanetSelector : MonoBehaviour {
                 pc.activePlanet.DeactivatePlanet();
 
                 //actual TP
-                if(planet.teleportationPoint) //tp player to tp point
+                if (planet.teleportationPoint) //tp player to tp point
                     pc.transform.position = planet.teleportationPoint.position;
                 else //tp player to planet start point
                     pc.transform.position = planet.playerStartingPoint.position;
@@ -75,6 +87,8 @@ public class PlanetSelector : MonoBehaviour {
     {
         unlocked = true;
 
+        planetImage.color = Color.white;
+
         PlayerPrefs.SetString(planet.planetName, "unlocked");
     }
 
@@ -82,5 +96,7 @@ public class PlanetSelector : MonoBehaviour {
     public void UnlockTemporary()
     {
         unlocked = true;
+
+        planetImage.color = Color.white;
     }
 }

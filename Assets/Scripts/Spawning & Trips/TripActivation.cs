@@ -52,6 +52,8 @@ public class TripActivation : MonoBehaviour {
         if(tripperParticles == null)
             tripperParticles = transform.GetChild(0).GetComponent<ParticleSystem>();
 
+        tripperParticles.Stop();
+
         if (tripCamera == null)
             tripCamera = GameObject.FindGameObjectWithTag("TripCam");
     }

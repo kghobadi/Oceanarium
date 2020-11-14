@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using InControl;
+using UnityEngine.UI;
 
 //this script is for the first button press in the opening scene 
 public class SpaceToStart : MonoBehaviour {
 
     LoadSceneAsync sceneLoader;
 
+    public Image img;
     public FadeSprite [] spritesToFadeIn;
     public FadeSprite [] spritesToFadeOut;
     public FadeUItmp[] textToFadeOut;
@@ -22,6 +24,7 @@ public class SpaceToStart : MonoBehaviour {
 
     private void Awake()
     {
+        img = GetComponent<Image>();
         sceneLoader = FindObjectOfType<LoadSceneAsync>();
     }
 
@@ -62,6 +65,7 @@ public class SpaceToStart : MonoBehaviour {
                 }
             }
 
+            //reset timer 
             if (Input.GetKeyUp(KeyCode.Space))
             {
                 holdSpaceTimer = 0;
@@ -69,7 +73,7 @@ public class SpaceToStart : MonoBehaviour {
         }
 	}
 
-    void StartFades()
+    public void StartFades()
     {
         //fade in 
         for(int i = 0; i < spritesToFadeIn.Length; i++)
@@ -88,6 +92,7 @@ public class SpaceToStart : MonoBehaviour {
             textToFadeOut[i].FadeOut();
         }
 
+        //set particles
         swirls.Stop();
         swirls.Clear();
         explosion.Play();
