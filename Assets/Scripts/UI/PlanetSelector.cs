@@ -10,10 +10,11 @@ public class PlanetSelector : MonoBehaviour
     PlayerController pc;
     CameraController cc;
     SaveSystem saveSystem;
-    Image planetImage;
+    RawImage planetImage;
 
     public PlanetManager planet;
     public FadeSprite blackground;
+    public Color faded;
 
     public bool unlocked;
 
@@ -23,7 +24,7 @@ public class PlanetSelector : MonoBehaviour
         pc = FindObjectOfType<PlayerController>();
         cc = FindObjectOfType<CameraController>();
         saveSystem = FindObjectOfType<SaveSystem>();
-        planetImage = GetComponent<Image>();
+        planetImage = GetComponent<RawImage>();
 
         CheckLockState();
     }
@@ -38,7 +39,7 @@ public class PlanetSelector : MonoBehaviour
         //locked
         else
         {
-            planetImage.color = Color.black;
+            planetImage.color = faded;
         }
     }
 
