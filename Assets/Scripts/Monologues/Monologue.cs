@@ -49,5 +49,15 @@ public class Monologue : ScriptableObject
     [Tooltip("After this Monologue finishes, the manager will enable a cinematic triggers somewhere in the game")]
     public bool enablesCinematicTriggers;
     public Cinematic [] cTriggers;
- 
+
+    [Header("Camera Angle")]
+    public bool adjustsCamera;
+    [Tooltip("Moves camera left (-) or right (+) for player to look at char")]
+    public float cameraXPos = 10f;
+    [Tooltip("Moves camera look pos up or down. I recommend between 0 & 10")]
+    public float cameraYLook = 3f;
+    [Tooltip("Character or thing to look at, if this is empty we default to hostObj (the speaker)")]
+    public Transform lookAtObj;
+    [Tooltip("Can overwrite speaker cam in monologue manager")]
+    public GameCamera speakerCam;
 }

@@ -85,6 +85,9 @@ public class PlayerController : AudioHandler
     public Rigidbody playerRigidbody; // Public because of currents.
     [HideInInspector]
     public PlayerAnimations animator; // can trigger animations from elsewhere 
+    //essence
+    [HideInInspector]
+    public EssenceInventory essenceInventory;
 
     [Header("Audio & Vis FX")]
     public AudioClip[] swimmingSounds;
@@ -95,7 +98,8 @@ public class PlayerController : AudioHandler
     public AudioMixerSnapshot normal, meditating;
     QuitGame quitScript;
     public float restartTimer, restartTotal = 60f;
-    
+
+    #region Monobehaviour
     public override void Awake()
     {
         base.Awake();
@@ -111,9 +115,21 @@ public class PlayerController : AudioHandler
         animator = playerSpriteObj.GetComponent<PlayerAnimations>();
         quitScript = FindObjectOfType<QuitGame>();
         idleTimer = 0;
+        //essence Inventory check
+        if (essenceInventory == null)
+            essenceInventory = gameObject.AddComponent<EssenceInventory>();
        
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    //called when player loads in rather than starting new game
+    public void DeactivateControls()
+    {
+        for (int i = 0; i < controlsAtStart.Length; i++)
+        {
+            controlsAtStart[i].gameObject.SetActive(false);
+        }
     }
 
     void Update()
@@ -165,7 +181,9 @@ public class PlayerController : AudioHandler
             }
         }
     }
+    #endregion
 
+    #region Movement
     //controls swimming 
     void SwimInputs()
     {
@@ -315,7 +333,10 @@ public class PlayerController : AudioHandler
         //set current vel
         currentVelocity = playerRigidbody.velocity.magnitude;
     }
-    
+
+    #endregion
+
+    #region Meditation
     //called when you reach quadsphere
     public void EnableMeditationAbility()
     {
@@ -365,6 +386,10 @@ public class PlayerController : AudioHandler
             meditating.TransitionTo(2f);
             canJump = false;
 
+            //set timer 
+            if (idleTimer < timeUntilMeditate)
+                idleTimer = timeUntilMeditate;
+
             //diver meditates
             moveState = MoveStates.MEDITATING;
             animator.SetAnimator("meditating");
@@ -413,7 +438,10 @@ public class PlayerController : AudioHandler
             meditationControls.DeactivateFPS();
         }
     }
-    
+
+    #endregion
+
+    #region Jumping/Diving
     void TakeJumpInput()
     {
         //get input device 
@@ -517,4 +545,6 @@ public class PlayerController : AudioHandler
             playerRigidbody.AddForce(-playerRigidbody.velocity * proportionalHeightSquared * repulsionForce);
         }
     }
+
+    #endregion 
 }

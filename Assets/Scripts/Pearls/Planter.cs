@@ -208,7 +208,7 @@ public class Planter : AudioHandler {
             pc.SetPearlMeditation();
 
             //unparent from pearl
-            pearlMono.transform.SetParent(planetManager.transform);
+            pearlMono.transform.SetParent(null);
 
             //set mono
             innerMono.SetMonologueSystem(0);

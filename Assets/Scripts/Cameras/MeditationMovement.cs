@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.PostProcessing;
 using InControl;
 using Cameras;
@@ -16,15 +17,8 @@ public class MeditationMovement : MonoBehaviour
     Vector2 mouseLook;
     Vector2 smoothV;
 
-    //astral eye body 
-    public Transform astralEye;
-    CharacterController astralBody;
-    Animator astralAnimator;
-    SpriteRenderer astralRenderer;  
-
     [Header("Old FPS movement")]
     public bool isActive;
-    public bool fp;
     public Transform thirdEyeParent;
     GravityBody thirdGravity;
     CharacterController thirdBody;
@@ -37,31 +31,36 @@ public class MeditationMovement : MonoBehaviour
     public float moveSpeed = 10f;
     public float fovSpeed = 1f;
 
+    [Header("Meditation Layers")]
+    public MeditationLayers meditationLayer;
+    public enum MeditationLayers
+    {
+        PLANAR = 0,
+        SANCTUM = 1,
+        GALACTIC = 2,
+        ABYSSAL = 3,
+    }
+    public float meditationTimer = 0f;
+    float meditationStart;
+    public float meditationIncrements = 30f;
+    public UnityEvent enteredNewLayer;
+    public UnityEvent endedMeditation;
+
     void Awake()
     {
         pc = FindObjectOfType<PlayerController>();
         player = pc.transform;
         mainCam = Camera.main;
-
-        //set astralbody
-        if (astralEye)
-        {
-            //char controller
-            astralBody = astralEye.GetComponent<CharacterController>();
-            astralBody.enabled = false;
-            //animation
-            astralAnimator = astralEye.GetComponentInChildren<Animator>();
-            astralRenderer = astralEye.GetComponentInChildren<SpriteRenderer>();
-            //disable at start 
-            astralEye.gameObject.SetActive(false);
-        }
-
+        
         //for fps 
         if (thirdEyeParent)
         {
             thirdBody = thirdEyeParent.GetComponent<CharacterController>();
             thirdGravity = thirdEyeParent.GetComponent<GravityBody>();
         }
+
+        //start layer at 0
+        meditationLayer = MeditationLayers.PLANAR;
     }
 
     void Update()
@@ -69,67 +68,49 @@ public class MeditationMovement : MonoBehaviour
         if (isActive)
         {
             //only call camera rotation during fp meditation 
-            if(fp)
-                CameraRotation();
+            CameraRotation();
 
             WASDmovement();
 
             FovControls();
+
+            Ascendancy();
         }
     }
-
-    public void Activate()
-    {
-        //liberate astral body 
-        astralEye.gameObject.SetActive(true);
-        astralEye.SetParent(null);
-        astralBody.enabled = true;
-
-        //enable animation
-        astralRenderer.enabled = true;
-        astralAnimator.enabled = true;
-        //freeLook.gameObject.SetActive(true);
-
-        fp = false;
-        isActive = true;
-    }
-
-    public void Deactivate()
-    {
-        //reset to body
-        astralEye.SetParent(player);
-        astralEye.localPosition = Vector3.zero;
-        astralEye.localRotation = Quaternion.identity;   
-        astralBody.enabled = false;
-        astralEye.gameObject.SetActive(false);
-
-        //disable animation
-        astralRenderer.enabled = false;
-        astralAnimator.enabled = false;
-        //freeLook.gameObject.SetActive(false);
-
-        isActive = false;
-    }
-
+    
     //first person on
     public void ActivateFPS()
     {
+        //set transforms
         thirdEyeParent.SetParent(null);
         transform.SetParent(thirdEyeParent);
         thirdBody.enabled = true;
 
-        fp = true;
+        //enter sanctum
+        meditationLayer = MeditationLayers.SANCTUM;
+        meditationStart = Time.time;
+        enteredNewLayer.Invoke();
+        
+        //fully active
         isActive = true;
     }
 
     //first person off 
     public void DeactivateFPS()
     {
+        //set transforms and body
         transform.SetParent(null);
         thirdEyeParent.SetParent(transform);
         thirdEyeParent.localPosition = Vector3.zero;
         thirdEyeParent.localRotation = Quaternion.identity;
         thirdBody.enabled = false;
+
+        //return to planar realm
+        meditationLayer = MeditationLayers.PLANAR;
+        meditationTimer = 0;
+        endedMeditation.Invoke();
+
+        //fully inactive
         isActive = false;
     }
     
@@ -183,29 +164,8 @@ public class MeditationMovement : MonoBehaviour
         }
 
         //actual move command 
-        if(astralBody.enabled)
-            astralBody.Move(force * moveSpeed);
         if (thirdBody.enabled)
             thirdBody.Move(force * moveSpeed);
-    }
-
-    void ClickMovement()
-    {
-        //get input device 
-        var inputDevice = InputManager.ActiveDevice;
-        
-        //left click to float camera forward through space
-        if (Input.GetMouseButton(0) || inputDevice.DPadY > 0)
-        {
-            Vector3 forward = transform.forward * moveSpeed;
-            astralBody.Move(forward);
-        }
-        //right click to float camera backward through space
-        if (Input.GetMouseButton(1) || inputDevice.DPadY < 0)
-        {
-            Vector3 backward = -transform.forward * moveSpeed ;
-            astralBody.Move(backward);
-        }
     }
 
     void FovControls()
@@ -251,15 +211,27 @@ public class MeditationMovement : MonoBehaviour
         //Rotates Player on "Y" Axis Acording to Mouse Input
         transform.Rotate(vRot, hRot, 0);
     }
+
+    void Ascendancy()
+    {
+        //time meditation
+        meditationTimer = Time.time - meditationStart;
+
+        //if timer is greater than next increment and we have not reached final layer
+        if (meditationTimer > meditationIncrements * (int)meditationLayer
+            && meditationLayer < MeditationLayers.ABYSSAL)
+        {
+            //ascend
+            meditationLayer++;
+            enteredNewLayer.Invoke();
+        }
+    }
     
     private void OnDisable()
     {
         if (isActive)
         {
-            if (fp)
-                DeactivateFPS();
-            else
-                Deactivate();
+            DeactivateFPS();
         }
     }
 }

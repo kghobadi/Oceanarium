@@ -10,12 +10,16 @@ public class CameraFacingBillboard : MonoBehaviour
     Camera playerCam;
     CameraController camControl;
     SpriteRenderer sr;
+   
 
     [Tooltip("Has gravity body set up")]
     public bool hasGravityBody;
+    [Tooltip("Freezes position by default (for static objs).")]
+    public bool freezePosition = true;
     GravityBody gravBody;
+    Rigidbody rBody;
 
-	void Awake(){
+    void Awake(){
         //player refs
         player = GameObject.FindGameObjectWithTag("Player");
         if (player!= null)
@@ -38,6 +42,14 @@ public class CameraFacingBillboard : MonoBehaviour
             if(gravBody == null)
             {
                 gravBody = gameObject.AddComponent<GravityBody>();
+            }
+
+            rBody = GetComponent<Rigidbody>();
+
+            //set rBody position constraints
+            if (freezePosition)
+            {
+                rBody.constraints = RigidbodyConstraints.FreezePosition;
             }
         }
 	}

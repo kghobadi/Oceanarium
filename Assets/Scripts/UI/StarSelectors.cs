@@ -5,9 +5,15 @@ using UnityEngine.Events;
 
 
 public class StarSelectors : MonoBehaviour {
+    PlanetSelector pSelector;
 
     public GameObject[] starsActive;
     public UnityEvent[] selectionEvents;
+
+    private void Awake()
+    {
+        pSelector = GetComponent<PlanetSelector>();
+    }
 
     private void OnEnable()
     {
@@ -16,9 +22,20 @@ public class StarSelectors : MonoBehaviour {
 
     public void ActivateStars()
     {
-        for(int i = 0; i < starsActive.Length; i++)
+        if (pSelector)
         {
-            starsActive[i].SetActive(true);
+            if(pSelector.unlocked)
+                for (int i = 0; i < starsActive.Length; i++)
+                {
+                    starsActive[i].SetActive(true);
+                }
+        }
+        else
+        {
+            for (int i = 0; i < starsActive.Length; i++)
+            {
+                starsActive[i].SetActive(true);
+            }
         }
     }
 

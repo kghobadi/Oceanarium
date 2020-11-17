@@ -23,6 +23,7 @@ MonoBehaviour:
   waitTimes: []
   repeatsAtFinish: 0
   condensedMonologue: {fileID: 0}
+  displayChoices: 0
   triggersMonologues: 0
   monologueIndeces: 
   monologueWaits: []
@@ -30,3 +31,8 @@ MonoBehaviour:
   cinematic: {fileID: 0}
   enablesCinematicTriggers: 0
   cTriggers: []
+  adjustsCamera: 1
+  cameraXPos: 0
+  cameraYLook: 3
+  lookAtObj: {fileID: 0}
+  speakerCam: {fileID: 0}
