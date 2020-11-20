@@ -203,7 +203,17 @@ public class PlayerController : AudioHandler
                 horizontalMovement = inputDevice.LeftStickX;
                 forwardMovement = inputDevice.LeftStickY;
             }
-            verticalMovement = inputDevice.DPadY;
+
+            //left is up -- top priority
+            if (inputDevice.LeftTrigger.IsPressed)
+                verticalMovement = inputDevice.LeftTrigger;
+            //right is down
+            else if (inputDevice.RightTrigger.IsPressed)
+                verticalMovement = inputDevice.RightTrigger * -1;
+            //nothing -- zero
+            else if(inputDevice.LeftTrigger.IsPressed == false 
+                && inputDevice.RightTrigger.IsPressed == false)
+                verticalMovement = 0;
         }
         //mouse & keyboard
         else

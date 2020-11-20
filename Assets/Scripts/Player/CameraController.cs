@@ -244,21 +244,7 @@ public class CameraController : MonoBehaviour {
         //controller 
         if (inputDevice.DeviceClass == InputDeviceClass.Controller)
         {
-            //positive
-            if (inputDevice.RightTrigger)
-            {
-                zoomInput = Mathf.Lerp(zoomInput, 1, Time.deltaTime);
-            }
-            //negative
-            else if (inputDevice.LeftTrigger)
-            {
-                zoomInput = Mathf.Lerp(zoomInput, -1, Time.deltaTime);
-            }
-            //return to 0
-            else if(inputDevice.RightTrigger.IsPressed == false && inputDevice.LeftTrigger.IsPressed == false)
-            {
-                zoomInput = Mathf.Lerp(zoomInput, 0, Time.deltaTime);
-            }
+            zoomInput = inputDevice.DPadY;
         }
         //mouse & keyboard
         else

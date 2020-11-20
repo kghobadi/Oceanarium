@@ -14,13 +14,14 @@ public class MenuSelections : MonoBehaviour
     //for controller selections 
     bool canChange;
     float changeTimer, changeReset = 0.25f;
+    InputDevice inputDevice;
 
     void Update ()
     {
         if (menuActive)
         {
             //get input device 
-            var inputDevice = InputManager.ActiveDevice;
+            inputDevice = InputManager.ActiveDevice;
 
             //controller 
             if (inputDevice.DeviceClass == InputDeviceClass.Controller)
@@ -51,21 +52,19 @@ public class MenuSelections : MonoBehaviour
     //function controls selection with controller
     void ControllerSelection()
     {
-        //get input device 
-        var inputDevice = InputManager.ActiveDevice;
-
+        //get inputY
         float inputValY = inputDevice.LeftStickY;
 
         //detection of changing 
         if (canChange)
         {
             //pos val, selection moves up
-            if (inputValY > 0)
+            if (inputValY < 0)
             {
                 ChangeMenuSelector(true);
             }
             //neg val, selection moves down
-            else if (inputValY < 0)
+            else if (inputValY > 0)
             {
                 ChangeMenuSelector(false);
             }
@@ -140,6 +139,24 @@ public class MenuSelections : MonoBehaviour
             {
                 canChange = true;
             }
+        }
+    }
+
+    //turns on all menu selections
+    public void ActivateSelections()
+    {
+        for (int i = 0; i< menuSelections.Length; i++)
+        {
+            menuSelections[i].gameObject.SetActive(true);
+        }
+    }
+
+    //turns off all menu selections
+    public void DeactivateSelections()
+    {
+        for (int i = 0; i < menuSelections.Length; i++)
+        {
+            menuSelections[i].gameObject.SetActive(false);
         }
     }
 
