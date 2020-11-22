@@ -36,6 +36,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224590854491036234}
+  - component: {fileID: 222998618726139306}
   m_Layer: 5
   m_Name: ControlsUI
   m_TagString: Untagged
@@ -446,6 +447,7 @@ GameObject:
   - component: {fileID: 114245670979460806}
   - component: {fileID: 114744343193854808}
   - component: {fileID: 114292788916924722}
+  - component: {fileID: 114608738897004462}
   m_Layer: 5
   m_Name: No
   m_TagString: Untagged
@@ -674,6 +676,7 @@ GameObject:
   - component: {fileID: 114306109657456736}
   - component: {fileID: 114187663281446190}
   - component: {fileID: 114851793246467084}
+  - component: {fileID: 114370788496978176}
   m_Layer: 5
   m_Name: Yes
   m_TagString: Untagged
@@ -1025,6 +1028,7 @@ GameObject:
   - component: {fileID: 114544389926052968}
   - component: {fileID: 114484042355027180}
   - component: {fileID: 114332882898361780}
+  - component: {fileID: 114739961453196636}
   m_Layer: 5
   m_Name: No
   m_TagString: Untagged
@@ -1098,6 +1102,7 @@ GameObject:
   - component: {fileID: 114452095969471364}
   - component: {fileID: 114130520577719834}
   - component: {fileID: 114996223392282006}
+  - component: {fileID: 114327458200387120}
   m_Layer: 5
   m_Name: Yes
   m_TagString: Untagged
@@ -1105,6 +1110,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1687054675869438
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 224532649245687236}
+  m_Layer: 5
+  m_Name: ChangeScenes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!1 &1693189097384224
 GameObject:
   m_ObjectHideFlags: 1
@@ -1971,6 +1991,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81d32b9e26711af4c9486557ebba1ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myAudioSource: {fileID: 0}
+  pitchRange: {x: 0.9, y: 1.1}
+  voiceCounter: 0
+  voices: []
+  currentSound: 0
+  changeSelections:
+  - {fileID: 8300000, guid: a8a74962da64ecf4dae0550e80fac1b3, type: 3}
+  selects:
+  - {fileID: 8300000, guid: 21d7b3093aa00ec40bc625c10c21d94b, type: 3}
   menuActive: 0
   menuSelections:
   - {fileID: 114143320392885006}
@@ -2031,7 +2060,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1636991133763086}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
@@ -2346,6 +2375,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a0a4be9e2114d41aad4aa53d185b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuSelections: {fileID: 0}
+  deactivateMainMenu: 0
   starsActive:
   - {fileID: 1361513767238686}
   - {fileID: 1283708610696994}
@@ -2467,6 +2498,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a0a4be9e2114d41aad4aa53d185b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuSelections: {fileID: 0}
+  deactivateMainMenu: 0
   starsActive:
   - {fileID: 1259231061031438}
   - {fileID: 1917121586899398}
@@ -2576,6 +2609,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a0a4be9e2114d41aad4aa53d185b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuSelections: {fileID: 0}
+  deactivateMainMenu: 0
   starsActive:
   - {fileID: 1631101847253678}
   - {fileID: 1133096197623426}
@@ -2745,11 +2780,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -3084,11 +3119,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -3156,6 +3191,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a0a4be9e2114d41aad4aa53d185b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuSelections: {fileID: 0}
+  deactivateMainMenu: 0
   starsActive:
   - {fileID: 1978009537586146}
   - {fileID: 1986486754830130}
@@ -3168,6 +3205,17 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 1135950545801890}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114058411172372740}
+        m_MethodName: ActivateMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3549,6 +3597,53 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &114327458200387120
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1683614247515176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114996223392282006}
+          m_MethodName: ActivateStars
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114996223392282006}
+          m_MethodName: DeactivateStars
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!114 &114332882898361780
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3560,6 +3655,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a0a4be9e2114d41aad4aa53d185b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuSelections: {fileID: 0}
+  deactivateMainMenu: 0
   starsActive:
   - {fileID: 1159818731385164}
   - {fileID: 1453084754985366}
@@ -3572,6 +3669,17 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 1908047950586688}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114058411172372740}
+        m_MethodName: ActivateMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3681,6 +3789,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a0a4be9e2114d41aad4aa53d185b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuSelections: {fileID: 0}
+  deactivateMainMenu: 0
   starsActive:
   - {fileID: 1888549436056494}
   - {fileID: 1357222425769188}
@@ -3841,6 +3951,53 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114370788496978176
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1449307916717540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114851793246467084}
+          m_MethodName: ActivateStars
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114851793246467084}
+          m_MethodName: DeactivateStars
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!114 &114372647361024582
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4301,6 +4458,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 114058411172372740}
+        m_MethodName: ActivateMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114488583896555952
@@ -4733,7 +4901,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1622966263511038}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
@@ -4994,12 +5162,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81d32b9e26711af4c9486557ebba1ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myAudioSource: {fileID: 0}
+  pitchRange: {x: 0.9, y: 1.1}
+  voiceCounter: 0
+  voices: []
+  currentSound: 0
+  changeSelections: []
+  selects: []
   menuActive: 1
   menuSelections:
   - {fileID: 114996223392282006}
   - {fileID: 114332882898361780}
   subMenus: []
   currentSelector: 0
+--- !u!114 &114608738897004462
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1309515636400204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114292788916924722}
+          m_MethodName: ActivateStars
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114292788916924722}
+          m_MethodName: DeactivateStars
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!114 &114611835619047860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5011,6 +5233,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81d32b9e26711af4c9486557ebba1ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myAudioSource: {fileID: 0}
+  pitchRange: {x: 0.9, y: 1.1}
+  voiceCounter: 0
+  voices: []
+  currentSound: 0
+  changeSelections: []
+  selects: []
   menuActive: 1
   menuSelections:
   - {fileID: 114971627534485870}
@@ -5341,6 +5570,53 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114739961453196636
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1651454580190900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114332882898361780}
+          m_MethodName: ActivateStars
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114332882898361780}
+          m_MethodName: DeactivateStars
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!114 &114744343193854808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5386,6 +5662,17 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 1135950545801890}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114058411172372740}
+        m_MethodName: ActivateMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5607,11 +5894,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -5636,8 +5923,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81d32b9e26711af4c9486557ebba1ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myAudioSource: {fileID: 0}
+  pitchRange: {x: 0.9, y: 1.1}
+  voiceCounter: 0
+  voices: []
+  currentSound: 0
+  changeSelections: []
+  selects: []
   menuActive: 1
-  menuSelections: []
+  menuSelections:
+  - {fileID: 114851793246467084}
+  - {fileID: 114292788916924722}
   subMenus: []
   currentSelector: 0
 --- !u!114 &114788786189793336
@@ -5673,7 +5969,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1498392525547688}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
@@ -5874,6 +6170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a0a4be9e2114d41aad4aa53d185b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuSelections: {fileID: 0}
+  deactivateMainMenu: 1
   starsActive:
   - {fileID: 1337371485595330}
   - {fileID: 1768674820340270}
@@ -5904,6 +6202,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a0a4be9e2114d41aad4aa53d185b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuSelections: {fileID: 0}
+  deactivateMainMenu: 0
   starsActive:
   - {fileID: 1349835816592308}
   - {fileID: 1913175862186920}
@@ -6047,6 +6347,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a0a4be9e2114d41aad4aa53d185b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuSelections: {fileID: 0}
+  deactivateMainMenu: 1
   starsActive:
   - {fileID: 1338419826458576}
   - {fileID: 1533241831525522}
@@ -6409,6 +6711,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a0a4be9e2114d41aad4aa53d185b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuSelections: {fileID: 0}
+  deactivateMainMenu: 0
   starsActive:
   - {fileID: 1006527984041514}
   - {fileID: 1413918828145936}
@@ -6466,6 +6770,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a0a4be9e2114d41aad4aa53d185b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuSelections: {fileID: 0}
+  deactivateMainMenu: 1
   starsActive:
   - {fileID: 1261823057582160}
   - {fileID: 1752184884436792}
@@ -6561,6 +6867,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a0a4be9e2114d41aad4aa53d185b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuSelections: {fileID: 0}
+  deactivateMainMenu: 0
   starsActive:
   - {fileID: 1439782219485566}
   - {fileID: 1186551303260186}
@@ -7119,6 +7427,13 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1613501337977684}
   m_CullTransparentMesh: 0
+--- !u!222 &222998618726139306
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1012999710728308}
+  m_CullTransparentMesh: 0
 --- !u!224 &224003786731741138
 RectTransform:
   m_ObjectHideFlags: 1
@@ -7652,9 +7967,7 @@ RectTransform:
   - {fileID: 224216064222774140}
   - {fileID: 224853890915977846}
   - {fileID: 224696868105318342}
-  - {fileID: 224893967674585766}
-  - {fileID: 224982212764706780}
-  - {fileID: 224937053782320954}
+  - {fileID: 224532649245687236}
   m_Father: {fileID: 224921572614173092}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7997,6 +8310,27 @@ RectTransform:
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 100, y: 0}
   m_SizeDelta: {x: 65, y: 65}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &224532649245687236
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1687054675869438}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 224893967674585766}
+  - {fileID: 224982212764706780}
+  - {fileID: 224937053782320954}
+  m_Father: {fileID: 224356787717657282}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224566665144662076
 RectTransform:
@@ -8431,8 +8765,8 @@ RectTransform:
   m_LocalScale: {x: 1.499989, y: 1.499989, z: 0.20000654}
   m_Children:
   - {fileID: 224672277021102330}
-  m_Father: {fileID: 224356787717657282}
-  m_RootOrder: 4
+  m_Father: {fileID: 224532649245687236}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8557,8 +8891,8 @@ RectTransform:
   m_LocalScale: {x: 1.499989, y: 1.499989, z: 0.20000654}
   m_Children:
   - {fileID: 224307147745395598}
-  m_Father: {fileID: 224356787717657282}
-  m_RootOrder: 6
+  m_Father: {fileID: 224532649245687236}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8591,11 +8925,11 @@ RectTransform:
   m_GameObject: {fileID: 1705458845508466}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4999853, y: 1.4999853, z: 0.20000193}
+  m_LocalScale: {x: 1.4999852, y: 1.4999852, z: 0.20000193}
   m_Children:
   - {fileID: 224466038685237762}
-  m_Father: {fileID: 224356787717657282}
-  m_RootOrder: 5
+  m_Father: {fileID: 224532649245687236}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

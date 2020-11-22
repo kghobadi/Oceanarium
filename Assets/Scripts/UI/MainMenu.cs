@@ -29,14 +29,17 @@ public class MainMenu : MonoBehaviour {
 		stsObj.SetActive(true);
         //disable menu selections
         menuSelections.DeactivateSelections();
-    }
+		menuSelections.DeactivateMenu();
+	}
 
+	//called at start when player returns to game for another session
 	void PlayerReturning()
     {
 		//disable space to start
 		stsObj.SetActive(false);
         //enable menu selections
         menuSelections.ActivateMenu();
+		menuSelections.ActivateSelections();
 	}
 
 	//new game button calls this
@@ -48,6 +51,7 @@ public class MainMenu : MonoBehaviour {
 		spaceToStart.StartFades();
         //disable selections
         menuSelections.DeactivateSelections();
+		menuSelections.DeactivateMenu();
 	}
 
 	//using values from save system, load player

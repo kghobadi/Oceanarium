@@ -4,8 +4,13 @@ using UnityEngine;
 using InControl;
 
 //this script allows you to move around menus with a controller
-public class MenuSelections : MonoBehaviour
+public class MenuSelections : AudioHandler
 {
+    [Header("Menu Sounds")]
+    public AudioClip[] changeSelections;
+    public AudioClip[] selects;
+
+    [Header("Menu Selections")]
     public bool menuActive;
     public StarSelectors[] menuSelections;
     public GameObject[] subMenus;
@@ -16,13 +21,22 @@ public class MenuSelections : MonoBehaviour
     float changeTimer, changeReset = 0.25f;
     InputDevice inputDevice;
 
+    private void Start()
+    {
+        //assign within star selectors 
+        for(int i = 0; i < menuSelections.Length; i++)
+        {
+            menuSelections[i].menuSelections = this;
+        }
+    }
+
     void Update ()
     {
+        //get input device 
+        inputDevice = InputManager.ActiveDevice;
+
         if (menuActive)
         {
-            //get input device 
-            inputDevice = InputManager.ActiveDevice;
-
             //controller 
             if (inputDevice.DeviceClass == InputDeviceClass.Controller)
             {
@@ -32,6 +46,12 @@ public class MenuSelections : MonoBehaviour
                 ChangeReset();
             }
         }
+
+        //detection of closing submenus
+        if (inputDevice.Action2.WasPressed)
+        {
+            DeactivateAllSubMenus();
+        }
     }
 
     //activates menu and resets selection
@@ -39,6 +59,13 @@ public class MenuSelections : MonoBehaviour
     {
         menuActive = true;
 
+        //deactivate all stars 
+        for (int i = 0; i < menuSelections.Length; i++)
+        {
+            menuSelections[i].DeactivateStars();
+        }
+
+        //reset to selector 0
         currentSelector = 0;
         if (menuSelections.Length > 0)
             menuSelections[currentSelector].ActivateStars();
@@ -47,6 +74,8 @@ public class MenuSelections : MonoBehaviour
     public void DeactivateMenu()
     {
         menuActive = false;
+
+        Debug.Log("deactivated" + gameObject.name);
     }
 
     //function controls selection with controller
@@ -77,11 +106,7 @@ public class MenuSelections : MonoBehaviour
                 menuSelections[currentSelector].SelectMe();
         }
 
-        //detection of closing submenus
-        if (inputDevice.Action2.WasPressed)
-        {
-            DeactivateAllSubMenus();
-        }
+        
     }
 
     //allows you to increment menu selector & change stars
@@ -125,6 +150,12 @@ public class MenuSelections : MonoBehaviour
             //change reset called 
             canChange = false;
             changeTimer = 0;
+
+            //play change selection sound
+            if(changeSelections.Length > 0)
+            {
+                PlayRandomSound(changeSelections, 1f);
+            }
         }
     }
 
@@ -158,6 +189,8 @@ public class MenuSelections : MonoBehaviour
         {
             menuSelections[i].gameObject.SetActive(false);
         }
+
+        //Debug.Log("deactivated" + gameObject.name + " selections");
     }
 
     //turns off all subMenus
@@ -166,6 +199,12 @@ public class MenuSelections : MonoBehaviour
         for (int i = 0; i < subMenus.Length; i++)
         {
             subMenus[i].SetActive(false);
+        }
+
+        //reactivate menu if it was disabled by opening a submenu
+        if(menuActive == false)
+        {
+            ActivateMenu();
         }
     }
 

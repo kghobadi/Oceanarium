@@ -88,6 +88,9 @@ public class PlanetSelector : MonoBehaviour
     {
         unlocked = true;
 
+        if(planetImage == null)
+            planetImage = GetComponent<RawImage>();
+
         planetImage.color = Color.white;
 
         PlayerPrefs.SetString(planet.planetName, "unlocked");

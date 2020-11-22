@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using InControl;
 public class Planter : AudioHandler {
     PlayerController pc;
     MeshRenderer myMR;
@@ -15,6 +15,7 @@ public class Planter : AudioHandler {
     GameObject pearlMono;
     FadeSprite selfFade;
     MonologueManager innerMono;
+    InputDevice inputDevice;
 
     [Header("Planter Travel")]
     [Tooltip("Determinations destination / activation when it arrives at final point")]
@@ -53,7 +54,6 @@ public class Planter : AudioHandler {
     [Tooltip("Size multipliers for spawned objs")]
     public float minSizeMult, maxSizeMult;
    
-
     [Tooltip("Only raycasts at Planet layer")]
     public LayerMask planetMask;
 
@@ -109,12 +109,14 @@ public class Planter : AudioHandler {
 	
 	void Update ()
     {
+        inputDevice = InputManager.ActiveDevice;
+
         //player in trigger
         if (playerPresent)
         {
             if (hasMonos)
             {
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Space) || inputDevice.Action3.WasPressed)
                 {
                     if (!activated && canActivate)
                     {

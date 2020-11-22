@@ -6,13 +6,18 @@ using UnityEngine.Events;
 
 public class StarSelectors : MonoBehaviour {
     PlanetSelector pSelector;
+    [HideInInspector]
+    public MenuSelections menuSelections;
+    public bool deactivateMainMenu;
 
     public GameObject[] starsActive;
     public UnityEvent[] selectionEvents;
 
-    private void Awake()
+    void Awake()
     {
         pSelector = GetComponent<PlanetSelector>();
+        if (menuSelections == null)
+            menuSelections = GetComponentInParent<MenuSelections>();
     }
 
     private void OnEnable()
@@ -37,6 +42,19 @@ public class StarSelectors : MonoBehaviour {
                 starsActive[i].SetActive(true);
             }
         }
+
+        DeactivateOtherStars();
+    }
+
+    void DeactivateOtherStars()
+    {
+        for (int i = 0; i < menuSelections.menuSelections.Length; i++)
+        {
+            if (menuSelections.menuSelections[i] != this)
+            {
+                menuSelections.menuSelections[i].DeactivateStars();
+            }
+        }
     }
 
     public void DeactivateStars()
@@ -47,12 +65,32 @@ public class StarSelectors : MonoBehaviour {
         }
     }
 
-    //call the selection events 
+   
     public void SelectMe()
-    {
-        for(int i = 0; i < selectionEvents.Length; i++)
+    { 
+        //call the selection events 
+        for (int i = 0; i < selectionEvents.Length; i++)
         {
             selectionEvents[i].Invoke();
+        }
+
+        if (deactivateMainMenu)
+        {
+            //check if submenus are active
+            if (menuSelections.CheckSubMenusActive())
+            {
+                //disable menu selections while submenu is active
+                menuSelections.DeactivateMenu();
+            }
+        }
+
+        //play sound from menu
+        if (menuSelections)
+        {
+            if (menuSelections.selects.Length > 0)
+            {
+                menuSelections.PlayRandomSound(menuSelections.selects, 1f);
+            }
         }
     }
 }

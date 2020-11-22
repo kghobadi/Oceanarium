@@ -204,12 +204,12 @@ public class PlayerController : AudioHandler
                 forwardMovement = inputDevice.LeftStickY;
             }
 
-            //left is up -- top priority
-            if (inputDevice.LeftTrigger.IsPressed)
-                verticalMovement = inputDevice.LeftTrigger;
-            //right is down
-            else if (inputDevice.RightTrigger.IsPressed)
-                verticalMovement = inputDevice.RightTrigger * -1;
+            //riight is up -- top priority
+            if (inputDevice.RightTrigger.IsPressed)
+                verticalMovement = inputDevice.RightTrigger;
+            //left is down
+            else if (inputDevice.LeftTrigger.IsPressed)
+                verticalMovement = inputDevice.LeftTrigger * -1;
             //nothing -- zero
             else if(inputDevice.LeftTrigger.IsPressed == false 
                 && inputDevice.RightTrigger.IsPressed == false)
