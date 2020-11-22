@@ -38,7 +38,8 @@ public class SpaceToStart : MonoBehaviour {
             //controller 
             if (inputDevice.DeviceClass == InputDeviceClass.Controller)
             {
-                if (inputDevice.Action1.WasPressed)
+                //press X/[] to start
+                if (inputDevice.Action3.WasPressed)
                 {
                     StartFades();
                 }

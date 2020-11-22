@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 using InControl;
 
 public class QuitGame : MonoBehaviour {
-    
+    PlayerController pc;
+    CameraController camControl;
     MenuSelections mainMenuSelections;
 
     public GameObject escMenu;
@@ -17,6 +18,8 @@ public class QuitGame : MonoBehaviour {
     void Awake()
     {
         mainMenuSelections = GetComponent<MenuSelections>();
+        pc = FindObjectOfType<PlayerController>();
+        camControl = FindObjectOfType<CameraController>();
     }
 
     void Start()
@@ -35,7 +38,8 @@ public class QuitGame : MonoBehaviour {
         if ((Input.GetKeyDown(KeyCode.Escape) ||  inputDevice.Command.WasPressed) && escMenu.activeSelf == false && !pressed)
         {
             ActivateQuitMenu();
-
+            pc.canMove = false;
+            camControl.canMoveCam = false;
             pressed = true;
         }
 
@@ -48,11 +52,13 @@ public class QuitGame : MonoBehaviour {
                 mainMenuSelections.DeactivateAllSubMenus();
             else
             {
+                //leave menu
                 mainMenuSelections.DeactivateMenu();
+                pc.canMove = true;
+                camControl.canMoveCam = true;
                 DeactivateObj(escMenu);
             }
                 
-
             pressed = true;
         }
     }

@@ -2,17 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 //This script handles fades 
 //can fadeIn at start or fadeOut when leaving
 
-public class FadeUI : MonoBehaviour {
+public class FadeUI : MonoBehaviour
+{
     //set this in editor to decide which component to grab
-    public bool isImage;
+    public enum UIType
+    {
+        IMAGE, RAWIMAGE, TEXT, TMPTEXT,
+    }
+    public UIType uiType;
 
     //store image/text + color
     Image thisImage;
+    RawImage rawImage;
     Text thisText;
+    TMP_Text tmpText;
     Color alphaValue;
 
     //these will be on during the fades
@@ -24,35 +32,58 @@ public class FadeUI : MonoBehaviour {
 
     public bool shownAtStart;
 
-	void Start () {
+    void GetUIType()
+    {
         //checks privately whether this object has image or text component
         thisImage = GetComponent<Image>();
-        thisText = GetComponent<Text>();
-
-        if (thisImage != null)
-            isImage = true;
-
-        //differet syntax for image and text
-        if (isImage)
+        if (thisImage == null)
         {
-            alphaValue = thisImage.color;
-            alphaValue.a = 0;
-            thisImage.color = alphaValue;
+            rawImage = GetComponent<RawImage>();
+
+            if (rawImage == null)
+            {
+                thisText = GetComponent<Text>();
+
+                //it's a TMP TEXT
+                if (thisText == null)
+                {
+                    tmpText = GetComponent<TMP_Text>();
+                    uiType = UIType.TMPTEXT;
+                }
+                //its a Text
+                else
+                {
+                    uiType = UIType.TEXT;
+                }
+            }
+            else
+            {
+                uiType = UIType.RAWIMAGE;
+            }
         }
+        //its an image
         else
         {
-            alphaValue = thisText.color;
-            alphaValue.a = 0;
-            thisText.color = alphaValue;
+            uiType = UIType.IMAGE;
         }
+    }
+
+    void Start()
+    {
+        GetUIType();
+
+        SetAlpha();
+        alphaValue.a = 0;
+        UpdateAlpha();
 
         //automatically fadeIn at start if object has this script
-        if(shownAtStart)
+        if (shownAtStart)
             StartCoroutine(WaitToFadeIn());
-	}
+    }
 
     public void FadeIn()
     {
+        StopAllCoroutines();
         fadingIn = true;
         fadingOut = false;
     }
@@ -62,18 +93,15 @@ public class FadeUI : MonoBehaviour {
         fadingOut = true;
     }
 
-    void Update () {
+    void Update()
+    {
         //when fadingIn, this is called every frame
         if (fadingIn)
         {
-            if(alphaValue.a < fadeInAmount)
+            if (alphaValue.a < fadeInAmount)
             {
-
                 alphaValue.a += fadeInSpeed * Time.deltaTime;
-                if(isImage)
-                    thisImage.color = alphaValue;
-                else
-                    thisText.color = alphaValue;
+                UpdateAlpha();
             }
             else
             {
@@ -90,12 +118,8 @@ public class FadeUI : MonoBehaviour {
         {
             if (alphaValue.a > fadeOutAmount)
             {
-
                 alphaValue.a -= fadeOutSpeed * Time.deltaTime;
-                if (isImage)
-                    thisImage.color = alphaValue;
-                else
-                    thisText.color = alphaValue;
+                UpdateAlpha();
             }
             else
             {
@@ -108,17 +132,57 @@ public class FadeUI : MonoBehaviour {
         }
     }
 
+    //switch statement sets alpha depending on component type 
+    void SetAlpha()
+    {
+        switch (uiType)
+        {
+            case UIType.IMAGE:
+                alphaValue = thisImage.color;
+                break;
+            case UIType.RAWIMAGE:
+                alphaValue = rawImage.color;
+                break;
+            case UIType.TEXT:
+                alphaValue = thisText.color;
+                break;
+            case UIType.TMPTEXT:
+                alphaValue = tmpText.color;
+                break;
+        }
+    }
+
+    //switch statement updates alpha depending on component type 
+    void UpdateAlpha()
+    {
+        switch (uiType)
+        {
+            case UIType.IMAGE:
+                thisImage.color = alphaValue;
+                break;
+            case UIType.RAWIMAGE:
+                rawImage.color = alphaValue;
+                break;
+            case UIType.TEXT:
+                thisText.color = alphaValue;
+                break;
+            case UIType.TMPTEXT:
+                tmpText.color = alphaValue;
+                break;
+        }
+    }
+
     public IEnumerator WaitToFadeIn()
     {
         yield return new WaitForSeconds(fadeInWait);
-        
+
         fadingIn = true;
     }
 
     public IEnumerator WaitToFadeOut()
     {
         yield return new WaitForSeconds(fadeOutWait);
-        
+
         fadingOut = true;
     }
 }
