@@ -50,6 +50,7 @@ public class PlayerController : AudioHandler
     public FadeSprite camFade;
     PostProcessingBehaviour camBehavior;
     public PostProcessingProfile normalPP, meditationPP;
+    public GameObject meditationSoul;
     //player move states
     public MoveStates moveState;
     public enum MoveStates
@@ -404,6 +405,11 @@ public class PlayerController : AudioHandler
             moveState = MoveStates.MEDITATING;
             animator.SetAnimator("meditating");
 
+            if (meditationSoul)
+            {
+                meditationSoul.SetActive(true);
+            }
+
             //fade 
             if (camFade)
                 camFade.FadeIn();
@@ -439,8 +445,13 @@ public class PlayerController : AudioHandler
             if(camFade)
                 camFade.FadeOut();
 
+            if (meditationSoul)
+            {
+                meditationSoul.SetActive(false);
+            }
+
             //set pp 
-            if(normalPP)
+            if (normalPP)
                 camBehavior.profile = normalPP;
 
             //fp
