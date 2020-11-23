@@ -4,6 +4,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using InControl;
 
 public class LoadSceneAsync : MonoBehaviour
 {
@@ -11,8 +12,8 @@ public class LoadSceneAsync : MonoBehaviour
     public TripActivation tripToTransition;
     [Tooltip("Check this if you are certain the scene to be loaded is next in the build order")]
     public bool loadsNextScene;
-    [Tooltip("Write the name of the scene")]
-    public string sceneToLoad;
+    [Tooltip("Build index of the scene")]
+    public int sceneToLoad;
     [Tooltip("Check this to start async load at start of the scene")]
     public bool loadPreparesOnStart;
     public bool preparing = false;
@@ -21,6 +22,7 @@ public class LoadSceneAsync : MonoBehaviour
 
     MusicFader mFader;
     AsyncOperation asyncOperation = null;
+    InputDevice inputDevice;
 
     void Start()
     {
@@ -70,10 +72,12 @@ public class LoadSceneAsync : MonoBehaviour
             {
                 Debug.Log("ready to load " + sceneToLoad + "!");
                 //Wait to you press the space key to activate the Scene && we are in the trip
-                if(tripToTransition != null)
+                if (tripToTransition != null)
                 {
+                    inputDevice = InputManager.ActiveDevice;
                     //player pressed space during trip 
-                    if ((Input.GetKeyDown(KeyCode.Space) && tripToTransition.tripping))
+                    if ((Input.GetKeyDown(KeyCode.Space) || inputDevice.Action3.WasPressed)
+                        && tripToTransition.tripping)
                     {
                         //Activate the Scene
                         asyncOperation.allowSceneActivation = true;

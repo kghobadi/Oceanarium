@@ -28,7 +28,7 @@ public class SaveSystem : MonoBehaviour {
 		pc = FindObjectOfType<PlayerController>();
 	}
 
-    private void OnEnable()
+    private void Start()
     {
 		GetPlanets();
 
@@ -59,16 +59,16 @@ public class SaveSystem : MonoBehaviour {
 	public void LoadPrefs()
     {
 		//check if player has played before
-        if (PlayerPrefs.GetInt("Sessions") > 0)
-        {
-            LoadGame();
+		if (PlayerPrefs.GetInt("Sessions") > 0)
+		{
+			LoadGame();
 		}
 		//no sessions, new game
-        else
-        {
-            NewGame();
+		else
+		{
+			NewGame();
 		}
-    }
+	}
 
     void LoadGame()
     {
@@ -76,12 +76,10 @@ public class SaveSystem : MonoBehaviour {
         sessions = PlayerPrefs.GetInt("Sessions");
         //get last galaxy scene
         currentGalaxy = PlayerPrefs.GetInt("Galaxy");
-        //planets
-        LoadPlanets();
-        //for other scripts
-        returningGame.Invoke();
+		//for other scripts
+		returningGame.Invoke();
 
-        Debug.Log("loading game");
+		Debug.Log("loading game");
     }
 
     void NewGame()
@@ -95,26 +93,7 @@ public class SaveSystem : MonoBehaviour {
         Debug.Log("started new game");
     }
 
-	public void LoadPlanets()
-    {
-		//get saved planet name 
-		string savedPlanet = PlayerPrefs.GetString("ActivePlanet");
-
-		//loop thru planet names
-		for (int i = 0; i < planetNames.Length; i++)
-        {
-			//check for match
-			if(savedPlanet == planetNames[i])
-            {
-				//set last planet manager
-				lastPlanet = allPlanets[i];
-
-				//start player there
-				lastPlanet.StartPlayerAtPlanet();
-			}
-		}
-	}
-
+	
 	//save all player pref
 	public void SavePrefs()
 	{

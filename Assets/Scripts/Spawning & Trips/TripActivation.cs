@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using InControl;
 
 public class TripActivation : MonoBehaviour {
     GameObject player;
@@ -11,6 +12,7 @@ public class TripActivation : MonoBehaviour {
     CameraController camControl;
     LoadSceneAsync sceneLoader;
     Vector3 origPos;
+    InputDevice inputDevice;
 
     public FadeUI tripFader;
    
@@ -60,13 +62,15 @@ public class TripActivation : MonoBehaviour {
 
     void Update()
     {
+        inputDevice = InputManager.ActiveDevice;
+
         //calc dist
         float distFromPlayer = Vector3.Distance(transform.position, player.transform.position);
         //is it within range to trip?
         if (distFromPlayer < necessaryDistance)
         {
             //press space && not tripping // converting to trip 
-            if (Input.GetKeyDown(KeyCode.Space) && canTrip && !tripping && !tripFader.fadingIn && !tripFader.fadingOut)
+            if ((Input.GetKeyDown(KeyCode.Space) || inputDevice.Action3.WasPressed) && canTrip && !tripping && !tripFader.fadingIn && !tripFader.fadingOut)
             {
                 StartTrip();
             }
