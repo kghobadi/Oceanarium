@@ -16,6 +16,7 @@ public class MeditationMovement : MonoBehaviour
     //for viewing
     Vector2 mouseLook;
     Vector2 smoothV;
+    InputDevice inputDevice;
 
     [Header("Old FPS movement")]
     public bool isActive;
@@ -25,6 +26,8 @@ public class MeditationMovement : MonoBehaviour
     float hRot, vRot;
     public float sensitivityX = 1f;
     public float sensitivityY = 1f;
+    public float c_sensitivityX = 3f;
+    public float c_sensitivityY = 3f;
     public bool invertX, invertY;
 
     [Header("Astral Body Movement")]
@@ -67,6 +70,9 @@ public class MeditationMovement : MonoBehaviour
     { 
         if (isActive)
         {
+            //get input
+            inputDevice = InputManager.ActiveDevice;
+
             //only call camera rotation during fp meditation 
             CameraRotation();
 
@@ -120,9 +126,6 @@ public class MeditationMovement : MonoBehaviour
         Vector3 force = Vector3.zero;
         float horizontalMovement;
         float forwardMovement;
-
-        //get input device 
-        var inputDevice = InputManager.ActiveDevice;
 
         //controller 
         if (inputDevice.DeviceClass == InputDeviceClass.Controller)
@@ -184,14 +187,11 @@ public class MeditationMovement : MonoBehaviour
     //only camera rotation 
     void CameraRotation()
     {
-        //get input device 
-        var inputDevice = InputManager.ActiveDevice;
-
         //controller 
         if (inputDevice.DeviceClass == InputDeviceClass.Controller)
         {
-            hRot = sensitivityX * inputDevice.RightStickX;
-            vRot = sensitivityY * inputDevice.RightStickY;
+            hRot = c_sensitivityX * inputDevice.RightStickX;
+            vRot = c_sensitivityY * inputDevice.RightStickY;
         }
         //mouse
         else

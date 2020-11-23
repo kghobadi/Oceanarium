@@ -12,8 +12,6 @@ public class QuitGame : MonoBehaviour {
     public GameObject escMenu;
     [Header("Controls UI")]
     public GameObject controlsUI;
-    public GameObject controlsKeyboard;
-    public GameObject controllerInputs;
 
     void Awake()
     {
@@ -52,11 +50,7 @@ public class QuitGame : MonoBehaviour {
                 mainMenuSelections.DeactivateAllSubMenus();
             else
             {
-                //leave menu
-                mainMenuSelections.DeactivateMenu();
-                pc.canMove = true;
-                camControl.canMoveCam = true;
-                DeactivateObj(escMenu);
+                DeactiveMenu();
             }
                 
             pressed = true;
@@ -74,27 +68,19 @@ public class QuitGame : MonoBehaviour {
         mainMenuSelections.ActivateMenu();
     }
     
+    public void DeactiveMenu()
+    {
+        //leave menu
+        mainMenuSelections.DeactivateMenu();
+        pc.canMove = true;
+        camControl.canMoveCam = true;
+        DeactivateObj(escMenu);
+    }
 
     public void ShowControls()
     {
-        //get input device 
-        var inputDevice = InputManager.ActiveDevice;
-
         //enable controls header obj
         controlsUI.SetActive(true);
-
-        //controller 
-        if (inputDevice.DeviceClass == InputDeviceClass.Controller)
-        {
-            controllerInputs.SetActive(true);
-            controlsKeyboard.SetActive(false);
-        }
-        //mouse & keyboard
-        else
-        {
-            controlsKeyboard.SetActive(true);
-            controllerInputs.SetActive(false);
-        }
     }
     
     //on the 'no' under q prompts

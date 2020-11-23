@@ -49,6 +49,8 @@ public class PlanetManager : MonoBehaviour {
         creatureSpawner = GetComponent<CreatureSpawner>();
         saveSystem = FindObjectOfType<SaveSystem>();
         saveSystem.startNewGame.AddListener(NewGame);
+        saveSystem.returningGame.AddListener(LoadGame);
+        //saveSystem.returningGame.AddListener();
         guardian = GameObject.FindGameObjectWithTag("Guardian");
         if(guardian)
             gBehavior = guardian.GetComponent<Guardian>();
@@ -74,11 +76,6 @@ public class PlanetManager : MonoBehaviour {
             
         }
     }
-    
-    void Start()
-    {
-        DeactivatePlanet();
-    }
 
     public void SetAsStart()
     {
@@ -98,17 +95,36 @@ public class PlanetManager : MonoBehaviour {
     //invoked by Save system
     void NewGame()
     {
+        //only activate starting planet
         if (startingPlanet)
         {
             StartPlayerAtPlanet();
+        }
+        else
+        {
+            DeactivatePlanet();
+        }
+    }
+
+    //invoked by Save system
+    void LoadGame()
+    {
+        //get saved planet name 
+        string savedPlanet = PlayerPrefs.GetString("ActivePlanet");
+
+        //only activate saved planet
+        if (savedPlanet == planetName)
+        {
+            StartPlayerAtPlanet();
+        }
+        else
+        {
+            DeactivatePlanet();
         }
     }
 
     public void StartPlayerAtPlanet()
     {
-        //null check
-        if(pc == null)
-            Awake();
         //teleport player 
         pc.transform.position = playerStartingPoint.position;
         //teleport guardian 
@@ -157,6 +173,8 @@ public class PlanetManager : MonoBehaviour {
         {
             props[i].SetActive(true);
         }
+
+        Debug.Log("activated " + planetName);
     }
 
     public void DeactivatePlanet()
@@ -170,6 +188,9 @@ public class PlanetManager : MonoBehaviour {
         {
             props[i].SetActive(false);
         }
+
+
+        Debug.Log("deactivated " + planetName);
     }
 
     public void SetMeditationVisuals()

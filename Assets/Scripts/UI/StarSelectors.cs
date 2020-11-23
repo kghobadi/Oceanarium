@@ -67,7 +67,16 @@ public class StarSelectors : MonoBehaviour {
 
    
     public void SelectMe()
-    { 
+    {
+        //play sound from menu
+        if (menuSelections)
+        {
+            if (menuSelections.selects.Length > 0)
+            {
+                menuSelections.PlayRandomSound(menuSelections.selects, 1f);
+            }
+        }
+
         //call the selection events 
         for (int i = 0; i < selectionEvents.Length; i++)
         {
@@ -81,15 +90,6 @@ public class StarSelectors : MonoBehaviour {
             {
                 //disable menu selections while submenu is active
                 menuSelections.DeactivateMenu();
-            }
-        }
-
-        //play sound from menu
-        if (menuSelections)
-        {
-            if (menuSelections.selects.Length > 0)
-            {
-                menuSelections.PlayRandomSound(menuSelections.selects, 1f);
             }
         }
     }
