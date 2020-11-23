@@ -61,28 +61,38 @@ public class SaveSystem : MonoBehaviour {
 		//check if player has played before
         if (PlayerPrefs.GetInt("Sessions") > 0)
         {
-			//get session
-			sessions = PlayerPrefs.GetInt("Sessions");
-			//get last galaxy scene
-			currentGalaxy = PlayerPrefs.GetInt("Galaxy");
-			//planets
-			LoadPlanets();
-			//for other scripts
-			returningGame.Invoke();
-
-			Debug.Log("loading game");
+            LoadGame();
 		}
-		//
+		//no sessions, new game
         else
         {
-			//first session
-			sessions = 0;
-			PlayerPrefs.SetInt("Sessions", sessions);
-			//invoke start game -- planet which is starting will listen
-			startNewGame.Invoke();
-
-			Debug.Log("started new game");
+            NewGame();
 		}
+    }
+
+    void LoadGame()
+    {
+        //get session
+        sessions = PlayerPrefs.GetInt("Sessions");
+        //get last galaxy scene
+        currentGalaxy = PlayerPrefs.GetInt("Galaxy");
+        //planets
+        LoadPlanets();
+        //for other scripts
+        returningGame.Invoke();
+
+        Debug.Log("loading game");
+    }
+
+    void NewGame()
+    {
+        //first session
+        sessions = 0;
+        PlayerPrefs.SetInt("Sessions", sessions);
+        //invoke start game -- planet which is starting will listen
+        startNewGame.Invoke();
+
+        Debug.Log("started new game");
     }
 
 	public void LoadPlanets()

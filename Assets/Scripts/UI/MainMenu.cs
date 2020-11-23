@@ -6,36 +6,40 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour {
 	SaveSystem saveSystem;
 	LoadSceneAsync loadScene;
+    MenuSelections menuSelections;
 
-	public SpaceToStart spaceToStart;
+    public SpaceToStart spaceToStart;
 	public GameObject stsObj;
-	public GameObject newGameButton;
-	public GameObject continueGameButton;
-
+   
 	void Awake () 
 	{
 		//get refs
 		saveSystem = FindObjectOfType<SaveSystem>();
 		loadScene = FindObjectOfType<LoadSceneAsync>();
+        menuSelections = GetComponent<MenuSelections>();
 		//add callbacks
 		saveSystem.startNewGame.AddListener(NewGame);
 		saveSystem.returningGame.AddListener(PlayerReturning);
 	}
 
-	void NewGame()
+    //called at start if first ever session 
+    void NewGame()
     {
-		//disable new game & continue buttons, 
+		//enable space to start ui 
 		stsObj.SetActive(true);
-		newGameButton.SetActive(false);
-		continueGameButton.SetActive(false);
-    }
+        //disable menu selections
+        menuSelections.DeactivateSelections();
+		menuSelections.DeactivateMenu();
+	}
 
+	//called at start when player returns to game for another session
 	void PlayerReturning()
     {
-		//disable space to start, enalbe new game & continue buttons
+		//disable space to start
 		stsObj.SetActive(false);
-		newGameButton.SetActive(true);
-		continueGameButton.SetActive(true);
+        //enable menu selections
+        menuSelections.ActivateMenu();
+		menuSelections.ActivateSelections();
 	}
 
 	//new game button calls this
@@ -43,11 +47,11 @@ public class MainMenu : MonoBehaviour {
     {
 		//delete all prefs 
 		PlayerPrefs.DeleteAll();
-		//and begin
+		//and begin fades
 		spaceToStart.StartFades();
-		//fades
-		newGameButton.SetActive(false);
-		continueGameButton.SetActive(false);
+        //disable selections
+        menuSelections.DeactivateSelections();
+		menuSelections.DeactivateMenu();
 	}
 
 	//using values from save system, load player

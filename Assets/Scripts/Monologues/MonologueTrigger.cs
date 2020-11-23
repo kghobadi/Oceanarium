@@ -77,7 +77,7 @@ public class MonologueTrigger : MonoBehaviour
 
         if (playerInZone)
         {
-            if((Input.GetKeyDown(KeyCode.Space) || inputDevice.Action1.WasPressed || autoActivates) && !hasActivated)
+            if((Input.GetKeyDown(KeyCode.Space) || inputDevice.Action3.WasPressed || autoActivates) && !hasActivated)
             {
                 WaitToStart(0f);
             }

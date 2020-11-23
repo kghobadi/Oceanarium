@@ -24,6 +24,9 @@ public class DistanceAnimatorParameter : MonoBehaviour
     [HideInInspector]
     public float distanceFromPlayer;
 
+    //needs to work with Trip sequence as well
+    // just add Guardian Rider transform to targets on awake if its a trip obj
+
     private void Awake()
     {
         animatorComponent = GetComponent<Animator>();
