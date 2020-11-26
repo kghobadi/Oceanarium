@@ -395,7 +395,6 @@ public class PlayerController : AudioHandler
             camControls.LerpFOV(camControls.meditationFOV, 2f);
             camControls.cRigidbody.isKinematic = true;
             meditating.TransitionTo(2f);
-            canJump = false;
 
             //set timer 
             if (idleTimer < timeUntilMeditate)
@@ -428,7 +427,7 @@ public class PlayerController : AudioHandler
     }
 
     //stop meditating 
-    void DisableMeditation()
+    public void DisableMeditation()
     {
         //return from meditating FOV
         if (moveState == MoveStates.MEDITATING)
@@ -436,7 +435,6 @@ public class PlayerController : AudioHandler
             camControls.LerpFOV(camControls.originalFOV, 2f);
             camControls.cRigidbody.isKinematic = false;
             normal.TransitionTo(2f);
-            canJump = true;
 
             //planet manager resets all pearl lures 
             activePlanet.ResetVisuals();
@@ -457,6 +455,10 @@ public class PlayerController : AudioHandler
             //fp
             camControls.canMoveCam = true;
             meditationControls.DeactivateFPS();
+
+            //diver idle
+            moveState = MoveStates.IDLE;
+            animator.SetAnimator("idle");
         }
     }
 
@@ -498,6 +500,9 @@ public class PlayerController : AudioHandler
     //actual jump 
     void Jump()
     {
+        //nope nope nope!
+        DisableMeditation();
+
         //just pressed, so normal jump
         if (jumpTimer <= jumpMin)
         {

@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/New Intro Galaxy.unity
     guid: d4b909e16e18ab34bbffc707beb7e6f4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CoralGalaxy.unity
     guid: 18ac9754690e5224b86a983e0528b606
   m_configObjects: {}

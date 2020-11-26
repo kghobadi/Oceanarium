@@ -15,7 +15,7 @@ public class CurrentObjectManager : MonoBehaviour {
     float timeToReactivate;
     public PlanetManager prevPlanet, nextPlanet;
 
-    [Header("It is used by 2 planets")]
+    [Header("Is it used by 2 planets?")]
     public bool twoWay;
     public bool returning;
 

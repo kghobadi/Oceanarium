@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a3861b9ea3b4c43b0c9e901c55bc6c, type: 3}
   m_Name: Ohm 1
   m_EditorClassIdentifier: 
-  monologue: {fileID: 4900000, guid: c84a6af6f6d6e224dae4e3266d4e1666, type: 3}
+  monologue: {fileID: 4900000, guid: 14e12426efc253e4a83bb6163866ee10, type: 3}
   worldMonoIndex: 17
   waitToStart: 0
   timeUntilStart: 0

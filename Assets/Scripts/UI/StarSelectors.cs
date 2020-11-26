@@ -27,6 +27,15 @@ public class StarSelectors : MonoBehaviour {
 
     public void ActivateStars()
     {
+        //play sound from menu
+        if (menuSelections)
+        {
+            if (menuSelections.selects.Length > 0)
+            {
+                menuSelections.PlayRandomSound(menuSelections.changeSelections, 1f);
+            }
+        }
+
         if (pSelector)
         {
             if(pSelector.unlocked)

@@ -32,7 +32,7 @@ MonoBehaviour:
   enablesCinematicTriggers: 0
   cTriggers: []
   adjustsCamera: 1
-  cameraXPos: 0
-  cameraYLook: 5
+  cameraXPos: 3
+  cameraYLook: -8
   lookAtObj: {fileID: 0}
   speakerCam: {fileID: 0}
