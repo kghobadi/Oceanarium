@@ -16726,6 +16726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasGravityBody: 0
+  freezePosition: 1
 --- !u!114 &114007957209390344
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16738,6 +16739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasGravityBody: 0
+  freezePosition: 1
 --- !u!114 &114039827525727450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16765,6 +16767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasGravityBody: 0
+  freezePosition: 1
 --- !u!114 &114061758592300208
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16777,6 +16780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasGravityBody: 0
+  freezePosition: 1
 --- !u!114 &114069665649909162
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16789,6 +16793,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasGravityBody: 0
+  freezePosition: 1
 --- !u!114 &114077249832103324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16846,6 +16851,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasGravityBody: 0
+  freezePosition: 1
 --- !u!114 &114172208066346144
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17010,6 +17016,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasGravityBody: 0
+  freezePosition: 1
 --- !u!114 &114232507038312788
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17052,6 +17059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasGravityBody: 0
+  freezePosition: 1
 --- !u!114 &114314257563491502
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17079,6 +17087,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasGravityBody: 0
+  freezePosition: 1
 --- !u!114 &114387402737610092
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17222,6 +17231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasGravityBody: 0
+  freezePosition: 1
 --- !u!114 &114544248773729074
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17234,6 +17244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasGravityBody: 0
+  freezePosition: 1
 --- !u!114 &114577216198473478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17276,6 +17287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasGravityBody: 0
+  freezePosition: 1
 --- !u!114 &114619610673566700
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17288,6 +17300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasGravityBody: 0
+  freezePosition: 1
 --- !u!114 &114626287239721960
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17422,6 +17435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasGravityBody: 0
+  freezePosition: 1
 --- !u!114 &114685383567835248
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17464,6 +17478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasGravityBody: 0
+  freezePosition: 1
 --- !u!114 &114751769444708524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17491,6 +17506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasGravityBody: 0
+  freezePosition: 1
 --- !u!114 &114763861992719908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17533,6 +17549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasGravityBody: 0
+  freezePosition: 1
 --- !u!114 &114817552135731134
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17545,6 +17562,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasGravityBody: 0
+  freezePosition: 1
 --- !u!114 &114863128555040066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17586,6 +17604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasGravityBody: 0
+  freezePosition: 1
 --- !u!114 &114924564188094438
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17598,6 +17617,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasGravityBody: 0
+  freezePosition: 1
 --- !u!114 &114926604953204996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17655,6 +17675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasGravityBody: 0
+  freezePosition: 1
 --- !u!135 &135009250396075942
 SphereCollider:
   m_ObjectHideFlags: 1

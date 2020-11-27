@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 95080882044314112}
   - component: {fileID: 114289752065485724}
   - component: {fileID: 114224954995705616}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: coral_light
   m_TagString: Prop
   m_Icon: {fileID: 0}
@@ -36,9 +36,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1621741275610162}
-  m_LocalRotation: {x: -0.59981537, y: 0, z: 0.098740965, w: 0.79402256}
-  m_LocalPosition: {x: -86.01785, y: 98.97718, z: -421.92236}
-  m_LocalScale: {x: 1.1309532, y: 1.1309536, z: 1.1309532}
+  m_LocalRotation: {x: 0.5589185, y: 0, z: 0.42398787, w: 0.7126321}
+  m_LocalPosition: {x: -987.1221, y: 11.045707, z: -1902.5817}
+  m_LocalScale: {x: 0.28609997, y: 0.28610006, z: 0.28609997}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -88,6 +88,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasGravityBody: 0
+  freezePosition: 1
 --- !u!212 &212369290790380382
 SpriteRenderer:
   m_ObjectHideFlags: 1
