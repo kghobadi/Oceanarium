@@ -2983,7 +2983,7 @@ MonoBehaviour:
   - {fileID: 4974532125938622}
   currents: {fileID: 114004931651266640}
   ruin: {fileID: 0}
-  spawnObj: {fileID: 1408911501964028, guid: 21fe1f9b074ec6d469571d7d56f2505d, type: 2}
+  spawnObj: {fileID: 1357176474139690, guid: be7c4216169f4e9498a04a9174065893, type: 2}
   plantParent: {fileID: 0}
   spawnTimer: 0
   spawnFrequency: 0.3

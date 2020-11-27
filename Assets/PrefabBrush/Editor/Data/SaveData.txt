@@ -1,8 +1,8 @@
 Layer Selection: Planet
-Brush Max Size: 107.61
-Brush Size: 5.8
+Brush Max Size: 151.19
+Brush Size: 0.1
 Fill Mode: True
-Fill Rate: 0.1913
+Fill Rate: 0.5
 
 Game Object: None
 Layer: 
@@ -528,7 +528,7 @@ Depth: 8
 
 Game Object: Assets/Prefabs/Props/coral_light.prefab
 Layer: Default
-Toggle: False
+Toggle: True
 Slider: 1
 Lock Orientation Toggle: False
 Random Rotation Toggle: False
@@ -536,8 +536,8 @@ Random Rotation X: False
 Random Rotation Y: False
 Random Rotation Z: False
 Random Scale Toggle: True
-Random Scale Min: 0.6
-Random Scale Max: 1.3
+Random Scale Min: 0.2
+Random Scale Max: 0.8
 Fixed Rotation Toggle: False
 Fixed Rotation X: 0
 Fixed Rotation Y: 0
@@ -672,7 +672,7 @@ Depth: 6
 
 Game Object: Assets/Prefabs/Props/Lightskeleton.prefab
 Layer: Default
-Toggle: True
+Toggle: False
 Slider: 1
 Lock Orientation Toggle: False
 Random Rotation Toggle: False
@@ -686,11 +686,11 @@ Fixed Rotation Toggle: False
 Fixed Rotation X: 0
 Fixed Rotation Y: 0
 Fixed Rotation Z: 0
-Depth: 2
+Depth: 3
 
 Game Object: Assets/Prefabs/Props/Lightskeleton 1.prefab
 Layer: Default
-Toggle: True
+Toggle: False
 Slider: 1
 Lock Orientation Toggle: False
 Random Rotation Toggle: False
@@ -704,7 +704,40 @@ Fixed Rotation Toggle: False
 Fixed Rotation X: 0
 Fixed Rotation Y: 0
 Fixed Rotation Z: 0
-Depth: 2
+Depth: 3
 
-Group Names:
-Innerworld_props
+Game Object: Assets/Prefabs/Props/BulbFlower.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.2
+Random Scale Max: 0.5
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 3.5
+
+Game Object: Assets/Prefabs/Spawnable Plants/Fungus.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.1
+Random Scale Max: 0.8
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 4

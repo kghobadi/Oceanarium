@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 95157254699364198}
   - component: {fileID: 114263653131475414}
   - component: {fileID: 114314343946504444}
-  m_Layer: 22
+  m_Layer: 10
   m_Name: Lightskeleton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,9 +36,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1351808554323902}
-  m_LocalRotation: {x: -0.2871689, y: -0, z: -0.24759701, w: 0.9253269}
-  m_LocalPosition: {x: -547.1354, y: 1982.5267, z: -5.755139}
-  m_LocalScale: {x: 0.78523433, y: 0.78523433, z: 0.7852342}
+  m_LocalRotation: {x: -0.5326, y: 0, z: 0.64309865, w: 0.5502377}
+  m_LocalPosition: {x: -986.8638, y: -0.3403934, z: -1985.0392}
+  m_LocalScale: {x: 0.22800504, y: 0.22800504, z: 0.228005}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -88,6 +88,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasGravityBody: 0
+  freezePosition: 1
 --- !u!212 &212873412728835782
 SpriteRenderer:
   m_ObjectHideFlags: 1

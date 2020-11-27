@@ -1,0 +1,1213 @@
+fileFormatVersion: 2
+guid: ccdb8ae0cde9f5b4dad0526e2a7d5108
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: bulbFlower_0
+    21300002: bulbFlower_1
+    21300004: bulbFlower_2
+    21300006: bulbFlower_3
+    21300008: bulbFlower_4
+    21300010: bulbFlower_5
+    21300012: bulbFlower_6
+    21300014: bulbFlower_7
+    21300016: bulbFlower_8
+    21300018: bulbFlower_9
+    21300020: bulbFlower_10
+    21300022: bulbFlower_11
+    21300024: bulbFlower_12
+    21300026: bulbFlower_13
+    21300028: bulbFlower_14
+    21300030: bulbFlower_15
+    21300032: bulbFlower_16
+    21300034: bulbFlower_17
+    21300036: bulbFlower_18
+    21300038: bulbFlower_19
+    21300040: bulbFlower_20
+    21300042: bulbFlower_21
+    21300044: bulbFlower_22
+    21300046: bulbFlower_23
+    21300048: bulbFlower_24
+    21300050: bulbFlower_25
+    21300052: bulbFlower_26
+    21300054: bulbFlower_27
+    21300056: bulbFlower_28
+    21300058: bulbFlower_29
+    21300060: bulbFlower_30
+    21300062: bulbFlower_31
+    21300064: bulbFlower_32
+    21300066: bulbFlower_33
+    21300068: bulbFlower_34
+    21300070: bulbFlower_35
+    21300072: bulbFlower_36
+    21300074: bulbFlower_37
+    21300076: bulbFlower_38
+    21300078: bulbFlower_39
+    21300080: bulbFlower_40
+    21300082: bulbFlower_41
+    21300084: bulbFlower_42
+    21300086: bulbFlower_43
+    21300088: bulbFlower_44
+    21300090: bulbFlower_45
+    21300092: bulbFlower_46
+    21300094: bulbFlower_47
+    21300096: bulbFlower_48
+    21300098: bulbFlower_49
+    21300100: bulbFlower_50
+    21300102: bulbFlower_51
+  externalObjects: {}
+  serializedVersion: 7
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: bulbFlower_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6984
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20f4fdf643c7b13409145471a5681e37
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_1
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 6984
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c5a9e7a88517ce459e8d3cd86b91ca6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_2
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 6984
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee1737d215bf9214b8669e1b5e36f494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_3
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 6984
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 846a27c6149840744a0d135884e4a06e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_4
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 6984
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7147a8e2cace8a4499862dfb803ab01
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_5
+      rect:
+        serializedVersion: 2
+        x: 5120
+        y: 6984
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bc9020a07018f54fb20a6c67d2b63cb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6111
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa321057a346a664a8bdbe8a69b9df62
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_7
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 6111
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab466d71117da4949a2c182a22389c30
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_8
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 6111
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfee78df9326572498045ae20e1a012f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_9
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 6111
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1cffe8b80071824ebe0a9adda6d750a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_10
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 6111
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51f51e932ee71984d9b622efceb49f36
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_11
+      rect:
+        serializedVersion: 2
+        x: 5120
+        y: 6111
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5533ce3b06d0394fabf41412a4c789f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5238
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a126800ef3c0f14e948a1dce00dbfe1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_13
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 5238
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b0702a5e170ca648a02ce86db1cd019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_14
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 5238
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82ee8ec3892ad964582af5ad2f629ffa
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_15
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 5238
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf89954d5e5d7874abad87a0cce176e0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_16
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 5238
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e236c320416f81e41ab39cc239e06fac
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_17
+      rect:
+        serializedVersion: 2
+        x: 5120
+        y: 5238
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5033836f62da5ff49a6790518d989b59
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4365
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 962e350be8324db499518111312f72ac
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_19
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 4365
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c60115afad086304080a3881a08b0bb5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_20
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 4365
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 601fa9ea3efb5114290332a798676771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_21
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 4365
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4efcc7482166eb747811f8b84f84faca
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_22
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 4365
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed64b5beb296f294f8d0b084ce69f6be
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_23
+      rect:
+        serializedVersion: 2
+        x: 5120
+        y: 4365
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba471fe4a08c2024b9a12c78d52bb9d3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3492
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2db2e3d41072bf64684dc722477763be
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_25
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 3492
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4915fce7f4002224baa2d3d10de40ad6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_26
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 3492
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c773c72711f45b4894c4ddc9ecb1f7a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_27
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 3492
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4e03c8de43a3b948b94f777a1b8ebd1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_28
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 3492
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efff0c464a1e9a8429f9845025e6fe58
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_29
+      rect:
+        serializedVersion: 2
+        x: 5120
+        y: 3492
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b58cf20e4c4f74f498606cbf378db3f2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2619
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7b799c73c16a94418a14ee88df2c399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_31
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 2619
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04dac337b4f7a4146a746cc9f71d19e7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_32
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 2619
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f5c4b072064e1944a1536366da4b691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_33
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 2619
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcdaab90b37551442a41cd498eb23bf9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_34
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 2619
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 888f044c6bd502743b1f2fe0cbea00f4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_35
+      rect:
+        serializedVersion: 2
+        x: 5120
+        y: 2619
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d125b181e90c79144be39d7024da19b7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1746
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4d075c3b94fcf24c84e0837c4fb5ba0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_37
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1746
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17971bb5498dddd45aec693a74924eee
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_38
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1746
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f615d398c3960c54887605e15f3dbf74
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_39
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 1746
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 972a6b1443a38c3409c371562f86b211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_40
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 1746
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68ea440a8bc34924eb72ffffa9e3d3d2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_41
+      rect:
+        serializedVersion: 2
+        x: 5120
+        y: 1746
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82eceb62e0dc37e4cacd798f572ae975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 873
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e53d3433a39de5149b966697ae0d3ca2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_43
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 873
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5280689e57151ca4a8269f5d7b613009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_44
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 873
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5b89be61c3778647b5d812d1ce235ff
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_45
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 873
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8b33d680c7755d4fac03d58a1526747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_46
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 873
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00abbf8cb890fd4458225d8980612569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_47
+      rect:
+        serializedVersion: 2
+        x: 5120
+        y: 873
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7859c593e213c0040b8592c3295b16b9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb3c64ee4f6900244bee682f23ce03c6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_49
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e66bcd1d5f3a6146adf2acda3b51561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_50
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 0
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06169651336392247b7465e84081dac1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulbFlower_51
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 0
+        width: 1024
+        height: 873
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c378fbfc110510438de922058839a7d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 1e11cc4aa3f20134a8733fa888861678
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
