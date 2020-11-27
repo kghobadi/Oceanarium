@@ -10,7 +10,9 @@ public class Currents : AudioHandler {
     Transform mainCam;
     CameraController camControl;
     ParticleSystem currentParticles;
-    PlanetManager planetMan;
+
+    [Tooltip("Normally referenced in code automatically")]
+    public PlanetManager planetMan;
     
     //current vars
     [Header("Current Vars")]
@@ -61,7 +63,9 @@ public class Currents : AudioHandler {
         currentParticles.Stop();
         currentBubble.material = silentMat;
         ribbons = transform.GetChild(3).GetComponent<ParticleSystem>();
-        planetMan = GetComponentInParent<PlanetManager>();
+
+        if(planetMan == null)
+            planetMan = GetComponentInParent<PlanetManager>();
 
         //only fetch if it is not set publicly
         if(cObjectMan == null)
@@ -177,9 +181,12 @@ public class Currents : AudioHandler {
         currentActivated = true;
 
         //null check
-        if(planetMan.pSelector)
-            planetMan.pSelector.UnlockPlanet();
-
+        if (planetMan)
+        {
+            if (planetMan.pSelector)
+                planetMan.pSelector.UnlockPlanet();
+        }
+      
         //turn off the ribbons
         if (ribbons)
         {
@@ -264,6 +271,4 @@ public class Currents : AudioHandler {
 
         ambientSource.Play();
     }
-
-   
 }

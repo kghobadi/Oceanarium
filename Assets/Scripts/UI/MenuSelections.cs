@@ -150,12 +150,6 @@ public class MenuSelections : AudioHandler
             //change reset called 
             canChange = false;
             changeTimer = 0;
-
-            //play change selection sound
-            if(changeSelections.Length > 0)
-            {
-                PlayRandomSound(changeSelections, 1f);
-            }
         }
     }
 
