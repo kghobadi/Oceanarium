@@ -36,8 +36,7 @@ public class QuitGame : MonoBehaviour {
         if ((Input.GetKeyDown(KeyCode.Escape) ||  inputDevice.Command.WasPressed) && escMenu.activeSelf == false && !pressed)
         {
             ActivateQuitMenu();
-            pc.canMove = false;
-            camControl.canMoveCam = false;
+           
             pressed = true;
         }
 
@@ -60,11 +59,19 @@ public class QuitGame : MonoBehaviour {
     //called to open esc menu 
     public void ActivateQuitMenu()
     {
-        escMenu.SetActive(true);
+        //disable movement
+        if(pc.moveState == PlayerController.MoveStates.MEDITATING)
+            pc.DisableMeditation();
+        pc.canMove = false;
+        pc.playerRigidbody.velocity = Vector3.zero;
+        camControl.canMoveCam = false;
+      
+        //enable cursor
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
         //activate menu & set Selectors
+        escMenu.SetActive(true);
         mainMenuSelections.ActivateMenu();
     }
     
@@ -72,9 +79,15 @@ public class QuitGame : MonoBehaviour {
     {
         //leave menu
         mainMenuSelections.DeactivateMenu();
+        DeactivateObj(escMenu);
+
+        //enable movement 
         pc.canMove = true;
         camControl.canMoveCam = true;
-        DeactivateObj(escMenu);
+       
+        //relock cursor 
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void ShowControls()

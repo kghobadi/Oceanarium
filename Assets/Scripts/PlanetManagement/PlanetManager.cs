@@ -121,6 +121,11 @@ public class PlanetManager : MonoBehaviour {
         {
             DeactivatePlanet();
         }
+
+        if(planetName == "FlatTutorial")
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     public void StartPlayerAtPlanet()
@@ -164,6 +169,13 @@ public class PlanetManager : MonoBehaviour {
         pc.maxSpeed = newMaxSpeed;
         pc.distMaxFromPlanet = newMaxDistFromPlanet;
         pc.jumpForce = newJumpForce;
+
+        //unlock
+        if (pSelector)
+        {
+            if (pSelector.unlocked == false)
+                pSelector.UnlockPlanet();
+        }
 
         for (int i = 0; i < spriteCreatures.Count; i++)
         {
