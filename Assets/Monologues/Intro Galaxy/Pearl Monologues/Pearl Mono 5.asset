@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a3861b9ea3b4c43b0c9e901c55bc6c, type: 3}
+  m_Name: Pearl Mono 5
+  m_EditorClassIdentifier: 
+  monologue: {fileID: 4900000, guid: c27b2211c02fb824c97735bc5f53b357, type: 3}
+  worldMonoIndex: 24
+  waitToStart: 1
+  timeUntilStart: 3
+  lockPlayer: 1
+  loadsScene: 0
+  timeBetweenLetters: 0.05
+  timeBetweenLines: 3
+  conversational: 0
+  waitTimes: []
+  repeatsAtFinish: 0
+  condensedMonologue: {fileID: 0}
+  displayChoices: 0
+  triggersMonologues: 0
+  monologueIndeces: 
+  monologueWaits: []
+  playsCinematic: 0
+  cinematic: {fileID: 0}
+  enablesCinematicTriggers: 0
+  cTriggers: []
+  adjustsCamera: 0
+  cameraXPos: 10
+  cameraYLook: 3
+  lookAtObj: {fileID: 0}
+  speakerCam: {fileID: 0}
