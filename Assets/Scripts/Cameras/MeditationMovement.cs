@@ -34,21 +34,6 @@ public class MeditationMovement : MonoBehaviour
     public float moveSpeed = 10f;
     public float fovSpeed = 1f;
 
-    [Header("Meditation Layers")]
-    public MeditationLayers meditationLayer;
-    public enum MeditationLayers
-    {
-        PLANAR = 0,
-        SANCTUM = 1,
-        GALACTIC = 2,
-        ABYSSAL = 3,
-    }
-    public float meditationTimer = 0f;
-    float meditationStart;
-    public float meditationIncrements = 30f;
-    public UnityEvent enteredNewLayer;
-    public UnityEvent endedMeditation;
-
     void Awake()
     {
         pc = FindObjectOfType<PlayerController>();
@@ -61,9 +46,6 @@ public class MeditationMovement : MonoBehaviour
             thirdBody = thirdEyeParent.GetComponent<CharacterController>();
             thirdGravity = thirdEyeParent.GetComponent<GravityBody>();
         }
-
-        //start layer at 0
-        meditationLayer = MeditationLayers.PLANAR;
     }
 
     void Update()
@@ -79,8 +61,6 @@ public class MeditationMovement : MonoBehaviour
             WASDmovement();
 
             FovControls();
-
-            Ascendancy();
         }
     }
     
@@ -91,11 +71,6 @@ public class MeditationMovement : MonoBehaviour
         thirdEyeParent.SetParent(null);
         transform.SetParent(thirdEyeParent);
         thirdBody.enabled = true;
-
-        //enter sanctum
-        meditationLayer = MeditationLayers.SANCTUM;
-        meditationStart = Time.time;
-        enteredNewLayer.Invoke();
         
         //fully active
         isActive = true;
@@ -110,11 +85,6 @@ public class MeditationMovement : MonoBehaviour
         thirdEyeParent.localPosition = Vector3.zero;
         thirdEyeParent.localRotation = Quaternion.identity;
         thirdBody.enabled = false;
-
-        //return to planar realm
-        meditationLayer = MeditationLayers.PLANAR;
-        meditationTimer = 0;
-        endedMeditation.Invoke();
 
         //fully inactive
         isActive = false;
@@ -212,20 +182,6 @@ public class MeditationMovement : MonoBehaviour
         transform.Rotate(vRot, hRot, 0);
     }
 
-    void Ascendancy()
-    {
-        //time meditation
-        meditationTimer = Time.time - meditationStart;
-
-        //if timer is greater than next increment and we have not reached final layer
-        if (meditationTimer > meditationIncrements * (int)meditationLayer
-            && meditationLayer < MeditationLayers.ABYSSAL)
-        {
-            //ascend
-            meditationLayer++;
-            enteredNewLayer.Invoke();
-        }
-    }
     
     private void OnDisable()
     {

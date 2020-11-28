@@ -1,87 +1,97 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
-/// This class is for any sprite object that exists on a separate plane of reality.
-/// We express this thru having a layer that becomes visible once the player meditates long enough.
-/// Can put this on objects with Sprite Renderers, FadeSprites, and as Parent of 3D objs.
+/// This class is for controlling the plane of reality.
+/// We express this thru having a layer that becomes visible to the camera once the player meditates long enough.
 /// </summary>
 public class MeditationLayers : MonoBehaviour
 {
-    MeditationMovement meditation;
-    public MeditationMovement.MeditationLayers meditationLayer;
-    public bool isActive;
-    SpriteRenderer sR;
-    FadeSprite fader;
+    PlayerController meditater;
+    Camera mainCam;
+
+    public MeditationLayer meditationLayer;
+    public enum MeditationLayer
+    {
+        PLANAR = 0,
+        SANCTUM = 1,
+        GALACTIC = 2,
+        ABYSSAL = 3,
+    }
+
+    public bool ascending;
+    public float meditationTimer = 0f;
+    float meditationStart;
+    public float meditationIncrements = 30f;
+    public UnityEvent ascended;
 
     private void Awake()
     {
         //comp refs
-        meditation = FindObjectOfType<MeditationMovement>();
-        sR = GetComponent<SpriteRenderer>();
-        fader = GetComponent<FadeSprite>();
-        if(fader)
-            fader.keepActive = true;
+        meditater = FindObjectOfType<PlayerController>();
+        mainCam = Camera.main;
         //add ascend as listener
-        meditation.enteredNewLayer.AddListener(Ascend);
+        meditater.startMeditation.AddListener(Ascend);
         //add descend as listener
-        meditation.endedMeditation.AddListener(Descend);
+        meditater.endMeditation.AddListener(Descend);
+    }
+
+    private void Start()
+    {
+        //start layer at 0
+        meditationLayer = MeditationLayer.PLANAR;
+    }
+
+    void Update()
+    {
+        if(ascending)
+            Ascendancy();
+    }
+
+    void Ascendancy()
+    {
+        //time meditation
+        meditationTimer = Time.time - meditationStart;
+
+        //if timer is greater than next increment and we have not reached final layer
+        if (meditationTimer > meditationIncrements * (int)meditationLayer
+            && meditationLayer < MeditationLayer.ABYSSAL)
+        {
+            NextLayer();
+        }
+    }
+
+    void NextLayer()
+    {
+        //ascend
+        meditationLayer++;
+        ascended.Invoke();
+
+        Debug.Log("new reality layer: " + meditationLayer.ToString());
     }
 
     //called by meditationMovement
     void Ascend()
     {
-        //meets my layer :) && inactive
-        if(meditation.meditationLayer >= meditationLayer && isActive == false)
-        {
-            //fades
-            if (fader)
-                fader.FadeIn();
-            else
-            {
-                //sprite
-                if(sR)
-                    sR.enabled = true;
-                //3d object or sprite is in children
-                else
-                {
-                    for(int i = 0; i < transform.childCount; i++)
-                    {
-                        transform.GetChild(i).gameObject.SetActive(true);
-                    }
-                }
-            }
+        //enter sanctum
+        meditationLayer = MeditationLayer.SANCTUM;
+        meditationStart = Time.time;
 
-            isActive = true;
-        }
+        ascending = true;
     }
 
     //when played ends meditation
     void Descend()
     {
-        if (isActive)
-        { 
-            //fades
-            if (fader)
-                fader.FadeOut();
-            else
-            {
-                //sprite
-                if (sR)
-                    sR.enabled = false;
-                //3d object or sprite is in children
-                else
-                {
-                    for (int i = 0; i < transform.childCount; i++)
-                    {
-                        transform.GetChild(i).gameObject.SetActive(false);
-                    }
-                }
-            }
+        //return to planar realm
+        meditationLayer = MeditationLayer.PLANAR;
+        meditationTimer = 0;
 
-            isActive = false;
-        }
+        //reset camera layers
+
+        ascending = false;
     }
        
 

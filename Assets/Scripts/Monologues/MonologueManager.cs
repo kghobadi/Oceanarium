@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using TMPro;
 using Cameras;
 using Cinemachine;
+using UnityEngine.Events;
 
 public class MonologueManager : MonoBehaviour
 {
@@ -63,6 +64,10 @@ public class MonologueManager : MonoBehaviour
     [Tooltip("Choices for displaying at the end of a Monologue -- for now only used by Guardian")]
     public GameObject dialogueChoices;
     DialogueChoice[] dChoices;
+
+    //events
+    public UnityEvent startedMonologue;
+    public UnityEvent endedMonologue;
 
     void Awake()
     {
@@ -192,6 +197,9 @@ public class MonologueManager : MonoBehaviour
     //actually starts
     void StartMonologue()
     {
+        //event call
+        startedMonologue.Invoke();
+
         //enable text comps 
         if (monoReader.usesTMP)
             monoReader.the_Text.enabled = true;
@@ -322,6 +330,10 @@ public class MonologueManager : MonoBehaviour
 
     void EndMonologue()
     {
+        //event
+        endedMonologue.Invoke();
+
+        //set mono
         Monologue mono = allMyMonologues[currentMonologue];
 
         //is this an npc?

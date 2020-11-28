@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.PostProcessing;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -51,6 +52,8 @@ public class PlayerController : AudioHandler
     PostProcessingBehaviour camBehavior;
     public PostProcessingProfile normalPP, meditationPP;
     public GameObject meditationSoul;
+    public UnityEvent startMeditation;
+    public UnityEvent endMeditation;
     //player move states
     public MoveStates moveState;
     public enum MoveStates
@@ -392,8 +395,11 @@ public class PlayerController : AudioHandler
             && quitScript.escMenu.activeSelf == false
             && canMeditate)
         {
+            //lerp camera, enable rigidbody
             camControls.LerpFOV(camControls.meditationFOV, 2f);
             camControls.cRigidbody.isKinematic = true;
+
+            //transition audio
             meditating.TransitionTo(2f);
 
             //set timer 
@@ -404,6 +410,7 @@ public class PlayerController : AudioHandler
             moveState = MoveStates.MEDITATING;
             animator.SetAnimator("meditating");
 
+            //enable peace sign above your body
             if (meditationSoul)
             {
                 meditationSoul.SetActive(true);
@@ -423,6 +430,9 @@ public class PlayerController : AudioHandler
             //fp
             camControls.canMoveCam = false;
             meditationControls.ActivateFPS();
+
+            //call the event
+            startMeditation.Invoke();
         }
     }
 
@@ -432,8 +442,11 @@ public class PlayerController : AudioHandler
         //return from meditating FOV
         if (moveState == MoveStates.MEDITATING)
         {
+            //lerp cam fov, disable rigidbody
             camControls.LerpFOV(camControls.originalFOV, 2f);
             camControls.cRigidbody.isKinematic = false;
+
+            //transition audio
             normal.TransitionTo(2f);
 
             //planet manager resets all pearl lures 
@@ -443,6 +456,7 @@ public class PlayerController : AudioHandler
             if(camFade)
                 camFade.FadeOut();
 
+            //disable peace sign
             if (meditationSoul)
             {
                 meditationSoul.SetActive(false);
@@ -459,6 +473,9 @@ public class PlayerController : AudioHandler
             //diver idle
             moveState = MoveStates.IDLE;
             animator.SetAnimator("idle");
+
+            //call the event
+            endMeditation.Invoke();
         }
     }
 
