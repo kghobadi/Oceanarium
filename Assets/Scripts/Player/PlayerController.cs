@@ -11,6 +11,7 @@ using InControl;
 
 public class PlayerController : AudioHandler
 {
+    SaveSystem saveSystem;
     public FadeSprite[] controlsAtStart;
 
     //Current Planet
@@ -75,6 +76,7 @@ public class PlayerController : AudioHandler
     public float jumpForcePerFrame, totalJumpForce;
 
     //all my body parts....
+    InputDevice inputDevice;
     Transform cameraT;
     [HideInInspector]
     public GravityBody gravityBody;
@@ -122,7 +124,12 @@ public class PlayerController : AudioHandler
         //essence Inventory check
         if (essenceInventory == null)
             essenceInventory = gameObject.AddComponent<EssenceInventory>();
-       
+
+        //save stuff
+        saveSystem = FindObjectOfType<SaveSystem>();
+        saveSystem.returningGame.AddListener(LoadMeditation);
+
+        //cursor
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -138,6 +145,8 @@ public class PlayerController : AudioHandler
 
     void Update()
     {
+        inputDevice = InputManager.ActiveDevice;
+
         if (canMove)
         {
             //check for sprinting input
@@ -153,6 +162,17 @@ public class PlayerController : AudioHandler
             {
                 //called to handle jump inputs
                 TakeJumpInput();
+            }
+        }
+
+        //extra disables for meditation
+        if(moveState == MoveStates.MEDITATING)
+        {
+            //all 3 controller buttons besides 'Talk' can disable meditation
+            if(inputDevice.Action1.WasPressed || inputDevice.Action2.WasPressed 
+                ||inputDevice.Action4.WasPressed)
+            {
+                DisableMeditation();
             }
         }
 
@@ -193,9 +213,6 @@ public class PlayerController : AudioHandler
     {
         //create empty force vector for this frame 
         force = Vector3.zero;
-
-        //get input device 
-        var inputDevice = InputManager.ActiveDevice;
 
         //controller 
         if (inputDevice.DeviceClass == InputDeviceClass.Controller)
@@ -355,6 +372,16 @@ public class PlayerController : AudioHandler
     public void EnableMeditationAbility()
     {
         canMeditate = true;
+        PlayerPrefs.SetString("CanMeditate", "yes");
+    }
+
+    //called when the game loads 
+    public void LoadMeditation()
+    {
+        if(PlayerPrefs.GetString("CanMeditate") == "yes")
+        {
+            EnableMeditationAbility();
+        }
     }
 
     //begin meditating
@@ -398,6 +425,7 @@ public class PlayerController : AudioHandler
             //lerp camera, enable rigidbody
             camControls.LerpFOV(camControls.meditationFOV, 2f);
             camControls.cRigidbody.isKinematic = true;
+            canJump = false;
 
             //transition audio
             meditating.TransitionTo(2f);
@@ -445,6 +473,7 @@ public class PlayerController : AudioHandler
             //lerp cam fov, disable rigidbody
             camControls.LerpFOV(camControls.originalFOV, 2f);
             camControls.cRigidbody.isKinematic = false;
+            canJump = true;
 
             //transition audio
             normal.TransitionTo(2f);
@@ -485,7 +514,7 @@ public class PlayerController : AudioHandler
     void TakeJumpInput()
     {
         //get input device 
-        var inputDevice = InputManager.ActiveDevice;
+        inputDevice = InputManager.ActiveDevice;
 
         //start jumpTimer
         if ((Input.GetButton("Jump")|| inputDevice.Action1) && !jumped)
@@ -517,8 +546,9 @@ public class PlayerController : AudioHandler
     //actual jump 
     void Jump()
     {
-        //nope nope nope!
-        DisableMeditation();
+        //do nothing
+        if (canJump == false)
+            return;
 
         //just pressed, so normal jump
         if (jumpTimer <= jumpMin)

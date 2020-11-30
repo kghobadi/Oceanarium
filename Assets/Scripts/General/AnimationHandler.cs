@@ -7,6 +7,9 @@ public abstract class AnimationHandler : MonoBehaviour
     [HideInInspector]
     public Animator characterAnimator;
 
+    [HideInInspector]
+    public string currentAnimatorBool;
+
     //holds all the bools for this animator 
     public string[] animationBools;
 
@@ -29,6 +32,7 @@ public abstract class AnimationHandler : MonoBehaviour
 
         //set anim bool true
         characterAnimator.SetBool(anim, true);
+        currentAnimatorBool = anim;
     }
 
     protected bool AnimationIsActive(string anim) { 

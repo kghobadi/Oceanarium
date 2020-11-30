@@ -14,6 +14,7 @@ public class GrowthPearl : AudioHandler {
     
     [Header("Pearl Activation")]
     public bool activated;
+    public bool playerActivates;
     [Tooltip("Put the planet manager of the orb's planet")]
     public PlanetManager myPlanet;
     [Tooltip("Silent = Inactive, Active once player touches")]
@@ -85,17 +86,25 @@ public class GrowthPearl : AudioHandler {
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if (playerActivates)
         {
-            if (!activated)
+            if (other.gameObject.tag == "Player")
             {
-                ActivateGrowthPearl(true);
+                if (!activated)
+                {
+                    ActivateGrowthPearl(true);
+                }
             }
         }
     }
 
+    //this can be called by Pearl meditation finishing :-)
     public void ActivateGrowthPearl(bool sound)
     {
+        //already activated
+        if (activated)
+            return;
+
         //stop prev audio
         if (myAudioSource.isPlaying)
             myAudioSource.Stop();

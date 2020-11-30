@@ -116,7 +116,7 @@ public class Planter : AudioHandler {
         {
             if (hasMonos)
             {
-                if (Input.GetKeyDown(KeyCode.Space) || inputDevice.Action3.WasPressed)
+                if (Input.GetKeyDown(KeyCode.E) || inputDevice.Action3.WasPressed)
                 {
                     if (!activated && canActivate)
                     {
@@ -189,8 +189,13 @@ public class Planter : AudioHandler {
     }
 
     //called by Pearl activation
+    //this can be called by Pearl meditation finishing :-)
     public void ActivatePlanter(bool sound)
     {
+        //already activated
+        if (activated)
+            return;
+
         //stop prev audio
         if (myAudioSource.isPlaying)
             myAudioSource.Stop();
@@ -270,6 +275,9 @@ public class Planter : AudioHandler {
     //called when it reaches dest
     void DeactivatePlanter()
     {
+        //set pref
+        PlayerPrefs.SetString(planetManager.planetName + " Pearl " + gameObject.name, "Activated");
+
         //activat Current's pillar with planter && position me right on toppp
         if(planterType == PlanterType.CURRENT)
         {
@@ -288,9 +296,6 @@ public class Planter : AudioHandler {
         {
             gameObject.SetActive(false);
         }
-
-        activated = false;
-        canActivate = false;
     }
 
     //called every time spawn freq timer below 0 
