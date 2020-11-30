@@ -12,7 +12,8 @@ public class MonologueManager : MonoBehaviour
 {
     //player refs
     PlayerController player;
-    CameraController camController;
+    [HideInInspector]
+    public CameraController camController;
     MeditationMovement medMove;
 
     //npc management refs 
@@ -240,16 +241,21 @@ public class MonologueManager : MonoBehaviour
             //use player camera, just move it around 
             else
             {
-                //set current speaker
-                camController.currentSpeaker = transform;
-                //move cam to the right 
-                camController.transform.Translate(new Vector3(cameraXPos, 0, 0), Space.Self);
-                //look at specific obj
-                if (lookAtObj != null)
-                    camController.transform.LookAt(lookAtObj.transform.position + new Vector3(0, cameraYLook, 0), player.gravityBody.GetUp());
-                //look at speaker
-                else
-                    camController.transform.LookAt(transform.position + new Vector3(0, cameraYLook, 0), player.gravityBody.GetUp());
+                if (allMyMonologues[currentMonologue].adjustsCamera)
+                {
+                    //disable cam movement
+                    camController.canMoveCam = false;
+                    //set current speaker
+                    camController.currentSpeaker = transform;
+                    //move cam to the right 
+                    camController.transform.Translate(new Vector3(cameraXPos, 0, 0), Space.Self);
+                    //look at specific obj
+                    if (lookAtObj != null)
+                        camController.transform.LookAt(lookAtObj.transform.position + new Vector3(0, cameraYLook, 0), player.gravityBody.GetUp());
+                    //look at speaker
+                    else
+                        camController.transform.LookAt(transform.position + new Vector3(0, cameraYLook, 0), player.gravityBody.GetUp());
+                }
             }
 
             //set player pos
@@ -381,9 +387,12 @@ public class MonologueManager : MonoBehaviour
                 player.animator.SetAnimator("idle");
             }
 
+       
             //set cam controller
             if (camController.enabled == false)
                 camController.enabled = true;
+            //make sure we can move the cam
+            camController.canMoveCam = true;
             //set current speaker
             camController.currentSpeaker = null;
         }
