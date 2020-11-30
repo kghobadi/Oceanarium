@@ -6,12 +6,14 @@ using System.Collections.Generic;
 using TMPro;
 using Cameras;
 using Cinemachine;
+using UnityEngine.Events;
 
 public class MonologueManager : MonoBehaviour
 {
     //player refs
     PlayerController player;
-    CameraController camController; 
+    CameraController camController;
+    MeditationMovement medMove;
 
     //npc management refs 
     [HideInInspector]
@@ -64,10 +66,22 @@ public class MonologueManager : MonoBehaviour
     public GameObject dialogueChoices;
     DialogueChoice[] dChoices;
 
+    //events
+    public UnityEvent startedMonologue;
+    public UnityEvent endedMonologue;
+
+    [Header("Spirit")]
+    [Tooltip("Called by spirit script")]
+    public bool spiritEnabled;
+    [Tooltip("When you finish a spirit monologue, return to body/end meditation")]
+    public bool returnPlayerToBody;
+    float origSpeed;
+
     void Awake()
     {
         player = FindObjectOfType<PlayerController>();
         camController = FindObjectOfType<CameraController>();
+        medMove = FindObjectOfType<MeditationMovement>();
 
         if (textBack)
             animateTextback = textBack.GetComponent<AnimateUI>();
@@ -77,6 +91,10 @@ public class MonologueManager : MonoBehaviour
         camManager = FindObjectOfType<CameraManager>();
         speakerSound = GetComponent<SpeakerSound>();
         fade = GetComponent<FadeSprite>();
+
+        //get mono trigger
+        if (mTrigger == null)
+            mTrigger = GetComponentInChildren<MonologueTrigger>();
 
         //diff set up depending on whether we use worldspace canvas or not 
         if (worldSpaceCanvas)
@@ -192,6 +210,9 @@ public class MonologueManager : MonoBehaviour
     //actually starts
     void StartMonologue()
     {
+        //event call
+        startedMonologue.Invoke();
+
         //enable text comps 
         if (monoReader.usesTMP)
             monoReader.the_Text.enabled = true;
@@ -206,59 +227,71 @@ public class MonologueManager : MonoBehaviour
                 animateTextback.active = true;
         }
 
-        //enable speaker cam, disable cam controller
-        if (speakerCam)
+        //physical world
+        if (!spiritEnabled)
         {
-            camManager.Set(speakerCam);
-            if (camController)
-                camController.enabled = false;
+            //enable speaker cam, disable cam controller
+            if (speakerCam)
+            {
+                camManager.Set(speakerCam);
+                if (camController)
+                    camController.enabled = false;
+            }
+            //use player camera, just move it around 
+            else
+            {
+                //set current speaker
+                camController.currentSpeaker = transform;
+                //move cam to the right 
+                camController.transform.Translate(new Vector3(cameraXPos, 0, 0), Space.Self);
+                //look at specific obj
+                if (lookAtObj != null)
+                    camController.transform.LookAt(lookAtObj.transform.position + new Vector3(0, cameraYLook, 0), player.gravityBody.GetUp());
+                //look at speaker
+                else
+                    camController.transform.LookAt(transform.position + new Vector3(0, cameraYLook, 0), player.gravityBody.GetUp());
+            }
+
+            //set player pos
+            if (playerSpot)
+            {
+                player.transform.position = playerSpot.position;
+            }
+
+            //lock player movement
+            if (allMyMonologues[currentMonologue].lockPlayer)
+            {
+                //no move
+                player.canMove = false;
+                player.canJump = false;
+
+                //set to talking state 
+                if (animationType == PlayerController.MoveStates.TALKING)
+                {
+                    player.moveState = PlayerController.MoveStates.TALKING;
+                    player.animator.SetAnimator("idle");
+                }
+                //set to meditating
+                else if (animationType == PlayerController.MoveStates.MEDITATING)
+                {
+                    player.moveState = PlayerController.MoveStates.MEDITATING;
+                    player.animator.SetAnimator("meditating");
+                }
+
+                //zero player vel
+                player.playerRigidbody.velocity = Vector3.zero;
+                player.playerRigidbody.angularVelocity = Vector3.zero;
+            }
         }
-        //use player camera, just move it around 
+        //spirit world
         else
         {
-            //turn off cam movement
-            camController.canMoveCam = false;
-            //set current speaker
-            camController.currentSpeaker = transform;
-            //move cam to the right 
-            camController.transform.Translate(new Vector3(cameraXPos, 0, 0), Space.Self);
-            //look at specific obj
-            if (lookAtObj != null)
-                camController.transform.LookAt(lookAtObj.transform.position + new Vector3(0, cameraYLook, 0), player.gravityBody.GetUp());
-            //look at speaker
-            else
-                camController.transform.LookAt(transform.position + new Vector3(0, cameraYLook, 0), player.gravityBody.GetUp());
-        }
-
-        //set player pos
-        if (playerSpot)
-        {
-            player.transform.position = playerSpot.position;
-        }
-
-        //lock player movement
-        if (allMyMonologues[currentMonologue].lockPlayer)
-        {
-            //no move
-            player.canMove = false;
-            player.canJump = false;
-
-            //set to talking state 
-            if (animationType == PlayerController.MoveStates.TALKING)
+            //disable meditation movement 
+            if (allMyMonologues[currentMonologue].lockPlayer)
             {
-                player.moveState = PlayerController.MoveStates.TALKING;
-                player.animator.SetAnimator("idle");
+                origSpeed = medMove.moveSpeed;
+                medMove.moveSpeed = 0;
             }
-            //set to meditating
-            else if (animationType == PlayerController.MoveStates.MEDITATING)
-            {
-                player.moveState = PlayerController.MoveStates.MEDITATING;
-                player.animator.SetAnimator("meditating");
-            }
-
-            //zero player vel
-            player.playerRigidbody.velocity = Vector3.zero;
-            player.playerRigidbody.angularVelocity = Vector3.zero;
         }
 
         //begin mono 
@@ -322,6 +355,10 @@ public class MonologueManager : MonoBehaviour
 
     void EndMonologue()
     {
+        //event
+        endedMonologue.Invoke();
+
+        //set mono
         Monologue mono = allMyMonologues[currentMonologue];
 
         //is this an npc?
@@ -330,24 +367,42 @@ public class MonologueManager : MonoBehaviour
             //stop that waiting!
         }
 
-        //unlock player
-        if (mono.lockPlayer)
+        if (!spiritEnabled)
         {
-            //reenable movement 
-            player.canMove = true;
-            player.canJump = true;
+            //unlock player
+            if (mono.lockPlayer)
+            {
+                //reenable movement 
+                player.canMove = true;
+                player.canJump = true;
 
-            //return to idle
-            player.moveState = PlayerController.MoveStates.IDLE;
-            player.animator.SetAnimator("idle");
+                //return to idle
+                player.moveState = PlayerController.MoveStates.IDLE;
+                player.animator.SetAnimator("idle");
+            }
+
+            //set cam controller
+            if (camController.enabled == false)
+                camController.enabled = true;
+            //set current speaker
+            camController.currentSpeaker = null;
         }
-        
-        //set cam controller
-        if(camController.enabled == false)
-            camController.enabled = true;
-        camController.canMoveCam = true;
-        //set current speaker
-        camController.currentSpeaker = null;
+        //spirit mode enabled
+        else
+        {
+            // send back
+            if (returnPlayerToBody)
+            {
+                //disable meditation and reset timer
+                player.DisableMeditation();
+                player.idleTimer = 0;
+            }
+            // unlock meditation move
+            if (mono.lockPlayer)
+            {
+                medMove.moveSpeed = origSpeed;
+            }
+        }
 
         //check for cinematic to enable 
         if (mono.playsCinematic)
@@ -368,7 +423,8 @@ public class MonologueManager : MonoBehaviour
         {
             //reset the monologue trigger after 3 sec 
             monoReader.currentLine = 0;
-            mTrigger.WaitToReset(5f);
+            //reset trigger :)
+            mTrigger.WaitToReset(mTrigger.resetTime);
         }
 
         //if this monologue has a new monologue to activate
@@ -396,6 +452,7 @@ public class MonologueManager : MonoBehaviour
             sceneLoader.Transition(3f);
         }
 
+        //bool
         inMonologue = false;
     }
 }

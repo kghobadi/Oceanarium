@@ -27,6 +27,7 @@ public class ControllerOrMouse : MonoBehaviour {
     public string mKeyboardText;
 
     InputDeviceClass lastClass;
+    InputDevice inputDevice;
 
     void Awake()
     {
@@ -80,7 +81,7 @@ public class ControllerOrMouse : MonoBehaviour {
     public void CheckInputType()
     {
         //get input device 
-        var inputDevice = InputManager.ActiveDevice;
+        inputDevice = InputManager.ActiveDevice;
 
         //only run this code if last class is still unknown (from awake) 
         //or if current input device is dif from last class

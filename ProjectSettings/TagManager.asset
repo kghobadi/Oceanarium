@@ -25,6 +25,7 @@ TagManager:
   - Ruin
   - WorldManager
   - Essence
+  - Meditator
   layers:
   - Default
   - TransparentFX
@@ -50,9 +51,9 @@ TagManager:
   - AI
   - Plants
   - Essence
-  - 
-  - 
-  - 
+  - SANCTUM
+  - GALACTIC
+  - ABYSSAL
   - 
   - 
   - 

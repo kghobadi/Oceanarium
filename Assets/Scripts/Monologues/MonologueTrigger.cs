@@ -7,7 +7,9 @@ public class MonologueTrigger : MonoBehaviour
 {
     //player
     GameObject player;
+    Camera cameraMan;
     PlayerController pc;
+    CameraController cc;
 
     //general
     [Tooltip("Indicates whether the Monologue has been activated by Player or not")]
@@ -31,15 +33,29 @@ public class MonologueTrigger : MonoBehaviour
     [Tooltip("Time after monologue is finished until the trigger resets")]
     public float resetTime = 5f;
 
+    [Header("Spirit")]
+    [Tooltip("Called by spirit script")]
+    public bool spiritEnabled;
+
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         pc = player.GetComponent<PlayerController>();
+        cameraMan = Camera.main;
+        cc = cameraMan.GetComponent<CameraController>();
+
+        //when player meditates, auto leave physical trigger 
+        pc.startMeditation.AddListener(PlayerExitedZone);
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && !spiritEnabled)
+        {
+            PlayerEnteredZone();
+        }
+
+        if (other.gameObject.tag == "MainCamera" && spiritEnabled)
         {
             PlayerEnteredZone();
         }
@@ -47,7 +63,7 @@ public class MonologueTrigger : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && spiritEnabled == false)
         {
             if (playerInZone)
             {
@@ -64,7 +80,11 @@ public class MonologueTrigger : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && spiritEnabled == false)
+        {
+            PlayerExitedZone();
+        }
+        if (other.gameObject.tag == "MainCamera" && spiritEnabled)
         {
             PlayerExitedZone();
         }
@@ -77,7 +97,7 @@ public class MonologueTrigger : MonoBehaviour
 
         if (playerInZone)
         {
-            if((Input.GetKeyDown(KeyCode.Space) || inputDevice.Action3.WasPressed || autoActivates) && !hasActivated)
+            if((Input.GetKeyDown(KeyCode.E) || inputDevice.Action3.WasPressed || autoActivates) && !hasActivated)
             {
                 WaitToStart(0f);
             }
@@ -111,8 +131,7 @@ public class MonologueTrigger : MonoBehaviour
     public void PlayerEnteredZone()
     {
         playerInZone = true;
-        pc.canJump = false;
-      
+
         if(!hasActivated)
             ToggleInteractUI(playerInZone);
 
@@ -123,13 +142,11 @@ public class MonologueTrigger : MonoBehaviour
     public void PlayerExitedZone()
     {
         playerInZone = false;
-        pc.canJump = true;
 
         ToggleInteractUI(playerInZone);
-
-        if(!guardian)
-            hasActivated = false;
     }
+
+   
 
     //turns on and off interact UI
     void ToggleInteractUI(bool newState)
