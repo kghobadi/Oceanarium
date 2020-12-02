@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Ruins : AudioHandler {
-
+    SaveSystem saveSystem;
     PlayerController pc;
     Guardian guardianScript;
     PlanetManager planetMan;
+    bool loaded;
 
     [Header("Ruins Settings")]
     public GameObject[] pillars;
@@ -24,8 +25,12 @@ public class Ruins : AudioHandler {
     public Transform guardianPos;
     public ParticleSystem portalParticles;
     
-	public override void Awake () {
+	public override void Awake () 
+    {
         base.Awake();
+
+        saveSystem = FindObjectOfType<SaveSystem>();
+        saveSystem.returningGame.AddListener(LoadGame);
 
         pc = FindObjectOfType<PlayerController>();
         guardianScript = FindObjectOfType<Guardian>();
@@ -38,6 +43,11 @@ public class Ruins : AudioHandler {
             pMeshes[i].material = silentMat;
         }
 	}
+
+    void LoadGame()
+    {
+        loaded = true;
+    }
     
     public void ActivatePillar(GameObject pillar)
     {
@@ -47,12 +57,19 @@ public class Ruins : AudioHandler {
         //check if all are activated
         if(activatedPillars >= pillars.Length)
         {
-            AllActivated();
+            //new game -- normal
+            if(!loaded)
+                AllActivated(true);
+            //loaded game -- abnormal
+            else
+            {
+                StartCoroutine(WaitToActivate(0.1f));
+            }
         }
     }
 
     //move guardian & play cinematic 
-    public void AllActivated()
+    public void AllActivated(bool fx)
     {
         //activates current
         if (activatesCurrent)
@@ -67,13 +84,28 @@ public class Ruins : AudioHandler {
             portalParticles.Play();
         }
 
-        //play sound + cinematic only if player is not talking or meditating (camera issues)
-        if(pc.moveState != PlayerController.MoveStates.TALKING && pc.moveState != PlayerController.MoveStates.MEDITATING)
+        if (fx)
         {
-            cinematicManager.PlayTimeline();
+            //only if the player is on this planet...
+            if (pc.activePlanet == planetMan)
+            {
+                //play sound + cinematic only if player is not talking or meditating (camera issues)
+                if (pc.moveState != PlayerController.MoveStates.TALKING && pc.moveState != PlayerController.MoveStates.MEDITATING)
+                {
+                    cinematicManager.PlayTimeline();
+                }
+
+                PlaySound(activationSound, 1f);
+            }
         }
-      
-        PlaySound(activationSound, 1f);
+        
+    }
+
+    IEnumerator WaitToActivate(float wait)
+    {
+        yield return new WaitForSeconds(wait);
+
+        AllActivated(false);
     }
     
 }

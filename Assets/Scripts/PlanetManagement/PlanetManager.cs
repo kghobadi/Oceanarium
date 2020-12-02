@@ -112,6 +112,13 @@ public class PlanetManager : MonoBehaviour {
         //get saved planet name 
         string savedPlanet = PlayerPrefs.GetString("ActivePlanet");
 
+        //somehow they saved at FlatTutorial, basically just restart the game?
+        // this happens a lot while testing just the tutorial planet
+        if (planetName == "FlatTutorial" && savedPlanet != planetName)
+        {
+            gameObject.SetActive(false);
+        }
+
         //only activate saved planet
         if (savedPlanet == planetName)
         {
@@ -120,11 +127,6 @@ public class PlanetManager : MonoBehaviour {
         else
         {
             DeactivatePlanet();
-        }
-
-        if(planetName == "FlatTutorial")
-        {
-            gameObject.SetActive(false);
         }
     }
 
@@ -186,7 +188,7 @@ public class PlanetManager : MonoBehaviour {
             props[i].SetActive(true);
         }
 
-        Debug.Log("activated " + planetName);
+        //Debug.Log("activated " + planetName);
     }
 
     public void DeactivatePlanet()
@@ -202,7 +204,7 @@ public class PlanetManager : MonoBehaviour {
         }
 
 
-        Debug.Log("deactivated " + planetName);
+        //Debug.Log("deactivated " + planetName);
     }
 
     public void SetMeditationVisuals()

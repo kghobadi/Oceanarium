@@ -16,6 +16,9 @@ public class Planter : AudioHandler {
     FadeSprite selfFade;
     MonologueManager innerMono;
     InputDevice inputDevice;
+    SaveSystem saveSystem;
+    //the pearl was activated in a previous game
+    bool previouslyActivated;
 
     [Header("Planter Travel")]
     [Tooltip("Determinations destination / activation when it arrives at final point")]
@@ -68,10 +71,13 @@ public class Planter : AudioHandler {
         base.Awake();
 
         pc = FindObjectOfType<PlayerController>();
+        saveSystem = FindObjectOfType<SaveSystem>();
+        saveSystem.returningGame.AddListener(LoadGame);
 
         //get all refs
         myMR = GetComponent<MeshRenderer>();
         myMR.material = silentMat;
+
         //turn invis
         if (invisableOnStart)
         {
@@ -105,6 +111,26 @@ public class Planter : AudioHandler {
 
             hasMonos = true;
         }
+    }
+
+    void LoadGame()
+    {
+        //get saved planet name 
+        string savedPlanet = PlayerPrefs.GetString("ActivePlanet");
+        //get pref
+        if (PlayerPrefs.GetString(planetManager.planetName + " Pearl " + gameObject.name) == "Activated")
+        {
+            previouslyActivated = true;
+
+            StartCoroutine(WaitToActivate(0.1f));
+        }
+    }
+
+    IEnumerator WaitToActivate(float wait)
+    {
+        yield return new WaitForSeconds(wait);
+
+        ActivatePlanter(false);
     }
 	
 	void Update ()
@@ -196,6 +222,18 @@ public class Planter : AudioHandler {
         if (activated)
             return;
 
+        //loaded -- immediately deactivate!
+        if (previouslyActivated)
+        {
+            //Debug.Log("Loaded pearl " + gameObject.name);
+
+            //set travel point to last point
+            travelPoint = travelPoints.Length - 1;
+            DeactivatePlanter();
+
+            return;
+        }
+
         //stop prev audio
         if (myAudioSource.isPlaying)
             myAudioSource.Stop();
@@ -235,8 +273,8 @@ public class Planter : AudioHandler {
         //change particles
         lure.Stop();
         lure.Clear();
-        
-        //move 
+
+        //begin move 
         SetMove();
         activated = true;
     }
@@ -275,9 +313,6 @@ public class Planter : AudioHandler {
     //called when it reaches dest
     void DeactivatePlanter()
     {
-        //set pref
-        PlayerPrefs.SetString(planetManager.planetName + " Pearl " + gameObject.name, "Activated");
-
         //activat Current's pillar with planter && position me right on toppp
         if(planterType == PlanterType.CURRENT)
         {
@@ -296,6 +331,9 @@ public class Planter : AudioHandler {
         {
             gameObject.SetActive(false);
         }
+
+        //set pref
+        PlayerPrefs.SetString(planetManager.planetName + " Pearl " + gameObject.name, "Activated");
     }
 
     //called every time spawn freq timer below 0 

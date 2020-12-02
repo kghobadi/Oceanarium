@@ -31,7 +31,7 @@ MonoBehaviour:
   cinematic: {fileID: 0}
   enablesCinematicTriggers: 0
   cTriggers: []
-  adjustsCamera: 0
+  adjustsCamera: 1
   cameraXPos: 10
   cameraYLook: 3
   lookAtObj: {fileID: 0}
