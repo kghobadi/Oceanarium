@@ -52,15 +52,12 @@ public class MonologueManager : MonoBehaviour
     [Tooltip("Check this to make character fade out upon completing mono")]
     public bool fadeOut;
 
-    [Header("Camera Settings")]
-    [Tooltip("Moves camera left (-) or right (+) for player to look at char")]
-    public float cameraXPos = 10f;
-    [Tooltip("Moves camera look pos up or down. I recommend between 0 & 10")]
-    public float cameraYLook = 3f;
-    [Tooltip("Character or thing to look at, if this is empty we default to hostObj (the speaker)")]
-    public Transform lookAtObj;
-    [Tooltip("Can use a cinemachine camera instead, just place it here and it will override other camera settings")]
-    public GameCamera speakerCam;
+    //camera settings are set by each Mono
+    float cameraXPos = 10f;
+    float cameraYLook = 3f;
+    Transform lookAtObj;
+    GameCamera speakerCam;
+
     [Tooltip("Defaults to talking -- can set to Meditation")]
     public PlayerController.MoveStates animationType = PlayerController.MoveStates.TALKING;
     [Tooltip("Choices for displaying at the end of a Monologue -- for now only used by Guardian")]
@@ -405,6 +402,9 @@ public class MonologueManager : MonoBehaviour
                 //disable meditation and reset timer
                 player.DisableMeditation();
                 player.idleTimer = 0;
+
+                //make sure trigger disables properly
+                mTrigger.PlayerExitedZone();
             }
             // unlock meditation move
             if (mono.lockPlayer)

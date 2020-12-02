@@ -121,6 +121,7 @@ public class PlayerController : AudioHandler
         animator = playerSpriteObj.GetComponent<PlayerAnimations>();
         quitScript = FindObjectOfType<QuitGame>();
         idleTimer = 0;
+
         //essence Inventory check
         if (essenceInventory == null)
             essenceInventory = gameObject.AddComponent<EssenceInventory>();
@@ -169,8 +170,7 @@ public class PlayerController : AudioHandler
         if(moveState == MoveStates.MEDITATING)
         {
             //all 3 controller buttons besides 'Talk' can disable meditation
-            if(inputDevice.Action1.WasPressed || inputDevice.Action2.WasPressed 
-                ||inputDevice.Action4.WasPressed)
+            if(inputDevice.Action2.WasPressed ||inputDevice.Action4.WasPressed)
             {
                 DisableMeditation();
             }
@@ -218,7 +218,7 @@ public class PlayerController : AudioHandler
         if (inputDevice.DeviceClass == InputDeviceClass.Controller)
         {
             // 3 axes 
-            //only elevate when not meditating 
+            //only swim when not meditating 
             if (moveState != MoveStates.MEDITATING)
             {
                 horizontalMovement = inputDevice.LeftStickX;

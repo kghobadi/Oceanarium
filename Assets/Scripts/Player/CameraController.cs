@@ -365,7 +365,7 @@ public class CameraController : MonoBehaviour {
             if (ffCam)
             {
                 ffCam.Fade(fadeOutAmount);
-                Debug.Log("fading " + ffCam.gameObject.name + " for cam");
+                //Debug.Log("fading " + ffCam.gameObject.name + " for cam");
             }
         }
     }

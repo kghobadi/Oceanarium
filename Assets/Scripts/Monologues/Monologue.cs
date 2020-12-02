@@ -51,7 +51,7 @@ public class Monologue : ScriptableObject
     public Cinematic [] cTriggers;
 
     [Header("Camera Angle")]
-    public bool adjustsCamera;
+    public bool adjustsCamera = true;
     [Tooltip("Moves camera left (-) or right (+) for player to look at char")]
     public float cameraXPos = 10f;
     [Tooltip("Moves camera look pos up or down. I recommend between 0 & 10")]
