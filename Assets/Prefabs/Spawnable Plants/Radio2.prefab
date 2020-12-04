@@ -40,8 +40,7 @@ GameObject:
   - component: {fileID: 95147275162166298}
   - component: {fileID: 114097766858080140}
   - component: {fileID: 114315669933940794}
-  - component: {fileID: 65953292103824586}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Radio2
   m_TagString: Prop
   m_Icon: {fileID: 0}
@@ -100,9 +99,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1175925436427294}
-  m_LocalRotation: {x: -0.08097996, y: -0, z: 0.010532609, w: 0.9966601}
-  m_LocalPosition: {x: -1520.7356, y: 270.96146, z: -947.126}
-  m_LocalScale: {x: 0.16008727, y: 0.16008724, z: 0.16008721}
+  m_LocalRotation: {x: -0.7320814, y: -0, z: 0.48285463, w: 0.48052913}
+  m_LocalPosition: {x: -990.8221, y: -57.97702, z: -1603.794}
+  m_LocalScale: {x: 0.048295137, y: 0.048295148, z: 0.048295125}
   m_Children:
   - {fileID: 4151306740823100}
   m_Father: {fileID: 0}
@@ -123,18 +122,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65953292103824586
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1175925436427294}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 7, y: 7, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &82057244278759702
 AudioSource:
   m_ObjectHideFlags: 1
@@ -261,6 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasGravityBody: 0
+  freezePosition: 1
 --- !u!114 &114315669933940794
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -297,6 +285,7 @@ MonoBehaviour:
   distToMakeSound: 10
   distToReset: 50
   playedSound: 0
+  playParticles: 0
   growthParticles: {fileID: 198220152835060832}
 --- !u!135 &135795083914022220
 SphereCollider:
