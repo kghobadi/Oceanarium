@@ -1,0 +1,788 @@
+Layer Selection: Planet
+Brush Max Size: 11.78
+Brush Size: 2.39
+Fill Mode: True
+Fill Rate: 0.02
+
+Game Object: None
+Layer: 
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: False
+Random Scale Min: 0.1
+Random Scale Max: 1
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 3
+
+Game Object: Assets/Prefabs/Props/EyeballCoral.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: False
+Random Scale Min: 0.1
+Random Scale Max: 1
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 3
+
+Game Object: Assets/Prefabs/Props/BrainCoral.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: False
+Random Scale Min: 0.1
+Random Scale Max: 1
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 2
+
+Game Object: Assets/Prefabs/Props/Pincushion.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: False
+Random Scale Min: 0.1
+Random Scale Max: 1
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 3
+
+Game Object: Assets/Prefabs/Props/Chandelier.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: False
+Random Scale Min: 0.1
+Random Scale Max: 1
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 5
+
+Game Object: Assets/Prefabs/Ruins/ruins test.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: False
+Random Scale Min: 0.1
+Random Scale Max: 1
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 0
+
+Game Object: Assets/Prefabs/Spawnable Plants/SeaweedPlace.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.5
+Random Scale Max: 0.5
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 2
+
+Game Object: Assets/Prefabs/Spawnable Plants/SwirlPlace.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 1
+Random Scale Max: 2
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 10
+
+Game Object: Assets/Prefabs/Spawnable Plants/Totem w Audio.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.5
+Random Scale Max: 1
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 25
+
+Game Object: Assets/Prefabs/Spawnable Plants/Star.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 5
+Random Scale Max: 10
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 6
+
+Game Object: Assets/Prefabs/Props/Flower.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.1
+Random Scale Max: 0.1
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 20
+
+Game Object: Assets/Prefabs/Spawnable Plants/Bomb.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.2
+Random Scale Max: 0.8
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 30
+
+Game Object: Assets/Prefabs/Spawnable Plants/Eyes.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.2
+Random Scale Max: 0.9
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 2
+
+Game Object: Assets/Prefabs/Spawnable Plants/radia.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.05
+Random Scale Max: 0.4
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 130
+
+Game Object: Assets/Prefabs/Spawnable Plants/Radio2.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.05
+Random Scale Max: 0.4
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 130
+
+Game Object: Assets/Prefabs/Spawnable Plants/Radio4.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.05
+Random Scale Max: 0.4
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 30
+
+Game Object: Assets/Prefabs/Spawnable Plants/Radio3.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.05
+Random Scale Max: 0.4
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 30
+
+Game Object: Assets/Prefabs/Spawnable Plants/Eyes.prefab
+Layer: Props
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.5
+Random Scale Max: 1.2
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 5
+
+Game Object: Assets/Prefabs/Props/StandingRock.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: True
+Random Rotation X: False
+Random Rotation Y: True
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 3
+Random Scale Max: 6
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 0
+
+Game Object: Assets/Prefabs/Props/Coral Planet/coral_stalk.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.5
+Random Scale Max: 1
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 0
+
+Game Object: Assets/Prefabs/Props/Coral Planet/coral_branches.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.25
+Random Scale Max: 0.5
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 0
+
+Game Object: Assets/Prefabs/Props/Coral Planet/coral_thingy.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: True
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.5
+Random Scale Max: 0.75
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 0
+
+Game Object: Assets/Prefabs/Props/Coral Planet/spone.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 2
+Random Scale Max: 2
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 0
+
+Game Object: Assets/Prefabs/Props/Lilly.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.3
+Random Scale Max: 1
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 5
+
+Game Object: Assets/Prefabs/Props/Wavey.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.5
+Random Scale Max: 1
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 4
+
+Game Object: Assets/Prefabs/Props/Wavey 1.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 5
+Random Scale Max: 10
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 4
+
+Game Object: Assets/Prefabs/Props/BallFlower.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 1
+Random Scale Max: 1
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 10
+
+Game Object: Assets/Prefabs/Spawnable Plants/TinyFlower.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.2
+Random Scale Max: 0.5
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 3
+
+Game Object: Assets/Prefabs/Spawnable Plants/Stack.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 1
+Random Scale Max: 2
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 8
+
+Game Object: Assets/Prefabs/Props/coral_light.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.2
+Random Scale Max: 0.8
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 3.5
+
+Game Object: Assets/Prefabs/Props/BlueReef.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.1
+Random Scale Max: 1
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 5
+
+Game Object: Assets/Prefabs/Props/coral stack.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.1
+Random Scale Max: 0.1
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 4
+
+Game Object: Assets/Prefabs/Props/PearlSeed.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.1
+Random Scale Max: 0.5
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 4.5
+
+Game Object: Assets/Prefabs/Props/Bubble.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.09
+Random Scale Max: 0.1
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 5
+
+Game Object: Assets/Prefabs/Props/waveypearl.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.1
+Random Scale Max: 0.5
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 5
+
+Game Object: Assets/Prefabs/Props/TwinkleEye.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.5
+Random Scale Max: 1
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 3.5
+
+Game Object: Assets/Prefabs/Props/dot.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.1
+Random Scale Max: 2
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 6
+
+Game Object: Assets/Prefabs/Props/Lightskeleton.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 1
+Random Scale Max: 2
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 3
+
+Game Object: Assets/Prefabs/Props/Lightskeleton 1.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 1
+Random Scale Max: 2
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 3
+
+Game Object: Assets/Prefabs/Props/BulbFlower.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.2
+Random Scale Max: 0.5
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 3.5
+
+Game Object: Assets/Prefabs/Spawnable Plants/Fungus.prefab
+Layer: Default
+Toggle: True
+Slider: 0.3425926
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.2
+Random Scale Max: 0.5
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 3
+
+Game Object: Assets/Prefabs/Spawnable Plants/Coral.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.5
+Random Scale Max: 1
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 2.2
+
+Game Object: Assets/Prefabs/Props/coral_light w gravity.prefab
+Layer: Default
+Toggle: False
+Slider: 1
+Lock Orientation Toggle: False
+Random Rotation Toggle: False
+Random Rotation X: False
+Random Rotation Y: False
+Random Rotation Z: False
+Random Scale Toggle: True
+Random Scale Min: 0.2
+Random Scale Max: 0.3
+Fixed Rotation Toggle: False
+Fixed Rotation X: 0
+Fixed Rotation Y: 0
+Fixed Rotation Z: 0
+Depth: 1
+
+Group Names:
+coralBundle
+BrainCoral
+Octopus
+FungusCircle
+funguscircle
+tinycorals
+fungusring
