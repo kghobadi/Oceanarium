@@ -23,10 +23,6 @@ GameObject:
   - component: {fileID: 95193942370183482}
   - component: {fileID: 114537123657766576}
   - component: {fileID: 114150972850446556}
-  - component: {fileID: 54880162160389382}
-  - component: {fileID: 114306055408280910}
-  - component: {fileID: 114446563064655214}
-  - component: {fileID: 114238450578350756}
   m_Layer: 0
   m_Name: coral_light w gravity
   m_TagString: Prop
@@ -40,28 +36,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1492127291992508}
-  m_LocalRotation: {x: -0.5568812, y: 0.0000000074505797, z: -0.07273942, w: 0.827401}
-  m_LocalPosition: {x: 223.80849, y: 25.572365, z: 98.824036}
-  m_LocalScale: {x: 1.2225043, y: 1.2225049, z: 1.2225045}
+  m_LocalRotation: {x: -0.96408856, y: 0.14580064, z: 0.14580064, w: 0.16738461}
+  m_LocalPosition: {x: -0.318, y: -0.376, z: -0.159}
+  m_LocalScale: {x: 0.0036188976, y: 0.0036188983, z: 0.0036188979}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &54880162160389382
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1492127291992508}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 14
-  m_CollisionDetection: 0
 --- !u!95 &95193942370183482
 Animator:
   serializedVersion: 3
@@ -95,49 +76,6 @@ MonoBehaviour:
   animatorComponent: {fileID: 0}
   parameterName: Distance
   distanceFromPlayer: 0
---- !u!114 &114238450578350756
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1492127291992508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3de83a42024898649849558f7d401192, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waitToCheck: 0
-  individualDistOffset: 10
---- !u!114 &114306055408280910
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1492127291992508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42947f603ad7eba40a501609da034343, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lockRotation: 0
-  usesGravity: 1
-  planets: []
-  distanceFromPlanet: 0
-  smoothMultiplier: 1
-  overlapSphereRadius: 20
---- !u!114 &114446563064655214
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1492127291992508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de3e261693c03c24cbb4f4e54072bef5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  randomOffset: 1
-  waitRange: {x: 0.1, y: 0.5}
 --- !u!114 &114537123657766576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -149,7 +87,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ee61183c5013464ab17c81babd9c0f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasGravityBody: 1
+  hasGravityBody: 0
+  freezePosition: 0
 --- !u!212 &212774943622166062
 SpriteRenderer:
   m_ObjectHideFlags: 1
