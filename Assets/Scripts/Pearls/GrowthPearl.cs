@@ -11,7 +11,10 @@ public class GrowthPearl : AudioHandler {
     ParticleSystem lure, popLights;
     Vector3 origLureScale;
     GrowthSphere growthSphere;
-    
+    SaveSystem saveSystem;
+    //the pearl was activated in a previous game
+    bool previouslyActivated;
+
     [Header("Pearl Activation")]
     public bool activated;
     public bool playerActivates;
@@ -36,8 +39,12 @@ public class GrowthPearl : AudioHandler {
     {
         base.Awake();
         movement = GetComponent<MoveTowards>();
+        saveSystem = FindObjectOfType<SaveSystem>();
+        saveSystem.returningGame.AddListener(LoadGame);
         pearlMesh = GetComponent<MeshRenderer>();
         pearlMesh.material = silentMat;
+        if (myPlanet == null)
+            myPlanet = GetComponentInParent<PlanetManager>();
         grav = GetComponent<GravityBody>();
         lure = transform.GetChild(0).GetComponent<ParticleSystem>();
         origLureScale = lure.transform.localScale;
@@ -96,6 +103,26 @@ public class GrowthPearl : AudioHandler {
                 }
             }
         }
+    }
+
+    void LoadGame()
+    {
+        //get saved planet name 
+        string savedPlanet = PlayerPrefs.GetString("ActivePlanet");
+        //get pref
+        if (PlayerPrefs.GetString(myPlanet.planetName + " Pearl " + gameObject.name) == "Activated")
+        {
+            previouslyActivated = true;
+
+            StartCoroutine(WaitToActivate(0.1f));
+        }
+    }
+
+    IEnumerator WaitToActivate(float wait)
+    {
+        yield return new WaitForSeconds(wait);
+
+        ActivateGrowthPearl(false);
     }
 
     //this can be called by Pearl meditation finishing :-)

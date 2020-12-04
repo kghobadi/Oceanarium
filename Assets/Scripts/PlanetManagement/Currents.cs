@@ -199,19 +199,24 @@ public class Currents : AudioHandler {
             explosion.Play();
         }
 
-        //activated by MoveToCurrentPearls 
-        if(activationType == ActivationType.PLANTERPEARLS)
+        //only if active planet
+        if(planetMan == pc.activePlanet)
         {
-            //play sound + cinematic
-            if(cinematicManager)
-                cinematicManager.PlayTimeline();
-            PlaySound(activationSound, myAudioSource.volume);
+            //activated by MoveToCurrentPearls 
+            if (activationType == ActivationType.PLANTERPEARLS)
+            {
+                //play sound + cinematic
+                if (cinematicManager)
+                    cinematicManager.PlayTimeline();
+                PlaySound(activationSound, myAudioSource.volume);
+            }
+            //also play this sound 
+            else if (activationType == ActivationType.PLAYER)
+            {
+                PlaySound(activationSound, myAudioSource.volume);
+            }
         }
-        //also play this sound 
-        else if (activationType == ActivationType.PLAYER)
-        {
-            PlaySound(activationSound, myAudioSource.volume);
-        }
+        
     }
 
     public void EnterCurrent()
