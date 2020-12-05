@@ -72,7 +72,7 @@ Animator:
   m_GameObject: {fileID: 1440088082753194}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0fb545e31c5f5af439fd0d0f582e1d2d, type: 2}
+  m_Controller: {fileID: 9100000, guid: d82b279796fab1b4a989ecdde7342951, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -92,8 +92,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3de83a42024898649849558f7d401192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitToCheck: 1
+  sRenderer: {fileID: 0}
+  fader: {fileID: 0}
   individualDistOffset: 50
+  distFromPlayer: 0
 --- !u!114 &114247793749681354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -106,6 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasGravityBody: 0
+  freezePosition: 1
 --- !u!114 &114521119169163988
 MonoBehaviour:
   m_ObjectHideFlags: 1
