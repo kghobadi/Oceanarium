@@ -69,7 +69,7 @@ public class Spirit : MonoBehaviour
             }
 
             //is there a spirit state && animation script?
-            if(spiritState != "" && animations)
+            if(spiritState.Length > 2 && animations)
             {
                 //set current physical bool
                 physicalState = animations.currentAnimatorBool;
