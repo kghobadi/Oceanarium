@@ -9,19 +9,15 @@ using Cameras;
 public class MeditationMovement : MonoBehaviour
 {
     //player and maincam
-    Transform player;
     PlayerController pc;
     Camera mainCam;
     
     //for viewing
-    Vector2 mouseLook;
-    Vector2 smoothV;
     InputDevice inputDevice;
 
     [Header("Old FPS movement")]
     public bool isActive;
     public Transform thirdEyeParent;
-    GravityBody thirdGravity;
     CharacterController thirdBody;
     float hRot, vRot;
     public float sensitivityX = 1f;
@@ -37,14 +33,12 @@ public class MeditationMovement : MonoBehaviour
     void Awake()
     {
         pc = FindObjectOfType<PlayerController>();
-        player = pc.transform;
         mainCam = Camera.main;
         
         //for fps 
         if (thirdEyeParent)
         {
             thirdBody = thirdEyeParent.GetComponent<CharacterController>();
-            thirdGravity = thirdEyeParent.GetComponent<GravityBody>();
         }
     }
 

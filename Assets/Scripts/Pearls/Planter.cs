@@ -72,7 +72,7 @@ public class Planter : AudioHandler {
 
         pc = FindObjectOfType<PlayerController>();
         saveSystem = FindObjectOfType<SaveSystem>();
-        saveSystem.returningGame.AddListener(LoadGame);
+        //saveSystem.returningGame.AddListener(LoadGame);
 
         //get all refs
         myMR = GetComponent<MeshRenderer>();
@@ -403,13 +403,25 @@ public class Planter : AudioHandler {
         Animator animator = plantClone.GetComponent<Animator>();
         if (animator)
         {
-            animator.SetTrigger("grow");
+            //check for param
+            if(HasParameter("grow", animator))
+                animator.SetTrigger("grow");
         }
 
         //reset spawn timer
         spawnTimer = spawnFrequency;
         //add to planet manager list 
         planetManager.props.Add(plantClone);
+    }
+
+    public static bool HasParameter(string paramName, Animator animator)
+    {
+        foreach (AnimatorControllerParameter param in animator.parameters)
+        {
+            if (param.name == paramName)
+                return true;
+        }
+        return false;
     }
 
     //for attracting player to pearl during meditation

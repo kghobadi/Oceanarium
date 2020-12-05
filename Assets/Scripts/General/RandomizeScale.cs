@@ -18,4 +18,9 @@ public class RandomizeScale : MonoBehaviour {
         float randomScale = Random.Range(scaleMin, scaleMax);
         transform.localScale *= randomScale;
     }
+
+    public void SetToOrigScale()
+    {
+        transform.localScale = origScale;
+    }
 }

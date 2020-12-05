@@ -7,9 +7,7 @@ public class MonologueTrigger : MonoBehaviour
 {
     //player
     GameObject player;
-    Camera cameraMan;
     PlayerController pc;
-    CameraController cc;
 
     //general
     [Tooltip("Indicates whether the Monologue has been activated by Player or not")]
@@ -41,8 +39,6 @@ public class MonologueTrigger : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         pc = player.GetComponent<PlayerController>();
-        cameraMan = Camera.main;
-        cc = cameraMan.GetComponent<CameraController>();
 
         //when player meditates, auto leave physical trigger 
         pc.startMeditation.AddListener(PlayerExitedZone);

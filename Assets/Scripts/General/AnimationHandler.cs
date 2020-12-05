@@ -35,6 +35,16 @@ public abstract class AnimationHandler : MonoBehaviour
         currentAnimatorBool = anim;
     }
 
+    public static bool HasParameter(string paramName, Animator animator)
+    {
+        foreach (AnimatorControllerParameter param in animator.parameters)
+        {
+            if (param.name == paramName)
+                return true;
+        }
+        return false;
+    }
+
     protected bool AnimationIsActive(string anim) { 
         if(characterAnimator == null)
             return false;

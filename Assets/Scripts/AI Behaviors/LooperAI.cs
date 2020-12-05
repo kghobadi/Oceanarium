@@ -10,9 +10,6 @@ public class LooperAI : AudioHandler {
     PlayerController pc;
     //ai components
     MoveTowards movement;
-    Orbit orbital;
-    GravityBody gravBody;
-    SpriteRenderer cRenderer;
     CreatureAnimation cAnimation;
 
     [Header("AI Settings")]
@@ -45,11 +42,8 @@ public class LooperAI : AudioHandler {
         pc = player.GetComponent<PlayerController>();
 
         //ai component refs 
-        cRenderer = GetComponent<SpriteRenderer>();
         cAnimation = GetComponent<CreatureAnimation>();
         movement = GetComponent<MoveTowards>();
-        orbital = GetComponent<Orbit>();
-        gravBody = GetComponent<GravityBody>();
 
         //monologue integration
         monoManager = GetComponent<MonologueManager>();

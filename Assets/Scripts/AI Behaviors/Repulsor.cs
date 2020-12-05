@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Repulsor : MonoBehaviour {
-    GameObject player;
     PlayerController pc;
 
     Rigidbody rBody;
     GravityBody gravBody;
     Orbit orbit;
-    DistanceAnimatorParameter distanceFromPlayer;
  
     public bool repulsing;
     public bool slowingDown;
@@ -28,14 +26,10 @@ public class Repulsor : MonoBehaviour {
 
     void Awake ()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        if(player)
-            pc = player.GetComponent<PlayerController>();
-
+        pc = FindObjectOfType<PlayerController>();
         rBody = GetComponent<Rigidbody>();
         gravBody = GetComponent<GravityBody>();
         orbit = GetComponent<Orbit>();
-        distanceFromPlayer = GetComponent<DistanceAnimatorParameter>();
     }
 
     void Start()
@@ -75,9 +69,9 @@ public class Repulsor : MonoBehaviour {
         //if not repulse on start, waiting for player to repulse
         if (!repulseOnStart)
         {
-            if(Vector3.Distance(transform.position, player.transform.position) < 10 && !repulsing)
+            if(Vector3.Distance(transform.position, pc.transform.position) < 10 && !repulsing)
             {
-                SetRepulsor(player.GetComponent<GravityBody>().GetUp());
+                SetRepulsor(pc.gravityBody.GetUp());
             }
         }
 	}
