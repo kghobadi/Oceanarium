@@ -2792,6 +2792,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterAnimator: {fileID: 0}
+  currentAnimatorBool: 
   animationBools:
   - swimmingAway
   talkingAnimations: 0

@@ -86,9 +86,13 @@ public class QuitGame : MonoBehaviour {
         DeactivateObj(escMenu);
 
         //enable movement 
-        pc.canMove = true;
-        camControl.canMoveCam = true;
-       
+        if (pc)
+        {
+            pc.canMove = true;
+        }
+        if(camControl)
+            camControl.canMoveCam = true;   
+
         //relock cursor 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;

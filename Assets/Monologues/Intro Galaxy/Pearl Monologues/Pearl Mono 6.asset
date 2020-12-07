@@ -33,6 +33,6 @@ MonoBehaviour:
   cTriggers: []
   adjustsCamera: 1
   cameraXPos: 10
-  cameraYLook: 3
+  cameraYLook: 5
   lookAtObj: {fileID: 0}
   speakerCam: {fileID: 0}
