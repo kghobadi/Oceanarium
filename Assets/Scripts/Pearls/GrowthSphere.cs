@@ -80,20 +80,22 @@ public class GrowthSphere : MonoBehaviour {
         //if object is a prop 
         if (other.gameObject.tag == "Prop")
         {
+            LerpScale scalerObj = other.gameObject.GetComponent<LerpScale>();
             //if prop has a Lerp scale component for growing 
-            if (other.gameObject.GetComponent<LerpScale>())
+            if (scalerObj)
             {
-                LerpScale scalerObj = other.gameObject.GetComponent<LerpScale>();
                 if (scalerObj.setScaleAtStart)
                 {
                     scalerObj.SetScaler(objScaleSpeed, scalerObj.origScale);
                     scalerObj.setScaleAtStart = false;
                 }
             }
+
+            Animator animator = other.gameObject.GetComponent<Animator>();
             //trigger grow anim
-            if (other.gameObject.GetComponent<Animator>())
+            if (animator)
             {
-                other.gameObject.GetComponent<Animator>().SetTrigger("grow");
+                animator.SetTrigger("grow");
             }
         }
     }

@@ -8,7 +8,6 @@ public class CameraFacingBillboard : MonoBehaviour
     PlayerController pc;
     private GravityBody playerBody;
     Camera playerCam;
-    CameraController camControl;
     SpriteRenderer sr;
    
 
@@ -30,7 +29,6 @@ public class CameraFacingBillboard : MonoBehaviour
       
         //cam refs
         playerCam = Camera.main;
-        camControl = playerCam.GetComponent<CameraController>();
 
         sr = GetComponent<SpriteRenderer>();
 

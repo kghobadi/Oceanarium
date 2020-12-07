@@ -6,6 +6,7 @@ public class DeactivateObject : MonoBehaviour
 {
     GameObject _player;
     PlayerController pc;
+    Camera playerCam;
     WorldManager wm;
 
     //so worldmanager can access these 
@@ -23,16 +24,20 @@ public class DeactivateObject : MonoBehaviour
         pc = _player.GetComponent<PlayerController>();
         wm = FindObjectOfType<WorldManager>();
         sRenderer = GetComponent<SpriteRenderer>();
+        playerCam = Camera.main;
 
         //assure sprite renderer and fade sprite exist 
         if (sRenderer == null)
         {
             sRenderer = GetComponentInChildren<SpriteRenderer>();
 
-            fader = sRenderer.GetComponent<FadeSprite>();
-            if (fader == null)
+            if (sRenderer)
             {
-                fader = sRenderer.gameObject.AddComponent<FadeSprite>();
+                fader = sRenderer.GetComponent<FadeSprite>();
+                if (fader == null)
+                {
+                    fader = sRenderer.gameObject.AddComponent<FadeSprite>();
+                }
             }
         }
         //sprite renderer found on this transform
@@ -69,7 +74,12 @@ public class DeactivateObject : MonoBehaviour
     //deactivate object when it's far enough away from player 
     void DistCheck()
     {
-        distFromPlayer = Vector3.Distance(_player.transform.position, transform.position);
+        //normal
+        if(pc.moveState != PlayerController.MoveStates.MEDITATING)
+            distFromPlayer = Vector3.Distance(_player.transform.position, transform.position);
+        //meditating
+        else
+            distFromPlayer = Vector3.Distance(playerCam.transform.position, transform.position);
 
         //check to see if its greater than wm dist
         if (distFromPlayer > (wm.activationDistance + individualDistOffset))

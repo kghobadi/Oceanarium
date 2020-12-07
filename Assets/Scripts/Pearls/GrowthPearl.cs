@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GrowthPearl : AudioHandler {
-   
-    //all my private components
+
+    //all my private components=
     MoveTowards movement;
     MeshRenderer pearlMesh;
     GravityBody grav;
@@ -40,7 +40,8 @@ public class GrowthPearl : AudioHandler {
         base.Awake();
         movement = GetComponent<MoveTowards>();
         saveSystem = FindObjectOfType<SaveSystem>();
-        saveSystem.returningGame.AddListener(LoadGame);
+        saveSystem.returningGame.AddListener(NewGame);
+        saveSystem.startNewGame.AddListener(NewGame);
         pearlMesh = GetComponent<MeshRenderer>();
         pearlMesh.material = silentMat;
         if (myPlanet == null)
@@ -52,9 +53,34 @@ public class GrowthPearl : AudioHandler {
         growthSphere = transform.GetComponentInChildren<GrowthSphere>();
     }
 
-    void Start()
+    void NewGame()
     {
         StartCoroutine(WaitToDeactivate(0.1f));
+    }
+
+    void LoadGame()
+    {
+        //get saved planet name 
+        string savedPlanet = PlayerPrefs.GetString("ActivePlanet");
+        //get pref
+        if (PlayerPrefs.GetString(myPlanet.planetName + " Pearl " + gameObject.name) == "Activated")
+        {
+            previouslyActivated = true;
+
+            StartCoroutine(WaitToActivate(0.1f));
+        }
+        //deactivate those plants!
+        else
+        {
+            StartCoroutine(WaitToDeactivate(0.1f));
+        }
+    }
+
+    IEnumerator WaitToActivate(float wait)
+    {
+        yield return new WaitForSeconds(wait);
+
+        ActivateGrowthPearl(false);
     }
 
     IEnumerator WaitToDeactivate(float time)
@@ -105,26 +131,6 @@ public class GrowthPearl : AudioHandler {
         }
     }
 
-    void LoadGame()
-    {
-        //get saved planet name 
-        string savedPlanet = PlayerPrefs.GetString("ActivePlanet");
-        //get pref
-        if (PlayerPrefs.GetString(myPlanet.planetName + " Pearl " + gameObject.name) == "Activated")
-        {
-            previouslyActivated = true;
-
-            StartCoroutine(WaitToActivate(0.1f));
-        }
-    }
-
-    IEnumerator WaitToActivate(float wait)
-    {
-        yield return new WaitForSeconds(wait);
-
-        ActivateGrowthPearl(false);
-    }
-
     //this can be called by Pearl meditation finishing :-)
     public void ActivateGrowthPearl(bool sound)
     {
@@ -145,15 +151,32 @@ public class GrowthPearl : AudioHandler {
         lure.Clear();
         popLights.Play();
 
-        //I must bring my environment to LIFE!
-        if (objectsToGrow.Length > 0)
+        //loading
+        if (previouslyActivated)
         {
-            EnableGrowObjects();
+            //check for objs
+            if(objectsToGrow.Length > 0)
+            {
+                GrowAllObjects();
+            }
         }
-
+        //new
+        else
+        {
+            //I must bring my environment to LIFE!
+            if (objectsToGrow.Length > 0)
+            {
+                EnableGrowObjects();
+            }
+        }
+        
+        //set active
         activated = true;
+        //set pref
+        PlayerPrefs.SetString(myPlanet.planetName + " Pearl " + gameObject.name, "Activated");
     }
 
+    //enables grow objects & starts growth sphere effect
     void EnableGrowObjects()
     {
         for(int i = 0; i < objectsToGrow.Length; i++)
@@ -165,9 +188,58 @@ public class GrowthPearl : AudioHandler {
                 myPlanet.props.Add(objectsToGrow[i]);
         }
 
+        //start effect
         growthSphere.GrowObjects(growthSpeed);
     }
-    
+
+    //immediately grow all objects without producing sphere
+    void GrowAllObjects()
+    {
+        for (int i = 0; i < objectsToGrow.Length; i++)
+        {
+            //activate 
+            objectsToGrow[i].SetActive(true);
+
+            //set lerp scale
+            LerpScale lerp = objectsToGrow[i].GetComponent<LerpScale>();
+            //if prop has a Lerp scale component for growing 
+            if (lerp)
+            {
+                //set growth
+                if (lerp.setScaleAtStart)
+                {
+                    lerp.SetScaler(growthSpeed, lerp.origScale);
+                    lerp.setScaleAtStart = false;
+                }
+            }
+
+            //get anim
+            Animator animator = objectsToGrow[i].GetComponent<Animator>();
+            //trigger grow anim
+            if (animator)
+            {
+                //check for param
+                if(HasParameter("grow", animator))
+                    animator.SetTrigger("grow");
+            }
+
+            //add to planet man 
+            if (!myPlanet.props.Contains(objectsToGrow[i]))
+                myPlanet.props.Add(objectsToGrow[i]);
+        }
+    }
+
+
+    public static bool HasParameter(string paramName, Animator animator)
+    {
+        foreach (AnimatorControllerParameter param in animator.parameters)
+        {
+            if (param.name == paramName)
+                return true;
+        }
+        return false;
+    }
+
     //for attracting player to pearl during meditation
     public void SetMeditationLure()
     {

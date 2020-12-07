@@ -60,11 +60,15 @@ public class QuitGame : MonoBehaviour {
     public void ActivateQuitMenu()
     {
         //disable movement
-        if(pc.moveState == PlayerController.MoveStates.MEDITATING)
-            pc.DisableMeditation();
-        pc.canMove = false;
-        pc.playerRigidbody.velocity = Vector3.zero;
-        camControl.canMoveCam = false;
+        if (pc)
+        {
+            if (pc.moveState == PlayerController.MoveStates.MEDITATING)
+                pc.DisableMeditation();
+            pc.canMove = false;
+            pc.playerRigidbody.velocity = Vector3.zero;
+        }
+        if(camControl)
+            camControl.canMoveCam = false;
       
         //enable cursor
         Cursor.visible = true;
@@ -82,9 +86,13 @@ public class QuitGame : MonoBehaviour {
         DeactivateObj(escMenu);
 
         //enable movement 
-        pc.canMove = true;
-        camControl.canMoveCam = true;
-       
+        if (pc)
+        {
+            pc.canMove = true;
+        }
+        if(camControl)
+            camControl.canMoveCam = true;   
+
         //relock cursor 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;

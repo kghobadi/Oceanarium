@@ -71,7 +71,11 @@ public class DistanceAnimatorParameter : MonoBehaviour
 
     private void OnEnable()
     {
-        updateCoroutine = StartCoroutine(UpdateDistanceCoroutine());
+        //only run the coroutine if we find the parameter
+        if(HasParameter(parameterName, animatorComponent))
+        {
+            updateCoroutine = StartCoroutine(UpdateDistanceCoroutine());
+        }
     }
 
     private void OnDisable()
@@ -103,5 +107,15 @@ public class DistanceAnimatorParameter : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    public static bool HasParameter(string paramName, Animator animator)
+    {
+        foreach (AnimatorControllerParameter param in animator.parameters)
+        {
+            if (param.name == paramName)
+                return true;
+        }
+        return false;
     }
 }

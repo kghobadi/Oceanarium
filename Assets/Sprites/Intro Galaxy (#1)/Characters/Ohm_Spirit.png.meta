@@ -1,23 +1,17 @@
 fileFormatVersion: 2
-guid: 7270a91c55b00aa4d80a0720c0d3a325
+guid: 382b2454d23f116469949d6f88b54988
 TextureImporter:
   fileIDToRecycleName:
-    21300000: flowersss_0
-    21300002: flowersss_1
-    21300004: flowersss_2
-    21300006: flowersss_3
-    21300008: flowersss_4
-    21300010: flowersss_5
-    21300012: flowersss_6
-    21300014: flowersss_7
-    21300016: flowersss_8
-    21300018: flowersss_9
-    21300020: flowersss_10
-    21300022: flowersss_11
-    21300024: flowersss_12
-    21300026: flowersss_13
-    21300028: flowersss_14
-    21300030: flowersss_15
+    21300000: Ohm_Spirit_0
+    21300002: Ohm_Spirit_1
+    21300004: Ohm_Spirit_2
+    21300006: Ohm_Spirit_3
+    21300008: Ohm_Spirit_4
+    21300010: Ohm_Spirit_5
+    21300012: Ohm_Spirit_6
+    21300014: Ohm_Spirit_7
+    21300016: Ohm_Spirit_8
+    21300018: Ohm_Spirit_9
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -47,7 +41,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: -1
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -97,17 +91,6 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
   - serializedVersion: 2
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-  - serializedVersion: 2
     buildTarget: iPhone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -133,93 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: flowersss_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1536
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: aec2dbbbfdacd4a4c9af12f447934b6f
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: flowersss_1
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 1536
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4010401f39e7f984c821b7b45d47ad91
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: flowersss_2
-      rect:
-        serializedVersion: 2
-        x: 1024
-        y: 1536
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3b29b1eda12caef4e805715b45d94fde
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: flowersss_3
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 1536
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 19a5f1c4cdc545a4a879182842d9e41d
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: flowersss_4
+      name: Ohm_Spirit_0
       rect:
         serializedVersion: 2
         x: 0
         y: 1024
-        width: 512
-        height: 512
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -227,39 +130,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16c00acd35db9f74e9bf5f6c025af361
+      spriteID: 259977d4c9652554abcf9f72f0268f10
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: flowersss_5
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 1024
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9717e1e9159ef28488e514d30a491fb6
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: flowersss_6
+      name: Ohm_Spirit_1
       rect:
         serializedVersion: 2
         x: 1024
         y: 1024
-        width: 512
-        height: 512
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -267,19 +150,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2122c2a0ccb90e94a9065e3654937644
+      spriteID: 733af14d4f229d24c99b9da9d4984504
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: flowersss_7
+      name: Ohm_Spirit_2
       rect:
         serializedVersion: 2
-        x: 1536
+        x: 2048
         y: 1024
-        width: 512
-        height: 512
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -287,19 +170,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7d55256180b5784fbba2e7e6da952ff
+      spriteID: 518efa64184380d4bbe1780b335abd4c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: flowersss_8
+      name: Ohm_Spirit_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 512
-        width: 512
-        height: 512
+        x: 3072
+        y: 1024
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -307,19 +190,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 91c58605bd88f104f81679f2e24d5ecc
+      spriteID: 277946f2fc2ced54385fdef3f092dc92
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: flowersss_9
+      name: Ohm_Spirit_4
       rect:
         serializedVersion: 2
-        x: 512
-        y: 512
-        width: 512
-        height: 512
+        x: 4096
+        y: 1024
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -327,59 +210,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1f632dd519b64a4a8ae50d9ce4d9088
+      spriteID: 8bcf5a210ac057545b5e5d7425d1f954
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: flowersss_10
-      rect:
-        serializedVersion: 2
-        x: 1024
-        y: 512
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 665956138a3ddae4c80c439eb6f90473
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: flowersss_11
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 512
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2bf900ee997f0804bb4392be85920e61
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: flowersss_12
+      name: Ohm_Spirit_5
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 512
-        height: 512
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -387,39 +230,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0300597843e8214e82cd34a4848405e
+      spriteID: e3362730873612c4db8c6f0d7b7ba1dc
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: flowersss_13
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 0
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f735d254b5ec1e442af4ea76e323610f
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: flowersss_14
+      name: Ohm_Spirit_6
       rect:
         serializedVersion: 2
         x: 1024
         y: 0
-        width: 512
-        height: 512
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -427,19 +250,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aa9a0fef5bfaf5e48b653a7495e8dd01
+      spriteID: 835fc53bcbac8254288f11f1b15a13ca
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: flowersss_15
+      name: Ohm_Spirit_7
       rect:
         serializedVersion: 2
-        x: 1536
+        x: 2048
         y: 0
-        width: 512
-        height: 512
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -447,7 +270,47 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b056acd4c5b26a40bb3d77837166134
+      spriteID: 9a3bcdcccf1031e4485abecb49ae8072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ohm_Spirit_8
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 0
+        width: 1024
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05ce79f96cc3e654eb6261ab4b3a6a6b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ohm_Spirit_9
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 0
+        width: 1024
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f077effc404d6f24d982e179da83fc54
       vertices: []
       indices: 
       edges: []
@@ -455,7 +318,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 6d92e0446dd44334abcf681ca7d2b8c4
+    spriteID: 3c7c48939263cee4f98eee9cd92862d4
     vertices: []
     indices: 
     edges: []

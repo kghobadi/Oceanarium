@@ -25,7 +25,7 @@ public class Spirit : MonoBehaviour
 
     [Header("Animation")]
     public string spiritState;
-    string physicalState;
+    public string physicalState;
 
     private void Awake()
     {
@@ -42,18 +42,13 @@ public class Spirit : MonoBehaviour
         pc.endMeditation.AddListener(DisableSpirit);
     }
 
-    private void OnBecameVisible()
-    {
-       
-    }
-
     void EnableSpirit()
     {
         if (s_Enabled)
             return;
 
-        //check that 
-        if(meditationLayers.meditationLayer >= visibleLayer)
+        //check the layer and if not already enabled
+        if(meditationLayers.meditationLayer >= visibleLayer && s_Enabled == false)
         {
             //set monologue manager & trigger
             if (hasMono)
@@ -69,10 +64,8 @@ public class Spirit : MonoBehaviour
             }
 
             //is there a spirit state && animation script?
-            if(spiritState != "" && animations)
+            if(spiritState.Length > 1 && animations)
             {
-                //set current physical bool
-                physicalState = animations.currentAnimatorBool;
                 //set animator
                 animations.SetAnimator(spiritState);
             }
@@ -82,33 +75,32 @@ public class Spirit : MonoBehaviour
         }
     }
 
-    private void OnBecameInvisible()
-    {
-       
-    }
-
     void DisableSpirit()
     {
-        //set monologue manager & trigger
-        if (hasMono)
+        //only run if enabled
+        if (s_Enabled)
         {
-            //reset monologue system to physical monologue
-            monoManager.SetMonologueSystem(physicalMono);
-            //reset spirit 
-            monoManager.spiritEnabled = false;
-            //reset monologue trigger
-            monoManager.mTrigger.spiritEnabled = false;
+            //set monologue manager & trigger
+            if (hasMono)
+            {
+                //reset monologue system to physical monologue
+                monoManager.SetMonologueSystem(physicalMono);
+                //reset spirit 
+                monoManager.spiritEnabled = false;
+                //reset monologue trigger
+                monoManager.mTrigger.spiritEnabled = false;
+            }
+
+            //is there a spirit state && animation script?
+            if (physicalState.Length > 1 && animations)
+            {
+                //reset animator to physical state
+                animations.SetAnimator(physicalState);
+            }
+
+            disableSpirit.Invoke();
+
+            s_Enabled = false;
         }
-
-        //is there a spirit state && animation script?
-        if (physicalState != "" && animations)
-        {
-            //reset animator to physical state
-            animations.SetAnimator(physicalState);
-        }
-
-        disableSpirit.Invoke();
-
-        s_Enabled = false;
     }
 }
