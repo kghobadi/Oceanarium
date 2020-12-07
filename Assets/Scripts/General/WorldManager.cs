@@ -5,14 +5,17 @@ using UnityEngine;
 public class WorldManager : MonoBehaviour {
     GameObject _player;
     PlayerController pc;
+    Camera mainCam;
 
     public List<GameObject> allInactiveObjects = new List<GameObject>();
     public float activationDistance = 75f;
-   
+    float distanceFromPlayer;
+
     void Awake()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
         pc = _player.GetComponent<PlayerController>();
+        mainCam = Camera.main;
     }
 
     void Update ()
@@ -32,8 +35,12 @@ public class WorldManager : MonoBehaviour {
             //does the object exist?
             if (allInactiveObjects[i] != null)
             {
-                //dist calc
-                float distanceFromPlayer = Vector3.Distance(allInactiveObjects[i].transform.position, _player.transform.position);
+                //dist calc -- normal
+                if(pc.moveState != PlayerController.MoveStates.MEDITATING)
+                    distanceFromPlayer = Vector3.Distance(allInactiveObjects[i].transform.position, _player.transform.position);
+                //dist -- meditating
+                else
+                    distanceFromPlayer = Vector3.Distance(allInactiveObjects[i].transform.position, mainCam.transform.position);
 
                 //is it close enough to activate?
                 if (distanceFromPlayer < activationDistance)
