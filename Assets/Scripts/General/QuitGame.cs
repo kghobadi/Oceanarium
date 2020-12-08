@@ -62,8 +62,17 @@ public class QuitGame : MonoBehaviour {
         //disable movement
         if (pc)
         {
-            if (pc.moveState == PlayerController.MoveStates.MEDITATING)
+            //meditation check
+            if(pc.moveState == PlayerController.MoveStates.MEDITATING)
+            {
+                //turn it off
                 pc.DisableMeditation();
+                pc.idleTimer = 0;
+
+                //return camera to player
+                camControl.SetCamPos(camControl.heightAvg);
+            }
+
             pc.canMove = false;
             pc.playerRigidbody.velocity = Vector3.zero;
         }

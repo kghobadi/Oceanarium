@@ -36,3 +36,5 @@ MonoBehaviour:
   cameraYLook: 5
   lookAtObj: {fileID: 0}
   speakerCam: {fileID: 0}
+  zoom: 1
+  defaultZoomValue: 25

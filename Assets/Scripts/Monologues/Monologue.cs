@@ -60,4 +60,9 @@ public class Monologue : ScriptableObject
     public Transform lookAtObj;
     [Tooltip("Can overwrite speaker cam in monologue manager")]
     public GameCamera speakerCam;
+
+    [Header("Cam Zoom")]
+    public bool zoom;
+    [Tooltip("Will zoom out camera")]
+    public float defaultZoomValue = 20f;
 }
