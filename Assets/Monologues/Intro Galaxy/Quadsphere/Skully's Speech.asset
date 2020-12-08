@@ -9,16 +9,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3a3861b9ea3b4c43b0c9e901c55bc6c, type: 3}
-  m_Name: Pearlmans Rant
+  m_Name: Skully's Speech
   m_EditorClassIdentifier: 
-  monologue: {fileID: 4900000, guid: d7a1909702ebbfa44a20cf4e62ecb986, type: 3}
-  worldMonoIndex: 8
+  monologue: {fileID: 4900000, guid: ca0448bf53b6ede438b3728a0fc0041f, type: 3}
+  worldMonoIndex: 2
   waitToStart: 0
   timeUntilStart: 0
   lockPlayer: 1
   loadsScene: 0
-  timeBetweenLetters: 0.1
-  timeBetweenLines: 2
+  timeBetweenLetters: 0.05
+  timeBetweenLines: 3
   conversational: 0
   waitTimes: []
   repeatsAtFinish: 1
@@ -32,7 +32,9 @@ MonoBehaviour:
   enablesCinematicTriggers: 0
   cTriggers: []
   adjustsCamera: 1
-  cameraXPos: 3
-  cameraYLook: -8
+  cameraXPos: 10
+  cameraYLook: 3
   lookAtObj: {fileID: 0}
   speakerCam: {fileID: 0}
+  zoom: 0
+  defaultZoomValue: 0

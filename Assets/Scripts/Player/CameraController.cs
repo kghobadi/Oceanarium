@@ -47,6 +47,7 @@ public class CameraController : MonoBehaviour {
     public float heightFromPlayer = 20f;
     public float heightMin, heightMax;
     public float zoomSpeed = 500f;
+    public float heightAvg;
 
     //privately stored temp variables 
     float zoomInput;
@@ -85,19 +86,20 @@ public class CameraController : MonoBehaviour {
         gravityBody = player.GetComponent<GravityBody>();
         cRigidbody = GetComponent<Rigidbody>();
         origGBody = gravityBody;
+        heightAvg = heightMin + ((heightMax - heightMin) / 2);
     }
 
     void Start()
     {
         //can move at start
         canMoveCam = true;
-        SetCamPos();
+        SetCamPos(heightAvg);
     }
 
-    public void SetCamPos()
+    public void SetCamPos(float height)
     {
         //set start height to middle val 
-        heightFromPlayer = heightMin + ((heightMax - heightMin) / 2);
+        heightFromPlayer = height;
         //calc start pos
         Vector3 toCamera = Quaternion.AngleAxis(vRot, Vector3.right) * -Vector3.forward;
         Vector3 futureCameraPosition = player.transform.TransformPoint(toCamera * heightFromPlayer);
@@ -281,6 +283,11 @@ public class CameraController : MonoBehaviour {
         heightFromPlayer = Mathf.Clamp(heightFromPlayer, heightMin, heightMax);
     }
 
+    public void ZoomDirect(float value)
+    {
+        heightFromPlayer = value;
+    }
+
     //detects whether cam is seeing ground in front of player somehw
     void CastToPlayer()
     {
@@ -315,11 +322,14 @@ public class CameraController : MonoBehaviour {
     
     private void OnTriggerStay(Collider other)
     {
-        //zoom in if camera is collding with stuff we dont like
-        if (obstructionLayers.Contains(other.gameObject.layer))
+        if (canMoveCam)
         {
-            if (heightFromPlayer > heightMin)
-                ZoomIn(-0.05f);
+            //zoom in if camera is collding with stuff we dont like
+            if (obstructionLayers.Contains(other.gameObject.layer))
+            {
+                if (heightFromPlayer > heightMin)
+                    ZoomIn(-0.005f);
+            }
         }
     }
 

@@ -238,6 +238,17 @@ public class MonologueManager : MonoBehaviour
             //use player camera, just move it around 
             else
             {
+                //zoom?
+                if (allMyMonologues[currentMonologue].zoom)
+                {
+                    float zoomVal = allMyMonologues[currentMonologue].defaultZoomValue;
+
+                    //zoom out that cam bb
+                    camController.ZoomDirect(zoomVal);
+                    camController.SetCamPos(zoomVal);
+                }
+
+                //other camera adjustmensts?
                 if (allMyMonologues[currentMonologue].adjustsCamera)
                 {
                     //disable cam movement

@@ -9,10 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3a3861b9ea3b4c43b0c9e901c55bc6c, type: 3}
-  m_Name: Skully's Speech
+  m_Name: Loki
   m_EditorClassIdentifier: 
-  monologue: {fileID: 4900000, guid: ca0448bf53b6ede438b3728a0fc0041f, type: 3}
-  worldMonoIndex: 2
+  monologue: {fileID: 4900000, guid: 6c76a41330af7b548a64b317aac681cb, type: 3}
+  worldMonoIndex: 33
   waitToStart: 0
   timeUntilStart: 0
   lockPlayer: 1
@@ -23,6 +23,7 @@ MonoBehaviour:
   waitTimes: []
   repeatsAtFinish: 1
   condensedMonologue: {fileID: 0}
+  displayChoices: 0
   triggersMonologues: 0
   monologueIndeces: 
   monologueWaits: []
@@ -30,3 +31,10 @@ MonoBehaviour:
   cinematic: {fileID: 0}
   enablesCinematicTriggers: 0
   cTriggers: []
+  adjustsCamera: 1
+  cameraXPos: 10
+  cameraYLook: 0
+  lookAtObj: {fileID: 0}
+  speakerCam: {fileID: 0}
+  zoom: 1
+  defaultZoomValue: 25

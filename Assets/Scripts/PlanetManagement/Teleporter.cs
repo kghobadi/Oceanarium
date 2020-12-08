@@ -27,7 +27,7 @@ public class Teleporter : MonoBehaviour
             //tp player
             pc.transform.position = planet.playerStartingPoint.position;
             //tp camera? 
-            cc.SetCamPos();
+            cc.SetCamPos(cc.heightAvg);
             //teleport guardian 
             if (Vector3.Distance(pc.transform.position, guardian.transform.position) > 50f)
                 guardian.TeleportGuardian(planet.playerStartingPoint.position);
