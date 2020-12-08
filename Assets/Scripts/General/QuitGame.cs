@@ -67,8 +67,7 @@ public class QuitGame : MonoBehaviour {
             {
                 //turn it off
                 pc.DisableMeditation();
-                pc.idleTimer = 0;
-
+                
                 //return camera to player
                 camControl.SetCamPos(camControl.heightAvg);
             }
