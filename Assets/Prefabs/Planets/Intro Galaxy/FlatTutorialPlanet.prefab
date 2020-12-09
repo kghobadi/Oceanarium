@@ -607,7 +607,7 @@ Transform:
   m_GameObject: {fileID: 1914315380963688}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.70710677}
   m_LocalPosition: {x: -919, y: 2.7999, z: -2519.3}
-  m_LocalScale: {x: 228.65234, y: 1.7388698, z: 179.86076}
+  m_LocalScale: {x: 228.65256, y: 1.7388704, z: 179.86086}
   m_Children:
   - {fileID: 4100270422186388}
   - {fileID: 4660782170570920}
@@ -951,7 +951,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 3835073ca8f9c40118486ab2be982d74, type: 2}
+  - {fileID: 2100000, guid: 60d6292153a7a4f42b01b14580fa1b71, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1882,6 +1882,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 293a2e8b04772844dad26b639fe7413b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camController: {fileID: 0}
   wmManager: {fileID: 0}
   looperAI: {fileID: 0}
   textBack: {fileID: 0}
@@ -1894,10 +1895,6 @@ MonoBehaviour:
   enableOnStart: 0
   playerSpot: {fileID: 0}
   fadeOut: 1
-  cameraXPos: 10
-  cameraYLook: 3
-  lookAtObj: {fileID: 0}
-  speakerCam: {fileID: 0}
   animationType: 2
   dialogueChoices: {fileID: 0}
   startedMonologue:
@@ -2302,7 +2299,7 @@ MonoBehaviour:
   playerPresent: 0
   canActivate: 1
   activated: 0
-  silentMat: {fileID: 2100000, guid: 61c54440b7a981047b31454ccb81ffc5, type: 2}
+  silentMat: {fileID: 2100000, guid: 60d6292153a7a4f42b01b14580fa1b71, type: 2}
   activeMat: {fileID: 2100000, guid: 3835073ca8f9c40118486ab2be982d74, type: 2}
   travelPoints:
   - {fileID: 0}
@@ -2531,8 +2528,8 @@ MonoBehaviour:
   infoType: 0
   controller: {fileID: 0}
   mKeyboard: {fileID: 0}
-  controllerText: press x  to  offer prayer
-  mKeyboardText: space  to  offer prayer
+  controllerText: x  to  activate pearl
+  mKeyboardText: e  to  activate pearl
 --- !u!114 &114686427914271558
 MonoBehaviour:
   m_ObjectHideFlags: 1

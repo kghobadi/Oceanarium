@@ -31,7 +31,6 @@ public class PlayerController : AudioHandler
     [HideInInspector] public float forwardMovement;
     [HideInInspector] public float verticalMovement;
     Vector3 force;
-    float camDist;
     [Tooltip("This just shows the current velocity of the player")]
     public float currentVelocity;
     [Tooltip("Speed player accelerates at in any WASD dir")]
@@ -153,6 +152,9 @@ public class PlayerController : AudioHandler
             //check for sprinting input
             SwimInputs();
 
+            //play correct animation and set move state
+            AnimationChecks();
+
             //correlates jumping logic with animations
             JumpDetection();
 
@@ -165,6 +167,12 @@ public class PlayerController : AudioHandler
                 TakeJumpInput();
             }
         }
+
+        //always take elevation inputs
+        ElevationInputs();
+
+        //play correct movement sounds
+        SoundCheck();
 
         //extra disables for meditation
         if(moveState == MoveStates.MEDITATING)
@@ -180,10 +188,12 @@ public class PlayerController : AudioHandler
         JumpReset();
     }
 
+
+    // might want to consider 
     void FixedUpdate()
     {
         //only apply swim force when not meditating 
-        if(moveState != MoveStates.MEDITATING && moveState != MoveStates.TALKING)
+        if(canMove && moveState != MoveStates.MEDITATING && moveState != MoveStates.TALKING)
         {
             ApplySwimForce();
         }
@@ -208,6 +218,25 @@ public class PlayerController : AudioHandler
     #endregion
 
     #region Movement
+    //for other scripts to call 
+    public void EnableMovement(bool jump)
+    {
+        canMove = true;
+        playerRigidbody.isKinematic = false;
+        if (jump)
+            canJump = true;
+    }
+
+    //for other scripts to call
+    public void DisableMovement(bool jump)
+    {
+        canMove = false;
+        playerRigidbody.velocity = Vector3.zero;
+        playerRigidbody.isKinematic = true;
+        if (jump)
+            canJump = false;
+    }
+
     //controls swimming 
     void SwimInputs()
     {
@@ -217,41 +246,18 @@ public class PlayerController : AudioHandler
         //controller 
         if (inputDevice.DeviceClass == InputDeviceClass.Controller)
         {
-            // 3 axes 
-            //only swim when not meditating 
-            if (moveState != MoveStates.MEDITATING)
-            {
-                horizontalMovement = inputDevice.LeftStickX;
-                forwardMovement = inputDevice.LeftStickY;
-            }
-
-            //riight is up -- top priority
-            if (inputDevice.RightTrigger.IsPressed)
-                verticalMovement = inputDevice.RightTrigger;
-            //left is down
-            else if (inputDevice.LeftTrigger.IsPressed)
-                verticalMovement = inputDevice.LeftTrigger * -1;
-            //nothing -- zero
-            else if(inputDevice.LeftTrigger.IsPressed == false 
-                && inputDevice.RightTrigger.IsPressed == false)
-                verticalMovement = 0;
+            // 2 axes 
+            horizontalMovement = inputDevice.LeftStickX;
+            forwardMovement = inputDevice.LeftStickY;
         }
         //mouse & keyboard
         else
         {
-            // 3 axes 
-            //only swim when not meditating 
-            if (moveState != MoveStates.MEDITATING)
-            {
-                horizontalMovement = Input.GetAxis("Horizontal");
-                forwardMovement = Input.GetAxis("Vertical");
-            }
-            verticalMovement = Input.GetAxis("Elevation");
+            // 2 axes 
+            horizontalMovement = Input.GetAxis("Horizontal");
+            forwardMovement = Input.GetAxis("Vertical");
         }
             
-        //dist from camera
-        camDist = Vector3.Distance(playerSpriteObj.transform.position, cameraT.position);
-
         //FORWARD force checks
         if (forwardMovement > 0)
         {
@@ -275,20 +281,46 @@ public class PlayerController : AudioHandler
             //add neg x force 
             force += transform.right * horizontalMovement;
         }
-        
+    }
+
+    void ElevationInputs()
+    {
+        //controller 
+        if (inputDevice.DeviceClass == InputDeviceClass.Controller)
+        {
+            //riight is up -- top priority
+            if (inputDevice.RightTrigger.IsPressed)
+                verticalMovement = inputDevice.RightTrigger;
+            //left is down
+            else if (inputDevice.LeftTrigger.IsPressed)
+                verticalMovement = inputDevice.LeftTrigger * -1;
+            //nothing -- zero
+            else if (inputDevice.LeftTrigger.IsPressed == false
+                && inputDevice.RightTrigger.IsPressed == false)
+                verticalMovement = 0;
+        }
+        //mouse & keyboard
+        else
+        {
+            verticalMovement = Input.GetAxis("Elevation");
+        }
+    }
+
+    void SoundCheck()
+    {
         //Sound checks
         if (Mathf.Abs(horizontalMovement) > 0 || Mathf.Abs(forwardMovement) > 0 || Mathf.Abs(verticalMovement) > 0)
         {
             idleTimer = 0;
             swimStepTimer -= Time.deltaTime;
-            if(swimStepTimer < 0)
+            if (swimStepTimer < 0)
             {
                 PlayRandomSoundRandomPitch(swimmingSounds, 0.5f);
                 swimStepTimer = swimStepFrequency;
             }
 
             //fade out title card when player moves
-            if(controlsAtStart.Length > 0)
+            if (controlsAtStart.Length > 0)
             {
                 //fade out WASD
                 controlsAtStart[0].FadeOut();
@@ -298,20 +330,22 @@ public class PlayerController : AudioHandler
         {
             swimStepTimer = 0;
         }
+    }
 
-
+    //Animator checks 
+    void AnimationChecks()
+    {
         //set animator floats for blend tree
         animator.characterAnimator.SetFloat("Move X", horizontalMovement);
         animator.characterAnimator.SetFloat("Move Z", forwardMovement);
         animator.characterAnimator.SetFloat("Move Y", verticalMovement);
 
-        //Animator checks 
         //IDLE
         if (forwardMovement == 0 && horizontalMovement == 0 && verticalMovement == 0)
         {
             idleTimer += Time.deltaTime;
             //idle until reach meditation time
-            if(idleTimer < timeUntilMeditate)
+            if (idleTimer < timeUntilMeditate)
             {
                 moveState = MoveStates.IDLE;
                 //diver idle
@@ -332,7 +366,7 @@ public class PlayerController : AudioHandler
             animator.SetAnimator("elevating");
         }
         //swimming 
-        else if(verticalMovement == 0 && (forwardMovement != 0 || horizontalMovement != 0))
+        else if (verticalMovement == 0 && (forwardMovement != 0 || horizontalMovement != 0))
         {
             idleTimer = 0;
             moveState = MoveStates.SWIMMING;
@@ -390,8 +424,7 @@ public class PlayerController : AudioHandler
         //only if not already and controls from start are gone and not in pause menu
         if (quitScript.escMenu.activeSelf == false)
         {
-            canMove = false;
-            canJump = false;
+            DisableMovement(true);
 
             //diver meditates
             moveState = MoveStates.MEDITATING;
@@ -405,8 +438,7 @@ public class PlayerController : AudioHandler
         //only if not already and controls from start are gone and not in pause menu
         if (moveState == MoveStates.MEDITATING)
         {
-            canMove = true;
-            canJump = true;
+            EnableMovement(true);
 
             //diver idle
             moveState = MoveStates.IDLE;
@@ -425,7 +457,9 @@ public class PlayerController : AudioHandler
             //lerp camera, enable rigidbody
             camControls.LerpFOV(camControls.meditationFOV, 2f);
             camControls.cRigidbody.isKinematic = true;
-            canJump = false;
+
+            //disable movement
+            DisableMovement(true);
 
             //transition audio
             meditating.TransitionTo(2f);
@@ -473,7 +507,9 @@ public class PlayerController : AudioHandler
             //lerp cam fov, disable rigidbody
             camControls.LerpFOV(camControls.originalFOV, 2f);
             camControls.cRigidbody.isKinematic = false;
-            canJump = true;
+
+            //enable movement
+            EnableMovement(true);
 
             //transition audio
             normal.TransitionTo(2f);
@@ -502,6 +538,7 @@ public class PlayerController : AudioHandler
             //diver idle
             moveState = MoveStates.IDLE;
             animator.SetAnimator("idle");
+            idleTimer = 0;
 
             //call the event
             endMeditation.Invoke();

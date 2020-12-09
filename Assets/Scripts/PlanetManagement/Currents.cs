@@ -239,10 +239,11 @@ public class Currents : AudioHandler {
             cObjectMan.returning = true;
         }
 
-        //reset velocity
-        pc.playerRigidbody.velocity = Vector3.zero;
+        //disable movement
+        pc.DisableMovement(true);
+        //disable player gravity
         gravBody.enabled = false;
-        pc.canMove = false;
+        //set in current animator state
         pc.animator.SetAnimator("inCurrent");
         //deactivate p cam & activate currentCam
         camControl.LerpFOV(100f, 1f);
@@ -253,11 +254,16 @@ public class Currents : AudioHandler {
     {
         yield return new WaitForSeconds(0.25f);
 
+        //stop audio
         ambientSource.Stop();
         //activate p cam & deactivate currentCam
         camControl.LerpFOV(camControl.originalFOV, 2f);
-        pc.canMove = true;
+
+        //enable player movement
+        pc.EnableMovement(true);
+        //enable player grav
         gravBody.enabled = true;
+        //set animator idle 
         pc.animator.SetAnimator("idle");
 
         //disable previous planet completely

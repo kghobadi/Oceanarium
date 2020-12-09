@@ -67,14 +67,12 @@ public class QuitGame : MonoBehaviour {
             {
                 //turn it off
                 pc.DisableMeditation();
-                pc.idleTimer = 0;
-
+                
                 //return camera to player
                 camControl.SetCamPos(camControl.heightAvg);
             }
 
-            pc.canMove = false;
-            pc.playerRigidbody.velocity = Vector3.zero;
+            pc.DisableMovement(true);
         }
         if(camControl)
             camControl.canMoveCam = false;
@@ -97,7 +95,7 @@ public class QuitGame : MonoBehaviour {
         //enable movement 
         if (pc)
         {
-            pc.canMove = true;
+            pc.EnableMovement(true);
         }
         if(camControl)
             camControl.canMoveCam = true;   

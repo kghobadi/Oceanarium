@@ -8,6 +8,7 @@ public class DeactivateObject : MonoBehaviour
     PlayerController pc;
     Camera playerCam;
     WorldManager wm;
+    Animator animator;
 
     //so worldmanager can access these 
     [HideInInspector]
@@ -25,6 +26,15 @@ public class DeactivateObject : MonoBehaviour
         wm = FindObjectOfType<WorldManager>();
         sRenderer = GetComponent<SpriteRenderer>();
         playerCam = Camera.main;
+        animator = GetComponent<Animator>();
+        if (animator == null)
+            animator = GetComponentInChildren<Animator>();
+
+        //preserve anim state
+        if (animator)
+        {
+            animator.keepAnimatorControllerStateOnDisable = true;
+        }
 
         //assure sprite renderer and fade sprite exist 
         if (sRenderer == null)
@@ -63,8 +73,8 @@ public class DeactivateObject : MonoBehaviour
         //wm null check
         if(wm != null)
         {
-            //if player is moving 
-            if (pc.playerRigidbody.velocity.magnitude > 0)
+            //if player is moving or meditating 
+            if (pc.playerRigidbody.velocity.magnitude > 0 || pc.moveState == PlayerController.MoveStates.MEDITATING)
             {
                 DistCheck();
             }
@@ -106,6 +116,7 @@ public class DeactivateObject : MonoBehaviour
     {
         //first add to list
         wm.allInactiveObjects.Add(gameObject);
+       
         //then deactivate 
         gameObject.SetActive(false);
     }
