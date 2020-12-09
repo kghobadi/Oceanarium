@@ -143,25 +143,6 @@ public class PlayerController : AudioHandler
         }
     }
 
-    //for other scripts to call 
-    public void EnableMovement()
-    {
-        if(moveState != MoveStates.MEDITATING)
-        {
-            canMove = true;
-        }
-        else if(moveState == MoveStates.MEDITATING)
-        {
-            DisableMeditation();
-        }
-    }
-
-    //for other scripts to call
-    public void DisableMovement()
-    {
-        canMove = false;
-    }
-
     void Update()
     {
         inputDevice = InputManager.ActiveDevice;
@@ -237,6 +218,25 @@ public class PlayerController : AudioHandler
     #endregion
 
     #region Movement
+    //for other scripts to call 
+    public void EnableMovement(bool jump)
+    {
+        canMove = true;
+        playerRigidbody.isKinematic = false;
+        if (jump)
+            canJump = true;
+    }
+
+    //for other scripts to call
+    public void DisableMovement(bool jump)
+    {
+        canMove = false;
+        playerRigidbody.velocity = Vector3.zero;
+        playerRigidbody.isKinematic = true;
+        if (jump)
+            canJump = false;
+    }
+
     //controls swimming 
     void SwimInputs()
     {
@@ -424,9 +424,7 @@ public class PlayerController : AudioHandler
         //only if not already and controls from start are gone and not in pause menu
         if (quitScript.escMenu.activeSelf == false)
         {
-            canMove = false;
-            canJump = false;
-            playerRigidbody.velocity = Vector3.zero;
+            DisableMovement(true);
 
             //diver meditates
             moveState = MoveStates.MEDITATING;
@@ -440,8 +438,7 @@ public class PlayerController : AudioHandler
         //only if not already and controls from start are gone and not in pause menu
         if (moveState == MoveStates.MEDITATING)
         {
-            canMove = true;
-            canJump = true;
+            EnableMovement(true);
 
             //diver idle
             moveState = MoveStates.IDLE;
@@ -460,7 +457,9 @@ public class PlayerController : AudioHandler
             //lerp camera, enable rigidbody
             camControls.LerpFOV(camControls.meditationFOV, 2f);
             camControls.cRigidbody.isKinematic = true;
-            canJump = false;
+
+            //disable movement
+            DisableMovement(true);
 
             //transition audio
             meditating.TransitionTo(2f);
@@ -508,7 +507,9 @@ public class PlayerController : AudioHandler
             //lerp cam fov, disable rigidbody
             camControls.LerpFOV(camControls.originalFOV, 2f);
             camControls.cRigidbody.isKinematic = false;
-            canJump = true;
+
+            //enable movement
+            EnableMovement(true);
 
             //transition audio
             normal.TransitionTo(2f);

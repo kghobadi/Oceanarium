@@ -276,8 +276,7 @@ public class MonologueManager : MonoBehaviour
             if (allMyMonologues[currentMonologue].lockPlayer)
             {
                 //no move
-                player.canMove = false;
-                player.canJump = false;
+                player.DisableMovement(true);
 
                 //set to talking state 
                 if (animationType == PlayerController.MoveStates.TALKING)
@@ -387,15 +386,13 @@ public class MonologueManager : MonoBehaviour
             if (mono.lockPlayer)
             {
                 //reenable movement 
-                player.canMove = true;
-                player.canJump = true;
+                player.EnableMovement(true);
 
                 //return to idle
                 player.moveState = PlayerController.MoveStates.IDLE;
                 player.animator.SetAnimator("idle");
             }
 
-       
             //set cam controller
             if (camController.enabled == false)
                 camController.enabled = true;

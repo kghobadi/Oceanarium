@@ -195,7 +195,6 @@ public class Planter : AudioHandler {
             if(activated == false)
             {
                 playerPresent = true;
-                pc.canJump = false;
                 if (interactObj)
                     interactObj.SetActive(true);
             }
@@ -208,7 +207,6 @@ public class Planter : AudioHandler {
         if (other.gameObject.tag == "Player")
         {
             playerPresent = false;
-            pc.canJump = true;
             if (interactObj)
                 interactObj.SetActive(false);
         }

@@ -103,19 +103,18 @@ public class MonologueTrigger : MonoBehaviour
     //activates monologues
     void ActivateMonologue()
     {
-        if (!hasActivated && pc.canMove)
+        if (!hasActivated)
         {
             for (int i = 0; i < myMonologues.Length; i++)
             {
-                myMonologues[i].mTrigger = this;
-
-                //set monologue system 
-                //if(myMonologues[i].worldSpaceCanvas == false)
-                //{
-                //    myMonologues[i].SetMonologueSystem(monologueIndeces[i]);
-                //}
-
-                myMonologues[i].EnableMonologue();
+                //make sure the  mono is not already active
+                if(myMonologues[i].inMonologue == false)
+                {
+                    //set mono trigger to this
+                    myMonologues[i].mTrigger = this;
+                    //enable
+                    myMonologues[i].EnableMonologue();
+                }
             }
 
             hasActivated = true;
@@ -141,8 +140,6 @@ public class MonologueTrigger : MonoBehaviour
 
         ToggleInteractUI(playerInZone);
     }
-
-   
 
     //turns on and off interact UI
     void ToggleInteractUI(bool newState)

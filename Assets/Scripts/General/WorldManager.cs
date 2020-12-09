@@ -20,8 +20,8 @@ public class WorldManager : MonoBehaviour {
 
     void Update ()
     {
-        //if player is moving 
-        if (pc.playerRigidbody.velocity.magnitude > 0)
+        //if player is moving or meditating
+        if (pc.playerRigidbody.velocity.magnitude > 0 || pc.moveState == PlayerController.MoveStates.MEDITATING)
         {
             WasteManagement();
         }
@@ -35,12 +35,12 @@ public class WorldManager : MonoBehaviour {
             //does the object exist?
             if (allInactiveObjects[i] != null)
             {
-                //dist calc -- normal
-                if(pc.moveState != PlayerController.MoveStates.MEDITATING)
-                    distanceFromPlayer = Vector3.Distance(allInactiveObjects[i].transform.position, _player.transform.position);
                 //dist -- meditating
-                else
+                if (pc.moveState == PlayerController.MoveStates.MEDITATING)
                     distanceFromPlayer = Vector3.Distance(allInactiveObjects[i].transform.position, mainCam.transform.position);
+                //dist -- normal
+                else
+                    distanceFromPlayer = Vector3.Distance(allInactiveObjects[i].transform.position, _player.transform.position);
 
                 //is it close enough to activate?
                 if (distanceFromPlayer < activationDistance)

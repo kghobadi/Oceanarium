@@ -9,7 +9,6 @@ public class PlanetSelector : MonoBehaviour
     Guardian guardian;
     PlayerController pc;
     CameraController cc;
-    SaveSystem saveSystem;
     RawImage planetImage;
 
     public PlanetManager planet;
@@ -23,7 +22,6 @@ public class PlanetSelector : MonoBehaviour
         guardian = FindObjectOfType<Guardian>();
         pc = FindObjectOfType<PlayerController>();
         cc = FindObjectOfType<CameraController>();
-        saveSystem = FindObjectOfType<SaveSystem>();
         planetImage = GetComponent<RawImage>();
 
         CheckLockState();
