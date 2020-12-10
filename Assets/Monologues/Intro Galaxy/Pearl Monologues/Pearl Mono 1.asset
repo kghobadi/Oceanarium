@@ -14,7 +14,7 @@ MonoBehaviour:
   monologue: {fileID: 4900000, guid: 18db64947545a38468d72975f86bbbf1, type: 3}
   worldMonoIndex: 16
   waitToStart: 1
-  timeUntilStart: 3
+  timeUntilStart: 12
   lockPlayer: 1
   loadsScene: 0
   timeBetweenLetters: 0.075
@@ -36,3 +36,5 @@ MonoBehaviour:
   cameraYLook: 3
   lookAtObj: {fileID: 0}
   speakerCam: {fileID: 0}
+  zoom: 0
+  defaultZoomValue: 20

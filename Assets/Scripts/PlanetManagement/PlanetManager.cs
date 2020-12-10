@@ -134,6 +134,8 @@ public class PlanetManager : MonoBehaviour {
     {
         //teleport player 
         pc.transform.position = playerStartingPoint.position;
+        //move cam
+        pc.camControls.SetCamPos(pc.camControls.heightAvg);
         //teleport guardian 
         if (guardian)
         {

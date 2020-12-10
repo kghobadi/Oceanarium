@@ -73,7 +73,7 @@ public class ObstacleAvoidance : MonoBehaviour {
         if (Physics.SphereCast(transform.position, 1f, direction, out hit, 10f, obstacles))
         {
             //elevate if hit    
-            Debug.Log(gameObject.name + " found obstacles");
+            //Debug.Log(gameObject.name + " found obstacles");
             if (grav.distanceFromPlanet < maxHeight - 2f)
             {
                 if (usesFwdThrust)

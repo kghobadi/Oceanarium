@@ -58,7 +58,7 @@ public class PlayerController : AudioHandler
     public MoveStates moveState;
     public enum MoveStates
     {
-        SWIMMING, IDLE, MEDITATING, TALKING,
+        SWIMMING, IDLE, MEDITATING, PEARLMED, TALKING,
     }
 
     //for swim jumps 
@@ -155,6 +155,9 @@ public class PlayerController : AudioHandler
             //play correct animation and set move state
             AnimationChecks();
 
+            //play correct movement sounds
+            SoundCheck();
+
             //correlates jumping logic with animations
             JumpDetection();
 
@@ -171,14 +174,28 @@ public class PlayerController : AudioHandler
         //always take elevation inputs
         ElevationInputs();
 
-        //play correct movement sounds
-        SoundCheck();
+        //pearl med animation check
+        if (moveState == MoveStates.PEARLMED)
+        {
+            //check animation
+            if (animator.Animator.GetBool("meditating") == false)
+            {
+                animator.SetAnimator("meditating");
+            }
+        }
 
         //extra disables for meditation
-        if(moveState == MoveStates.MEDITATING)
+        if (moveState == MoveStates.MEDITATING)
         {
-            //all 3 controller buttons besides 'Talk' can disable meditation
-            if(inputDevice.Action2.WasPressed ||inputDevice.Action4.WasPressed)
+            //check animation
+            if(animator.Animator.GetBool("meditating") == false)
+            {
+                animator.SetAnimator("meditating");
+            }
+
+            //elevation, space, 2 controller buttons besides 'Talk' can disable meditation
+            if (verticalMovement != 0 || Input.GetKeyDown(KeyCode.Space) ||
+            inputDevice.Action2.WasPressed || inputDevice.Action4.WasPressed)
             {
                 DisableMeditation();
             }
@@ -360,8 +377,6 @@ public class PlayerController : AudioHandler
         //elevating
         else if (verticalMovement != 0)
         {
-            DisableMeditation();
-
             moveState = MoveStates.SWIMMING;
             animator.SetAnimator("elevating");
         }
@@ -424,11 +439,11 @@ public class PlayerController : AudioHandler
         //only if not already and controls from start are gone and not in pause menu
         if (quitScript.escMenu.activeSelf == false)
         {
-            DisableMovement(true);
-
             //diver meditates
-            moveState = MoveStates.MEDITATING;
+            moveState = MoveStates.PEARLMED;
             animator.SetAnimator("meditating");
+
+            DisableMovement(true);
         }
     }
 
@@ -436,7 +451,7 @@ public class PlayerController : AudioHandler
     public void DisablePearlMeditation()
     {
         //only if not already and controls from start are gone and not in pause menu
-        if (moveState == MoveStates.MEDITATING)
+        if (moveState == MoveStates.PEARLMED)
         {
             EnableMovement(true);
 
@@ -492,6 +507,7 @@ public class PlayerController : AudioHandler
             //fp
             camControls.canMoveCam = false;
             meditationControls.ActivateFPS();
+            meditationControls.moveSpeed = meditationControls.origSpeed;
 
             //call the event
             startMeditation.Invoke();

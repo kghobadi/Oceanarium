@@ -29,11 +29,13 @@ public class MeditationMovement : MonoBehaviour
     [Header("Astral Body Movement")]
     public float moveSpeed = 10f;
     public float fovSpeed = 1f;
+    public float origSpeed;
 
     void Awake()
     {
         pc = FindObjectOfType<PlayerController>();
         mainCam = Camera.main;
+        origSpeed = moveSpeed;
         
         //for fps 
         if (thirdEyeParent)
