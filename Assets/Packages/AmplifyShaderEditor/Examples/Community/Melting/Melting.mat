@@ -53,12 +53,12 @@ Material:
     - _Float0: 1.64
     - _Float1: 1.92
     - _Intensity: 8
-    - _Limit: 2.78
+    - _Limit: 0.42
     - _ManualControl: 0.84
     - _Metallic: 1
     - _NoiseMultiply: 1.92
     - _NoiseScale: 0.0051
-    - _Oscillation: 2.24
+    - _Oscillation: 0
     - _Smoothness: 0.6536242
     - _ToggleAnimatedFX: 1
     - _ToggleControlType: 1

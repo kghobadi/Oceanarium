@@ -19,6 +19,10 @@ Shader "ASESampleShaders/RimLight"
 		Tags{ "RenderType" = "Opaque"  "Queue" = "Geometry+0" "IsEmissive" = "true"  }
 		Cull Back
 		ZTest LEqual
+			Stencil {
+			Ref 1
+			Comp NotEqual
+			}
 		CGINCLUDE
 		#include "UnityPBSLighting.cginc"
 		#include "Lighting.cginc"

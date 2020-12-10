@@ -73,7 +73,6 @@ public class MonologueManager : MonoBehaviour
     public bool spiritEnabled;
     [Tooltip("When you finish a spirit monologue, return to body/end meditation")]
     public bool returnPlayerToBody;
-    float origSpeed;
 
     void Awake()
     {
@@ -290,6 +289,12 @@ public class MonologueManager : MonoBehaviour
                     player.moveState = PlayerController.MoveStates.MEDITATING;
                     player.animator.SetAnimator("meditating");
                 }
+                //set to pearl med
+                else if (animationType == PlayerController.MoveStates.PEARLMED)
+                {
+                    player.moveState = PlayerController.MoveStates.PEARLMED;
+                    player.animator.SetAnimator("meditating");
+                }
 
                 //zero player vel
                 player.playerRigidbody.velocity = Vector3.zero;
@@ -302,7 +307,6 @@ public class MonologueManager : MonoBehaviour
             //disable meditation movement 
             if (allMyMonologues[currentMonologue].lockPlayer)
             {
-                origSpeed = medMove.moveSpeed;
                 medMove.moveSpeed = 0;
             }
         }
@@ -417,7 +421,7 @@ public class MonologueManager : MonoBehaviour
             // unlock meditation move
             if (mono.lockPlayer)
             {
-                medMove.moveSpeed = origSpeed;
+                medMove.moveSpeed = medMove.origSpeed;
             }
         }
 

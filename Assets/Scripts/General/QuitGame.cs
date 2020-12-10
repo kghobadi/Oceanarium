@@ -8,6 +8,7 @@ public class QuitGame : MonoBehaviour {
     PlayerController pc;
     CameraController camControl;
     MenuSelections mainMenuSelections;
+    SaveSystem saveSystem;
 
     public GameObject escMenu;
     [Header("Controls UI")]
@@ -18,6 +19,7 @@ public class QuitGame : MonoBehaviour {
         mainMenuSelections = GetComponent<MenuSelections>();
         pc = FindObjectOfType<PlayerController>();
         camControl = FindObjectOfType<CameraController>();
+        saveSystem = FindObjectOfType<SaveSystem>();
     }
 
     void Start()
@@ -63,14 +65,18 @@ public class QuitGame : MonoBehaviour {
         if (pc)
         {
             //meditation check
-            if(pc.moveState == PlayerController.MoveStates.MEDITATING)
+            if (pc.moveState == PlayerController.MoveStates.MEDITATING)
             {
                 //turn it off
                 pc.DisableMeditation();
-                
+
                 //return camera to player
                 camControl.SetCamPos(camControl.heightAvg);
             }
+
+            //dont open menu if player is in convo
+            else if (pc.moveState == PlayerController.MoveStates.PEARLMED || pc.moveState == PlayerController.MoveStates.TALKING)
+                return;
 
             pc.DisableMovement(true);
         }
@@ -95,7 +101,8 @@ public class QuitGame : MonoBehaviour {
         //enable movement 
         if (pc)
         {
-            pc.EnableMovement(true);
+            if(pc.moveState != PlayerController.MoveStates.TALKING && pc.moveState != PlayerController.MoveStates.PEARLMED)
+                pc.EnableMovement(true);
         }
         if(camControl)
             camControl.canMoveCam = true;   
@@ -119,11 +126,19 @@ public class QuitGame : MonoBehaviour {
 
     public void Quit()
     {
+        //save prefs
+        if (saveSystem.saveEnabled)
+            saveSystem.SavePrefs();
+
         Application.Quit();
     }
 
     public void RestartGame()
     {
+        //save prefs
+        if(saveSystem.saveEnabled)
+            saveSystem.SavePrefs();
+
         SceneManager.LoadScene(0);
     }
 }

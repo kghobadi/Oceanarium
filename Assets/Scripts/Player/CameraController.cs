@@ -65,6 +65,9 @@ public class CameraController : MonoBehaviour {
     public LayerMask obstructionMask;
     public List<int> obstructionLayers = new List<int>();
     [HideInInspector] public Transform currentSpeaker;
+    public LerpScale seeThruSphere;
+    public float sActiveSize = 15f;
+    bool sphereActive;
 
     [Header("FOV")]
     public bool lerpingFOV;
@@ -93,7 +96,6 @@ public class CameraController : MonoBehaviour {
     {
         //can move at start
         canMoveCam = true;
-        SetCamPos(heightAvg);
     }
 
     public void SetCamPos(float height)
@@ -121,7 +123,13 @@ public class CameraController : MonoBehaviour {
 
             CheckMoving();
 
-            CastToPlayer();
+            if(pc.moveState != PlayerController.MoveStates.MEDITATING)
+                CastToPlayer();
+            else
+            {
+                if (sphereActive)
+                    DeactivateSphere();
+            }
         }
 
         //fade objs when player can move 
@@ -291,19 +299,17 @@ public class CameraController : MonoBehaviour {
     //detects whether cam is seeing ground in front of player somehw
     void CastToPlayer()
     {
+        //Debug.Log("casting to player");
+
         RaycastHit hit = new RaycastHit();
         Vector3 dir = player.transform.position - transform.position;
         float dist = Vector3.Distance(transform.position, player.transform.position);
+       
         //send raycast
         if (Physics.SphereCast(transform.position, 1f, dir, out hit, dist , obstructionMask))
         {
-            //anytime we hit the planet ground, zoome out 
-            if (heightFromPlayer > heightMin)
-            {
-                ZoomIn(-0.05f);
-                //Debug.Log("zoom cast");
-            }
-                
+            //anytime we hit the planet ground -- turn on sphere
+            ActivateSphere();
             return;
         }
 
@@ -311,26 +317,34 @@ public class CameraController : MonoBehaviour {
         Collider[] obstructions = Physics.OverlapSphere(transform.position, overlapSphereRadius, obstructionMask);
         if (obstructions.Length > 0)
         {
-            if (heightFromPlayer > heightMin)
-            {
-                ZoomIn(-0.05f);
+            ActivateSphere();
+            return;
+        }
 
-                //Debug.Log("zoom overlap sphere");
-            }
+        //this is always getting called whenever activate is..
+        if (sphereActive)
+        {
+            DeactivateSphere();
         }
     }
-    
-    private void OnTriggerStay(Collider other)
+
+    void ActivateSphere()
     {
-        if (canMoveCam)
-        {
-            //zoom in if camera is collding with stuff we dont like
-            if (obstructionLayers.Contains(other.gameObject.layer))
-            {
-                if (heightFromPlayer > heightMin)
-                    ZoomIn(-0.005f);
-            }
-        }
+        if (sphereActive)
+            return;
+
+        seeThruSphere.SetScaler(seeThruSphere.lerpSpeed, new Vector3(sActiveSize, sActiveSize, sActiveSize));
+        sphereActive = true;
+
+        //Debug.Log("activated sphere");
+    }
+
+    void DeactivateSphere()
+    {
+        seeThruSphere.SetScaler(seeThruSphere.lerpSpeed, Vector3.zero);
+        sphereActive = false;
+
+        //Debug.Log("deactivating sphere!");
     }
 
     //checks if cam is moving 
