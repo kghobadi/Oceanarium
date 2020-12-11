@@ -240,7 +240,7 @@ Depth: 2
 
 Game Object: Assets/Prefabs/Spawnable Plants/radia.prefab
 Layer: Default
-Toggle: True
+Toggle: False
 Slider: 1
 Lock Orientation Toggle: False
 Random Rotation Toggle: False
@@ -258,7 +258,7 @@ Depth: 170
 
 Game Object: Assets/Prefabs/Spawnable Plants/Radio2.prefab
 Layer: Default
-Toggle: True
+Toggle: False
 Slider: 1
 Lock Orientation Toggle: False
 Random Rotation Toggle: False
@@ -276,7 +276,7 @@ Depth: 190
 
 Game Object: Assets/Prefabs/Spawnable Plants/Radio4.prefab
 Layer: Default
-Toggle: True
+Toggle: False
 Slider: 1
 Lock Orientation Toggle: False
 Random Rotation Toggle: False
@@ -294,7 +294,7 @@ Depth: 190
 
 Game Object: Assets/Prefabs/Spawnable Plants/Radio3.prefab
 Layer: Default
-Toggle: True
+Toggle: False
 Slider: 1
 Lock Orientation Toggle: False
 Random Rotation Toggle: False
@@ -519,7 +519,7 @@ Random Rotation Y: False
 Random Rotation Z: False
 Random Scale Toggle: True
 Random Scale Min: 1
-Random Scale Max: 2
+Random Scale Max: 1.2
 Fixed Rotation Toggle: False
 Fixed Rotation X: 0
 Fixed Rotation Y: 0
@@ -798,7 +798,7 @@ Depth: 0
 
 Game Object: Assets/Prefabs/Props/geometryradio.prefab
 Layer: Default
-Toggle: True
+Toggle: False
 Slider: 1
 Lock Orientation Toggle: False
 Random Rotation Toggle: False
@@ -823,4 +823,3 @@ funguscircle
 tinycorals
 fungusring
 ball flowers
-radiolarans
