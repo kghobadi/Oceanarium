@@ -235,11 +235,8 @@ public class Guardian : AudioHandler {
             //only if we have a mono 
             if (guardianMonoChecks[currentPoint] == true)
             {
-                //make sure this value is within bounds of mono man
-                if (currentPoint < monoManager.allMyMonologues.Count)
-                {
-                    monoManager.SetMonologueSystem(guardianMonoIndeces[currentPoint]);
-                }
+                //set mono system
+                monoManager.SetMonologueSystem(guardianMonoIndeces[currentPoint]);
 
                 //reset mono trigger
                 monoTrigger.Reset();

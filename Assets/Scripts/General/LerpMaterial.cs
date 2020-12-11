@@ -66,12 +66,23 @@ public class LerpMaterial : MonoBehaviour {
         startValue = lerpMat.GetFloat(floatToLerp);
         endValue = desiredValue;
         lerpSpeed = speed;
-        
+        lerpValue = startValue;
 
         lerpingMat = true;
     }
-	
-	void Update ()
+
+    //call to begin lerp 
+    public void Lerp(float desiredValue)
+    {
+        lerpMat = mRenderer.material;
+        startValue = lerpMat.GetFloat(floatToLerp);
+        endValue = desiredValue;
+        lerpValue = startValue;
+
+        lerpingMat = true;
+    }
+
+    void Update ()
     {
         //lerp is under way!
         if (lerpingMat)
@@ -95,7 +106,7 @@ public class LerpMaterial : MonoBehaviour {
             float dist = Mathf.Abs(endValue - lerpValue);
 
             //close enough, let's finish im
-            if (dist < 0.1f)
+            if (dist < 0.05f)
             {
                 //hard set float to end value
                 lerpMat.SetFloat(floatToLerp, endValue);

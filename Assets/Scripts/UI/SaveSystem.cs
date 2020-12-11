@@ -58,14 +58,21 @@ public class SaveSystem : MonoBehaviour {
 	//load all available prefs
 	public void LoadPrefs()
     {
-		//check if player has played before
-		if (PlayerPrefs.GetInt("Sessions") > 0)
-		{
-			LoadGame();
+        if (PlayerPrefs.HasKey("Sessions"))
+        {
+			//check if player has played before
+			if (PlayerPrefs.GetInt("Sessions") > 0)
+			{
+				LoadGame();
+			}
+			//no sessions, new game
+			else
+			{
+				NewGame();
+			}
 		}
-		//no sessions, new game
-		else
-		{
+        else
+        {
 			NewGame();
 		}
 	}
