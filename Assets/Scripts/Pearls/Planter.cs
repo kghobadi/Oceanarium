@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using InControl;
 public class Planter : AudioHandler {
     PlayerController pc;
@@ -36,6 +37,7 @@ public class Planter : AudioHandler {
     public bool canActivate = true;
     [Tooltip("True once player activates my Homing Pearl")]
     public bool activated;
+    public UnityEvent activation;
     [Tooltip("Materials before & after activation")]
     public Material silentMat, activeMat;
     [Tooltip("Dests I will travel to before stopping.")]
@@ -274,7 +276,9 @@ public class Planter : AudioHandler {
 
         //begin move 
         SetMove();
+        //bool & event
         activated = true;
+        activation.Invoke();
     }
 
     //called in Update to move

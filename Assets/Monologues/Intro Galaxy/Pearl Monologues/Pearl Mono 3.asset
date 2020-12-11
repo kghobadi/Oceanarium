@@ -14,7 +14,7 @@ MonoBehaviour:
   monologue: {fileID: 4900000, guid: b2c9a38e98bbded4e85983c9430917ef, type: 3}
   worldMonoIndex: 22
   waitToStart: 1
-  timeUntilStart: 3
+  timeUntilStart: 5
   lockPlayer: 1
   loadsScene: 0
   timeBetweenLetters: 0.075

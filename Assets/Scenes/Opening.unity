@@ -996,10 +996,10 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: "you\u2019re invited\r\ndream warrior\r\nto be united\nforeigner\r\nin this
-    vision\r\ncan you see it?\r\nby a rhythm \r\ncan you feel it?\r\n\ryou are far
-    from the shore\r\ndream warrior\r\ndive into the core \r\ndream warrior\r\n\nwe
-    are one\r"
+  m_text: "you are invited\r\ndream warrior\r\n\rto be united\r\nin this version of
+    time\r\n\rin this vision\r\ncan you feel it?\r\n\rby a rhythm\r\ncan you see it?\r\n\ryou
+    are far from the shore\r\nof which you came\r\n\rdream warrior\r\ndive into the
+    core of this becoming"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3a8227181bab9634486f38bd860337ef, type: 2}
   m_sharedMaterial: {fileID: 21880015837175428, guid: 3a8227181bab9634486f38bd860337ef,
@@ -1045,7 +1045,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 16
+  m_firstOverflowCharacterIndex: 17
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -1068,14 +1068,14 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 972038065}
-    characterCount: 212
+    characterCount: 237
     spriteCount: 0
-    spaceCount: 41
-    wordCount: 39
+    spaceCount: 45
+    wordCount: 46
     linkCount: 0
     lineCount: 15
     pageCount: 1
-    materialCount: 2
+    materialCount: 1
   m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
