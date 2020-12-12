@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.Timeline;
 using UnityEngine.Playables;
@@ -41,6 +42,7 @@ public class TimelinePlaybackManager : MonoBehaviour
     [Header("Player Settings")]
     public string playerTag = "Player";
     private GameObject playerObject;
+    private PlayerController pc;
     private PlayerCutsceneSpeedController playerCutsceneSpeedController;
 
     [Header("Fades")]
@@ -51,9 +53,14 @@ public class TimelinePlaybackManager : MonoBehaviour
     private bool timelinePlaying = false;
     private float timelineDuration;
 
+    [Header("Events")]
+    public UnityEvent startedCinematic;
+    public UnityEvent endedCinematic;
+
     void Awake()
     {
         playerObject = GameObject.FindWithTag(playerTag);
+        pc = playerObject.GetComponent<PlayerController>();
         playerCutsceneSpeedController = playerObject.GetComponent<PlayerCutsceneSpeedController>();
     }
 
@@ -134,9 +141,16 @@ public class TimelinePlaybackManager : MonoBehaviour
     //ACTUALLY PLAYS TIMELINE 
     public void PlayTimeline()
     {
+        startedCinematic.Invoke();
+
         if (playerTimelinePosition)
         {
             SetPlayerToTimelinePosition(playerTimelinePosition, parentPlayerToPos);
+        }
+
+        if (disablePlayerInput)
+        {
+            pc.DisableMovement(true);
         }
 
         if (characterTransforms.Length > 0)
@@ -185,9 +199,17 @@ public class TimelinePlaybackManager : MonoBehaviour
     //timeline ends 
     void EndTimeline()
     {
+        endedCinematic.Invoke();
+
         ToggleInput(true);
-        
-        if(playerExitPosition)
+
+        //reenable movement 
+        if (disablePlayerInput)
+        {
+            pc.EnableMovement(true);
+        }
+
+        if (playerExitPosition)
             SetPlayerToTimelinePosition(playerExitPosition, false);
 
         if (characterTransforms.Length > 0)

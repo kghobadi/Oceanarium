@@ -337,7 +337,7 @@ public class PlayerController : AudioHandler
             }
 
             //fade out title card when player moves
-            if (controlsAtStart.Length > 0)
+            if (controlsAtStart.Length > 0 && Time.time > 3f)
             {
                 //fade out WASD
                 controlsAtStart[0].FadeOut();

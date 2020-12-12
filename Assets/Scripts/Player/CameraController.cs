@@ -240,7 +240,7 @@ public class CameraController : MonoBehaviour {
                 pc.controlsAtStart[1].fadeState != FadeSprite.FadeStates.TRANSPARENT)
             {
                 //input ? 
-                if(vRot != 0 || hRot != 0)
+                if((vRot != 0 || hRot != 0) && Time.time > 3f)
                     pc.controlsAtStart[1].FadeOut();
             }
         }
@@ -333,7 +333,7 @@ public class CameraController : MonoBehaviour {
         if (sphereActive)
             return;
 
-        seeThruSphere.SetScaler(seeThruSphere.lerpSpeed, new Vector3(sActiveSize, sActiveSize, sActiveSize));
+        seeThruSphere.SetScaler(2.5f, new Vector3(sActiveSize, sActiveSize, sActiveSize));
         sphereActive = true;
 
         //Debug.Log("activated sphere");
@@ -341,7 +341,7 @@ public class CameraController : MonoBehaviour {
 
     void DeactivateSphere()
     {
-        seeThruSphere.SetScaler(seeThruSphere.lerpSpeed, Vector3.zero);
+        seeThruSphere.SetScaler(5f, Vector3.zero);
         sphereActive = false;
 
         //Debug.Log("deactivating sphere!");

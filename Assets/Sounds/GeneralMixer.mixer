@@ -29,9 +29,10 @@ AudioMixerController:
     - e0c2aa299235e5c499f9890fc57ac10a
     - 3470f908e83e88d44897741748556cc5
     - 1c7735865290b6a42b0ec5c25c63fb50
+    - 6c3a8b8a902873c4e8ceb59aa3d14542
     name: View
   m_CurrentViewIndex: 0
-  m_TargetSnapshot: {fileID: 24500006}
+  m_TargetSnapshot: {fileID: 245889458632442960}
 --- !u!243 &24300002
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -51,6 +52,7 @@ AudioMixerGroupController:
   - {fileID: 243858299471028066}
   - {fileID: 243279533375859160}
   - {fileID: 243306270623011392}
+  - {fileID: 243662412320002246}
   m_Volume: 9f0af0420aedce545ab315b55beaad27
   m_Pitch: 1cd14bd93b15ae940932720c6f71753b
   m_Effects:
@@ -200,6 +202,23 @@ AudioMixerGroupController:
   m_Pitch: 56e06e14875d1ce4d91db710b94fe33a
   m_Effects:
   - {fileID: 244033406822078070}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!243 &243662412320002246
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Cinematics
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 6c3a8b8a902873c4e8ceb59aa3d14542
+  m_Children: []
+  m_Volume: 947216b13f206154f9b7e9ca4aa5d16c
+  m_Pitch: 5895f2fa163a34647b1c098430ec03e3
+  m_Effects:
+  - {fileID: 244581669675848476}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -449,6 +468,19 @@ AudioMixerEffectController:
     m_GUID: 193b1a70c68eac649bddc8600307a883
   - m_ParameterName: Wetmix
     m_GUID: 10af710836bccef4f8e0c9c99dcf72f2
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &244581669675848476
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: 0f432a9b54642b94aa682516cb8ff53a
+  m_EffectName: Attenuation
+  m_MixLevel: 501b380ab9e99b4498e11e464f341457
+  m_Parameters: []
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0

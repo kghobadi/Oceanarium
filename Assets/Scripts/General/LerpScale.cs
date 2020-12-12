@@ -74,6 +74,19 @@ public class LerpScale : MonoBehaviour {
         SetScaler(speed, newScale);
     }
 
+    public void WaitToSetScale(float wait)
+    {
+        StartCoroutine(WaitToScale(wait));
+    }
+
+    //waits then sets scaler
+    IEnumerator WaitToScale(float wait)
+    {
+        yield return new WaitForSeconds(wait);
+
+        SetScaler(lerpSpeed, desiredScale);
+    }
+
     //can be called from anywhere 
     public void SetScaler(float speed, Vector3 newScale)
     {

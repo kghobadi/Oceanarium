@@ -41,6 +41,8 @@ public class TripActivation : MonoBehaviour {
     public float fovIn = 15f;
     public float lerpTimeIn = 0.2f, lerpTimeOut = 0.05f;
 
+    public TimelinePlaybackManager cinematicManager;
+
     void Awake () {
         //player refs
         player = GameObject.FindGameObjectWithTag("Player");
@@ -72,7 +74,18 @@ public class TripActivation : MonoBehaviour {
             //press space && not tripping // converting to trip 
             if ((Input.GetKeyDown(KeyCode.Space) || inputDevice.Action3.WasPressed) && canTrip && !tripping && !tripFader.fadingIn && !tripFader.fadingOut)
             {
-                StartTrip();
+                //play the cinematic first
+                if (cinematicManager)
+                {
+                    canTrip = false;
+                    cinematicManager.StartTimeline();
+                }
+                //just start the trip
+                else
+                {
+                    StartTrip();
+                }
+               
             }
 
             //check can trip
