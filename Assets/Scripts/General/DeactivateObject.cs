@@ -115,7 +115,7 @@ public class DeactivateObject : MonoBehaviour
     public void Deactivate()
     {
         //first add to list
-        wm.allInactiveObjects.Add(gameObject);
+        wm.allInactiveObjects.Add(this);
        
         //then deactivate 
         gameObject.SetActive(false);

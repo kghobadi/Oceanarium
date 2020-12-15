@@ -240,7 +240,7 @@ public class CameraController : MonoBehaviour {
                 pc.controlsAtStart[1].fadeState != FadeSprite.FadeStates.TRANSPARENT)
             {
                 //input ? 
-                if(vRot != 0 || hRot != 0)
+                if((vRot != 0 || hRot != 0) && Time.time > 3f)
                     pc.controlsAtStart[1].FadeOut();
             }
         }
@@ -306,7 +306,7 @@ public class CameraController : MonoBehaviour {
         float dist = Vector3.Distance(transform.position, player.transform.position);
        
         //send raycast
-        if (Physics.SphereCast(transform.position, 1f, dir, out hit, dist , obstructionMask))
+        if (Physics.Raycast(transform.position, dir, out hit, dist , obstructionMask))
         {
             //anytime we hit the planet ground -- turn on sphere
             ActivateSphere();
@@ -333,15 +333,19 @@ public class CameraController : MonoBehaviour {
         if (sphereActive)
             return;
 
-        seeThruSphere.SetScaler(seeThruSphere.lerpSpeed, new Vector3(sActiveSize, sActiveSize, sActiveSize));
-        sphereActive = true;
-
+        //only on mazeworld 
+        if(pc.activePlanet.planetName == "Mazeworld")
+        {
+            seeThruSphere.SetScaler(2.5f, new Vector3(sActiveSize, sActiveSize, sActiveSize));
+            sphereActive = true;
+        }
+        
         //Debug.Log("activated sphere");
     }
 
     void DeactivateSphere()
     {
-        seeThruSphere.SetScaler(seeThruSphere.lerpSpeed, Vector3.zero);
+        seeThruSphere.SetScaler(5f, Vector3.zero);
         sphereActive = false;
 
         //Debug.Log("deactivating sphere!");

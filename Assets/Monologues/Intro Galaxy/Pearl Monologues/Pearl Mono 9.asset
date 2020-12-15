@@ -33,7 +33,7 @@ MonoBehaviour:
   cTriggers: []
   adjustsCamera: 1
   cameraXPos: 10
-  cameraYLook: 3
+  cameraYLook: -2
   lookAtObj: {fileID: 0}
   speakerCam: {fileID: 0}
   zoom: 1

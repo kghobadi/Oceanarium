@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using InControl;
+using UnityEngine.Events;
 
 //this script is responsible for the active reading out of a monologue 
 public class MonologueReader : MonoBehaviour {
@@ -34,15 +35,24 @@ public class MonologueReader : MonoBehaviour {
     public float timeBetweenLines;
     [Tooltip("Check this and fill in array below so that each line of text can be assigned a different wait")]
     public bool conversational;
+    public bool autoProgress;
     public float[] waitTimes;
     bool waiting;
-
+    public UnityEvent waitingForPlayerInput;
+    public FadeUI pressToSkip;
+    
     [Tooltip("For 'dialogue' options at the end of Monologue")]
     public bool displayChoices;
 
     void Awake()
     {
         theText = GetComponent<Text>();
+
+        //press to skip ref
+        //if(pressToSkip == null)
+        //{
+        //    pressToSkip = GameObject.FindGameObjectWithTag("Skip").GetComponent<FadeUI>();
+        //}
 
         if (theText == null)
         {
@@ -114,6 +124,11 @@ public class MonologueReader : MonoBehaviour {
     {
         currentLine += 1;
         waiting = false;
+
+        if(pressToSkip)
+        {
+            pressToSkip.FadeOut();
+        }
 
         //reached the  end, reset
         if (currentLine >= endAtLine)
@@ -221,12 +236,31 @@ public class MonologueReader : MonoBehaviour {
         {
             waitForNextLine = WaitToProgressLine(waitTimes[currentLine]);
         }
-        else
+        else if(autoProgress)
         {
             waitForNextLine = WaitToProgressLine(timeBetweenLines);
         }
+        //almost all dialogues wait for user input 
+        else if (!autoProgress)
+        {
+            waitForNextLine = WaitToProgressLine();
+        }
 
         StartCoroutine(waitForNextLine);
+    }
+
+    //start wait for next line after spacebar skip
+    IEnumerator WaitToProgressLine()
+    {
+        yield return new WaitForEndOfFrame();
+
+        waiting = true;
+        waitingForPlayerInput.Invoke();
+
+        if (pressToSkip)
+        {
+            pressToSkip.FadeIn();
+        }
     }
 
     //start wait for next line after spacebar skip

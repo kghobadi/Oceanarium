@@ -1,8 +1,8 @@
-Layer Selection: Planet
+Layer Selection: Default
 Brush Max Size: 11.78
 Brush Size: 2.39
 Fill Mode: True
-Fill Rate: 0.273
+Fill Rate: 0.5
 
 Game Object: None
 Layer: 
@@ -726,7 +726,7 @@ Depth: 3.5
 
 Game Object: Assets/Prefabs/Spawnable Plants/Fungus.prefab
 Layer: Default
-Toggle: False
+Toggle: True
 Slider: 0.75
 Lock Orientation Toggle: False
 Random Rotation Toggle: False

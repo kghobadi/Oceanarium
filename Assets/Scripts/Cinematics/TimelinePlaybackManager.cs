@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.Timeline;
 using UnityEngine.Playables;
@@ -41,6 +42,7 @@ public class TimelinePlaybackManager : MonoBehaviour
     [Header("Player Settings")]
     public string playerTag = "Player";
     private GameObject playerObject;
+    private PlayerController pc;
     private PlayerCutsceneSpeedController playerCutsceneSpeedController;
 
     [Header("Fades")]
@@ -51,9 +53,14 @@ public class TimelinePlaybackManager : MonoBehaviour
     private bool timelinePlaying = false;
     private float timelineDuration;
 
+    [Header("Events")]
+    public UnityEvent startedCinematic;
+    public UnityEvent endedCinematic;
+
     void Awake()
     {
         playerObject = GameObject.FindWithTag(playerTag);
+        pc = playerObject.GetComponent<PlayerController>();
         playerCutsceneSpeedController = playerObject.GetComponent<PlayerCutsceneSpeedController>();
     }
 
@@ -110,6 +117,28 @@ public class TimelinePlaybackManager : MonoBehaviour
 
     public void StartTimeline()
     {
+        //play sound + cinematic only if player is not talking or meditating (camera issues)
+        if (pc.moveState == PlayerController.MoveStates.TALKING || pc.moveState == PlayerController.MoveStates.MEDITATING
+            || pc.moveState == PlayerController.MoveStates.PEARLMED)
+        {
+            //wait until player is in idle
+            StartCoroutine(WaitUntilIdle());
+        }
+        else
+        {
+            if (fadesIn)
+            {
+                StartCoroutine(WaitForFade());
+            }
+            else
+                PlayTimeline();
+        }
+    }
+
+    IEnumerator WaitUntilIdle()
+    {
+        yield return new WaitUntil(() => pc.moveState == PlayerController.MoveStates.IDLE);
+
         if (fadesIn)
         {
             StartCoroutine(WaitForFade());
@@ -134,9 +163,16 @@ public class TimelinePlaybackManager : MonoBehaviour
     //ACTUALLY PLAYS TIMELINE 
     public void PlayTimeline()
     {
+        startedCinematic.Invoke();
+
         if (playerTimelinePosition)
         {
             SetPlayerToTimelinePosition(playerTimelinePosition, parentPlayerToPos);
+        }
+
+        if (disablePlayerInput)
+        {
+            pc.DisableMovement(true);
         }
 
         if (characterTransforms.Length > 0)
@@ -185,9 +221,17 @@ public class TimelinePlaybackManager : MonoBehaviour
     //timeline ends 
     void EndTimeline()
     {
+        endedCinematic.Invoke();
+
         ToggleInput(true);
-        
-        if(playerExitPosition)
+
+        //reenable movement 
+        if (disablePlayerInput)
+        {
+            pc.EnableMovement(true);
+        }
+
+        if (playerExitPosition)
             SetPlayerToTimelinePosition(playerExitPosition, false);
 
         if (characterTransforms.Length > 0)

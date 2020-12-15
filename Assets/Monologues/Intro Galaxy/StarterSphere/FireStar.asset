@@ -31,10 +31,10 @@ MonoBehaviour:
   cinematic: {fileID: 0}
   enablesCinematicTriggers: 0
   cTriggers: []
-  adjustsCamera: 0
-  cameraXPos: 0
-  cameraYLook: 0
+  adjustsCamera: 1
+  cameraXPos: 8
+  cameraYLook: -5
   lookAtObj: {fileID: 0}
   speakerCam: {fileID: 0}
   zoom: 1
-  defaultZoomValue: 30
+  defaultZoomValue: 25

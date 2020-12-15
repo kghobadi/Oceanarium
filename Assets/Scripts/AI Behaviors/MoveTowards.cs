@@ -36,4 +36,15 @@ public class MoveTowards : MonoBehaviour {
         moveSpeed = speed;
         moving = true;
     }
+
+    public void MoveTo(Transform dest)
+    {
+        destination = dest.position;
+        moving = true;
+    }
+
+    void OnDisable()
+    {
+        moving = false;
+    }
 }

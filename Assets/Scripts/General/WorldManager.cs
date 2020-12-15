@@ -7,7 +7,7 @@ public class WorldManager : MonoBehaviour {
     PlayerController pc;
     Camera mainCam;
 
-    public List<GameObject> allInactiveObjects = new List<GameObject>();
+    public List<DeactivateObject> allInactiveObjects = new List<DeactivateObject>();
     public float activationDistance = 75f;
     float distanceFromPlayer;
 
@@ -42,8 +42,11 @@ public class WorldManager : MonoBehaviour {
                 else
                     distanceFromPlayer = Vector3.Distance(allInactiveObjects[i].transform.position, _player.transform.position);
 
+                //individual obj activation val
+                float activeCheck = activationDistance + allInactiveObjects[i].individualDistOffset - 5f;
+
                 //is it close enough to activate?
-                if (distanceFromPlayer < activationDistance)
+                if (distanceFromPlayer < activeCheck)
                 {
                     //activate it 
                     ActivateObject(allInactiveObjects[i]);
@@ -64,19 +67,16 @@ public class WorldManager : MonoBehaviour {
         }
     }
 
-    public void ActivateObject(GameObject objToActivate)
+    public void ActivateObject(DeactivateObject deactivateObj)
     {
         //set object active
-        objToActivate.SetActive(true);
-
-        //get DeactivateObj
-        DeactivateObject deactivate = objToActivate.GetComponent<DeactivateObject>();
+        deactivateObj.gameObject.SetActive(true);
 
         //fade in if has fade sprite comp
-        if (deactivate.fader != null)
-            deactivate.fader.FadeIn();
+        if (deactivateObj.fader != null)
+            deactivateObj.fader.FadeIn();
 
         //remove from list
-        allInactiveObjects.Remove(objToActivate);
+        allInactiveObjects.Remove(deactivateObj);
     }
 }

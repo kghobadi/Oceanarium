@@ -40,6 +40,11 @@ public class TripActivation : MonoBehaviour {
     [Header("Camera Transition")]
     public float fovIn = 15f;
     public float lerpTimeIn = 0.2f, lerpTimeOut = 0.05f;
+    [Header("Final Mono")]
+    MonologueManager monoManager;
+    public bool hasMono;
+
+    public TimelinePlaybackManager cinematicManager;
 
     void Awake () {
         //player refs
@@ -49,6 +54,7 @@ public class TripActivation : MonoBehaviour {
         mainCam = Camera.main.transform.gameObject;
         camControl = mainCam.GetComponent<CameraController>();
         sceneLoader = GetComponent<LoadSceneAsync>();
+        monoManager = GetComponent<MonologueManager>();
         //my refs
         mFader = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicFader>();
         if(tripperParticles == null)
@@ -72,7 +78,18 @@ public class TripActivation : MonoBehaviour {
             //press space && not tripping // converting to trip 
             if ((Input.GetKeyDown(KeyCode.Space) || inputDevice.Action3.WasPressed) && canTrip && !tripping && !tripFader.fadingIn && !tripFader.fadingOut)
             {
-                StartTrip();
+                if (hasMono)
+                {
+                    monoManager.EnableMonologue();
+                    //disable trip particles
+                    pressToTrip.SetActive(false);
+                    tripperParticles.Stop();
+                    canTrip = false;
+                }
+                else
+                {
+                    BeginTrip();
+                }
             }
 
             //check can trip
@@ -138,6 +155,21 @@ public class TripActivation : MonoBehaviour {
             }
             else
                 EndTrip();
+        }
+    }
+
+    public void BeginTrip()
+    {
+        //play the cinematic first
+        if (cinematicManager)
+        {
+            canTrip = false;
+            cinematicManager.StartTimeline();
+        }
+        //just start the trip
+        else
+        {
+            StartTrip();
         }
     }
 

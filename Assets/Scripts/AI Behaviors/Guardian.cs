@@ -36,6 +36,7 @@ public class Guardian : AudioHandler {
     public bool[] guardianMonoChecks;
     public int[] guardianMonoIndeces;
     public int currentPoint = 0;
+    public int tripMonoIndex;
     public bool newGalaxy;
 
     [Header("Sounds")]
@@ -235,11 +236,8 @@ public class Guardian : AudioHandler {
             //only if we have a mono 
             if (guardianMonoChecks[currentPoint] == true)
             {
-                //make sure this value is within bounds of mono man
-                if (currentPoint < monoManager.allMyMonologues.Count)
-                {
-                    monoManager.SetMonologueSystem(guardianMonoIndeces[currentPoint]);
-                }
+                //set mono system
+                monoManager.SetMonologueSystem(guardianMonoIndeces[currentPoint]);
 
                 //reset mono trigger
                 monoTrigger.Reset();
@@ -261,6 +259,8 @@ public class Guardian : AudioHandler {
         movement.MoveTo(location.position, movement.moveSpeed);
         guardianState = GuardianStates.MOVING;
         monoTrigger.gameObject.SetActive(false);
+        monoManager.SetMonologueSystem(tripMonoIndex);
+        monoManager.endedMonologue.AddListener(tripper.BeginTrip);
         tripper.canTrip = true;
         newGalaxy = true;
     }

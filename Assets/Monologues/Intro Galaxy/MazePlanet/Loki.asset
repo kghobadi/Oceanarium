@@ -21,7 +21,7 @@ MonoBehaviour:
   timeBetweenLines: 3
   conversational: 0
   waitTimes: []
-  repeatsAtFinish: 1
+  repeatsAtFinish: 0
   condensedMonologue: {fileID: 0}
   displayChoices: 0
   triggersMonologues: 0

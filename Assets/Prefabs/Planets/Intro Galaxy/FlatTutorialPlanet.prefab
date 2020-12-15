@@ -594,6 +594,7 @@ GameObject:
   - component: {fileID: 23910322736128084}
   - component: {fileID: 65677194978902478}
   - component: {fileID: 114228512559939598}
+  - component: {fileID: 114850686109276432}
   m_Layer: 9
   m_Name: FlatTutorialPlanet
   m_TagString: Untagged
@@ -2364,6 +2365,8 @@ MonoBehaviour:
   - {fileID: 0}
   currents: {fileID: 0}
   ruin: {fileID: 0}
+  pearlAltar: {fileID: 0}
+  planetLerp: {fileID: 0}
   spawnObj: {fileID: 1357176474139690, guid: be7c4216169f4e9498a04a9174065893, type: 2}
   plantParent: {fileID: 0}
   spawnTimer: 0
@@ -2743,6 +2746,12 @@ MonoBehaviour:
   timeBetweenLines: 0
   conversational: 0
   waitTimes: []
+  waitingForPlayerInput:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  pressToSkip: {fileID: 0}
   displayChoices: 0
 --- !u!114 &114812276507418198
 MonoBehaviour:
@@ -2773,6 +2782,30 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ebd046f78d764d04f82ae4fc40cfe201, type: 3}
   - {fileID: 8300000, guid: 9d6ac1deabe4ab7499b10474af195323, type: 3}
   - {fileID: 8300000, guid: e419765b1eea3c54fa6a3fedbc381f7a, type: 3}
+--- !u!114 &114850686109276432
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1914315380963688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0b57bd36c377af40b62ec432e214028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mRenderer: {fileID: 23910322736128084}
+  lerpMat: {fileID: 0}
+  floatToLerp: _RimPower
+  moveTowardsOrLerp: 0
+  lerpOnStart: 0
+  lerpingMat: 0
+  disableOnFinish: 0
+  resetsScale: 0
+  resetParent: 0
+  startValue: 0
+  lerpValue: 0
+  endValue: 0.25
+  lerpSpeed: 1
 --- !u!114 &114991780272686198
 MonoBehaviour:
   m_ObjectHideFlags: 1

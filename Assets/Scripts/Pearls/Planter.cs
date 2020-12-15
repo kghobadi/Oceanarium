@@ -48,6 +48,10 @@ public class Planter : AudioHandler {
     public Currents currents;
     [Tooltip("Ruins script if i am going to Ruins")]
     public Ruins ruin;
+    [Tooltip("Altar beneath pearl spots")]
+    public MeshRenderer pearlAltar;
+    [Tooltip("Lerp for rimpower effect on planet")]
+    public LerpMaterial planetLerp;
 
     [Header("Plant Spawning")]
     [Tooltip("Plant/prop to spawn")]
@@ -74,7 +78,7 @@ public class Planter : AudioHandler {
 
         pc = FindObjectOfType<PlayerController>();
         saveSystem = FindObjectOfType<SaveSystem>();
-        //saveSystem.returningGame.AddListener(LoadGame);
+        saveSystem.returningGame.AddListener(LoadGame);
 
         //get all refs
         myMR = GetComponent<MeshRenderer>();
@@ -245,6 +249,17 @@ public class Planter : AudioHandler {
         //turn off interact obj 
         if (interactObj)
             interactObj.SetActive(false);
+
+        //pearl altar 
+        if (pearlAltar)
+        {
+            pearlAltar.material = activeMat;
+        }
+        //planet fx
+        if (planetLerp)
+        {
+            planetLerp.Lerp(planetLerp.endValue, planetLerp.lerpSpeed);
+        }
 
         //pearl mono?
         if (pearlMono)
