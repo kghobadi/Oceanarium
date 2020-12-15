@@ -1,0 +1,161 @@
+fileFormatVersion: 2
+guid: fb2fb0a36a8d0954581b4d7d5cd060a5
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Bone
+    100004: Bone1
+    100006: Bone2
+    100008: Bone3
+    100010: Bone_end
+    100012: Capital
+    100014: Capital.001
+    100016: Capital.002
+    100018: Capital.003
+    100020: //RootNode
+    100022: pearlArmature
+    100024: pearlArmature 1
+    100026: pearlArmature_end
+    100028: pillarGlow.001
+    100030: pillarGlow.002
+    100032: pillarGlow.003
+    100034: pillarGlow.004
+    100036: shrineBase
+    100038: ShrineTop
+    400000: Armature
+    400002: Bone
+    400004: Bone1
+    400006: Bone2
+    400008: Bone3
+    400010: Bone_end
+    400012: Capital
+    400014: Capital.001
+    400016: Capital.002
+    400018: Capital.003
+    400020: //RootNode
+    400022: pearlArmature
+    400024: pearlArmature 1
+    400026: pearlArmature_end
+    400028: pillarGlow.001
+    400030: pillarGlow.002
+    400032: pillarGlow.003
+    400034: pillarGlow.004
+    400036: shrineBase
+    400038: ShrineTop
+    2100000: BaseMaterial
+    2100002: GlowMaterial
+    2300000: Capital
+    2300002: Capital.001
+    2300004: Capital.002
+    2300006: Capital.003
+    2300008: pillarGlow.001
+    2300010: pillarGlow.002
+    2300012: pillarGlow.003
+    2300014: pillarGlow.004
+    2300016: shrineBase
+    2300018: ShrineTop
+    3300000: Capital
+    3300002: Capital.001
+    3300004: Capital.002
+    3300006: Capital.003
+    3300008: pillarGlow.001
+    3300010: pillarGlow.002
+    3300012: pillarGlow.003
+    3300014: pillarGlow.004
+    3300016: shrineBase
+    3300018: ShrineTop
+    4300000: Capital
+    4300002: ShrineTop
+    4300004: Capital.001
+    4300006: Capital.002
+    4300008: Capital.003
+    4300010: shrineBase
+    4300012: pillarGlow.001
+    4300014: pillarGlow.002
+    4300016: pillarGlow.003
+    4300018: pillarGlow.004
+    7400000: pearlArmature|pearlArmatureAction.001
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

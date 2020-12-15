@@ -31,6 +31,11 @@ public class MeditationMovement : MonoBehaviour
     public float fovSpeed = 1f;
     public float origSpeed;
 
+    [Header("Return to Body UI")]
+    public FadeUI[] returnToBodyUI;
+    public int medCount;
+    IEnumerator waitToFadeIn;
+
     void Awake()
     {
         pc = FindObjectOfType<PlayerController>();
@@ -41,6 +46,16 @@ public class MeditationMovement : MonoBehaviour
         if (thirdEyeParent)
         {
             thirdBody = thirdEyeParent.GetComponent<CharacterController>();
+        }
+
+        //check for previous meditation count
+        if (PlayerPrefs.HasKey("MeditationCount"))
+        {
+            medCount = PlayerPrefs.GetInt("MeditationCount");
+        }
+        else
+        {
+            medCount = 0;
         }
     }
 
@@ -70,6 +85,21 @@ public class MeditationMovement : MonoBehaviour
         
         //fully active
         isActive = true;
+        //check if we need to fade in UI
+        CheckMeditationCount();
+    }
+
+    void CheckMeditationCount()
+    {
+        //increment meditation count
+        medCount++;
+        PlayerPrefs.SetInt("MeditationCount", medCount);
+        //fade in UI first 3 meditations 
+        if (medCount <= 3)
+        {
+            waitToFadeIn = WaitToFadeIn(10f);
+            StartCoroutine(waitToFadeIn);
+        }
     }
 
     //first person off 
@@ -84,6 +114,11 @@ public class MeditationMovement : MonoBehaviour
 
         //fully inactive
         isActive = false;
+        //stop fade in 
+        if (waitToFadeIn != null)
+            StopCoroutine(waitToFadeIn);
+        //fade out return to body ui
+        FadeOutUI();
     }
     
     void WASDmovement()
@@ -178,6 +213,31 @@ public class MeditationMovement : MonoBehaviour
         transform.Rotate(vRot, hRot, 0);
     }
 
+    IEnumerator WaitToFadeIn(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        FadeInUI();
+    }
+
+    public void FadeInUI()
+    {
+        for(int i = 0; i < returnToBodyUI.Length; i++)
+        {
+            returnToBodyUI[i].FadeIn();
+        }
+    }
+
+    public void FadeOutUI()
+    {
+        for (int i = 0; i < returnToBodyUI.Length; i++)
+        {
+            returnToBodyUI[i].FadeOut();
+            //set this so that after the  first time the user sees this pop up it will begin to fade out automatically
+            returnToBodyUI[i].fadeOutImmediately = true;
+            returnToBodyUI[i].fadeOutWait = 5f;
+        }
+    }
     
     private void OnDisable()
     {

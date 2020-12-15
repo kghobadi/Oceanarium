@@ -36,6 +36,7 @@ public class Guardian : AudioHandler {
     public bool[] guardianMonoChecks;
     public int[] guardianMonoIndeces;
     public int currentPoint = 0;
+    public int tripMonoIndex;
     public bool newGalaxy;
 
     [Header("Sounds")]
@@ -258,6 +259,8 @@ public class Guardian : AudioHandler {
         movement.MoveTo(location.position, movement.moveSpeed);
         guardianState = GuardianStates.MOVING;
         monoTrigger.gameObject.SetActive(false);
+        monoManager.SetMonologueSystem(tripMonoIndex);
+        monoManager.endedMonologue.AddListener(tripper.BeginTrip);
         tripper.canTrip = true;
         newGalaxy = true;
     }

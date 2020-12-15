@@ -81,7 +81,8 @@ public class Ruins : AudioHandler {
         {
             guardianScript.transform.position = guardianPos.position;
             guardianScript.MoveToLocationAndWaitForTrip(guardianPos);
-            portalParticles.Play();
+            if(portalParticles)
+                portalParticles.Play();
         }
 
         if (fx)
@@ -89,12 +90,7 @@ public class Ruins : AudioHandler {
             //only if the player is on this planet...
             if (pc.activePlanet == planetMan)
             {
-                //play sound + cinematic only if player is not talking or meditating (camera issues)
-                if (pc.moveState != PlayerController.MoveStates.TALKING && pc.moveState != PlayerController.MoveStates.MEDITATING)
-                {
-                    cinematicManager.PlayTimeline();
-                }
-
+                cinematicManager.StartTimeline();
                 PlaySound(activationSound, 1f);
             }
         }

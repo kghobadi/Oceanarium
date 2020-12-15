@@ -35,11 +35,12 @@ public class MonologueReader : MonoBehaviour {
     public float timeBetweenLines;
     [Tooltip("Check this and fill in array below so that each line of text can be assigned a different wait")]
     public bool conversational;
+    public bool autoProgress;
     public float[] waitTimes;
     bool waiting;
     public UnityEvent waitingForPlayerInput;
     public FadeUI pressToSkip;
-
+    
     [Tooltip("For 'dialogue' options at the end of Monologue")]
     public bool displayChoices;
 
@@ -109,6 +110,11 @@ public class MonologueReader : MonoBehaviour {
             if ((Input.GetKeyDown(KeyCode.E) || inputDevice.Action3.WasPressed) 
                 && canSkip)
             {
+                if (waitForNextLine != null)
+                {
+                    StopCoroutine(waitForNextLine);
+                }
+
                 ProgressLine();
             }
         }
@@ -225,7 +231,21 @@ public class MonologueReader : MonoBehaviour {
             StopCoroutine(waitForNextLine);
         }
 
-        waitForNextLine = WaitToProgressLine();
+        //check what the wait time for this line should be 
+        if (conversational)
+        {
+            waitForNextLine = WaitToProgressLine(waitTimes[currentLine]);
+        }
+        else if(autoProgress)
+        {
+            waitForNextLine = WaitToProgressLine(timeBetweenLines);
+        }
+        //almost all dialogues wait for user input 
+        else if (!autoProgress)
+        {
+            waitForNextLine = WaitToProgressLine();
+        }
+
         StartCoroutine(waitForNextLine);
     }
 
@@ -241,5 +261,17 @@ public class MonologueReader : MonoBehaviour {
         {
             pressToSkip.FadeIn();
         }
+    }
+
+    //start wait for next line after spacebar skip
+    IEnumerator WaitToProgressLine(float time)
+    {
+        yield return new WaitForEndOfFrame();
+
+        waiting = true;
+
+        yield return new WaitForSeconds(time);
+
+        ProgressLine();
     }
 }

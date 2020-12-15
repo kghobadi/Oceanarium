@@ -78,7 +78,14 @@ public class Currents : AudioHandler {
         endPoint = transform.GetChild(1);
         for (int i = 0; i < currentPillars.Length; i++)
         {
-            currentPillars[i].GetComponent<MeshRenderer>().material = silentMat;
+            if(currentPillars[i].GetComponent<MeshRenderer>().material != null)
+            {
+                currentPillars[i].GetComponent<MeshRenderer>().material = silentMat;
+            }
+            else
+            {
+                currentPillars[i].GetComponent<MeshRenderer>().materials[0] = silentMat;
+            }
         }
         if (activationType == ActivationType.PLAYER)
         {
@@ -207,7 +214,10 @@ public class Currents : AudioHandler {
             {
                 //play sound + cinematic
                 if (cinematicManager)
-                    cinematicManager.PlayTimeline();
+                {
+                    cinematicManager.StartTimeline();
+                }
+                  
                 PlaySound(activationSound, myAudioSource.volume);
             }
             //also play this sound 

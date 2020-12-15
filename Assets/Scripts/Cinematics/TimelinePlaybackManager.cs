@@ -117,6 +117,28 @@ public class TimelinePlaybackManager : MonoBehaviour
 
     public void StartTimeline()
     {
+        //play sound + cinematic only if player is not talking or meditating (camera issues)
+        if (pc.moveState == PlayerController.MoveStates.TALKING || pc.moveState == PlayerController.MoveStates.MEDITATING
+            || pc.moveState == PlayerController.MoveStates.PEARLMED)
+        {
+            //wait until player is in idle
+            StartCoroutine(WaitUntilIdle());
+        }
+        else
+        {
+            if (fadesIn)
+            {
+                StartCoroutine(WaitForFade());
+            }
+            else
+                PlayTimeline();
+        }
+    }
+
+    IEnumerator WaitUntilIdle()
+    {
+        yield return new WaitUntil(() => pc.moveState == PlayerController.MoveStates.IDLE);
+
         if (fadesIn)
         {
             StartCoroutine(WaitForFade());
