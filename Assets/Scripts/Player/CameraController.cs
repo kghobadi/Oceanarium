@@ -229,7 +229,7 @@ public class CameraController : MonoBehaviour {
         targetLook = Quaternion.LookRotation((player.transform.position + (player.transform.up * yLookPosAdjust))
             - transform.position, gravityBody.GetUp());
         //lerp towards new look rotation 
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetLook, smoothLook * Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetLook, smoothLook * Time.deltaTime);
 
         //checks if input for fading out cam controls image at start
         if (pc.controlsAtStart.Length > 1)

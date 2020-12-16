@@ -133,17 +133,17 @@ public class TripActivation : MonoBehaviour {
         {
             tripTimer += Time.deltaTime;
 
-            if(tripTimer > tripLength)
-            {
-                //load next scene
-                if (loadsNewScene)
-                {
-                    sceneLoader.transition = true;
-                }
-                //end trip
-                else
-                    EndTrip();
-            }
+            //if(tripTimer > tripLength)
+            //{
+            //    //load next scene
+            //    if (loadsNewScene)
+            //    {
+            //        sceneLoader.transition = true;
+            //    }
+            //    //end trip
+            //    else
+            //        EndTrip();
+            //}
         }
 
         //press space && not tripping // converting 

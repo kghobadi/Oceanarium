@@ -1,4 +1,4 @@
 when you have activated a pearl
 its corresponding pillar lights up
 when all the pearls are active
-you can progress to the next planet
+the nucleoid portal can take you to the next planet
