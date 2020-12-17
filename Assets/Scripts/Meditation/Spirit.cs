@@ -61,6 +61,7 @@ public class Spirit : MonoBehaviour
                 monoManager.spiritEnabled = true;
                 //set monologue trigger
                 monoManager.mTrigger.spiritEnabled = true;
+                monoManager.mTrigger.hasActivated = false;
             }
 
             //is there a spirit state && animation script?

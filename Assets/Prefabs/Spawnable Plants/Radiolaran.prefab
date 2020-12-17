@@ -149,7 +149,7 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   maxSpeed: 100
   desiredDistFromPlanet: 50
-  desiredDistFromPlanetMin: 30
+  desiredDistFromPlanetMin: 45
   desiredDistFromPlanetMax: 60
 --- !u!114 &114559116194279592
 MonoBehaviour:

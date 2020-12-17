@@ -71,6 +71,18 @@ public class LerpMaterial : MonoBehaviour {
         lerpingMat = true;
     }
 
+    public void WaitLerp(float time)
+    {
+        StartCoroutine(WaitToLerp(time));
+    }
+
+    IEnumerator WaitToLerp(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        Lerp(endValue);
+    }
+
     //call to begin lerp 
     public void Lerp(float desiredValue)
     {
