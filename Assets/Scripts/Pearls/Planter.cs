@@ -78,7 +78,7 @@ public class Planter : AudioHandler {
 
         pc = FindObjectOfType<PlayerController>();
         saveSystem = FindObjectOfType<SaveSystem>();
-        saveSystem.returningGame.AddListener(LoadGame);
+        //saveSystem.returningGame.AddListener(LoadGame);
 
         //get all refs
         myMR = GetComponent<MeshRenderer>();

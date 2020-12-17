@@ -57,14 +57,16 @@ public class Ruins : AudioHandler {
         //check if all are activated
         if(activatedPillars >= pillars.Length)
         {
+            AllActivated(true);
+
             //new game -- normal
-            if(!loaded)
-                AllActivated(true);
-            //loaded game -- abnormal
-            else
-            {
-                StartCoroutine(WaitToActivate(0.1f));
-            }
+            //if(!loaded)
+            //    AllActivated(true);
+            ////loaded game -- abnormal
+            //else
+            //{
+            //    StartCoroutine(WaitToActivate(0.1f));
+            //}
         }
     }
 

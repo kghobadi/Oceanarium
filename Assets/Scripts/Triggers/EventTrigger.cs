@@ -8,7 +8,10 @@ public class EventTrigger : MonoBehaviour {
     public bool hasTriggered;
     public bool playerOnly;
     public bool npcOnly;
+    public bool pearlOnly;
+    
     public UnityEvent[] events;
+    public GameObject specificObj;
 
     [Header("Wait times")]
     public bool waits;
@@ -29,6 +32,13 @@ public class EventTrigger : MonoBehaviour {
                     SetTrigger();
                 }
             }
+            else if (pearlOnly)
+            {
+                if (other.gameObject.tag == "Pearl")
+                {
+                    SetTrigger();
+                }
+            }
             else if (npcOnly)
             {
                 if (other.gameObject.tag == "NPC")
@@ -36,9 +46,17 @@ public class EventTrigger : MonoBehaviour {
                     SetTrigger();
                 }
             }
-            else if(!playerOnly && !npcOnly)
+            else if (specificObj != null)
             {
-                if (other.gameObject.tag == "NPC" || other.gameObject.tag == "Player")
+                if(other.gameObject == specificObj)
+                {
+                    SetTrigger();
+                }
+            }
+            //catch all
+            else if(!playerOnly && !npcOnly && !pearlOnly && specificObj == null)
+            {
+                if (other.gameObject.tag == "NPC" || other.gameObject.tag == "Player" || other.gameObject.tag == "Pearl")
                 {
                     SetTrigger();
                 }

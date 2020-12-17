@@ -62,6 +62,8 @@ public class PlanetSelector : MonoBehaviour
                 //teleport guardian 
                 if (Vector3.Distance(pc.transform.position, guardian.transform.position) > 50f)
                     guardian.TeleportGuardian(planet.playerStartingPoint.position);
+                //temp disable guardian monos
+                guardian.DisableMonoTrigger();
                 //activate planet 
                 planet.ActivatePlanet(planet.guardianBehaviors[0].guardianLocation.position);
                 //fade to music

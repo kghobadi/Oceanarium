@@ -150,8 +150,8 @@ public class Guardian : AudioHandler {
             if (!myAudioSource.isPlaying)
                 PlayRandomSoundRandomPitch(swimmingSounds, 1f);
 
-            //movement running
-            if (movement.moving == false)
+            //movement running -- not new galaxy
+            if (movement.moving == false && !newGalaxy)
             {
                 SetWaiting();
             }
@@ -251,6 +251,11 @@ public class Guardian : AudioHandler {
         
         //set waiting state 
         guardianState = GuardianStates.WAITING;
+    }
+
+    public void DisableMonoTrigger()
+    {
+        monoTrigger.hasActivated = true;
     }
 
     //called to immediately move to a spot 
