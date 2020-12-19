@@ -23,7 +23,7 @@ public class MonologueManager : MonoBehaviour
     CinematicsManager cineManager;
     [HideInInspector]
     public LooperAI looperAI;
-    MonologueReader monoReader;
+    public MonologueReader monoReader;
     LoadSceneAsync sceneLoader;
     SpeakerSound speakerSound;
     FadeSprite fade;
@@ -102,7 +102,8 @@ public class MonologueManager : MonoBehaviour
         }
         else
         {
-            monoReader = wmManager.screenSpaceReader;
+            if(monoReader == null)
+                monoReader = wmManager.screenSpaceReader;
         }
        
         sceneLoader = FindObjectOfType<LoadSceneAsync>();
@@ -125,7 +126,7 @@ public class MonologueManager : MonoBehaviour
     void Start()
     {
         //set text to first string in my list of monologues 
-        if(allMyMonologues.Count > 0 && worldSpaceCanvas)
+        if(allMyMonologues.Count > 0)
             SetMonologueSystem(0);
 
         //play mono 0 

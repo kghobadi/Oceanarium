@@ -49,7 +49,7 @@ public class MonologueReader : MonoBehaviour {
         theText = GetComponent<Text>();
 
         //press to skip ref
-        //if(pressToSkip == null)
+        //if (pressToSkip == null && monoManager.worldSpaceCanvas == false)
         //{
         //    pressToSkip = GameObject.FindGameObjectWithTag("Skip").GetComponent<FadeUI>();
         //}

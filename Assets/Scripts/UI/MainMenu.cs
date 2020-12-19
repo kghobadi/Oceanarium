@@ -40,6 +40,9 @@ public class MainMenu : MonoBehaviour {
         //enable menu selections
         menuSelections.ActivateMenu();
 		menuSelections.ActivateSelections();
+		//make sure enable cursor
+		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
 	}
 
 	//new game button calls this

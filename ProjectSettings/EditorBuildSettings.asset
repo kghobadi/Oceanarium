@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Opening.unity
     guid: c625510e82ce52546b66c980fa1db47d
   - enabled: 1
+    path: Assets/Scenes/LoadingScene.unity
+    guid: d8816b24251bc244fa104a5c0c9f213f
+  - enabled: 1
     path: Assets/Scenes/New Intro Galaxy.unity
     guid: d4b909e16e18ab34bbffc707beb7e6f4
   - enabled: 0

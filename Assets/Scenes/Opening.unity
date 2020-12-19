@@ -1132,6 +1132,16 @@ MonoBehaviour:
   conversational: 0
   waitTimes: []
   monologuesToEnable: []
+  started:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  ended:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!222 &972038070
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1572,6 +1582,16 @@ MonoBehaviour:
   cinematicFade: {fileID: 0}
   fadesIn: 0
   fadesOut: 0
+  startedCinematic:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  endedCinematic:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1450652369
 GameObject:
   m_ObjectHideFlags: 0
@@ -1850,6 +1870,11 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114431733466307268, guid: a9cda988529a2d547a7ca341e8866901,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114137919052809004, guid: a9cda988529a2d547a7ca341e8866901,
         type: 2}
       propertyPath: selectionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.size
@@ -1864,6 +1889,11 @@ Prefab:
         type: 2}
       propertyPath: selectionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114122648501990478, guid: a9cda988529a2d547a7ca341e8866901,
+        type: 2}
+      propertyPath: selectionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224061061626618716, guid: a9cda988529a2d547a7ca341e8866901,
         type: 2}
@@ -2239,6 +2269,106 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114122648501990478, guid: a9cda988529a2d547a7ca341e8866901,
+        type: 2}
+      propertyPath: selectionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114122648501990478, guid: a9cda988529a2d547a7ca341e8866901,
+        type: 2}
+      propertyPath: selectionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114122648501990478, guid: a9cda988529a2d547a7ca341e8866901,
+        type: 2}
+      propertyPath: selectionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114122648501990478, guid: a9cda988529a2d547a7ca341e8866901,
+        type: 2}
+      propertyPath: selectionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114431733466307268, guid: a9cda988529a2d547a7ca341e8866901,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114431733466307268, guid: a9cda988529a2d547a7ca341e8866901,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114431733466307268, guid: a9cda988529a2d547a7ca341e8866901,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114431733466307268, guid: a9cda988529a2d547a7ca341e8866901,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114431733466307268, guid: a9cda988529a2d547a7ca341e8866901,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114431733466307268, guid: a9cda988529a2d547a7ca341e8866901,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114431733466307268, guid: a9cda988529a2d547a7ca341e8866901,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: FadeIn
+      objectReference: {fileID: 0}
+    - target: {fileID: 114431733466307268, guid: a9cda988529a2d547a7ca341e8866901,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114431733466307268, guid: a9cda988529a2d547a7ca341e8866901,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: FadeIn
+      objectReference: {fileID: 0}
+    - target: {fileID: 114431733466307268, guid: a9cda988529a2d547a7ca341e8866901,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114122648501990478, guid: a9cda988529a2d547a7ca341e8866901,
+        type: 2}
+      propertyPath: selectionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114122648501990478, guid: a9cda988529a2d547a7ca341e8866901,
+        type: 2}
+      propertyPath: selectionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114122648501990478, guid: a9cda988529a2d547a7ca341e8866901,
+        type: 2}
+      propertyPath: selectionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: FadeIn
+      objectReference: {fileID: 0}
+    - target: {fileID: 114122648501990478, guid: a9cda988529a2d547a7ca341e8866901,
+        type: 2}
+      propertyPath: selectionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114122648501990478, guid: a9cda988529a2d547a7ca341e8866901,
+        type: 2}
+      propertyPath: selectionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: FadeIn
+      objectReference: {fileID: 0}
+    - target: {fileID: 114122648501990478, guid: a9cda988529a2d547a7ca341e8866901,
+        type: 2}
+      propertyPath: selectionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9cda988529a2d547a7ca341e8866901, type: 2}
@@ -2934,7 +3064,6 @@ MonoBehaviour:
   sessions: 0
   allPlanets: []
   planetNames: []
-  lastPlanet: {fileID: 0}
   unlockAll: 0
   startNewGame:
     m_PersistentCalls:
@@ -3297,7 +3426,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 3.2539997
+  m_padding: 0
   m_canvasRenderer: {fileID: 1961794954}
   m_TextComponent: {fileID: 972038065}
   m_materialReferenceIndex: 1
@@ -3342,7 +3471,9 @@ MonoBehaviour:
   loadPreparesOnStart: 1
   preparing: 0
   transition: 0
+  autoProgress: 0
   fadeToBlack: {fileID: 1570141899}
+  progressBar: {fileID: 0}
 --- !u!4 &2139614212
 Transform:
   m_ObjectHideFlags: 0

@@ -18,7 +18,9 @@ public class LoadSceneAsync : MonoBehaviour
     public bool loadPreparesOnStart;
     public bool preparing = false;
     public bool transition;
+    public bool autoProgress;
     public FadeUI fadeToBlack;
+    public Image progressBar;
 
     MusicFader mFader;
     AsyncOperation asyncOperation = null;
@@ -26,7 +28,7 @@ public class LoadSceneAsync : MonoBehaviour
 
     void Start()
     {
-        mFader = GameObject.FindGameObjectWithTag("Music").GetComponent<MusicFader>();
+        mFader = FindObjectOfType<MusicFader>();
         if (loadPreparesOnStart)
         {
             //Start loading the Scene asynchronously and output the progress bar
@@ -67,6 +69,10 @@ public class LoadSceneAsync : MonoBehaviour
         //When the load is still in progress, output the Text and progress bar
         while (!asyncOperation.isDone)
         {
+            //set progress bar
+            if(progressBar)
+                progressBar.fillAmount = asyncOperation.progress;
+
             // Check if the load has finished
             if (asyncOperation.progress >= 0.9f)
             {
@@ -108,7 +114,9 @@ public class LoadSceneAsync : MonoBehaviour
     public void Transition(float wait)
     {
         fadeToBlack.FadeIn();
-        mFader.FadeOut(0, mFader.fadeSpeed);
+
+        if(mFader)
+            mFader.FadeOut(0, mFader.fadeSpeed);
 
         StartCoroutine(WaitToTransition(wait));
     }

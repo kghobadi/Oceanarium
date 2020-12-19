@@ -7,7 +7,7 @@ using TMPro;
 using Cameras;
 using Cinemachine;
 using InControl;
-
+using UnityEngine.Events;
 public class MonologueText : MonoBehaviour
 {
     //player refs
@@ -80,6 +80,10 @@ public class MonologueText : MonoBehaviour
     [Header("Monologues To Enable")]
     public MonologueText[] monologuesToEnable;
     MonologueTrigger mTrigger;
+
+    [Header("Events")]
+    public UnityEvent started;
+    public UnityEvent ended;
 
     void Awake()
     {
@@ -314,6 +318,8 @@ public class MonologueText : MonoBehaviour
     //actually starts
     void StartMonologue()
     {
+        started.Invoke();
+
         if (usesTMP)
             the_Text.enabled = true;
         else
@@ -381,6 +387,8 @@ public class MonologueText : MonoBehaviour
     public void DisableMonologue()
     {
         StopAllCoroutines();
+
+        ended.Invoke();
 
         if (usesTMP)
             the_Text.enabled = false;

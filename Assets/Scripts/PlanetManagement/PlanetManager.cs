@@ -8,7 +8,7 @@ public class PlanetManager : MonoBehaviour {
     PlayerController pc;
     GameObject guardian;
     Guardian gBehavior;
-    SaveSystem saveSystem;
+
     [HideInInspector] public MusicFader mFader;
     [HideInInspector] public Planter[] planterPearls;
     [HideInInspector] public GrowthPearl[] growthPearls;
@@ -47,10 +47,7 @@ public class PlanetManager : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player");
         pc = player.GetComponent<PlayerController>();
         creatureSpawner = GetComponent<CreatureSpawner>();
-        saveSystem = FindObjectOfType<SaveSystem>();
-        saveSystem.startNewGame.AddListener(NewGame);
-        saveSystem.returningGame.AddListener(LoadGame);
-        //saveSystem.returningGame.AddListener();
+
         guardian = GameObject.FindGameObjectWithTag("Guardian");
         if(guardian)
             gBehavior = guardian.GetComponent<Guardian>();
@@ -93,7 +90,7 @@ public class PlanetManager : MonoBehaviour {
     }
 
     //invoked by Save system
-    void NewGame()
+    public void NewGame()
     {
         //only activate starting planet
         if (startingPlanet)
@@ -107,7 +104,7 @@ public class PlanetManager : MonoBehaviour {
     }
 
     //invoked by Save system
-    void LoadGame()
+    public void LoadGame()
     {
         //get saved planet name 
         string savedPlanet = PlayerPrefs.GetString("ActivePlanet");
@@ -190,6 +187,8 @@ public class PlanetManager : MonoBehaviour {
             props[i].SetActive(true);
         }
 
+        //save current planet
+        PlayerPrefs.SetString("ActivePlanet", planetName);
         //Debug.Log("activated " + planetName);
     }
 
