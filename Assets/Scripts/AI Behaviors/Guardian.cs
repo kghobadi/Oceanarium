@@ -150,10 +150,18 @@ public class Guardian : AudioHandler {
             if (!myAudioSource.isPlaying)
                 PlayRandomSoundRandomPitch(swimmingSounds, 1f);
 
-            //movement running -- not new galaxy
-            if (movement.moving == false && !newGalaxy)
+            //movement running
+            if (movement.moving == false )
             {
-                SetWaiting();
+                if (!newGalaxy)
+                {
+                    SetWaiting();
+                }
+                else
+                {
+                    //look towards player
+                    gAnimation.Animator.SetBool("swimAway", false);
+                }
             }
         }
 
@@ -180,6 +188,7 @@ public class Guardian : AudioHandler {
             if (newGalaxy)
             {
                 //player rides me 
+
             }
             //go to next point
             else

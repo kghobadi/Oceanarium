@@ -59,9 +59,9 @@ public class MainMenu : MonoBehaviour {
 
 	//using values from save system, load player
 	public void ContinueGame()
-	{   
+	{
 		//load proper scene 
-		int scene = PlayerPrefs.GetInt("Galaxy");
-		SceneManager.LoadScene(scene);
+		//int scene = PlayerPrefs.GetInt("Galaxy");
+		loadScene.transition = true;
 	}
 }
