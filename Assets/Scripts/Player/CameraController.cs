@@ -333,8 +333,8 @@ public class CameraController : MonoBehaviour {
         if (sphereActive)
             return;
 
-        //only on mazeworld 
-        if(pc.activePlanet.planetName == "Mazeworld")
+        //only on mazeworld or cube planet
+        if(pc.activePlanet.planetName == "Mazeworld" || pc.activePlanet.planetName == "CubePlanet")
         {
             seeThruSphere.SetScaler(2.5f, new Vector3(sActiveSize, sActiveSize, sActiveSize));
             sphereActive = true;
