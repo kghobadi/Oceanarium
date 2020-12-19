@@ -17,7 +17,7 @@ public class SaveSystem : MonoBehaviour {
 	[Header("Planets")]
 	public PlanetManager[] allPlanets;
 	public string[] planetNames;
-	public PlanetManager lastPlanet;
+
 	[Tooltip("Debug option to unlock all planets")]
 	public bool unlockAll;
 	public UnityEvent startNewGame;
@@ -106,8 +106,7 @@ public class SaveSystem : MonoBehaviour {
 	{
 		//save current scene
 		PlayerPrefs.SetInt("Galaxy", SceneManager.GetActiveScene().buildIndex);
-		//save current planet
-		PlayerPrefs.SetString("ActivePlanet", pc.activePlanet.planetName);
+	
 		//save session 
 		sessions++;
 		PlayerPrefs.SetInt("Sessions", sessions);

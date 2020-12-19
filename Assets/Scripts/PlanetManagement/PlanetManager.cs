@@ -190,6 +190,8 @@ public class PlanetManager : MonoBehaviour {
             props[i].SetActive(true);
         }
 
+        //save current planet
+        PlayerPrefs.SetString("ActivePlanet", planetName);
         //Debug.Log("activated " + planetName);
     }
 
