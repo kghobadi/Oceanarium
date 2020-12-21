@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class EventTrigger : MonoBehaviour {
 
+    public bool canTrigger = true;
     public bool hasTriggered;
     public bool playerOnly;
     public bool npcOnly;
@@ -23,7 +24,7 @@ public class EventTrigger : MonoBehaviour {
     
     void OnTriggerEnter(Collider other)
     {
-        if (!hasTriggered)
+        if (!hasTriggered && canTrigger)
         {
             if (playerOnly)
             {
@@ -63,6 +64,11 @@ public class EventTrigger : MonoBehaviour {
             }
            
         }
+    }
+
+    public void SetCanTrigger(bool state)
+    {
+        canTrigger = true;
     }
 
     public void SetTrigger()
